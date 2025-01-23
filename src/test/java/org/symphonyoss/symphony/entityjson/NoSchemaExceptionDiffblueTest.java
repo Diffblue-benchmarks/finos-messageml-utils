@@ -1,0 +1,140 @@
+package org.symphonyoss.symphony.entityjson;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.mockito.Mockito.mock;
+import org.junit.Test;
+
+public class NoSchemaExceptionDiffblueTest {
+  /**
+   * Test {@link NoSchemaException#NoSchemaException(IEntityJsonContext, String)}.
+   * <ul>
+   *   <li>When {@code An error occurred}.</li>
+   *   <li>Then return Cause is {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test:
+   * {@link NoSchemaException#NoSchemaException(IEntityJsonContext, String)}
+   */
+  @Test
+  public void testNewNoSchemaException_whenAnErrorOccurred_thenReturnCauseIsNull() {
+    // Arrange
+    IEntityJsonContext context = mock(IEntityJsonContext.class);
+
+    // Act
+    NoSchemaException actualNoSchemaException = new NoSchemaException(context, "An error occurred");
+
+    // Assert
+    assertEquals("An error occurred", actualNoSchemaException.getMessage());
+    assertNull(actualNoSchemaException.getCause());
+    assertEquals(0, actualNoSchemaException.getSuppressed().length);
+    assertSame(context, actualNoSchemaException.getContext());
+  }
+
+  /**
+   * Test
+   * {@link NoSchemaException#NoSchemaException(IEntityJsonContext, String, Throwable)}.
+   * <ul>
+   *   <li>When {@code An error occurred}.</li>
+   *   <li>Then return Message is {@code An error occurred}.</li>
+   * </ul>
+   * <p>
+   * Method under test:
+   * {@link NoSchemaException#NoSchemaException(IEntityJsonContext, String, Throwable)}
+   */
+  @Test
+  public void testNewNoSchemaException_whenAnErrorOccurred_thenReturnMessageIsAnErrorOccurred() {
+    // Arrange
+    IEntityJsonContext context = mock(IEntityJsonContext.class);
+    Throwable cause = new Throwable();
+
+    // Act
+    NoSchemaException actualNoSchemaException = new NoSchemaException(context, "An error occurred", cause);
+
+    // Assert
+    assertEquals("An error occurred", actualNoSchemaException.getMessage());
+    assertEquals(0, actualNoSchemaException.getSuppressed().length);
+    assertSame(cause, actualNoSchemaException.getCause());
+    assertSame(context, actualNoSchemaException.getContext());
+  }
+
+  /**
+   * Test {@link NoSchemaException#NoSchemaException(IEntityJsonContext)}.
+   * <ul>
+   *   <li>When {@link IEntityJsonContext}.</li>
+   *   <li>Then return Message is {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test:
+   * {@link NoSchemaException#NoSchemaException(IEntityJsonContext)}
+   */
+  @Test
+  public void testNewNoSchemaException_whenIEntityJsonContext_thenReturnMessageIsNull() {
+    // Arrange
+    IEntityJsonContext context = mock(IEntityJsonContext.class);
+
+    // Act
+    NoSchemaException actualNoSchemaException = new NoSchemaException(context);
+
+    // Assert
+    assertNull(actualNoSchemaException.getMessage());
+    assertNull(actualNoSchemaException.getCause());
+    assertEquals(0, actualNoSchemaException.getSuppressed().length);
+    assertSame(context, actualNoSchemaException.getContext());
+  }
+
+  /**
+   * Test
+   * {@link NoSchemaException#NoSchemaException(IEntityJsonContext, Throwable)}.
+   * <ul>
+   *   <li>When {@link Throwable#Throwable()}.</li>
+   *   <li>Then return Message is {@code java.lang.Throwable}.</li>
+   * </ul>
+   * <p>
+   * Method under test:
+   * {@link NoSchemaException#NoSchemaException(IEntityJsonContext, Throwable)}
+   */
+  @Test
+  public void testNewNoSchemaException_whenThrowable_thenReturnMessageIsJavaLangThrowable() {
+    // Arrange
+    IEntityJsonContext context = mock(IEntityJsonContext.class);
+    Throwable cause = new Throwable();
+
+    // Act
+    NoSchemaException actualNoSchemaException = new NoSchemaException(context, cause);
+
+    // Assert
+    assertEquals("java.lang.Throwable", actualNoSchemaException.getMessage());
+    assertEquals(0, actualNoSchemaException.getSuppressed().length);
+    assertSame(cause, actualNoSchemaException.getCause());
+    assertSame(context, actualNoSchemaException.getContext());
+  }
+
+  /**
+   * Test
+   * {@link NoSchemaException#NoSchemaException(IEntityJsonContext, String, Throwable, boolean, boolean)}.
+   * <ul>
+   *   <li>When {@code true}.</li>
+   *   <li>Then return Message is {@code An error occurred}.</li>
+   * </ul>
+   * <p>
+   * Method under test:
+   * {@link NoSchemaException#NoSchemaException(IEntityJsonContext, String, Throwable, boolean, boolean)}
+   */
+  @Test
+  public void testNewNoSchemaException_whenTrue_thenReturnMessageIsAnErrorOccurred() {
+    // Arrange
+    IEntityJsonContext context = mock(IEntityJsonContext.class);
+    Throwable cause = new Throwable();
+
+    // Act
+    NoSchemaException actualNoSchemaException = new NoSchemaException(context, "An error occurred", cause, true, true);
+
+    // Assert
+    assertEquals("An error occurred", actualNoSchemaException.getMessage());
+    assertEquals(0, actualNoSchemaException.getSuppressed().length);
+    assertSame(cause, actualNoSchemaException.getCause());
+    assertSame(context, actualNoSchemaException.getContext());
+  }
+}

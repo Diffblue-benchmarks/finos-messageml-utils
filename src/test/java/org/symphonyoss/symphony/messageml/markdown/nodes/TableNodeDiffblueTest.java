@@ -1,0 +1,33 @@
+package org.symphonyoss.symphony.messageml.markdown.nodes;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import org.junit.Test;
+
+public class TableNodeDiffblueTest {
+  /**
+   * Test getters and setters.
+   * <p>
+   * Methods under test:
+   * <ul>
+   *   <li>default or parameterless constructor of {@link TableNode}
+   *   <li>{@link TableNode#getClosingDelimiter()}
+   *   <li>{@link TableNode#getOpeningDelimiter()}
+   * </ul>
+   */
+  @Test
+  public void testGettersAndSetters() {
+    // Arrange and Act
+    TableNode actualTableNode = new TableNode();
+    String actualClosingDelimiter = actualTableNode.getClosingDelimiter();
+
+    // Assert
+    assertEquals("\n   \n", actualClosingDelimiter);
+    assertEquals("\n   \n", actualTableNode.getOpeningDelimiter());
+    assertNull(actualTableNode.getParent());
+    assertNull(actualTableNode.getFirstChild());
+    assertNull(actualTableNode.getLastChild());
+    assertNull(actualTableNode.getNext());
+    assertNull(actualTableNode.getPrevious());
+  }
+}
