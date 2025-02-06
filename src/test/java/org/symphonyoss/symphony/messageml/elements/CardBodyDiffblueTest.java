@@ -77,8 +77,8 @@ public class CardBodyDiffblueTest {
     // Act
     cardBody.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
+  //How I would expect the test to be done
   @Test
-  @Ignore("TODO: Complete this test")
   public void testBuildAttribute_whenIIOMetadataNodeWithFooMANUAL() throws InvalidInputException {
     // Arrange
     CardBody cardBody = new CardBody(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);

@@ -1,3 +1,0 @@
-org.symphonyoss.symphony.messageml.elements.Element:
-  - factory:
-      method: org.symphonyoss.symphony.messageml.elements.ElementFactory.makeElement:()Lorg/symphonyoss/symphony/messageml/elements/Element;

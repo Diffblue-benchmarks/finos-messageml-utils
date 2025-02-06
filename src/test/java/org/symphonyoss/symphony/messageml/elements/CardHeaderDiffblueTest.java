@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -22,15 +21,13 @@ import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
-import org.symphonyoss.symphony.messageml.exceptions.ProcessingException;
-import org.symphonyoss.symphony.messageml.util.DataProvider;
+import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
 public class CardHeaderDiffblueTest {
   /**
    * Test {@link CardHeader#buildAttribute(MessageMLParser, Node)}.
    * <ul>
-   *   <li>Given makeElement.</li>
    *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
    * {@code foo}.</li>
    * </ul>
@@ -39,48 +36,22 @@ public class CardHeaderDiffblueTest {
    */
   @Test
   @Ignore("TODO: Complete this test")
-  public void testBuildAttribute_givenMakeElement_whenIIOMetadataNodeWithFoo()
-      throws IOException, InvalidInputException, ProcessingException {
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
     // TODO: Diffblue Cover was only able to create a partial test for this method:
     //   Reason: No inputs found that don't throw a trivial exception.
     //   Diffblue Cover tried to run the arrange/act section, but the method under
     //   test threw
-    //   java.lang.IllegalArgumentException: object is not an instance of declaring class
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "header"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.CardHeader.buildAttribute(CardHeader.java:47)
     //   See https://diff.blue/R013 to resolve this issue.
 
     // Arrange
-    Element makeElementResult = ElementFactory.makeElement();
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
     MessageMLParser parser = mock(MessageMLParser.class);
 
     // Act
-    makeElementResult.buildAttribute(parser, new IIOMetadataNode("foo"));
-  }
-
-  /**
-   * Test getters and setters.
-   * <p>
-   * Methods under test:
-   * <ul>
-   *   <li>{@link CardHeader#CardHeader(Element, FormatEnum)}
-   *   <li>{@link CardHeader#getPresentationMLTag()}
-   * </ul>
-   */
-  @Test
-  public void testGettersAndSetters2() throws IOException, InvalidInputException, ProcessingException {
-    // Arrange
-    Element parent = ElementFactory.makeElement();
-
-    // Act
-    CardHeader actualCardHeader = new CardHeader(parent, FormatEnum.MESSAGEML);
-    String actualPresentationMLTag = actualCardHeader.getPresentationMLTag();
-
-    // Assert
-    assertEquals(FormatEnum.MESSAGEML, actualCardHeader.getFormat());
-    assertTrue(actualCardHeader.getChildren().isEmpty());
-    assertTrue(actualCardHeader.getAttributes().isEmpty());
-    assertEquals(CardHeader.MESSAGEML_TAG, actualCardHeader.getMessageMLTag());
-    assertEquals(Div.MESSAGEML_TAG, actualPresentationMLTag);
-    assertSame(parent, actualCardHeader.getParent());
+    cardHeader.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**
@@ -90,13 +61,13 @@ public class CardHeaderDiffblueTest {
    * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsPresentationML() {
     // Arrange
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
+    cardHeader.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
     assertEquals(32L, out.getOffset());
@@ -109,34 +80,14 @@ public class CardHeaderDiffblueTest {
    * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML2() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsPresentationML2() {
     // Arrange
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
-    cardHeader.addChild(ElementFactory.makeElement());
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    cardHeader.addChild(new Bold(new BulletList(mock(Element.class))));
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
-
-    // Assert
-    assertEquals(223L, out.getOffset());
-  }
-
-  /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  public void testAsPresentationML3() throws IOException, InvalidInputException, ProcessingException {
-    // Arrange
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
-    cardHeader.addChild(new Bold(ElementFactory.makeElement()));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
+    cardHeader.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
     assertEquals(43L, out.getOffset());
@@ -149,17 +100,17 @@ public class CardHeaderDiffblueTest {
    * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML4() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsPresentationML3() {
     // Arrange
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
-    cardHeader.addChild(new Code(ElementFactory.makeElement(), "en"));
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    cardHeader.addChild(new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
+    cardHeader.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
-    assertEquals(68L, out.getOffset());
+    assertEquals(76L, out.getOffset());
   }
 
   /**
@@ -169,14 +120,14 @@ public class CardHeaderDiffblueTest {
    * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML5() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsPresentationML4() {
     // Arrange
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
-    cardHeader.addChild(new Button(ElementFactory.makeElement(), FormatEnum.MESSAGEML));
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    cardHeader.addChild(new Button(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
+    cardHeader.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
     List<Element> children = cardHeader.getChildren();
@@ -198,14 +149,14 @@ public class CardHeaderDiffblueTest {
    * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML6() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsPresentationML5() {
     // Arrange
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
-    cardHeader.addChild(new CardBody(ElementFactory.makeElement(), FormatEnum.MESSAGEML));
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    cardHeader.addChild(new CardBody(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
+    cardHeader.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
     assertEquals(64L, out.getOffset());
@@ -218,14 +169,14 @@ public class CardHeaderDiffblueTest {
    * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML7() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsPresentationML6() {
     // Arrange
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
-    cardHeader.addChild(new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML));
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    cardHeader.addChild(new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
+    cardHeader.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
     assertEquals(66L, out.getOffset());
@@ -238,20 +189,20 @@ public class CardHeaderDiffblueTest {
    * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML8() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsPresentationML7() {
     // Arrange
-    Element child = ElementFactory.makeElement();
-    child.addChild(ElementFactory.makeElement());
+    Bold child = new Bold(new BulletList(mock(Element.class)));
+    child.addChild(new Bold(new BulletList(mock(Element.class))));
 
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
     cardHeader.addChild(child);
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
+    cardHeader.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
-    assertEquals(425L, out.getOffset());
+    assertEquals(56L, out.getOffset());
   }
 
   /**
@@ -261,14 +212,14 @@ public class CardHeaderDiffblueTest {
    * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML9() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsPresentationML8() {
     // Arrange
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
-    cardHeader.addChild(new CashTag(ElementFactory.makeElement(), 1));
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    cardHeader.addChild(new CashTag(new Bold(new BulletList(mock(Element.class))), 1));
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
+    cardHeader.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
     assertEquals(96L, out.getOffset());
@@ -281,38 +232,15 @@ public class CardHeaderDiffblueTest {
    * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML10() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsPresentationML9() {
     // Arrange
-    Bold child = new Bold(ElementFactory.makeElement());
-    child.addChild(ElementFactory.makeElement());
-
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
-    cardHeader.addChild(child);
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
-
-    // Assert
-    assertEquals(245L, out.getOffset());
-  }
-
-  /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  public void testAsPresentationML11() throws IOException, InvalidInputException, ProcessingException {
-    // Arrange
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
     out.setPrintOffsets(true);
 
     // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
+    cardHeader.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
     assertEquals(32L, out.getOffset());
@@ -325,15 +253,15 @@ public class CardHeaderDiffblueTest {
    * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML12() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsPresentationML10() {
     // Arrange
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
     out.setNoIndent(true);
 
     // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
+    cardHeader.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
     assertEquals(32L, out.getOffset());
@@ -346,15 +274,15 @@ public class CardHeaderDiffblueTest {
    * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML13() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsPresentationML11() {
     // Arrange
-    CardHeader cardHeader = new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
+    CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
     out.setNoNl(true);
 
     // Act
-    cardHeader.asPresentationML(out, new MessageMLContext(new DataProvider()));
+    cardHeader.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
     assertEquals(30L, out.getOffset());
@@ -362,16 +290,14 @@ public class CardHeaderDiffblueTest {
 
   /**
    * Test {@link CardHeader#asMarkdown()}.
-   * <ul>
-   *   <li>Then return {@link Paragraph}.</li>
-   * </ul>
    * <p>
    * Method under test: {@link CardHeader#asMarkdown()}
    */
   @Test
-  public void testAsMarkdown_thenReturnParagraph() throws IOException, InvalidInputException, ProcessingException {
+  public void testAsMarkdown() {
     // Arrange and Act
-    Node actualAsMarkdownResult = (new CardHeader(ElementFactory.makeElement(), FormatEnum.MESSAGEML)).asMarkdown();
+    Node actualAsMarkdownResult = (new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML))
+        .asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof Paragraph);
@@ -385,47 +311,49 @@ public class CardHeaderDiffblueTest {
   /**
    * Test {@link CardHeader#validate()}.
    * <ul>
-   *   <li>Given {@link Card#Card(Element, FormatEnum)} with parent is makeElement
-   * and format is {@code MESSAGEML}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link CardHeader#validate()}
-   */
-  @Test
-  public void testValidate_givenCardWithParentIsMakeElementAndFormatIsMessageml()
-      throws IOException, InvalidInputException, ProcessingException {
-    // TODO: Diffblue Cover was only able to create a partial test for this method:
-    //   Diffblue AI was unable to find a test
-
-    // Arrange
-    Card parent = new Card(ElementFactory.makeElement(), FormatEnum.MESSAGEML);
-    parent.putOneIfPresent(new HashMap<>(), "Element \"%s\" can only be a child of the following elements: [%s]",
-        "Element \"%s\" can only be a child of the following elements: [%s]");
-
-    // Act
-    (new CardHeader(parent, FormatEnum.MESSAGEML)).validate();
-  }
-
-  /**
-   * Test {@link CardHeader#validate()}.
-   * <ul>
-   *   <li>Given makeElement.</li>
+   *   <li>Given {@link CardHeader#CardHeader(Element, FormatEnum)} with parent is
+   * {@link Bold#Bold(Element)} and format is {@code MESSAGEML}.</li>
    * </ul>
    * <p>
    * Method under test: {@link CardHeader#validate()}
    */
   @Test
   @Ignore("TODO: Complete this test")
-  public void testValidate_givenMakeElement() throws IOException, InvalidInputException, ProcessingException {
+  public void testValidate_givenCardHeaderWithParentIsBoldAndFormatIsMessageml() throws InvalidInputException {
     // TODO: Diffblue Cover was only able to create a partial test for this method:
     //   Reason: No inputs found that don't throw a trivial exception.
     //   Diffblue Cover tried to run the arrange/act section, but the method under
     //   test threw
-    //   java.lang.IllegalArgumentException: object is not an instance of declaring class
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "header" can only be a child of the following elements: [card]
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertParent(Element.java:741)
+    //       at org.symphonyoss.symphony.messageml.elements.CardHeader.validate(CardHeader.java:70)
     //   See https://diff.blue/R013 to resolve this issue.
 
     // Arrange and Act
-    ElementFactory.makeElement().validate();
+    (new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).validate();
+  }
+
+  /**
+   * Test {@link CardHeader#validate()}.
+   * <ul>
+   *   <li>Given {@link Card#Card(Element, FormatEnum)} with parent is
+   * {@link Bold#Bold(Element)} and format is {@code MESSAGEML}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CardHeader#validate()}
+   */
+  @Test
+  public void testValidate_givenCardWithParentIsBoldAndFormatIsMessageml() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange
+    Card parent = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    parent.putOneIfPresent(new HashMap<>(), "Element \"%s\" can only be a child of the following elements: [%s]",
+        "Element \"%s\" can only be a child of the following elements: [%s]");
+
+    // Act
+    (new CardHeader(parent, FormatEnum.MESSAGEML)).validate();
   }
 
   /**
