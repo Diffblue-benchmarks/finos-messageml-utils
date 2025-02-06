@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.io.PipedOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class XmlPrintStreamDiffblueTest {
@@ -451,6 +452,33 @@ public class XmlPrintStreamDiffblueTest {
 
     // Assert
     assertEquals(33L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Test {@link XmlPrintStream#closeElement()}.
+   * <ul>
+   *   <li>Given {@link XmlPrintStream#XmlPrintStream(OutputStream)} with
+   * outputStream is
+   * {@link ByteArrayOutputStream#ByteArrayOutputStream(int)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link XmlPrintStream#closeElement()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testCloseElement_givenXmlPrintStreamWithOutputStreamIsByteArrayOutputStream() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.util.NoSuchElementException
+    //       at java.base/java.util.LinkedList.removeFirst(LinkedList.java:274)
+    //       at java.base/java.util.LinkedList.pop(LinkedList.java:805)
+    //       at org.symphonyoss.symphony.messageml.util.XmlPrintStream.closeElement(XmlPrintStream.java:106)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new XmlPrintStream(new ByteArrayOutputStream(1))).closeElement();
   }
 
   /**

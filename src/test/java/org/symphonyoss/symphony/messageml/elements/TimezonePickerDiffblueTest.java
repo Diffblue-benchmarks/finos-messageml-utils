@@ -12,9 +12,12 @@ import static org.mockito.Mockito.when;
 import java.io.ByteArrayOutputStream;
 import java.time.DateTimeException;
 import java.util.List;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
@@ -43,6 +46,37 @@ public class TimezonePickerDiffblueTest {
     assertEquals(TimezonePicker.MESSAGEML_TAG, actualTimezonePicker.getMessageMLTag());
     assertEquals(TimezonePicker.MESSAGEML_TAG, actualTimezonePicker.getPresentationMLTag());
     assertSame(parent, actualTimezonePicker.getParent());
+  }
+
+  /**
+   * Test {@link TimezonePicker#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test:
+   * {@link TimezonePicker#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "timezone-picker"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.TimezonePicker.buildAttribute(TimezonePicker.java:93)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    TimezonePicker timezonePicker = new TimezonePicker(new Bold(new BulletList(mock(Element.class))),
+        FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    timezonePicker.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**

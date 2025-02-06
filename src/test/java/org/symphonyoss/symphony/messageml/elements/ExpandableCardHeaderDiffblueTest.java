@@ -6,10 +6,14 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import java.io.ByteArrayOutputStream;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
 import org.commonmark.node.Paragraph;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
@@ -39,6 +43,37 @@ public class ExpandableCardHeaderDiffblueTest {
     assertEquals(Div.MESSAGEML_TAG, actualPresentationMLTag);
     assertEquals(ExpandableCardHeader.MESSAGEML_TAG, actualExpandableCardHeader.getMessageMLTag());
     assertSame(parent, actualExpandableCardHeader.getParent());
+  }
+
+  /**
+   * Test {@link ExpandableCardHeader#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test:
+   * {@link ExpandableCardHeader#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "header"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.ExpandableCardHeader.buildAttribute(ExpandableCardHeader.java:47)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    ExpandableCardHeader expandableCardHeader = new ExpandableCardHeader(new Bold(new BulletList(mock(Element.class))),
+        FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    expandableCardHeader.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**
@@ -284,5 +319,26 @@ public class ExpandableCardHeaderDiffblueTest {
     assertNull(actualAsMarkdownResult.getLastChild());
     assertNull(actualAsMarkdownResult.getNext());
     assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
+   * Test {@link ExpandableCardHeader#validate()}.
+   * <p>
+   * Method under test: {@link ExpandableCardHeader#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "header" can only be a child of the following elements: [expandablecard]
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertParent(Element.java:741)
+    //       at org.symphonyoss.symphony.messageml.elements.ExpandableCardHeader.validate(ExpandableCardHeader.java:69)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new ExpandableCardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).validate();
   }
 }

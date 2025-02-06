@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.MissingNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class StructuredObjectDiffblueTest {
@@ -77,5 +78,29 @@ public class StructuredObjectDiffblueTest {
     assertEquals(5, actualStructuredObject.getMinorVersion());
     assertTrue(actualStructuredObject.getIdList().isEmpty());
     assertSame(context, actualStructuredObject.getContext());
+  }
+
+  /**
+   * Test {@link StructuredObject#validate(EntityJsonParser)}.
+   * <p>
+   * Method under test: {@link StructuredObject#validate(EntityJsonParser)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate() throws InvalidSchemaException, NoSchemaException, SchemaValidationException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.entityjson.StructuredObject.<init>(StructuredObject.java:81)
+    //       at org.symphonyoss.symphony.entityjson.StructuredObject.<init>(StructuredObject.java:72)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    StructuredObject structuredObject = new StructuredObject(mock(IEntityJsonInstanceContext.class));
+
+    // Act
+    structuredObject.validate(new EntityJsonParser(true));
   }
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class CountedOutputStreamDiffblueTest {
@@ -102,5 +103,89 @@ public class CountedOutputStreamDiffblueTest {
 
     // Assert
     assertEquals(1L, countedOutputStream.getOffset());
+  }
+
+  /**
+   * Test {@link CountedOutputStream#close()}.
+   * <ul>
+   *   <li>Given {@link ByteArrayOutputStream#ByteArrayOutputStream(int)} with
+   * one.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CountedOutputStream#close()}
+   */
+  @Test
+  public void testClose_givenByteArrayOutputStreamWithOne() throws IOException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new CountedOutputStream(new ByteArrayOutputStream(1))).close();
+  }
+
+  /**
+   * Test {@link CountedOutputStream#close()}.
+   * <ul>
+   *   <li>Given {@link CountedOutputStream#CountedOutputStream(OutputStream)} with
+   * out is {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CountedOutputStream#close()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testClose_givenCountedOutputStreamWithOutIsNull() throws IOException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.util.CountedOutputStream.close(CountedOutputStream.java:72)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new CountedOutputStream(null)).close();
+  }
+
+  /**
+   * Test {@link CountedOutputStream#flush()}.
+   * <ul>
+   *   <li>Given {@link ByteArrayOutputStream#ByteArrayOutputStream(int)} with
+   * one.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CountedOutputStream#flush()}
+   */
+  @Test
+  public void testFlush_givenByteArrayOutputStreamWithOne() throws IOException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new CountedOutputStream(new ByteArrayOutputStream(1))).flush();
+  }
+
+  /**
+   * Test {@link CountedOutputStream#flush()}.
+   * <ul>
+   *   <li>Given {@link CountedOutputStream#CountedOutputStream(OutputStream)} with
+   * out is {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CountedOutputStream#flush()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testFlush_givenCountedOutputStreamWithOutIsNull() throws IOException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.util.CountedOutputStream.flush(CountedOutputStream.java:77)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new CountedOutputStream(null)).flush();
   }
 }

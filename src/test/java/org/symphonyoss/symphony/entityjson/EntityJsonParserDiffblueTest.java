@@ -12,9 +12,56 @@ import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Paths;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class EntityJsonParserDiffblueTest {
+  /**
+   * Test {@link EntityJsonParser#EntityJsonParser(boolean)}.
+   * <ul>
+   *   <li>When {@code true}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link EntityJsonParser#EntityJsonParser(boolean)}
+   */
+  @Test
+  public void testNewEntityJsonParser_whenTrue() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: Missing observers.
+    //   Diffblue Cover was unable to create an assertion.
+    //   Add getters for the following fields or make them package-private:
+    //     EntityJsonParser.factory_
+
+    // Arrange and Act
+    new EntityJsonParser(true);
+  }
+
+  /**
+   * Test {@link EntityJsonParser#parseEntityJson(Object, ObjectNode)} with
+   * {@code instanceSource}, {@code instance}.
+   * <p>
+   * Method under test:
+   * {@link EntityJsonParser#parseEntityJson(Object, ObjectNode)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testParseEntityJsonWithInstanceSourceInstance()
+      throws InvalidInstanceException, SchemaValidationException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: Sandboxing policy violation.
+    //   Diffblue Cover ran code in your project that tried
+    //     to access the network.
+    //   Diffblue Cover's default sandboxing policy disallows this in order to prevent
+    //   your code from damaging your system environment.
+    //   See https://diff.blue/R011 to resolve this issue.
+
+    // Arrange
+    EntityJsonParser entityJsonParser = new EntityJsonParser(true);
+
+    // Act
+    entityJsonParser.parseEntityJson("Instance Source", new ObjectNode(JsonNodeFactory.withExactBigDecimals(true)));
+  }
+
   /**
    * Test {@link EntityJsonParser#parseEntityJson(Object, Reader)} with
    * {@code instanceSource}, {@code instanceReader}.
@@ -60,6 +107,32 @@ public class EntityJsonParserDiffblueTest {
     // Arrange, Act and Assert
     assertThrows(InvalidInstanceException.class, () -> (new EntityJsonParser(true))
         .parseEntityJson(Paths.get(System.getProperty("java.io.tmpdir"), "test.txt").toUri().toURL()));
+  }
+
+  /**
+   * Test {@link EntityJsonParser#parseStructuredObject(Object, ObjectNode)} with
+   * {@code instanceSource}, {@code instance}.
+   * <p>
+   * Method under test:
+   * {@link EntityJsonParser#parseStructuredObject(Object, ObjectNode)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testParseStructuredObjectWithInstanceSourceInstance() throws SchemaValidationException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: Sandboxing policy violation.
+    //   Diffblue Cover ran code in your project that tried
+    //     to access the network.
+    //   Diffblue Cover's default sandboxing policy disallows this in order to prevent
+    //   your code from damaging your system environment.
+    //   See https://diff.blue/R011 to resolve this issue.
+
+    // Arrange
+    EntityJsonParser entityJsonParser = new EntityJsonParser(true);
+
+    // Act
+    entityJsonParser.parseStructuredObject("Instance Source",
+        new ObjectNode(JsonNodeFactory.withExactBigDecimals(true)));
   }
 
   /**

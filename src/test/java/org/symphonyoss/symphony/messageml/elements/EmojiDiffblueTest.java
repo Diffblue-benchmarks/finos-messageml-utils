@@ -1,16 +1,24 @@
 package org.symphonyoss.symphony.messageml.elements;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.TextNode;
+import com.fasterxml.jackson.databind.node.TreeTraversingParser;
 import java.io.ByteArrayOutputStream;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.MessageMLParser;
@@ -419,6 +427,67 @@ public class EmojiDiffblueTest {
 
     // Act and Assert
     assertEquals("$null", emoji.asText());
+  }
+
+  /**
+   * Test {@link Emoji#asEntityJson(ObjectNode)}.
+   * <ul>
+   *   <li>Then iterator next return {@link ObjectNode}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Emoji#asEntityJson(ObjectNode)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testAsEntityJson_thenIteratorNextReturnObjectNode() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange
+    Emoji emoji = new Emoji(new Bold(new BulletList(mock(Element.class))), 1);
+
+    // Act
+    ObjectNode actualAsEntityJsonResult = emoji
+        .asEntityJson(new ObjectNode(JsonNodeFactory.withExactBigDecimals(true)));
+
+    // Assert
+    Iterator<JsonNode> iteratorResult = actualAsEntityJsonResult.iterator();
+    JsonNode nextResult = iteratorResult.next();
+    JsonNode nextResult2 = iteratorResult.next();
+    JsonNode nextResult3 = iteratorResult.next();
+    boolean actualHasNextResult = iteratorResult.hasNext();
+    assertTrue(nextResult3 instanceof ObjectNode);
+    assertTrue(nextResult instanceof TextNode);
+    assertTrue(nextResult2 instanceof TextNode);
+    assertTrue(nextResult.traverse() instanceof TreeTraversingParser);
+    assertTrue(nextResult2.traverse() instanceof TreeTraversingParser);
+    assertTrue(nextResult3.traverse() instanceof TreeTraversingParser);
+    assertTrue(actualAsEntityJsonResult.traverse() instanceof TreeTraversingParser);
+    assertFalse(nextResult3.iterator().hasNext());
+    assertFalse(actualHasNextResult);
+  }
+
+  /**
+   * Test {@link Emoji#asEntityJson(ObjectNode)}.
+   * <ul>
+   *   <li>When {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Emoji#asEntityJson(ObjectNode)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testAsEntityJson_whenNull() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.elements.Emoji.asEntityJson(Emoji.java:121)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new Emoji(new Bold(new BulletList(mock(Element.class))), 1)).asEntityJson(null);
   }
 
   /**

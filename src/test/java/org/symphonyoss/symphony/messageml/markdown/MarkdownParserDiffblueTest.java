@@ -17,6 +17,8 @@ import java.util.List;
 import org.commonmark.node.BlockQuote;
 import org.commonmark.node.BulletList;
 import org.commonmark.node.Code;
+import org.commonmark.node.CustomBlock;
+import org.commonmark.node.CustomNode;
 import org.commonmark.node.Document;
 import org.commonmark.node.Emphasis;
 import org.commonmark.node.FencedCodeBlock;
@@ -30,6 +32,7 @@ import org.commonmark.node.Paragraph;
 import org.commonmark.node.StrongEmphasis;
 import org.commonmark.node.Text;
 import org.commonmark.node.Visitor;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.symphonyoss.symphony.messageml.elements.Element;
@@ -38,13 +41,35 @@ import org.symphonyoss.symphony.messageml.elements.MessageML;
 import org.symphonyoss.symphony.messageml.elements.TextNode;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.markdown.nodes.EmojiNode;
+import org.symphonyoss.symphony.messageml.markdown.nodes.MentionNode;
 import org.symphonyoss.symphony.messageml.markdown.nodes.PreformattedNode;
 import org.symphonyoss.symphony.messageml.markdown.nodes.TableCellNode;
 import org.symphonyoss.symphony.messageml.markdown.nodes.TableNode;
 import org.symphonyoss.symphony.messageml.markdown.nodes.TableRowNode;
+import org.symphonyoss.symphony.messageml.util.IDataProvider;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 
 public class MarkdownParserDiffblueTest {
+  /**
+   * Test {@link MarkdownParser#MarkdownParser(IDataProvider)}.
+   * <p>
+   * Method under test: {@link MarkdownParser#MarkdownParser(IDataProvider)}
+   */
+  @Test
+  public void testNewMarkdownParser() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: Missing observers.
+    //   Diffblue Cover was unable to create an assertion.
+    //   Add getters for the following fields or make them package-private:
+    //     MarkdownParser.dataProvider
+    //     MarkdownParser.index
+    //     MarkdownParser.messageML
+    //     MarkdownParser.parent
+
+    // Arrange and Act
+    new MarkdownParser(new NoOpDataProvider());
+  }
+
   /**
    * Test {@link MarkdownParser#visit(BulletList)} with {@code BulletList}.
    * <ul>
@@ -846,6 +871,114 @@ public class MarkdownParserDiffblueTest {
     // Assert
     verify(code).getLiteral();
     verify(code).getFirstChild();
+  }
+
+  /**
+   * Test {@link MarkdownParser#visit(CustomBlock)} with {@code CustomBlock}.
+   * <ul>
+   *   <li>When {@link PreformattedNode} (default constructor).</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownParser#visit(CustomBlock)}
+   */
+  @Test
+  public void testVisitWithCustomBlock_whenPreformattedNode() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: Missing observers.
+    //   Diffblue Cover was unable to create an assertion.
+    //   Add getters for the following fields or make them package-private:
+    //     MarkdownParser.dataProvider
+    //     MarkdownParser.index
+    //     MarkdownParser.messageML
+    //     MarkdownParser.parent
+
+    // Arrange
+    MarkdownParser markdownParser = new MarkdownParser(new NoOpDataProvider());
+
+    // Act
+    markdownParser.visit(new PreformattedNode());
+  }
+
+  /**
+   * Test {@link MarkdownParser#visit(CustomBlock)} with {@code CustomBlock}.
+   * <ul>
+   *   <li>When {@link TableNode} (default constructor).</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownParser#visit(CustomBlock)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testVisitWithCustomBlock_whenTableNode() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.markdown.MarkdownParser.visitChildren(MarkdownParser.java:272)
+    //       at org.symphonyoss.symphony.messageml.markdown.MarkdownParser.visit(MarkdownParser.java:258)
+    //       at org.symphonyoss.symphony.messageml.markdown.MarkdownParser.visit(MarkdownParser.java:222)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    MarkdownParser markdownParser = new MarkdownParser(new NoOpDataProvider());
+
+    // Act
+    markdownParser.visit(new TableNode());
+  }
+
+  /**
+   * Test {@link MarkdownParser#visit(CustomNode)} with {@code CustomNode}.
+   * <ul>
+   *   <li>When {@link EmojiNode#EmojiNode()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownParser#visit(CustomNode)}
+   */
+  @Test
+  public void testVisitWithCustomNode_whenEmojiNode() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: Missing observers.
+    //   Diffblue Cover was unable to create an assertion.
+    //   Add getters for the following fields or make them package-private:
+    //     MarkdownParser.dataProvider
+    //     MarkdownParser.index
+    //     MarkdownParser.messageML
+    //     MarkdownParser.parent
+
+    // Arrange
+    MarkdownParser markdownParser = new MarkdownParser(new NoOpDataProvider());
+
+    // Act
+    markdownParser.visit(new EmojiNode());
+  }
+
+  /**
+   * Test {@link MarkdownParser#visit(CustomNode)} with {@code CustomNode}.
+   * <ul>
+   *   <li>When {@link MentionNode#MentionNode(long)} with uid is one.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownParser#visit(CustomNode)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testVisitWithCustomNode_whenMentionNodeWithUidIsOne() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.markdown.MarkdownParser.visitChildren(MarkdownParser.java:272)
+    //       at org.symphonyoss.symphony.messageml.markdown.MarkdownParser.visit(MarkdownParser.java:247)
+    //       at org.symphonyoss.symphony.messageml.markdown.MarkdownParser.visit(MarkdownParser.java:215)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    MarkdownParser markdownParser = new MarkdownParser(new NoOpDataProvider());
+
+    // Act
+    markdownParser.visit(new MentionNode(1L));
   }
 
   /**
@@ -1658,6 +1791,62 @@ public class MarkdownParserDiffblueTest {
 
     // Assert
     verify(em).getFirstChild();
+  }
+
+  /**
+   * Test {@link MarkdownParser#visit(FencedCodeBlock)} with
+   * {@code FencedCodeBlock}.
+   * <p>
+   * Method under test: {@link MarkdownParser#visit(FencedCodeBlock)}
+   */
+  @Test
+  public void testVisitWithFencedCodeBlock() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: Missing observers.
+    //   Diffblue Cover was unable to create an assertion.
+    //   Add getters for the following fields or make them package-private:
+    //     MarkdownParser.dataProvider
+    //     MarkdownParser.index
+    //     MarkdownParser.messageML
+    //     MarkdownParser.parent
+
+    // Arrange
+    MarkdownParser markdownParser = new MarkdownParser(new NoOpDataProvider());
+    MissingNode entities = MissingNode.getInstance();
+    markdownParser.parse("Not all who wander are lost", entities, MissingNode.getInstance());
+
+    FencedCodeBlock code = new FencedCodeBlock();
+    code.setLiteral("42");
+
+    // Act
+    markdownParser.visit(code);
+  }
+
+  /**
+   * Test {@link MarkdownParser#visit(FencedCodeBlock)} with
+   * {@code FencedCodeBlock}.
+   * <ul>
+   *   <li>When {@link FencedCodeBlock} (default constructor).</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownParser#visit(FencedCodeBlock)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testVisitWithFencedCodeBlock_whenFencedCodeBlock() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.markdown.MarkdownParser.visit(MarkdownParser.java:197)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    MarkdownParser markdownParser = new MarkdownParser(new NoOpDataProvider());
+
+    // Act
+    markdownParser.visit(new FencedCodeBlock());
   }
 
   /**

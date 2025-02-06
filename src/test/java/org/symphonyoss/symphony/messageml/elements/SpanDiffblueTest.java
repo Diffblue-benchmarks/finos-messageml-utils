@@ -9,9 +9,14 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
+import org.w3c.dom.Node;
 
 public class SpanDiffblueTest {
   /**
@@ -38,6 +43,36 @@ public class SpanDiffblueTest {
   }
 
   /**
+   * Test {@link Span#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Span#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "span"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Element.buildAttribute(Element.java:256)
+    //       at org.symphonyoss.symphony.messageml.elements.Span.buildAttribute(Span.java:52)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Span span = new Span(new Bold(new BulletList(mock(Element.class))));
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    span.buildAttribute(parser, new IIOMetadataNode("foo"));
+  }
+
+  /**
    * Test {@link Span#asEntityJson(ObjectNode)}.
    * <p>
    * Method under test: {@link Span#asEntityJson(ObjectNode)}
@@ -49,6 +84,20 @@ public class SpanDiffblueTest {
 
     // Act and Assert
     assertNull(span.asEntityJson(new ObjectNode(JsonNodeFactory.withExactBigDecimals(true))));
+  }
+
+  /**
+   * Test {@link Span#validate()}.
+   * <p>
+   * Method under test: {@link Span#validate()}
+   */
+  @Test
+  public void testValidate() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Span(new Bold(new BulletList(mock(Element.class))))).validate();
   }
 
   /**

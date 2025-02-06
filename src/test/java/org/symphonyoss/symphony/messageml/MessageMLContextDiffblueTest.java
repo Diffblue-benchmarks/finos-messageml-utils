@@ -5,7 +5,9 @@ import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.MissingNode;
+import java.io.IOException;
 import java.util.List;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.elements.BulletList;
 import org.symphonyoss.symphony.messageml.elements.Element;
@@ -27,6 +29,34 @@ public class MessageMLContextDiffblueTest {
   public void testNewMessageMLContext() {
     // Arrange, Act and Assert
     assertTrue((new MessageMLContext(new NoOpDataProvider())).getBiContext().getItems().isEmpty());
+  }
+
+  /**
+   * Test {@link MessageMLContext#parseMessageML(String, String, String)}.
+   * <ul>
+   *   <li>When {@code Entity Json}.</li>
+   * </ul>
+   * <p>
+   * Method under test:
+   * {@link MessageMLContext#parseMessageML(String, String, String)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testParseMessageML_whenEntityJson() throws IOException, InvalidInputException, ProcessingException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Error parsing EntityJSON: Unrecognized token 'Entity': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+    //    at [Source: (String)"Entity Json"; line: 1, column: 7]
+    //       at org.symphonyoss.symphony.messageml.MessageMLParser.parseEntityJson(MessageMLParser.java:230)
+    //       at org.symphonyoss.symphony.messageml.MessageMLParser.parse(MessageMLParser.java:193)
+    //       at org.symphonyoss.symphony.messageml.MessageMLContext.parseMessageML(MessageMLContext.java:80)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new MessageMLContext(new NoOpDataProvider())).parseMessageML("Not all who wander are lost", "Entity Json",
+        "1.0.2");
   }
 
   /**
@@ -213,6 +243,20 @@ public class MessageMLContextDiffblueTest {
   public void testGetTextWithBoolean() throws IllegalStateException, InvalidInputException, ProcessingException {
     // Arrange, Act and Assert
     assertThrows(IllegalStateException.class, () -> (new MessageMLContext(new NoOpDataProvider())).getText(true));
+  }
+
+  /**
+   * Test {@link MessageMLContext#generateShortId()}.
+   * <p>
+   * Method under test: {@link MessageMLContext#generateShortId()}
+   */
+  @Test
+  public void testGenerateShortId() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new MessageMLContext(new NoOpDataProvider())).generateShortId();
   }
 
   /**

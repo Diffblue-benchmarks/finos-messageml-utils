@@ -8,10 +8,14 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
+import org.w3c.dom.Node;
 
 public class ImageDiffblueTest {
   /**
@@ -35,6 +39,36 @@ public class ImageDiffblueTest {
     assertEquals(Image.MESSAGEML_TAG, actualImage.getMessageMLTag());
     assertEquals(Image.MESSAGEML_TAG, actualImage.getPresentationMLTag());
     assertSame(parent, actualImage.getParent());
+  }
+
+  /**
+   * Test {@link Image#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Image#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "img"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Element.buildAttribute(Element.java:256)
+    //       at org.symphonyoss.symphony.messageml.elements.Image.buildAttribute(Image.java:48)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Image image = new Image(new Bold(new BulletList(mock(Element.class))));
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    image.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**

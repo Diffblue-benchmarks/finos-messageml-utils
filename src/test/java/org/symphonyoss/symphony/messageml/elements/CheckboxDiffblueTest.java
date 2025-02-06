@@ -11,8 +11,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
@@ -71,6 +74,35 @@ public class CheckboxDiffblueTest {
     assertThrows(InvalidInputException.class,
         () -> (new Checkbox(new Bold(new BulletList(parent)), FormatEnum.MESSAGEML)).validate());
     verify(parent, atLeast(1)).getParent();
+  }
+
+  /**
+   * Test {@link Checkbox#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Checkbox#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "checkbox"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Checkbox.buildAttribute(Checkbox.java:78)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    checkbox.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**

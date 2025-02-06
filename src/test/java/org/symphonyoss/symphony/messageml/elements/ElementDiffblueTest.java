@@ -8,6 +8,9 @@ import static org.mockito.Mockito.mock;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
@@ -630,6 +633,80 @@ public class ElementDiffblueTest {
   }
 
   /**
+   * Test {@link Element#assertAttributeValue(String, Collection)}.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Element#assertAttributeValue(String, Collection)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testAssertAttributeValue_whenArrayList() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeValue(Element.java:551)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Bold bold = new Bold(new BulletList(mock(Element.class)));
+
+    // Act
+    bold.assertAttributeValue("Attribute Name", new ArrayList<>());
+  }
+
+  /**
+   * Test {@link Element#assertAttributeValue(String, Collection)}.
+   * <ul>
+   *   <li>When {@link ArrayList#ArrayList()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Element#assertAttributeValue(String, Collection)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testAssertAttributeValue_whenArrayList2() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeValue(Element.java:551)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Bold bold = new Bold(new BulletList(mock(Element.class)));
+
+    // Act
+    bold.assertAttributeValue("Attribute Name", new ArrayList<>());
+  }
+
+  /**
+   * Test {@link Element#assertAttributeIsBoolean(String)}.
+   * <p>
+   * Method under test: {@link Element#assertAttributeIsBoolean(String)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testAssertAttributeIsBoolean() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeValue(Element.java:551)
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeIsBoolean(Element.java:566)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new Bold(new BulletList(mock(Element.class)))).assertAttributeIsBoolean("Attribute Name");
+    (new Bold(new BulletList(mock(Element.class)))).assertAttributeIsBoolean("Attribute Name");
+  }
+
+  /**
    * Test {@link Element#assertAttributeNotBlank(String)}.
    * <p>
    * Method under test: {@link Element#assertAttributeNotBlank(String)}
@@ -644,6 +721,21 @@ public class ElementDiffblueTest {
   }
 
   /**
+   * Test {@link Element#assertAttributeMaxLength(String, int)}.
+   * <p>
+   * Method under test: {@link Element#assertAttributeMaxLength(String, int)}
+   */
+  @Test
+  public void testAssertAttributeMaxLength() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Bold(new BulletList(mock(Element.class)))).assertAttributeMaxLength("Attribute Name", 3);
+    (new Bold(new BulletList(mock(Element.class)))).assertAttributeMaxLength("Attribute Name", 3);
+  }
+
+  /**
    * Test {@link Element#areNestedElementsAllowed()}.
    * <p>
    * Method under test: {@link Element#areNestedElementsAllowed()}
@@ -653,5 +745,39 @@ public class ElementDiffblueTest {
     // Arrange, Act and Assert
     assertTrue((new Bold(new BulletList(mock(Element.class)))).areNestedElementsAllowed());
     assertTrue((new Bold(new BulletList(mock(Element.class)))).areNestedElementsAllowed());
+  }
+
+  /**
+   * Test {@link Element#addChild(Element)}.
+   * <p>
+   * Method under test: {@link Element#addChild(Element)}
+   */
+  @Test
+  public void testAddChild() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange
+    Bold bold = new Bold(new BulletList(mock(Element.class)));
+
+    // Act
+    bold.addChild(new Bold(new BulletList(mock(Element.class))));
+  }
+
+  /**
+   * Test {@link Element#addChild(Element)}.
+   * <p>
+   * Method under test: {@link Element#addChild(Element)}
+   */
+  @Test
+  public void testAddChild2() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange
+    Bold bold = new Bold(new BulletList(mock(Element.class)));
+
+    // Act
+    bold.addChild(new Bold(new BulletList(mock(Element.class))));
   }
 }

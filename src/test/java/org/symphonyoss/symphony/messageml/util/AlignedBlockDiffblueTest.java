@@ -6,10 +6,76 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import java.io.ByteArrayOutputStream;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 public class AlignedBlockDiffblueTest {
+  /**
+   * Test {@link AlignedBlock#AlignedBlock(IndentedPrintStream)}.
+   * <p>
+   * Method under test: {@link AlignedBlock#AlignedBlock(IndentedPrintStream)}
+   */
+  @Test
+  public void testNewAlignedBlock() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: Missing observers.
+    //   Diffblue Cover was unable to create an assertion.
+    //   Add getters for the following fields or make them package-private:
+    //     AlignedBlock.maxColumnLength
+    //     AlignedBlock.out
+    //     AlignedBlock.rows
+
+    // Arrange and Act
+    new AlignedBlock(new IndentedPrintStream(new ByteArrayOutputStream(1)));
+  }
+
+  /**
+   * Test {@link AlignedBlock#align(Object[])}.
+   * <ul>
+   *   <li>When {@code 42}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link AlignedBlock#align(Object[])}
+   */
+  @Test
+  public void testAlign_when42() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: Missing observers.
+    //   Diffblue Cover was unable to create an assertion.
+    //   Add getters for the following fields or make them package-private:
+    //     AlignedBlock.maxColumnLength
+    //     AlignedBlock.out
+    //     AlignedBlock.rows
+
+    // Arrange and Act
+    (new AlignedBlock(new IndentedPrintStream(new ByteArrayOutputStream(1)))).align("42");
+  }
+
+  /**
+   * Test {@link AlignedBlock#align(Object[])}.
+   * <ul>
+   *   <li>When {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link AlignedBlock#align(Object[])}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testAlign_whenNull() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.util.AlignedBlock.align(AlignedBlock.java:48)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new AlignedBlock(new IndentedPrintStream(new ByteArrayOutputStream(1)))).align(null);
+  }
+
   /**
    * Test {@link AlignedBlock#print(String, String)} with {@code String},
    * {@code String}.

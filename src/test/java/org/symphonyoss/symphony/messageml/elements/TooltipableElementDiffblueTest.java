@@ -7,6 +7,7 @@ import static org.mockito.Mockito.mock;
 import java.util.Map;
 import javax.imageio.metadata.IIOMetadataNode;
 import org.junit.Test;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.w3c.dom.Node;
 
 public class TooltipableElementDiffblueTest {
@@ -80,5 +81,19 @@ public class TooltipableElementDiffblueTest {
   public void testIsTooltipNode_whenIIOMetadataNodeWithTooltipable_presentationml() {
     // Arrange, Act and Assert
     assertFalse(TooltipableElement.isTooltipNode(new IIOMetadataNode(TooltipableElement.TOOLTIPABLE_PRESENTATIONML)));
+  }
+
+  /**
+   * Test {@link TooltipableElement#validateTooltip()}.
+   * <p>
+   * Method under test: {@link TooltipableElement#validateTooltip()}
+   */
+  @Test
+  public void testValidateTooltip() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Select(new Bold(new BulletList(mock(Element.class))))).validateTooltip();
   }
 }

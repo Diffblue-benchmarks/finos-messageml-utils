@@ -7,11 +7,15 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.markdown.nodes.form.FormNode;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
@@ -48,6 +52,60 @@ public class FormDiffblueTest {
   public void testHasIdAttribute() {
     // Arrange, Act and Assert
     assertTrue((new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).hasIdAttribute());
+  }
+
+  /**
+   * Test {@link Form#validate()}.
+   * <ul>
+   *   <li>Given {@link Form#Form(Element, FormatEnum)} with parent is
+   * {@link Bold#Bold(Element)} and format is {@code MESSAGEML}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Form#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate_givenFormWithParentIsBoldAndFormatIsMessageml() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: The attribute "id" is required
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeNotBlank(Element.java:619)
+    //       at org.symphonyoss.symphony.messageml.elements.Form.validate(Form.java:56)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new Form(new Bold(new BulletList(null)), FormatEnum.MESSAGEML)).validate();
+  }
+
+  /**
+   * Test {@link Form#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Form#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "form"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Form.buildAttribute(Form.java:82)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    form.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**

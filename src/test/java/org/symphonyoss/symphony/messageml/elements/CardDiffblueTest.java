@@ -7,12 +7,17 @@ import static org.mockito.Mockito.mock;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
+import org.w3c.dom.Node;
 
 public class CardDiffblueTest {
   /**
@@ -40,6 +45,36 @@ public class CardDiffblueTest {
     assertEquals(Card.MESSAGEML_TAG, actualCard.getMessageMLTag());
     assertEquals(Div.MESSAGEML_TAG, actualPresentationMLTag);
     assertSame(parent, actualCard.getParent());
+  }
+
+  /**
+   * Test {@link Card#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Card#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "card"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Element.buildAttribute(Element.java:256)
+    //       at org.symphonyoss.symphony.messageml.elements.Card.buildAttribute(Card.java:63)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    card.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**

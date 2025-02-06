@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import javax.imageio.metadata.IIOMetadataNode;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLParser.SplittableData;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
@@ -346,6 +347,91 @@ public class MessageMLParserDiffblueTest {
     assertTrue(actualCreateElementResult.getChildren().isEmpty());
     assertTrue(actualCreateElementResult.getAttributes().isEmpty());
     assertSame(parent, actualCreateElementResult.getParent());
+  }
+
+  /**
+   * Test {@link MessageMLParser#loadElementId(String)}.
+   * <p>
+   * Method under test: {@link MessageMLParser#loadElementId(String)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testLoadElementId() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.MessageMLParser.loadElementId(MessageMLParser.java:668)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new MessageMLParser(new NoOpDataProvider())).loadElementId("42");
+  }
+
+  /**
+   * Test {@link MessageMLParser#getSplittableAttributes(String, Class)}.
+   * <p>
+   * Method under test:
+   * {@link MessageMLParser#getSplittableAttributes(String, Class)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testGetSplittableAttributes() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.MessageMLParser.getSplittableAttributes(MessageMLParser.java:680)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    MessageMLParser messageMLParser = new MessageMLParser(new NoOpDataProvider());
+    Class<SplittableElement> clazz = SplittableElement.class;
+
+    // Act
+    messageMLParser.getSplittableAttributes("42", clazz);
+  }
+
+  /**
+   * Test {@link MessageMLParser#getAllSplittableAttributes(String)}.
+   * <p>
+   * Method under test: {@link MessageMLParser#getAllSplittableAttributes(String)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testGetAllSplittableAttributes() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.MessageMLParser.getAllSplittableAttributes(MessageMLParser.java:693)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new MessageMLParser(new NoOpDataProvider())).getAllSplittableAttributes("42");
+  }
+
+  /**
+   * Test {@link MessageMLParser#getAllSplittableValues(String)}.
+   * <p>
+   * Method under test: {@link MessageMLParser#getAllSplittableValues(String)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testGetAllSplittableValues() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.MessageMLParser.getAllSplittableValues(MessageMLParser.java:706)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new MessageMLParser(new NoOpDataProvider())).getAllSplittableValues("42");
   }
 
   /**

@@ -6,9 +6,11 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import java.util.List;
 import java.util.Map;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
 public class TableFooterDiffblueTest {
   /**
@@ -43,6 +45,55 @@ public class TableFooterDiffblueTest {
   public void testToString() {
     // Arrange, Act and Assert
     assertEquals("Footer", (new TableFooter(new Bold(new BulletList(null)))).toString());
+  }
+
+  /**
+   * Test {@link TableFooter#validate()}.
+   * <ul>
+   *   <li>Given {@link TableFooter#TableFooter(Element)} with parent is
+   * {@link Bold#Bold(Element)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link TableFooter#validate()}
+   */
+  @Test
+  public void testValidate_givenTableFooterWithParentIsBold() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new TableFooter(new Bold(new BulletList(mock(Element.class))))).validate();
+  }
+
+  /**
+   * Test {@link TableFooter#validate()}.
+   * <ul>
+   *   <li>Given {@link TableFooter#TableFooter(Element)} with parent is
+   * {@link Bold#Bold(Element)} addChild {@link Bold#Bold(Element)} with parent is
+   * {@link BulletList#BulletList(Element)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link TableFooter#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate_givenTableFooterWithParentIsBoldAddChildBoldWithParentIsBulletList()
+      throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "b" is not allowed in "tfoot"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertContentModel(Element.java:709)
+    //       at org.symphonyoss.symphony.messageml.elements.TableFooter.validate(TableFooter.java:46)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    TableFooter tableFooter = new TableFooter(new Bold(new BulletList(mock(Element.class))));
+    tableFooter.addChild(new Bold(new BulletList(mock(Element.class))));
+
+    // Act
+    tableFooter.validate();
   }
 
   /**

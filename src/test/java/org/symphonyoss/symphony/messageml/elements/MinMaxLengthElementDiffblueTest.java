@@ -10,6 +10,37 @@ import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
 public class MinMaxLengthElementDiffblueTest {
   /**
+   * Test {@link MinMaxLengthElement#validateMinAndMaxLengths()}.
+   * <p>
+   * Method under test: {@link MinMaxLengthElement#validateMinAndMaxLengths()}
+   */
+  @Test
+  public void testValidateMinAndMaxLengths() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new TextArea(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).validateMinAndMaxLengths();
+  }
+
+  /**
+   * Test
+   * {@link MinMaxLengthElement#validateInitialValueIfFound(Integer, Integer)}.
+   * <p>
+   * Method under test:
+   * {@link MinMaxLengthElement#validateInitialValueIfFound(Integer, Integer)}
+   */
+  @Test
+  public void testValidateInitialValueIfFound() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new TextArea(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).validateInitialValueIfFound(3,
+        3);
+  }
+
+  /**
    * Test
    * {@link MinMaxLengthElement#getDefaultValueIfCurrentIsNull(Integer, Integer)}.
    * <ul>

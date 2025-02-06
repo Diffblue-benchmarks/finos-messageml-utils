@@ -8,9 +8,12 @@ import static org.mockito.Mockito.mock;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
@@ -50,6 +53,57 @@ public class DialogDiffblueTest {
   public void testHasIdAttribute() {
     // Arrange, Act and Assert
     assertTrue((new Dialog(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).hasIdAttribute());
+  }
+
+  /**
+   * Test {@link Dialog#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Dialog#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "dialog"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Dialog.buildAttribute(Dialog.java:83)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Dialog dialog = new Dialog(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    dialog.buildAttribute(parser, new IIOMetadataNode("foo"));
+  }
+
+  /**
+   * Test {@link Dialog#validate()}.
+   * <p>
+   * Method under test: {@link Dialog#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: The attribute "id" is required and must not contain any whitespace
+    //       at org.symphonyoss.symphony.messageml.elements.Element.validateIdAttribute(Element.java:840)
+    //       at org.symphonyoss.symphony.messageml.elements.Dialog.checkAttributes(Dialog.java:123)
+    //       at org.symphonyoss.symphony.messageml.elements.Dialog.validate(Dialog.java:91)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new Dialog(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).validate();
   }
 
   /**
@@ -506,5 +560,19 @@ public class DialogDiffblueTest {
     Map<String, Object> attributes = getResult.getAttributes();
     assertEquals(1, attributes.size());
     assertEquals(1, ((Integer) attributes.get("count")).intValue());
+  }
+
+  /**
+   * Test {@link Dialog#getPresentationMlIdAttribute()}.
+   * <p>
+   * Method under test: {@link Dialog#getPresentationMlIdAttribute()}
+   */
+  @Test
+  public void testGetPresentationMlIdAttribute() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Dialog(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).getPresentationMlIdAttribute();
   }
 }

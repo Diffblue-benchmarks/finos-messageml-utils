@@ -13,6 +13,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.List;
 import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
@@ -145,6 +146,28 @@ public class PersonSelectorDiffblueTest {
   }
 
   /**
+   * Test {@link PersonSelector#validate()}.
+   * <p>
+   * Method under test: {@link PersonSelector#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "person-selector" can only be a inner child of the following elements: [form]
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertParentAtAnyLevel(Element.java:758)
+    //       at org.symphonyoss.symphony.messageml.elements.FormElement.validate(FormElement.java:24)
+    //       at org.symphonyoss.symphony.messageml.elements.PersonSelector.validate(PersonSelector.java:72)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new PersonSelector(new Bold(new BulletList(null)), FormatEnum.MESSAGEML)).validate();
+  }
+
+  /**
    * Test
    * {@link PersonSelector#asPresentationML(XmlPrintStream, MessageMLContext)}.
    * <p>
@@ -260,6 +283,37 @@ public class PersonSelectorDiffblueTest {
     assertNull(actualAsMarkdownResult.getLastChild());
     assertNull(actualAsMarkdownResult.getNext());
     assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
+   * Test {@link PersonSelector#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test:
+   * {@link PersonSelector#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "person-selector"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.PersonSelector.buildAttribute(PersonSelector.java:141)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    PersonSelector personSelector = new PersonSelector(new Bold(new BulletList(mock(Element.class))),
+        FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    personSelector.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**

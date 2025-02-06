@@ -8,13 +8,17 @@ import static org.mockito.Mockito.mock;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
+import org.w3c.dom.Node;
 
 public class ChimeDiffblueTest {
   /**
@@ -63,6 +67,37 @@ public class ChimeDiffblueTest {
     assertThrows(InvalidInputException.class,
         () -> new Chime(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
 
+  }
+
+  /**
+   * Test {@link Chime#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>Given {@link BulletList#BulletList(Element)} with parent is
+   * {@link Element}.</li>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Chime#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_givenBulletListWithParentIsElement_whenIIOMetadataNodeWithFoo()
+      throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "chime" has to be the only element in the message.
+    //       at org.symphonyoss.symphony.messageml.elements.Chime.<init>(Chime.java:46)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Chime chime = new Chime(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    chime.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**
@@ -159,6 +194,49 @@ public class ChimeDiffblueTest {
   public void testAsText_thenReturnEmptyString() throws InvalidInputException {
     // Arrange, Act and Assert
     assertEquals("", (new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML)).asText());
+  }
+
+  /**
+   * Test {@link Chime#validate()}.
+   * <ul>
+   *   <li>Given {@link Bold#Bold(Element)} with parent is
+   * {@link BulletList#BulletList(Element)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Chime#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate_givenBoldWithParentIsBulletList() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "chime" has to be the only element in the message.
+    //       at org.symphonyoss.symphony.messageml.elements.Chime.<init>(Chime.java:46)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new Chime(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).validate();
+  }
+
+  /**
+   * Test {@link Chime#validate()}.
+   * <ul>
+   *   <li>Given {@link Chime#Chime(Element, FormatEnum)} with parent is
+   * {@link MessageML#MessageML(FormatEnum, String)} and format is
+   * {@code MESSAGEML}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Chime#validate()}
+   */
+  @Test
+  public void testValidate_givenChimeWithParentIsMessageMLAndFormatIsMessageml() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML)).validate();
   }
 
   /**

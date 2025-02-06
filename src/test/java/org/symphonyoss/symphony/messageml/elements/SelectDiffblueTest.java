@@ -8,10 +8,14 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.markdown.nodes.form.SelectNode;
 
 public class SelectDiffblueTest {
@@ -66,6 +70,57 @@ public class SelectDiffblueTest {
     assertNull(actualAsMarkdownResult.getLastChild());
     assertNull(actualAsMarkdownResult.getNext());
     assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
+   * Test {@link Select#validate()}.
+   * <p>
+   * Method under test: {@link Select#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "select" can only be a inner child of the following elements: [form]
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertParentAtAnyLevel(Element.java:758)
+    //       at org.symphonyoss.symphony.messageml.elements.FormElement.validate(FormElement.java:24)
+    //       at org.symphonyoss.symphony.messageml.elements.Select.validate(Select.java:80)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new Select(new Bold(new BulletList(null)))).validate();
+  }
+
+  /**
+   * Test {@link Select#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Select#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "select"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Select.buildAttribute(Select.java:169)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Select select = new Select(new Bold(new BulletList(mock(Element.class))));
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    select.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**

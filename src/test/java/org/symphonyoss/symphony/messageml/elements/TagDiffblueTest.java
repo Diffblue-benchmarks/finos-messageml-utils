@@ -1,21 +1,27 @@
 package org.symphonyoss.symphony.messageml.elements;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import java.io.ByteArrayOutputStream;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
@@ -58,6 +64,50 @@ public class TagDiffblueTest {
     assertEquals(Tag.MESSAGEML_TAG, actualTag.getMessageMLTag());
     assertEquals(Tag.MESSAGEML_TAG, actualTag.getEntityIdPrefix());
     assertSame(parent, parent2);
+  }
+
+  /**
+   * Test {@link Tag#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Tag#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "tag"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Entity.buildAttribute(Entity.java:59)
+    //       at org.symphonyoss.symphony.messageml.elements.Tag.buildAttribute(Tag.java:114)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Tag tag = new Tag(new Bold(new BulletList(mock(Element.class))), 1);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    tag.buildAttribute(parser, new IIOMetadataNode("foo"));
+  }
+
+  /**
+   * Test {@link Tag#validate()}.
+   * <p>
+   * Method under test: {@link Tag#validate()}
+   */
+  @Test
+  public void testValidate() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Tag(new Bold(new BulletList(mock(Element.class))), 1)).validate();
   }
 
   /**
@@ -457,6 +507,76 @@ public class TagDiffblueTest {
         + "  \"ediExchangeCode\" : \"Edi Exchange Code\",\n" + "  \"primaryExchange\" : true,\n"
         + "  \"operationalMic\" : \"Operational Mic\"\n" + "}", data.toPrettyString());
     assertTrue(iteratorResult.hasNext());
+  }
+
+  /**
+   * Test {@link Tag#asEntityJson(ObjectNode)}.
+   * <p>
+   * Method under test: {@link Tag#asEntityJson(ObjectNode)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testAsEntityJson() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange
+    Tag tag = new Tag(new Bold(new BulletList(mock(Element.class))), 1);
+    ObjectNode parent = new ObjectNode(JsonNodeFactory.withExactBigDecimals(true));
+
+    // Act
+    ObjectNode actualAsEntityJsonResult = tag.asEntityJson(parent);
+
+    // Assert
+    Iterator<JsonNode> iteratorResult = actualAsEntityJsonResult.iterator();
+    JsonNode nextResult = iteratorResult.next();
+    JsonNode nextResult2 = iteratorResult.next();
+    boolean actualHasNextResult = iteratorResult.hasNext();
+    assertTrue(nextResult2 instanceof ArrayNode);
+    assertTrue(nextResult instanceof TextNode);
+    assertEquals("[ {\n  \"type\" : \"org.symphonyoss.fin.security.id.ticker\",\n  \"value\" : null\n} ]",
+        nextResult2.toPrettyString());
+    assertEquals("\"1.0\"", nextResult.toPrettyString());
+    assertEquals("{\n" + "  \"tag1\" : {\n" + "    \"type\" : \"org.symphonyoss.fin.security\",\n"
+        + "    \"version\" : \"1.0\",\n" + "    \"id\" : [ {\n"
+        + "      \"type\" : \"org.symphonyoss.fin.security.id.ticker\",\n" + "      \"value\" : null\n" + "    } ]\n"
+        + "  }\n" + "}", parent.toPrettyString());
+    assertEquals("{\n" + "  \"type\" : \"org.symphonyoss.fin.security\",\n" + "  \"version\" : \"1.0\",\n"
+        + "  \"id\" : [ {\n" + "    \"type\" : \"org.symphonyoss.fin.security.id.ticker\",\n" + "    \"value\" : null\n"
+        + "  } ]\n" + "}", actualAsEntityJsonResult.toPrettyString());
+    assertEquals(1, nextResult2.size());
+    assertEquals(1, parent.size());
+    assertFalse(parent.isEmpty());
+    assertFalse(nextResult2.elements().hasNext());
+    assertFalse(parent.iterator().hasNext());
+    assertFalse(nextResult2.iterator().hasNext());
+    assertFalse(actualHasNextResult);
+  }
+
+  /**
+   * Test {@link Tag#asEntityJson(ObjectNode)}.
+   * <ul>
+   *   <li>Given {@link Tag#Tag(Element, int)} with parent is
+   * {@link Bold#Bold(Element)} and entityIndex is one.</li>
+   *   <li>When {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Tag#asEntityJson(ObjectNode)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testAsEntityJson_givenTagWithParentIsBoldAndEntityIndexIsOne_whenNull() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.elements.Entity.asEntityJson(Entity.java:66)
+    //       at org.symphonyoss.symphony.messageml.elements.Tag.asEntityJson(Tag.java:152)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new Tag(new Bold(new BulletList(mock(Element.class))), 1)).asEntityJson(null);
   }
 
   /**

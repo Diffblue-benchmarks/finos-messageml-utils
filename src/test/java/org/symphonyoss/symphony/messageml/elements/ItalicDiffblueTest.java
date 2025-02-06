@@ -7,7 +7,9 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import org.commonmark.node.Emphasis;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
 public class ItalicDiffblueTest {
   /**
@@ -52,5 +54,53 @@ public class ItalicDiffblueTest {
     assertNull(actualAsMarkdownResult.getNext());
     assertNull(actualAsMarkdownResult.getParent());
     assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
+   * Test {@link Italic#validate()}.
+   * <ul>
+   *   <li>Given {@link Italic#Italic(Element)} with parent is
+   * {@link Bold#Bold(Element)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Italic#validate()}
+   */
+  @Test
+  public void testValidate_givenItalicWithParentIsBold() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Italic(new Bold(new BulletList(mock(Element.class))))).validate();
+  }
+
+  /**
+   * Test {@link Italic#validate()}.
+   * <ul>
+   *   <li>Given {@link Italic#Italic(Element)} with parent is
+   * {@link Bold#Bold(Element)} addChild {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Italic#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate_givenItalicWithParentIsBoldAddChildNull() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertContentModel(Element.java:701)
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertPhrasingContent(Element.java:673)
+    //       at org.symphonyoss.symphony.messageml.elements.Italic.validate(Italic.java:44)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Italic italic = new Italic(new Bold(new BulletList(mock(Element.class))));
+    italic.addChild(null);
+
+    // Act
+    italic.validate();
   }
 }

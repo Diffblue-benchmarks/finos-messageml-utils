@@ -8,12 +8,16 @@ import static org.mockito.Mockito.mock;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.FencedCodeBlock;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
@@ -64,6 +68,36 @@ public class CodeDiffblueTest {
     assertEquals(Code.MESSAGEML_TAG, actualCode.getPresentationMLTag());
     assertEquals(Code.MESSAGEML_TAG, actualCode.getMessageMLTag());
     assertSame(parent, actualCode.getParent());
+  }
+
+  /**
+   * Test {@link Code#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Code#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "code"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Element.buildAttribute(Element.java:256)
+    //       at org.symphonyoss.symphony.messageml.elements.Code.buildAttribute(Code.java:69)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Code code = new Code(new Bold(new BulletList(mock(Element.class))), "en");
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    code.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**
@@ -245,6 +279,49 @@ public class CodeDiffblueTest {
     assertEquals(0, ((FencedCodeBlock) actualAsMarkdownResult).getFenceIndent());
     assertEquals(3, ((FencedCodeBlock) actualAsMarkdownResult).getFenceLength());
     assertEquals(Code.MARKDOWN_DELIMITER_CHAR, ((FencedCodeBlock) actualAsMarkdownResult).getFenceChar());
+  }
+
+  /**
+   * Test {@link Code#validate()}.
+   * <ul>
+   *   <li>Given {@link Code#Code(Element, String)} with parent is
+   * {@link Bold#Bold(Element)} and language is empty string.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Code#validate()}
+   */
+  @Test
+  public void testValidate_givenCodeWithParentIsBoldAndLanguageIsEmptyString() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Code(new Bold(new BulletList(mock(Element.class))), "")).validate();
+  }
+
+  /**
+   * Test {@link Code#validate()}.
+   * <ul>
+   *   <li>Given {@link Code#Code(Element, String)} with parent is
+   * {@link Bold#Bold(Element)} and language is {@code en}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Code#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate_givenCodeWithParentIsBoldAndLanguageIsEn() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "data-language" of element "code" can only be one of the following values: [plaintext, c, cpp, csharp, css, html, java, js, jsx, php, python, r, typescript, tsx, markdown, json, scala, shell, yaml].
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeValue(Element.java:553)
+    //       at org.symphonyoss.symphony.messageml.elements.Code.validate(Code.java:119)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new Code(new Bold(new BulletList(mock(Element.class))), "en")).validate();
   }
 
   /**

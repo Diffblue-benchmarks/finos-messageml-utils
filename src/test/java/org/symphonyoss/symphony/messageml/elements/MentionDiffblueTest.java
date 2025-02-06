@@ -15,11 +15,14 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
 import org.commonmark.node.Text;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
@@ -123,6 +126,40 @@ public class MentionDiffblueTest {
     assertEquals(Mention.MESSAGEML_TAG, actualMention.getMessageMLTag());
     assertEquals(Mention.MESSAGEML_TAG, actualMention.getEntityIdPrefix());
     assertSame(parent, parent2);
+  }
+
+  /**
+   * Test {@link Mention#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>Given {@link BulletList#BulletList(Element)} with parent is
+   * {@link Element}.</li>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Mention#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_givenBulletListWithParentIsElement_whenIIOMetadataNodeWithFoo()
+      throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "mention"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Entity.buildAttribute(Entity.java:59)
+    //       at org.symphonyoss.symphony.messageml.elements.Mention.buildAttribute(Mention.java:101)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Mention mention = new Mention(parent, 1, new NoOpDataProvider());
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    mention.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**
@@ -295,6 +332,29 @@ public class MentionDiffblueTest {
     assertEquals(0, parent2.size());
     assertFalse(parent2.iterator().hasNext());
     assertTrue(parent2.isEmpty());
+  }
+
+  /**
+   * Test {@link Mention#asText()}.
+   * <p>
+   * Method under test: {@link Mention#asText()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testAsText() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.elements.Mention.asText(Mention.java:168)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+
+    // Act
+    (new Mention(parent, 1, new NoOpDataProvider())).asText();
   }
 
   /**

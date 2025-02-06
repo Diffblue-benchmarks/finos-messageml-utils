@@ -10,9 +10,11 @@ import java.util.List;
 import java.util.Map;
 import org.commonmark.node.Node;
 import org.commonmark.node.StrongEmphasis;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
 public class HeaderDiffblueTest {
   /**
@@ -87,6 +89,54 @@ public class HeaderDiffblueTest {
   public void testIsHeaderElement_whenTag_thenReturnFalse() {
     // Arrange, Act and Assert
     assertFalse(Header.isHeaderElement("Tag"));
+  }
+
+  /**
+   * Test {@link Header#validate()}.
+   * <ul>
+   *   <li>Given {@link Header#Header(Element, String)} with parent is
+   * {@link Bold#Bold(Element)} and {@code Tag}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Header#validate()}
+   */
+  @Test
+  public void testValidate_givenHeaderWithParentIsBoldAndTag() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Header(new Bold(new BulletList(mock(Element.class))), "Tag")).validate();
+  }
+
+  /**
+   * Test {@link Header#validate()}.
+   * <ul>
+   *   <li>Given {@link Header#Header(Element, String)} with parent is
+   * {@link Bold#Bold(Element)} and {@code Tag} addChild {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Header#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate_givenHeaderWithParentIsBoldAndTagAddChildNull() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertContentModel(Element.java:701)
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertPhrasingContent(Element.java:673)
+    //       at org.symphonyoss.symphony.messageml.elements.Header.validate(Header.java:56)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Header header = new Header(new Bold(new BulletList(mock(Element.class))), "Tag");
+    header.addChild(null);
+
+    // Act
+    header.validate();
   }
 
   /**

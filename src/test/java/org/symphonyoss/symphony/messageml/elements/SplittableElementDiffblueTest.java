@@ -187,6 +187,20 @@ public class SplittableElementDiffblueTest {
   }
 
   /**
+   * Test {@link SplittableElement#validateSplittable()}.
+   * <p>
+   * Method under test: {@link SplittableElement#validateSplittable()}
+   */
+  @Test
+  public void testValidateSplittable() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Select(new Bold(new BulletList(mock(Element.class))))).validateSplittable();
+  }
+
+  /**
    * Test {@link SplittableElement#isSplittable()}.
    * <p>
    * Method under test: {@link SplittableElement#isSplittable()}

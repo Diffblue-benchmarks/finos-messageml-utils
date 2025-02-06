@@ -21,6 +21,7 @@ import org.commonmark.node.Emphasis;
 import org.commonmark.node.FencedCodeBlock;
 import org.commonmark.node.HardLineBreak;
 import org.commonmark.node.Link;
+import org.commonmark.node.ListItem;
 import org.commonmark.node.OrderedList;
 import org.commonmark.node.Paragraph;
 import org.commonmark.node.StrongEmphasis;
@@ -2105,6 +2106,24 @@ public class MarkdownRendererDiffblueTest {
   }
 
   /**
+   * Test {@link MarkdownRenderer#visit(HardLineBreak)} with
+   * {@code HardLineBreak}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(HardLineBreak)}
+   */
+  @Test
+  public void testVisitWithHardLineBreak() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new HardLineBreak());
+  }
+
+  /**
    * Test {@link MarkdownRenderer#visit(Link)} with {@code Link}.
    * <p>
    * Method under test: {@link MarkdownRenderer#visit(Link)}
@@ -2259,6 +2278,23 @@ public class MarkdownRendererDiffblueTest {
         + "    \"expandedUrl\" : \"Destination\"\n" + "  } ]\n" + "}", json.toPrettyString());
     assertFalse(elementsResult.hasNext());
     assertFalse(iteratorResult.hasNext());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(ListItem)} with {@code ListItem}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(ListItem)}
+   */
+  @Test
+  public void testVisitWithListItem() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new ListItem());
   }
 
   /**

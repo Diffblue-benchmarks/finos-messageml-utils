@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.symphonyoss.symphony.messageml.MessageMLParser;
@@ -62,6 +63,28 @@ public class TextFieldDiffblueTest {
     assertEquals(TextField.MESSAGEML_TAG, actualTextField.getMessageMLTag());
     assertEquals(TextField.MESSAGEML_TAG, actualElementType);
     assertSame(parent, actualTextField.getParent());
+  }
+
+  /**
+   * Test {@link TextField#validate()}.
+   * <p>
+   * Method under test: {@link TextField#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "text-field" can only be a inner child of the following elements: [form]
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertParentAtAnyLevel(Element.java:758)
+    //       at org.symphonyoss.symphony.messageml.elements.FormElement.validate(FormElement.java:24)
+    //       at org.symphonyoss.symphony.messageml.elements.TextField.validate(TextField.java:56)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new TextField(new Bold(new BulletList(null)), FormatEnum.MESSAGEML)).validate();
   }
 
   /**
@@ -371,6 +394,35 @@ public class TextFieldDiffblueTest {
   }
 
   /**
+   * Test {@link TextField#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link TextField#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "text-field"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.TextField.buildAttribute(TextField.java:134)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    TextField textField = new TextField(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    textField.buildAttribute(parser, new IIOMetadataNode("foo"));
+  }
+
+  /**
    * Test {@link TextField#getOtherAttributes()}.
    * <p>
    * Method under test: {@link TextField#getOtherAttributes()}
@@ -547,6 +599,32 @@ public class TextFieldDiffblueTest {
 
     // Act and Assert
     assertFalse(textField.hasElementInitialValue());
+  }
+
+  /**
+   * Test {@link TextField#getElementInitialValue()}.
+   * <p>
+   * Method under test: {@link TextField#getElementInitialValue()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testGetElementInitialValue() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+    //       at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+    //       at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+    //       at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+    //       at java.base/java.util.Objects.checkIndex(Objects.java:374)
+    //       at java.base/java.util.ArrayList.get(ArrayList.java:459)
+    //       at org.symphonyoss.symphony.messageml.elements.Element.getChild(Element.java:940)
+    //       at org.symphonyoss.symphony.messageml.elements.TextField.getElementInitialValue(TextField.java:270)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new TextField(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).getElementInitialValue();
   }
 
   /**

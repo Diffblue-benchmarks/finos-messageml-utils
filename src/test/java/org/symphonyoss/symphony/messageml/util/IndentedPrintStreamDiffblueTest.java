@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.io.PipedOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class IndentedPrintStreamDiffblueTest {
@@ -138,6 +139,47 @@ public class IndentedPrintStreamDiffblueTest {
     assertTrue(actualIsNoIndentResult);
     assertTrue(actualIsNoNlResult);
     assertTrue(indentedPrintStream.isRemoveNl());
+  }
+
+  /**
+   * Test {@link IndentedPrintStream#align(Object[])}.
+   * <ul>
+   *   <li>When {@code 42}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link IndentedPrintStream#align(Object[])}
+   */
+  @Test
+  public void testAlign_when42() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new IndentedPrintStream(new ByteArrayOutputStream(1))).align("42");
+  }
+
+  /**
+   * Test {@link IndentedPrintStream#align(Object[])}.
+   * <ul>
+   *   <li>When {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link IndentedPrintStream#align(Object[])}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testAlign_whenNull() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.messageml.util.AlignedBlock.align(AlignedBlock.java:48)
+    //       at org.symphonyoss.symphony.messageml.util.IndentedPrintStream.align(IndentedPrintStream.java:68)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new IndentedPrintStream(new ByteArrayOutputStream(1))).align(null);
   }
 
   /**

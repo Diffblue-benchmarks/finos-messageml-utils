@@ -9,11 +9,15 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
 import org.commonmark.node.Paragraph;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
 public class DivDiffblueTest {
   /**
@@ -37,6 +41,36 @@ public class DivDiffblueTest {
     assertEquals(Div.MESSAGEML_TAG, actualDiv.getMessageMLTag());
     assertEquals(Div.MESSAGEML_TAG, actualDiv.getPresentationMLTag());
     assertSame(parent, actualDiv.getParent());
+  }
+
+  /**
+   * Test {@link Div#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link Div#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "div"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Element.buildAttribute(Element.java:256)
+    //       at org.symphonyoss.symphony.messageml.elements.Div.buildAttribute(Div.java:57)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    Div div = new Div(new Bold(new BulletList(mock(Element.class))));
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    div.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**
@@ -70,6 +104,20 @@ public class DivDiffblueTest {
 
     // Act and Assert
     assertNull(div.asEntityJson(new ObjectNode(JsonNodeFactory.withExactBigDecimals(true))));
+  }
+
+  /**
+   * Test {@link Div#validate()}.
+   * <p>
+   * Method under test: {@link Div#validate()}
+   */
+  @Test
+  public void testValidate() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Div(new Bold(new BulletList(mock(Element.class))))).validate();
   }
 
   /**

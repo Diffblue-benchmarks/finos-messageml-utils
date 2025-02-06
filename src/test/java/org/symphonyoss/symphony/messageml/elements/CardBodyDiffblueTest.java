@@ -3,13 +3,21 @@ package org.symphonyoss.symphony.messageml.elements;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+
 import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
 import org.commonmark.node.Paragraph;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
@@ -41,6 +49,44 @@ public class CardBodyDiffblueTest {
     assertSame(parent, actualCardBody.getParent());
   }
 
+  /**
+   * Test {@link CardBody#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CardBody#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "body"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.CardBody.buildAttribute(CardBody.java:46)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    CardBody cardBody = new CardBody(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    cardBody.buildAttribute(parser, new IIOMetadataNode("foo"));
+  }
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFooMANUAL() throws InvalidInputException {
+    // Arrange
+    CardBody cardBody = new CardBody(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    assertThrows(InvalidInputException.class, () -> cardBody.buildAttribute(parser, new IIOMetadataNode("foo")));
+  }
   /**
    * Test {@link CardBody#asPresentationML(XmlPrintStream, MessageMLContext)}.
    * <p>
@@ -284,5 +330,53 @@ public class CardBodyDiffblueTest {
     assertNull(actualAsMarkdownResult.getLastChild());
     assertNull(actualAsMarkdownResult.getNext());
     assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
+   * Test {@link CardBody#validate()}.
+   * <ul>
+   *   <li>Given {@link CardBody#CardBody(Element, FormatEnum)} with parent is
+   * {@link Bold#Bold(Element)} and format is {@code MESSAGEML}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CardBody#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate_givenCardBodyWithParentIsBoldAndFormatIsMessageml() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "body" can only be a child of the following elements: [card]
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertParent(Element.java:741)
+    //       at org.symphonyoss.symphony.messageml.elements.CardBody.validate(CardBody.java:69)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new CardBody(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).validate();
+  }
+
+  /**
+   * Test {@link CardBody#validate()}.
+   * <ul>
+   *   <li>Given {@link Card#Card(Element, FormatEnum)} with parent is
+   * {@link Bold#Bold(Element)} and format is {@code MESSAGEML}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link CardBody#validate()}
+   */
+  @Test
+  public void testValidate_givenCardWithParentIsBoldAndFormatIsMessageml() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange
+    Card parent = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    parent.putOneIfPresent(new HashMap<>(), "Element \"%s\" can only be a child of the following elements: [%s]",
+        "Element \"%s\" can only be a child of the following elements: [%s]");
+
+    // Act
+    (new CardBody(parent, FormatEnum.MESSAGEML)).validate();
   }
 }

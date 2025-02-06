@@ -11,6 +11,7 @@ import static org.mockito.Mockito.when;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.Iterator;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class EntityJsonDiffblueTest {
@@ -60,6 +61,26 @@ public class EntityJsonDiffblueTest {
     // Assert
     verify(context).getInstanceJsonNode();
     assertFalse(actualIteratorResult.hasNext());
+  }
+
+  /**
+   * Test {@link EntityJson#get(int)} with {@code index}.
+   * <p>
+   * Method under test: {@link EntityJson#get(int)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testGetWithIndex() throws InvalidInstanceException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.NullPointerException
+    //       at org.symphonyoss.symphony.entityjson.EntityJson.<init>(EntityJson.java:78)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new EntityJson(mock(IEntityJsonInstanceContext.class))).get(1);
   }
 
   /**

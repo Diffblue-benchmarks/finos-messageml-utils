@@ -9,9 +9,11 @@ import static org.mockito.Mockito.mock;
 import java.util.List;
 import java.util.Map;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
 public class OrderedListDiffblueTest {
   /**
@@ -57,6 +59,31 @@ public class OrderedListDiffblueTest {
     assertNull(actualAsMarkdownResult.getPrevious());
     assertEquals(1, ((org.commonmark.node.OrderedList) actualAsMarkdownResult).getStartNumber());
     assertFalse(((org.commonmark.node.OrderedList) actualAsMarkdownResult).isTight());
+  }
+
+  /**
+   * Test {@link OrderedList#validate()}.
+   * <ul>
+   *   <li>Given {@link OrderedList#OrderedList(Element)} with parent is
+   * {@link Bold#Bold(Element)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link OrderedList#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate_givenOrderedListWithParentIsBold() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: The "ol" element must have at least one child that is any of the following elements: [listitem].
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertContainsChildOfType(Element.java:792)
+    //       at org.symphonyoss.symphony.messageml.elements.OrderedList.validate(OrderedList.java:52)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new OrderedList(new Bold(new BulletList(mock(Element.class))))).validate();
   }
 
   /**

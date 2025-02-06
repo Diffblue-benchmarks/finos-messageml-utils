@@ -14,12 +14,15 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TreeTraversingParser;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Document;
 import org.commonmark.node.FencedCodeBlock;
 import org.commonmark.node.Node;
 import org.commonmark.node.StrongEmphasis;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.markdown.nodes.form.CheckboxNode;
 import org.symphonyoss.symphony.messageml.util.IDataProvider;
@@ -54,6 +57,36 @@ public class MessageMLDiffblueTest {
     assertTrue(actualIsChimeResult);
     assertEquals(MessageML.MESSAGEML_TAG, actualMessageML.getMessageMLTag());
     assertEquals(MessageML.PRESENTATIONML_TAG, actualPresentationMLTag);
+  }
+
+  /**
+   * Test {@link MessageML#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MessageML#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "messageML"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.Element.buildAttribute(Element.java:256)
+    //       at org.symphonyoss.symphony.messageml.elements.MessageML.buildAttribute(MessageML.java:99)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    MessageML messageML = new MessageML(FormatEnum.MESSAGEML, "1.0.2");
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    messageML.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**

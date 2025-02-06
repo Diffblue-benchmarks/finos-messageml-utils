@@ -15,6 +15,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.List;
 import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
@@ -143,6 +144,28 @@ public class DateSelectorDiffblueTest {
   }
 
   /**
+   * Test {@link DateSelector#validate()}.
+   * <p>
+   * Method under test: {@link DateSelector#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "date-selector" can only be a inner child of the following elements: [form]
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertParentAtAnyLevel(Element.java:758)
+    //       at org.symphonyoss.symphony.messageml.elements.FormElement.validate(FormElement.java:24)
+    //       at org.symphonyoss.symphony.messageml.elements.DateSelector.validate(DateSelector.java:61)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new DateSelector(new Bold(new BulletList(null)), FormatEnum.MESSAGEML)).validate();
+  }
+
+  /**
    * Test {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}.
    * <p>
    * Method under test:
@@ -250,6 +273,35 @@ public class DateSelectorDiffblueTest {
     assertNull(actualAsMarkdownResult.getLastChild());
     assertNull(actualAsMarkdownResult.getNext());
     assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
+   * Test {@link DateSelector#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link DateSelector#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "date-selector"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.DateSelector.buildAttribute(DateSelector.java:99)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    DateSelector dateSelector = new DateSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    dateSelector.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**

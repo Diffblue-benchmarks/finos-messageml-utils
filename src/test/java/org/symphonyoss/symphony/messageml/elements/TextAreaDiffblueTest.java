@@ -7,10 +7,14 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import java.util.List;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.markdown.nodes.form.TextAreaNode;
 
 public class TextAreaDiffblueTest {
@@ -48,6 +52,57 @@ public class TextAreaDiffblueTest {
     assertEquals(TextArea.MESSAGEML_TAG, actualElementId);
     assertEquals(TextArea.MESSAGEML_TAG, actualElementType);
     assertSame(parent, actualTextArea.getParent());
+  }
+
+  /**
+   * Test {@link TextArea#validate()}.
+   * <p>
+   * Method under test: {@link TextArea#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "textarea" can only be a inner child of the following elements: [form]
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertParentAtAnyLevel(Element.java:758)
+    //       at org.symphonyoss.symphony.messageml.elements.FormElement.validate(FormElement.java:24)
+    //       at org.symphonyoss.symphony.messageml.elements.TextArea.validate(TextArea.java:43)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new TextArea(new Bold(new BulletList(null)), FormatEnum.MESSAGEML)).validate();
+  }
+
+  /**
+   * Test {@link TextArea#buildAttribute(MessageMLParser, Node)}.
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
+   * {@code foo}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link TextArea#buildAttribute(MessageMLParser, Node)}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Attribute "foo" is not allowed in "textarea"
+    //       at org.symphonyoss.symphony.messageml.elements.Element.throwInvalidInputException(Element.java:1071)
+    //       at org.symphonyoss.symphony.messageml.elements.TextArea.buildAttribute(TextArea.java:112)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange
+    TextArea textArea = new TextArea(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act
+    textArea.buildAttribute(parser, new IIOMetadataNode("foo"));
   }
 
   /**
@@ -197,6 +252,32 @@ public class TextAreaDiffblueTest {
     // Arrange, Act and Assert
     assertFalse(
         (new TextArea(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).hasElementInitialValue());
+  }
+
+  /**
+   * Test {@link TextArea#getElementInitialValue()}.
+   * <p>
+   * Method under test: {@link TextArea#getElementInitialValue()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testGetElementInitialValue() {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+    //       at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+    //       at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+    //       at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+    //       at java.base/java.util.Objects.checkIndex(Objects.java:374)
+    //       at java.base/java.util.ArrayList.get(ArrayList.java:459)
+    //       at org.symphonyoss.symphony.messageml.elements.Element.getChild(Element.java:940)
+    //       at org.symphonyoss.symphony.messageml.elements.TextArea.getElementInitialValue(TextArea.java:139)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new TextArea(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).getElementInitialValue();
   }
 
   /**

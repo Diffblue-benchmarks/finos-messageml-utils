@@ -7,6 +7,7 @@ import static org.mockito.Mockito.mock;
 import java.util.Map;
 import javax.imageio.metadata.IIOMetadataNode;
 import org.junit.Test;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.w3c.dom.Node;
 
 public class LabelableElementDiffblueTest {
@@ -85,5 +86,19 @@ public class LabelableElementDiffblueTest {
 
     // Act and Assert
     assertTrue(select.isLabelNode(new IIOMetadataNode(LabelableElement.LABEL)));
+  }
+
+  /**
+   * Test {@link LabelableElement#validateLabel()}.
+   * <p>
+   * Method under test: {@link LabelableElement#validateLabel()}
+   */
+  @Test
+  public void testValidateLabel() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Diffblue AI was unable to find a test
+
+    // Arrange and Act
+    (new Select(new Bold(new BulletList(mock(Element.class))))).validateLabel();
   }
 }

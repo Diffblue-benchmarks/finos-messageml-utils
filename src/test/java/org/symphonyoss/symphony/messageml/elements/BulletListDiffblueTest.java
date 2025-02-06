@@ -9,9 +9,11 @@ import static org.mockito.Mockito.mock;
 import java.util.List;
 import java.util.Map;
 import org.commonmark.node.Node;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
 public class BulletListDiffblueTest {
   /**
@@ -56,6 +58,31 @@ public class BulletListDiffblueTest {
     assertNull(actualAsMarkdownResult.getNext());
     assertNull(actualAsMarkdownResult.getPrevious());
     assertFalse(((org.commonmark.node.BulletList) actualAsMarkdownResult).isTight());
+  }
+
+  /**
+   * Test {@link BulletList#validate()}.
+   * <ul>
+   *   <li>Given {@link BulletList#BulletList(Element)} with parent is
+   * {@link Bold#Bold(Element)}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link BulletList#validate()}
+   */
+  @Test
+  @Ignore("TODO: Complete this test")
+  public void testValidate_givenBulletListWithParentIsBold() throws InvalidInputException {
+    // TODO: Diffblue Cover was only able to create a partial test for this method:
+    //   Reason: No inputs found that don't throw a trivial exception.
+    //   Diffblue Cover tried to run the arrange/act section, but the method under
+    //   test threw
+    //   org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: The "ul" element must have at least one child that is any of the following elements: [listitem].
+    //       at org.symphonyoss.symphony.messageml.elements.Element.assertContainsChildOfType(Element.java:792)
+    //       at org.symphonyoss.symphony.messageml.elements.BulletList.validate(BulletList.java:51)
+    //   See https://diff.blue/R013 to resolve this issue.
+
+    // Arrange and Act
+    (new BulletList(new Bold(mock(Element.class)))).validate();
   }
 
   /**
