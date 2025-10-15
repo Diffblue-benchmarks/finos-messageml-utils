@@ -2,27 +2,43 @@ package org.symphonyoss.symphony.messageml.elements;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
+@RunWith(MockitoJUnitRunner.class)
 public class TableHeaderDiffblueTest {
+  @InjectMocks private TableHeader tableHeader;
+
   /**
    * Test {@link TableHeader#TableHeader(Element)}.
-   * <p>
-   * Method under test: {@link TableHeader#TableHeader(Element)}
+   *
+   * <p>Method under test: {@link TableHeader#TableHeader(Element)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TableHeader.<init>(Element)"})
   public void testNewTableHeader() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act
-    TableHeader actualTableHeader = new TableHeader(parent);
+    TableHeader actualTableHeader = new TableHeader(parent2);
 
     // Assert
     assertEquals(0, actualTableHeader.size());
@@ -31,37 +47,93 @@ public class TableHeaderDiffblueTest {
     assertTrue(actualTableHeader.getAttributes().isEmpty());
     assertEquals(TableHeader.MESSAGEML_TAG, actualTableHeader.getMessageMLTag());
     assertEquals(TableHeader.MESSAGEML_TAG, actualTableHeader.getPresentationMLTag());
-    assertSame(parent, actualTableHeader.getParent());
+    assertSame(parent2, actualTableHeader.getParent());
   }
 
   /**
    * Test {@link TableHeader#toString()}.
-   * <p>
-   * Method under test: {@link TableHeader#toString()}
+   *
+   * <p>Method under test: {@link TableHeader#toString()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String TableHeader.toString()"})
   public void testToString() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act and Assert
+    assertEquals("Header", new TableHeader(parent).toString());
+  }
+
+  /**
+   * Test {@link TableHeader#validate()}.
+   *
+   * <ul>
+   *   <li>Given {@link BulletList#BulletList(Element)} with parent is {@code null}.
+   *   <li>Then throw {@link InvalidInputException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link TableHeader#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TableHeader.validate()"})
+  public void testValidate_givenBulletListWithParentIsNull_thenThrowInvalidInputException()
+      throws InvalidInputException {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    TableHeader tableHeader = new TableHeader(parent);
+    tableHeader.addChild(new Bold(new BulletList(null)));
+
+    // Act and Assert
+    assertThrows(InvalidInputException.class, () -> tableHeader.validate());
+  }
+
+  /**
+   * Test {@link TableHeader#validate()}.
+   *
+   * <ul>
+   *   <li>Given {@link TableHeader}.
+   *   <li>Then does not throw.
+   * </ul>
+   *
+   * <p>Method under test: {@link TableHeader#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TableHeader.validate()"})
+  public void testValidate_givenTableHeader_thenDoesNotThrow() throws InvalidInputException {
     // Arrange, Act and Assert
-    assertEquals("Header", (new TableHeader(new Bold(new BulletList(null)))).toString());
+    tableHeader.validate();
   }
 
   /**
    * Test {@link TableHeader#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes
-   * {@code count} {@link BiItem}.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link
+   *       BiItem}.
    * </ul>
-   * <p>
-   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link TableHeader#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
     // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    TableHeader tableHeader = new TableHeader(parent2);
 
     BiContext context = new BiContext();
     BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
-
     context.addItemWithValue("table_headers", biItem);
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -85,17 +157,23 @@ public class TableHeaderDiffblueTest {
 
   /**
    * Test {@link TableHeader#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes
-   * {@code count} is {@code Item Value}.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is
+   *       {@code Item Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link TableHeader#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
     // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    TableHeader tableHeader = new TableHeader(parent2);
 
     BiContext context = new BiContext();
     context.addItemWithValue("table_headers", "Item Value");
@@ -118,17 +196,22 @@ public class TableHeaderDiffblueTest {
 
   /**
    * Test {@link TableHeader#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size
-   * is two.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link TableHeader#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
     // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    TableHeader tableHeader = new TableHeader(parent2);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem("table_headers", Element.STYLE_ATTR));
@@ -147,16 +230,22 @@ public class TableHeaderDiffblueTest {
 
   /**
    * Test {@link TableHeader#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link TableHeader#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
     // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    TableHeader tableHeader = new TableHeader(parent2);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -176,17 +265,22 @@ public class TableHeaderDiffblueTest {
 
   /**
    * Test {@link TableHeader#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is
-   * {@code table_headers}.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code table_headers}.
    * </ul>
-   * <p>
-   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link TableHeader#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsThirdNameIsTableHeaders() {
     // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    TableHeader tableHeader = new TableHeader(parent2);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -207,18 +301,23 @@ public class TableHeaderDiffblueTest {
 
   /**
    * Test {@link TableHeader#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is
-   * {@code table_headers}.</li>
+   *   <li>When {@link BiContext} (default constructor).
+   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code table_headers}.
    * </ul>
-   * <p>
-   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link TableHeader#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsTableHeaders() {
     // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    TableHeader tableHeader = new TableHeader(parent2);
     BiContext context = new BiContext();
 
     // Act

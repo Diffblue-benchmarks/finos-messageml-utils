@@ -4,26 +4,37 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class ResolutionResultsDiffblueTest {
   /**
-   * Test {@link ResolutionResults#equals(Object)}, and
-   * {@link ResolutionResults#hashCode()}.
+   * Test {@link ResolutionResults#equals(Object)}, and {@link ResolutionResults#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is equal.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ResolutionResults#equals(Object)}
    *   <li>{@link ResolutionResults#hashCode()}
    * </ul>
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean ResolutionResults.equals(Object)",
+    "int ResolutionResults.hashCode()"
+  })
   public void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     ResolutionResults resolutionResults = new ResolutionResults();
@@ -34,25 +45,31 @@ public class ResolutionResultsDiffblueTest {
 
     // Act and Assert
     assertEquals(resolutionResults, resolutionResults2);
-    int expectedHashCodeResult = resolutionResults.hashCode();
-    assertEquals(expectedHashCodeResult, resolutionResults2.hashCode());
+    assertEquals(resolutionResults.hashCode(), resolutionResults2.hashCode());
   }
 
   /**
-   * Test {@link ResolutionResults#equals(Object)}, and
-   * {@link ResolutionResults#hashCode()}.
+   * Test {@link ResolutionResults#equals(Object)}, and {@link ResolutionResults#hashCode()}.
+   *
    * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
+   *   <li>When other is same.
+   *   <li>Then return equal.
    * </ul>
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link ResolutionResults#equals(Object)}
    *   <li>{@link ResolutionResults#hashCode()}
    * </ul>
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean ResolutionResults.equals(Object)",
+    "int ResolutionResults.hashCode()"
+  })
   public void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     ResolutionResults resolutionResults = new ResolutionResults();
@@ -66,14 +83,21 @@ public class ResolutionResultsDiffblueTest {
 
   /**
    * Test {@link ResolutionResults#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is different.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link ResolutionResults#equals(Object)}
+   *
+   * <p>Method under test: {@link ResolutionResults#equals(Object)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean ResolutionResults.equals(Object)",
+    "int ResolutionResults.hashCode()"
+  })
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     Instrument instrument = new Instrument();
@@ -127,14 +151,21 @@ public class ResolutionResultsDiffblueTest {
 
   /**
    * Test {@link ResolutionResults#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is {@code null}.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link ResolutionResults#equals(Object)}
+   *
+   * <p>Method under test: {@link ResolutionResults#equals(Object)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean ResolutionResults.equals(Object)",
+    "int ResolutionResults.hashCode()"
+  })
   public void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
     ResolutionResults resolutionResults = new ResolutionResults();
@@ -146,14 +177,21 @@ public class ResolutionResultsDiffblueTest {
 
   /**
    * Test {@link ResolutionResults#equals(Object)}.
+   *
    * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
+   *   <li>When other is wrong type.
+   *   <li>Then return not equal.
    * </ul>
-   * <p>
-   * Method under test: {@link ResolutionResults#equals(Object)}
+   *
+   * <p>Method under test: {@link ResolutionResults#equals(Object)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "boolean ResolutionResults.equals(Object)",
+    "int ResolutionResults.hashCode()"
+  })
   public void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
     ResolutionResults resolutionResults = new ResolutionResults();
@@ -165,8 +203,9 @@ public class ResolutionResultsDiffblueTest {
 
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link ResolutionResults}
    *   <li>{@link ResolutionResults#setInstruments(Map)}
@@ -175,6 +214,14 @@ public class ResolutionResultsDiffblueTest {
    * </ul>
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void ResolutionResults.<init>()",
+    "Map ResolutionResults.getInstruments()",
+    "void ResolutionResults.setInstruments(Map)",
+    "String ResolutionResults.toString()"
+  })
   public void testGettersAndSetters() {
     // Arrange and Act
     ResolutionResults actualResolutionResults = new ResolutionResults();

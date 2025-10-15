@@ -5,22 +5,24 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import org.commonmark.node.Node;
+import org.commonmark.node.Text;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
-import org.w3c.dom.DOMException;
-import org.w3c.dom.Text;
 
 public class TextNodeDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link TextNode#TextNode(Element, String)}
    *   <li>{@link TextNode#setText(String)}
@@ -29,6 +31,14 @@ public class TextNodeDiffblueTest {
    * </ul>
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TextNode.<init>(Element, String)",
+    "String TextNode.getText()",
+    "void TextNode.setText(String)",
+    "String TextNode.toString()"
+  })
   public void testGettersAndSetters() {
     // Arrange
     Bold parent = new Bold(new BulletList(null));
@@ -50,70 +60,46 @@ public class TextNodeDiffblueTest {
   }
 
   /**
-   * Test {@link TextNode#TextNode(Element, Text)}.
-   * <p>
-   * Method under test: {@link TextNode#TextNode(Element, Text)}
-   */
-  @Test
-  public void testNewTextNode() throws DOMException {
-    // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Text node = mock(Text.class);
-    when(node.getTextContent()).thenReturn("Not all who wander are lost");
-
-    // Act
-    TextNode actualTextNode = new TextNode(parent, node);
-
-    // Assert
-    verify(node).getTextContent();
-    assertEquals("Not all who wander are lost", actualTextNode.getText());
-    assertNull(actualTextNode.getMessageMLTag());
-    assertNull(actualTextNode.getPresentationMLTag());
-    assertEquals(0, actualTextNode.size());
-    assertEquals(FormatEnum.PRESENTATIONML, actualTextNode.getFormat());
-    assertTrue(actualTextNode.getChildren().isEmpty());
-    assertTrue(actualTextNode.getAttributes().isEmpty());
-    assertSame(parent, actualTextNode.getParent());
-  }
-
-  /**
    * Test {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML() throws DOMException {
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TextNode.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML() {
     // Arrange
-    Text node = mock(Text.class);
-    when(node.getTextContent()).thenReturn("Not all who wander are lost");
-    TextNode textNode = new TextNode(new Bold(new BulletList(mock(Element.class))), node);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    TextNode textNode = new TextNode(parent2, "Text");
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.append(Element.CLASS_ATTR);
 
     // Act
     textNode.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
-    verify(node).getTextContent();
-    assertEquals(33L, out.getOffset());
+    assertEquals(10L, out.getOffset());
   }
 
   /**
    * Test {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML2() throws DOMException {
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TextNode.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML2() {
     // Arrange
-    Text node = mock(Text.class);
-    when(node.getTextContent()).thenReturn("Not all who wander are lost");
-    TextNode textNode = new TextNode(new Bold(new BulletList(mock(Element.class))), node);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    TextNode textNode = new TextNode(parent2, "Text");
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.setNoNl(true);
     out.append(Element.CLASS_ATTR);
 
@@ -121,25 +107,26 @@ public class TextNodeDiffblueTest {
     textNode.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
-    verify(node).getTextContent();
-    assertEquals(32L, out.getOffset());
+    assertEquals(9L, out.getOffset());
   }
 
   /**
    * Test {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <ul>
-   *   <li>Given {@link Code#Code(Element, String)} with parent is
-   * {@link Bold#Bold(Element)} and language is {@code en}.</li>
-   * </ul>
-   * <p>
-   * Method under test:
-   * {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML_givenCodeWithParentIsBoldAndLanguageIsEn() {
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TextNode.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML3() {
     // Arrange
-    TextNode textNode = new TextNode(new Code(new Bold(new BulletList(mock(Element.class))), "en"), "Text");
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    TextNode textNode = new TextNode(parent2, "Text");
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setPrintOffsets(true);
 
     // Act
     textNode.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -150,19 +137,107 @@ public class TextNodeDiffblueTest {
 
   /**
    * Test {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <ul>
-   *   <li>Given {@link TextNode#TextNode(Element, String)} with parent is
-   * {@link Bold#Bold(Element)} and {@code Text}.</li>
-   * </ul>
-   * <p>
-   * Method under test:
-   * {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML_givenTextNodeWithParentIsBoldAndText() {
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TextNode.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML4() {
     // Arrange
-    TextNode textNode = new TextNode(new Bold(new BulletList(mock(Element.class))), "Text");
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    TextNode textNode = new TextNode(parent2, "Text");
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoIndent(true);
+
+    // Act
+    textNode.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(5L, out.getOffset());
+  }
+
+  /**
+   * Test {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <ul>
+   *   <li>Given {@link Bold#Bold(Element)} with parent is {@link Element}.
+   * </ul>
+   *
+   * <p>Method under test: {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TextNode.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML_givenBoldWithParentIsElement() {
+    // Arrange
+    Bold parent = new Bold(mock(Element.class));
+    Code parent2 = new Code(parent, "en");
+    TextNode textNode = new TextNode(parent2, "Text");
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setRemoveNl(false);
+
+    // Act
+    textNode.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(5L, out.getOffset());
+  }
+
+  /**
+   * Test {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <ul>
+   *   <li>Given {@link TextNode#TextNode(Element, String)} with parent is {@link Code#Code(Element,
+   *       String)} and {@code Text}.
+   * </ul>
+   *
+   * <p>Method under test: {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TextNode.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML_givenTextNodeWithParentIsCodeAndText() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Code parent3 = new Code(parent2, "en");
+    TextNode textNode = new TextNode(parent3, "Text");
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+
+    // Act
+    textNode.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(5L, out.getOffset());
+  }
+
+  /**
+   * Test {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <ul>
+   *   <li>When {@link XmlPrintStream#XmlPrintStream(OutputStream)} with outputStream is {@link
+   *       ByteArrayOutputStream#ByteArrayOutputStream()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link TextNode#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void TextNode.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML_whenXmlPrintStreamWithOutputStreamIsByteArrayOutputStream() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    TextNode textNode = new TextNode(parent2, "Text");
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
 
     // Act
     textNode.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -173,17 +248,24 @@ public class TextNodeDiffblueTest {
 
   /**
    * Test {@link TextNode#asMarkdown()}.
-   * <p>
-   * Method under test: {@link TextNode#asMarkdown()}
+   *
+   * <p>Method under test: {@link TextNode#asMarkdown()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node TextNode.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange and Act
-    Node actualAsMarkdownResult = (new TextNode(new Bold(new BulletList(mock(Element.class))), "Text")).asMarkdown();
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    // Act
+    Node actualAsMarkdownResult = new TextNode(parent2, "Text").asMarkdown();
 
     // Assert
-    assertTrue(actualAsMarkdownResult instanceof org.commonmark.node.Text);
-    assertEquals("Text", ((org.commonmark.node.Text) actualAsMarkdownResult).getLiteral());
+    assertTrue(actualAsMarkdownResult instanceof Text);
+    assertEquals("Text", ((Text) actualAsMarkdownResult).getLiteral());
     assertNull(actualAsMarkdownResult.getFirstChild());
     assertNull(actualAsMarkdownResult.getLastChild());
     assertNull(actualAsMarkdownResult.getNext());
@@ -192,33 +274,20 @@ public class TextNodeDiffblueTest {
   }
 
   /**
-   * Test {@link TextNode#buildText(Text)}.
-   * <p>
-   * Method under test: {@link TextNode#buildText(Text)}
-   */
-  @Test
-  public void testBuildText() throws DOMException {
-    // Arrange
-    TextNode textNode = new TextNode(new Bold(new BulletList(mock(Element.class))), "Text");
-    Text node = mock(Text.class);
-    when(node.getTextContent()).thenReturn("Not all who wander are lost");
-
-    // Act
-    textNode.buildText(node);
-
-    // Assert
-    verify(node).getTextContent();
-    assertEquals("Not all who wander are lost", textNode.getText());
-  }
-
-  /**
    * Test {@link TextNode#asText()}.
-   * <p>
-   * Method under test: {@link TextNode#asText()}
+   *
+   * <p>Method under test: {@link TextNode#asText()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String TextNode.asText()"})
   public void testAsText() {
-    // Arrange, Act and Assert
-    assertEquals("Text", (new TextNode(new Bold(new BulletList(mock(Element.class))), "Text")).asText());
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    // Act and Assert
+    assertEquals("Text", new TextNode(parent2, "Text").asText());
   }
 }

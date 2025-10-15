@@ -3,21 +3,33 @@ package org.symphonyoss.symphony.messageml.elements;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.markdown.nodes.form.RadioNode;
 
 public class RadioDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Radio#Radio(Element, FormatEnum)}
    *   <li>{@link Radio#getElementId()}
@@ -26,6 +38,14 @@ public class RadioDiffblueTest {
    * </ul>
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void Radio.<init>(Element, FormatEnum)",
+    "String Radio.getElementId()",
+    "String Radio.getPresentationMLDivClass()",
+    "String Radio.getPresentationMLInputType()"
+  })
   public void testGettersAndSetters() {
     // Arrange
     Bold parent = new Bold(new BulletList(null));
@@ -50,104 +70,36 @@ public class RadioDiffblueTest {
 
   /**
    * Test {@link Radio#asMarkdown()}.
-   * <p>
-   * Method under test: {@link Radio#asMarkdown()}
+   *
+   * <p>Method under test: {@link Radio#asMarkdown()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node Radio.asMarkdown()"})
   public void testAsMarkdown() {
     // Arrange
-    Radio radio = new Radio(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    radio.addChild(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
-    // Act
-    Node actualAsMarkdownResult = radio.asMarkdown();
+    Bold child = new Bold(parent2);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    child.addChild(new Bold(parent3));
+    BulletList parent4 = new BulletList(mock(Element.class));
+    Bold parent5 = new Bold(parent4);
 
-    // Assert
-    assertTrue(actualAsMarkdownResult instanceof RadioNode);
-    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getClosingDelimiter());
-    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getOpeningDelimiter());
-    assertEquals("", ((RadioNode) actualAsMarkdownResult).getText());
-    assertNull(actualAsMarkdownResult.getParent());
-    assertNull(actualAsMarkdownResult.getFirstChild());
-    assertNull(actualAsMarkdownResult.getLastChild());
-    assertNull(actualAsMarkdownResult.getNext());
-    assertNull(actualAsMarkdownResult.getPrevious());
-  }
+    Bold child2 = new Bold(parent5);
+    child2.addChild(child);
+    BulletList parent6 = new BulletList(mock(Element.class));
+    Bold parent7 = new Bold(parent6);
 
-  /**
-   * Test {@link Radio#asMarkdown()}.
-   * <ul>
-   *   <li>Given {@link Bold#Bold(Element)} with parent is
-   * {@link BulletList#BulletList(Element)} addChild {@link Bold#Bold(Element)}
-   * with parent is {@link BulletList#BulletList(Element)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Radio#asMarkdown()}
-   */
-  @Test
-  public void testAsMarkdown_givenBoldWithParentIsBulletListAddChildBoldWithParentIsBulletList() {
-    // Arrange
-    Bold child = new Bold(new BulletList(mock(Element.class)));
-    child.addChild(new Bold(new BulletList(mock(Element.class))));
+    CashTag child3 = new CashTag(parent7, 1);
+    child3.addChild(child2);
+    BulletList parent8 = new BulletList(mock(Element.class));
+    Bold parent9 = new Bold(parent8);
 
-    Radio radio = new Radio(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    radio.addChild(child);
-
-    // Act
-    Node actualAsMarkdownResult = radio.asMarkdown();
-
-    // Assert
-    assertTrue(actualAsMarkdownResult instanceof RadioNode);
-    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getClosingDelimiter());
-    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getOpeningDelimiter());
-    assertEquals("", ((RadioNode) actualAsMarkdownResult).getText());
-    assertNull(actualAsMarkdownResult.getParent());
-    assertNull(actualAsMarkdownResult.getFirstChild());
-    assertNull(actualAsMarkdownResult.getLastChild());
-    assertNull(actualAsMarkdownResult.getNext());
-    assertNull(actualAsMarkdownResult.getPrevious());
-  }
-
-  /**
-   * Test {@link Radio#asMarkdown()}.
-   * <ul>
-   *   <li>Given {@link Radio#Radio(Element, FormatEnum)} with parent is
-   * {@link Bold#Bold(Element)} and messageFormat is {@code MESSAGEML}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Radio#asMarkdown()}
-   */
-  @Test
-  public void testAsMarkdown_givenRadioWithParentIsBoldAndMessageFormatIsMessageml() {
-    // Arrange and Act
-    Node actualAsMarkdownResult = (new Radio(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML))
-        .asMarkdown();
-
-    // Assert
-    assertTrue(actualAsMarkdownResult instanceof RadioNode);
-    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getClosingDelimiter());
-    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getOpeningDelimiter());
-    assertEquals("", ((RadioNode) actualAsMarkdownResult).getText());
-    assertNull(actualAsMarkdownResult.getParent());
-    assertNull(actualAsMarkdownResult.getFirstChild());
-    assertNull(actualAsMarkdownResult.getLastChild());
-    assertNull(actualAsMarkdownResult.getNext());
-    assertNull(actualAsMarkdownResult.getPrevious());
-  }
-
-  /**
-   * Test {@link Radio#asMarkdown()}.
-   * <ul>
-   *   <li>Then return Text is {@code $null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Radio#asMarkdown()}
-   */
-  @Test
-  public void testAsMarkdown_thenReturnTextIsNull() {
-    // Arrange
-    Radio radio = new Radio(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    radio.addChild(new CashTag(new Bold(new BulletList(mock(Element.class))), 1));
+    Radio radio = new Radio(parent9, FormatEnum.MESSAGEML);
+    radio.addChild(child3);
 
     // Act
     Node actualAsMarkdownResult = radio.asMarkdown();
@@ -165,18 +117,257 @@ public class RadioDiffblueTest {
   }
 
   /**
-   * Test {@link Radio#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size
-   * is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Radio#updateBiContext(BiContext)}
+   * Test {@link Radio#asMarkdown()}.
+   *
+   * <p>Method under test: {@link Radio#asMarkdown()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node Radio.asMarkdown()"})
+  public void testAsMarkdown2() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Bold child = new Bold(parent2);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    child.addChild(new Bold(parent3));
+    BulletList parent4 = new BulletList(mock(Element.class));
+    Bold parent5 = new Bold(parent4);
+
+    CashTag child2 = new CashTag(parent5, 1);
+    child2.addChild(child);
+    BulletList parent6 = new BulletList(mock(Element.class));
+    Bold parent7 = new Bold(parent6);
+
+    Bold child3 = new Bold(parent7);
+    child3.addChild(child2);
+    BulletList parent8 = new BulletList(mock(Element.class));
+    Bold parent9 = new Bold(parent8);
+
+    Radio radio = new Radio(parent9, FormatEnum.MESSAGEML);
+    radio.addChild(child3);
+
+    // Act
+    Node actualAsMarkdownResult = radio.asMarkdown();
+
+    // Assert
+    assertTrue(actualAsMarkdownResult instanceof RadioNode);
+    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getClosingDelimiter());
+    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getOpeningDelimiter());
+    assertEquals("$null", ((RadioNode) actualAsMarkdownResult).getText());
+    assertNull(actualAsMarkdownResult.getParent());
+    assertNull(actualAsMarkdownResult.getFirstChild());
+    assertNull(actualAsMarkdownResult.getLastChild());
+    assertNull(actualAsMarkdownResult.getNext());
+    assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
+   * Test {@link Radio#asMarkdown()}.
+   *
+   * <ul>
+   *   <li>Given {@link Radio#Radio(Element, FormatEnum)} with parent is {@link Bold#Bold(Element)}
+   *       and messageFormat is {@code MESSAGEML}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Radio#asMarkdown()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node Radio.asMarkdown()"})
+  public void testAsMarkdown_givenRadioWithParentIsBoldAndMessageFormatIsMessageml() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    // Act
+    Node actualAsMarkdownResult = new Radio(parent2, FormatEnum.MESSAGEML).asMarkdown();
+
+    // Assert
+    assertTrue(actualAsMarkdownResult instanceof RadioNode);
+    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getClosingDelimiter());
+    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getOpeningDelimiter());
+    assertEquals("", ((RadioNode) actualAsMarkdownResult).getText());
+    assertNull(actualAsMarkdownResult.getParent());
+    assertNull(actualAsMarkdownResult.getFirstChild());
+    assertNull(actualAsMarkdownResult.getLastChild());
+    assertNull(actualAsMarkdownResult.getNext());
+    assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
+   * Test {@link Radio#asMarkdown()}.
+   *
+   * <ul>
+   *   <li>Then return Text is empty string.
+   * </ul>
+   *
+   * <p>Method under test: {@link Radio#asMarkdown()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node Radio.asMarkdown()"})
+  public void testAsMarkdown_thenReturnTextIsEmptyString() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Bold child = new Bold(parent2);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    child.addChild(new Bold(parent3));
+    BulletList parent4 = new BulletList(mock(Element.class));
+    Bold parent5 = new Bold(parent4);
+
+    Bold child2 = new Bold(parent5);
+    child2.addChild(child);
+    BulletList parent6 = new BulletList(mock(Element.class));
+    Bold parent7 = new Bold(parent6);
+
+    Bold child3 = new Bold(parent7);
+    child3.addChild(child2);
+    BulletList parent8 = new BulletList(mock(Element.class));
+    Bold parent9 = new Bold(parent8);
+
+    Radio radio = new Radio(parent9, FormatEnum.MESSAGEML);
+    radio.addChild(child3);
+
+    // Act
+    Node actualAsMarkdownResult = radio.asMarkdown();
+
+    // Assert
+    assertTrue(actualAsMarkdownResult instanceof RadioNode);
+    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getClosingDelimiter());
+    assertEquals(" ", ((RadioNode) actualAsMarkdownResult).getOpeningDelimiter());
+    assertEquals("", ((RadioNode) actualAsMarkdownResult).getText());
+    assertNull(actualAsMarkdownResult.getParent());
+    assertNull(actualAsMarkdownResult.getFirstChild());
+    assertNull(actualAsMarkdownResult.getLastChild());
+    assertNull(actualAsMarkdownResult.getNext());
+    assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
+   * Test {@link Radio#validate()}.
+   *
+   * <p>Method under test: {@link Radio#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Radio.validate()"})
+  public void testValidate() throws InvalidInputException {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act and Assert
+    assertThrows(
+        InvalidInputException.class, () -> new Radio(parent, FormatEnum.MESSAGEML).validate());
+  }
+
+  /**
+   * Test {@link Radio#validate()}.
+   *
+   * <ul>
+   *   <li>Then calls {@link Checkbox#getParent()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Radio#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Radio.validate()"})
+  public void testValidate_thenCallsGetParent() throws InvalidInputException {
+    // Arrange
+    Checkbox parent = mock(Checkbox.class);
+    when(parent.getParent()).thenReturn(new Bold(new BulletList(null)));
+    BulletList parent2 = new BulletList(parent);
+    Bold parent3 = new Bold(parent2);
+
+    // Act and Assert
+    assertThrows(
+        InvalidInputException.class, () -> new Radio(parent3, FormatEnum.MESSAGEML).validate());
+    verify(parent, atLeast(1)).getParent();
+  }
+
+  /**
+   * Test {@link Radio#buildAttribute(MessageMLParser, Node)}.
+   *
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with {@code foo}.
+   *   <li>Then throw {@link InvalidInputException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Radio#buildAttribute(MessageMLParser, org.w3c.dom.Node)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Radio.buildAttribute(MessageMLParser, org.w3c.dom.Node)"})
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo_thenThrowInvalidInputException()
+      throws InvalidInputException {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Radio radio = new Radio(parent2, FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act and Assert
+    assertThrows(
+        InvalidInputException.class,
+        () -> radio.buildAttribute(parser, new IIOMetadataNode("foo")));
+  }
+
+  /**
+   * Test {@link Radio#buildAttribute(MessageMLParser, Node)}.
+   *
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with {@link Element#ID_ATTR}.
+   *   <li>Then throw {@link InvalidInputException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Radio#buildAttribute(MessageMLParser, org.w3c.dom.Node)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Radio.buildAttribute(MessageMLParser, org.w3c.dom.Node)"})
+  public void testBuildAttribute_whenIIOMetadataNodeWithId_attr_thenThrowInvalidInputException()
+      throws InvalidInputException {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Radio radio = new Radio(parent2, FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act and Assert
+    assertThrows(
+        InvalidInputException.class,
+        () -> radio.buildAttribute(parser, new IIOMetadataNode(Element.ID_ATTR)));
+  }
+
+  /**
+   * Test {@link Radio#updateBiContext(BiContext)}.
+   *
+   * <ul>
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
+   * </ul>
+   *
+   * <p>Method under test: {@link Radio#updateBiContext(BiContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Radio.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
     // Arrange
-    Radio radio = new Radio(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Radio radio = new Radio(parent2, FormatEnum.MESSAGEML);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Radio.MESSAGEML_TAG, LabelableElement.LABEL));
@@ -195,16 +386,22 @@ public class RadioDiffblueTest {
 
   /**
    * Test {@link Radio#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is three.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items size is three.
    * </ul>
-   * <p>
-   * Method under test: {@link Radio#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Radio#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Radio.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsThree() {
     // Arrange
-    Radio radio = new Radio(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Radio radio = new Radio(parent2, FormatEnum.MESSAGEML);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(LabelableElement.LABEL, LabelableElement.LABEL));
@@ -225,16 +422,22 @@ public class RadioDiffblueTest {
 
   /**
    * Test {@link Radio#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Radio#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Radio#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Radio.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
     // Arrange
-    Radio radio = new Radio(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Radio radio = new Radio(parent2, FormatEnum.MESSAGEML);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(LabelableElement.LABEL, LabelableElement.LABEL));
@@ -254,18 +457,23 @@ public class RadioDiffblueTest {
 
   /**
    * Test {@link Radio#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size
-   * is one.</li>
+   *   <li>When {@link BiContext} (default constructor).
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Radio#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Radio#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Radio.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstAttributesSizeIsOne() {
     // Arrange
-    Radio radio = new Radio(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Radio radio = new Radio(parent2, FormatEnum.MESSAGEML);
     BiContext context = new BiContext();
 
     // Act

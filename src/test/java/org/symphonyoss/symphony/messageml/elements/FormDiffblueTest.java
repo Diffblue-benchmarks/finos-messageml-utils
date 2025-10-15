@@ -3,15 +3,27 @@ package org.symphonyoss.symphony.messageml.elements;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.List;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.markdown.nodes.form.FormNode;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
@@ -19,10 +31,13 @@ import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 public class FormDiffblueTest {
   /**
    * Test {@link Form#Form(Element, FormatEnum)}.
-   * <p>
-   * Method under test: {@link Form#Form(Element, FormatEnum)}
+   *
+   * <p>Method under test: {@link Form#Form(Element, FormatEnum)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.<init>(Element, FormatEnum)"})
   public void testNewForm() {
     // Arrange
     Bold parent = new Bold(new BulletList(null));
@@ -41,25 +56,202 @@ public class FormDiffblueTest {
 
   /**
    * Test {@link Form#hasIdAttribute()}.
-   * <p>
-   * Method under test: {@link Form#hasIdAttribute()}
+   *
+   * <p>Method under test: {@link Form#hasIdAttribute()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"java.lang.Boolean Form.hasIdAttribute()"})
   public void testHasIdAttribute() {
-    // Arrange, Act and Assert
-    assertTrue((new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).hasIdAttribute());
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    // Act and Assert
+    assertTrue(new Form(parent2, FormatEnum.MESSAGEML).hasIdAttribute());
+  }
+
+  /**
+   * Test {@link Form#validate()}.
+   *
+   * <p>Method under test: {@link Form#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.validate()"})
+  public void testValidate() throws InvalidInputException {
+    // Arrange
+    Checkbox parent = mock(Checkbox.class);
+    when(parent.getParent()).thenReturn(new Bold(new BulletList(null)));
+    BulletList parent2 = new BulletList(parent);
+    Bold parent3 = new Bold(parent2);
+
+    Form form = new Form(parent3, FormatEnum.MESSAGEML);
+    form.addChild(new Bold(new BulletList(null)));
+
+    // Act and Assert
+    assertThrows(InvalidInputException.class, () -> form.validate());
+    verify(parent, atLeast(1)).getParent();
+  }
+
+  /**
+   * Test {@link Form#validate()}.
+   *
+   * <p>Method under test: {@link Form#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.validate()"})
+  public void testValidate2() throws InvalidInputException {
+    // Arrange
+    Checkbox parent = mock(Checkbox.class);
+    when(parent.getParent()).thenReturn(new Bold(new BulletList(null)));
+    BulletList parent2 = new BulletList(parent);
+    Bold parent3 = new Bold(parent2);
+
+    Form form = new Form(parent3, FormatEnum.MESSAGEML);
+    Bold parent4 = new Bold(new BulletList(null));
+    form.addChild(new Checkbox(parent4, FormatEnum.MESSAGEML));
+
+    // Act and Assert
+    assertThrows(InvalidInputException.class, () -> form.validate());
+    verify(parent, atLeast(1)).getParent();
+  }
+
+  /**
+   * Test {@link Form#validate()}.
+   *
+   * <ul>
+   *   <li>Given {@link Checkbox} {@link Checkbox#getChildren()} return {@link
+   *       ArrayList#ArrayList()}.
+   *   <li>Then calls {@link Checkbox#getChildren()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Form#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.validate()"})
+  public void testValidate_givenCheckboxGetChildrenReturnArrayList_thenCallsGetChildren()
+      throws InvalidInputException {
+    // Arrange
+    Checkbox parent = mock(Checkbox.class);
+    when(parent.getParent()).thenReturn(new Bold(new BulletList(null)));
+    BulletList parent2 = new BulletList(parent);
+    Bold parent3 = new Bold(parent2);
+
+    Checkbox child = mock(Checkbox.class);
+    when(child.getChildren()).thenReturn(new ArrayList<>());
+
+    Form form = new Form(parent3, FormatEnum.MESSAGEML);
+    form.addChild(child);
+
+    // Act and Assert
+    assertThrows(InvalidInputException.class, () -> form.validate());
+    verify(child, atLeast(1)).getChildren();
+    verify(parent, atLeast(1)).getParent();
+  }
+
+  /**
+   * Test {@link Form#validate()}.
+   *
+   * <ul>
+   *   <li>Given {@link Form#Form(Element, FormatEnum)} with parent is {@link Bold#Bold(Element)}
+   *       and format is {@code MESSAGEML}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Form#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.validate()"})
+  public void testValidate_givenFormWithParentIsBoldAndFormatIsMessageml()
+      throws InvalidInputException {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act and Assert
+    assertThrows(
+        InvalidInputException.class, () -> new Form(parent, FormatEnum.MESSAGEML).validate());
+  }
+
+  /**
+   * Test {@link Form#validate()}.
+   *
+   * <ul>
+   *   <li>Given {@link Form#Form(Element, FormatEnum)} with parent is {@link Bold#Bold(Element)}
+   *       and format is {@code MESSAGEML}.
+   *   <li>Then calls {@link Checkbox#getParent()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Form#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.validate()"})
+  public void testValidate_givenFormWithParentIsBoldAndFormatIsMessageml_thenCallsGetParent()
+      throws InvalidInputException {
+    // Arrange
+    Checkbox parent = mock(Checkbox.class);
+    when(parent.getParent()).thenReturn(new Bold(new BulletList(null)));
+    BulletList parent2 = new BulletList(parent);
+    Bold parent3 = new Bold(parent2);
+
+    // Act and Assert
+    assertThrows(
+        InvalidInputException.class, () -> new Form(parent3, FormatEnum.MESSAGEML).validate());
+    verify(parent, atLeast(1)).getParent();
+  }
+
+  /**
+   * Test {@link Form#buildAttribute(MessageMLParser, Node)}.
+   *
+   * <ul>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with {@code foo}.
+   *   <li>Then throw {@link InvalidInputException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Form#buildAttribute(MessageMLParser, org.w3c.dom.Node)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.buildAttribute(MessageMLParser, org.w3c.dom.Node)"})
+  public void testBuildAttribute_whenIIOMetadataNodeWithFoo_thenThrowInvalidInputException()
+      throws InvalidInputException {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act and Assert
+    assertThrows(
+        InvalidInputException.class, () -> form.buildAttribute(parser, new IIOMetadataNode("foo")));
   }
 
   /**
    * Test {@link Form#asMarkdown()}.
-   * <p>
-   * Method under test: {@link Form#asMarkdown()}
+   *
+   * <p>Method under test: {@link Form#asMarkdown()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node Form.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange and Act
-    Node actualAsMarkdownResult = (new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML))
-        .asMarkdown();
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    // Act
+    Node actualAsMarkdownResult = new Form(parent2, FormatEnum.MESSAGEML).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof FormNode);
@@ -75,17 +267,23 @@ public class FormDiffblueTest {
 
   /**
    * Test {@link Form#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items size is one.</li>
+   *   <li>When {@link BiContext} (default constructor).
+   *   <li>Then {@link BiContext} (default constructor) Items size is one.
    * </ul>
-   * <p>
-   * Method under test: {@link Form#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Form#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsSizeIsOne() {
     // Arrange
-    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
     BiContext context = new BiContext();
 
     // Act
@@ -101,35 +299,24 @@ public class FormDiffblueTest {
 
   /**
    * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
     // Arrange
-    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
-    // Act
-    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    form.addChild(new Bold(parent3));
 
-    // Assert
-    assertEquals(15L, out.getOffset());
-  }
-
-  /**
-   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  public void testAsPresentationML2() {
-    // Arrange
-    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    form.addChild(new Bold(new BulletList(mock(Element.class))));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoNl(false);
 
     // Act
     form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -140,119 +327,20 @@ public class FormDiffblueTest {
 
   /**
    * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML3() {
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML2() {
     // Arrange
-    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    form.addChild(new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
 
-    // Act
-    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
-
-    // Assert
-    assertEquals(59L, out.getOffset());
-  }
-
-  /**
-   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  public void testAsPresentationML4() {
-    // Arrange
-    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    form.addChild(new Button(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
-
-    // Assert
-    assertEquals(50L, out.getOffset());
-  }
-
-  /**
-   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  public void testAsPresentationML5() {
-    // Arrange
-    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    form.addChild(new CardBody(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
-
-    // Assert
-    assertEquals(47L, out.getOffset());
-  }
-
-  /**
-   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  public void testAsPresentationML6() {
-    // Arrange
-    Bold child = new Bold(new BulletList(mock(Element.class)));
-    child.addChild(new Bold(new BulletList(mock(Element.class))));
-
-    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    form.addChild(child);
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
-
-    // Assert
-    assertEquals(39L, out.getOffset());
-  }
-
-  /**
-   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  public void testAsPresentationML7() {
-    // Arrange
-    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    form.addChild(new CashTag(new Bold(new BulletList(mock(Element.class))), 1));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
-
-    // Assert
-    assertEquals(79L, out.getOffset());
-  }
-
-  /**
-   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  public void testAsPresentationML8() {
-    // Arrange
-    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.setPrintOffsets(true);
 
     // Act
@@ -264,16 +352,20 @@ public class FormDiffblueTest {
 
   /**
    * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML9() {
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML3() {
     // Arrange
-    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.setNoIndent(true);
 
     // Act
@@ -285,16 +377,20 @@ public class FormDiffblueTest {
 
   /**
    * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  public void testAsPresentationML10() {
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML4() {
     // Arrange
-    Form form = new Form(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.setNoNl(true);
 
     // Act
@@ -302,5 +398,342 @@ public class FormDiffblueTest {
 
     // Assert
     assertEquals(13L, out.getOffset());
+  }
+
+  /**
+   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML5() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    Bold parent4 = new Bold(parent3);
+    form.addChild(new Checkbox(parent4, FormatEnum.MESSAGEML));
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoNl(false);
+
+    // Act
+    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(59L, out.getOffset());
+  }
+
+  /**
+   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML6() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    Bold parent4 = new Bold(parent3);
+    form.addChild(new Button(parent4, FormatEnum.MESSAGEML));
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoNl(false);
+
+    // Act
+    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(50L, out.getOffset());
+  }
+
+  /**
+   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML7() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    Bold parent4 = new Bold(parent3);
+    form.addChild(new CardBody(parent4, FormatEnum.MESSAGEML));
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoNl(false);
+
+    // Act
+    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(47L, out.getOffset());
+  }
+
+  /**
+   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML8() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+
+    Bold child = new Bold(parent);
+    BulletList parent2 = new BulletList(mock(Element.class));
+    child.addChild(new Bold(parent2));
+    BulletList parent3 = new BulletList(mock(Element.class));
+    Bold parent4 = new Bold(parent3);
+
+    Form form = new Form(parent4, FormatEnum.MESSAGEML);
+    form.addChild(child);
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoNl(false);
+
+    // Act
+    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(39L, out.getOffset());
+  }
+
+  /**
+   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML9() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    Bold parent4 = new Bold(parent3);
+    form.addChild(new CashTag(parent4, 1));
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoNl(false);
+
+    // Act
+    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(79L, out.getOffset());
+  }
+
+  /**
+   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML10() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    Bold parent4 = new Bold(parent3);
+    form.addChild(new Checkbox(parent4, FormatEnum.MESSAGEML));
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoNl(true);
+
+    // Act
+    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(54L, out.getOffset());
+  }
+
+  /**
+   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML11() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+
+    Bold child = new Bold(parent);
+    BulletList parent2 = new BulletList(mock(Element.class));
+    Bold parent3 = new Bold(parent2);
+    child.addChild(new Checkbox(parent3, FormatEnum.MESSAGEML));
+    BulletList parent4 = new BulletList(mock(Element.class));
+    Bold parent5 = new Bold(parent4);
+
+    Form form = new Form(parent5, FormatEnum.MESSAGEML);
+    form.addChild(child);
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoNl(false);
+
+    // Act
+    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(72L, out.getOffset());
+  }
+
+  /**
+   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML12() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+
+    Bold child = new Bold(parent);
+    BulletList parent2 = new BulletList(mock(Element.class));
+    Bold parent3 = new Bold(parent2);
+    child.addChild(new Button(parent3, FormatEnum.MESSAGEML));
+    BulletList parent4 = new BulletList(mock(Element.class));
+    Bold parent5 = new Bold(parent4);
+
+    Form form = new Form(parent5, FormatEnum.MESSAGEML);
+    form.addChild(child);
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoNl(false);
+
+    // Act
+    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(63L, out.getOffset());
+  }
+
+  /**
+   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML13() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+
+    Bold child = new Bold(parent);
+    BulletList parent2 = new BulletList(mock(Element.class));
+    Bold parent3 = new Bold(parent2);
+    child.addChild(new CardBody(parent3, FormatEnum.MESSAGEML));
+    BulletList parent4 = new BulletList(mock(Element.class));
+    Bold parent5 = new Bold(parent4);
+
+    Form form = new Form(parent5, FormatEnum.MESSAGEML);
+    form.addChild(child);
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoNl(false);
+
+    // Act
+    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(60L, out.getOffset());
+  }
+
+  /**
+   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML14() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+
+    Bold child = new Bold(parent);
+    BulletList parent2 = new BulletList(mock(Element.class));
+    Bold parent3 = new Bold(parent2);
+    child.addChild(new CashTag(parent3, 1));
+    BulletList parent4 = new BulletList(mock(Element.class));
+    Bold parent5 = new Bold(parent4);
+
+    Form form = new Form(parent5, FormatEnum.MESSAGEML);
+    form.addChild(child);
+
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    out.setNoNl(false);
+
+    // Act
+    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(92L, out.getOffset());
+  }
+
+  /**
+   * Test {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <ul>
+   *   <li>When {@link XmlPrintStream#XmlPrintStream(OutputStream)} with outputStream is {@link
+   *       ByteArrayOutputStream#ByteArrayOutputStream()}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Form#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Form.asPresentationML(XmlPrintStream, MessageMLContext)"})
+  public void testAsPresentationML_whenXmlPrintStreamWithOutputStreamIsByteArrayOutputStream() {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Form form = new Form(parent2, FormatEnum.MESSAGEML);
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+
+    // Act
+    form.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(15L, out.getOffset());
   }
 }

@@ -5,17 +5,21 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
 import javax.imageio.metadata.IIOMetadataNode;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.MessageMLParser;
@@ -25,79 +29,32 @@ import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.exceptions.ProcessingException;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
-import org.w3c.dom.DOMException;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
 
 public class GroupedElementDiffblueTest {
   /**
    * Test {@link GroupedElement#buildAll(MessageMLParser, Element)}.
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
+   *
+   * <p>Method under test: {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.buildAll(MessageMLParser, org.w3c.dom.Element)"})
   public void testBuildAll() throws InvalidInputException, ProcessingException {
     // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.MESSAGEML);
 
-    BiContext biContext = new BiContext();
-    biContext.addItem(new BiItem(MessageML.MESSAGEML_TAG, MessageML.MESSAGEML_TAG));
     MessageMLParser parser = mock(MessageMLParser.class);
-    when(parser.getBiContext()).thenReturn(biContext);
-
-    // Act
-    checkbox.buildAll(parser, new IIOMetadataNode("foo"));
-
-    // Assert that nothing has changed
-    verify(parser).getBiContext();
-    assertEquals(0, checkbox.size());
-    assertTrue(checkbox.getChildren().isEmpty());
-  }
-
-  /**
-   * Test {@link GroupedElement#buildAll(MessageMLParser, Element)}.
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
-   */
-  @Test
-  public void testBuildAll2() throws InvalidInputException, ProcessingException {
-    // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-
-    BiContext biContext = new BiContext();
-    biContext.addItem(new BiItem(MessageML.MESSAGEML_TAG, MessageML.MESSAGEML_TAG));
-    biContext.addItem(new BiItem(MessageML.MESSAGEML_TAG, MessageML.MESSAGEML_TAG));
-    MessageMLParser parser = mock(MessageMLParser.class);
-    when(parser.getBiContext()).thenReturn(biContext);
-
-    // Act
-    checkbox.buildAll(parser, new IIOMetadataNode("foo"));
-
-    // Assert that nothing has changed
-    verify(parser).getBiContext();
-    assertEquals(0, checkbox.size());
-    assertTrue(checkbox.getChildren().isEmpty());
-  }
-
-  /**
-   * Test {@link GroupedElement#buildAll(MessageMLParser, Element)}.
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
-   */
-  @Test
-  public void testBuildAll3() throws InvalidInputException, ProcessingException {
-    // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    MessageMLParser parser = mock(MessageMLParser.class);
-    Bold bold = new Bold(new BulletList(mock(Element.class)));
-    when(parser.createElement(Mockito.<org.w3c.dom.Element>any(), Mockito.<Element>any())).thenReturn(bold);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    Bold bold = new Bold(parent3);
+    when(parser.createElement(Mockito.<org.w3c.dom.Element>any(), Mockito.<Element>any()))
+        .thenReturn(bold);
     when(parser.getBiContext()).thenReturn(new BiContext());
 
-    IIOMetadataNode element = new IIOMetadataNode("foo");
-    element.appendChild(new IIOMetadataNode(MessageML.MESSAGEML_TAG));
+    IIOMetadataNode element = new IIOMetadataNode();
+    element.appendChild(new IIOMetadataNode());
 
     // Act
     checkbox.buildAll(parser, element);
@@ -113,68 +70,55 @@ public class GroupedElementDiffblueTest {
 
   /**
    * Test {@link GroupedElement#buildAll(MessageMLParser, Element)}.
+   *
    * <ul>
-   *   <li>Then {@link Checkbox#Checkbox(Element, FormatEnum)} with parent is
-   * {@link Bold#Bold(Element)} and messageFormat is {@code MESSAGEML} size is
-   * zero.</li>
+   *   <li>Given {@link Checkbox#Checkbox(Element, FormatEnum)} with parent is {@link
+   *       Bold#Bold(Element)} and messageFormat is {@code PRESENTATIONML}.
    * </ul>
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
+   *
+   * <p>Method under test: {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
-  public void testBuildAll_thenCheckboxWithParentIsBoldAndMessageFormatIsMessagemlSizeIsZero()
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.buildAll(MessageMLParser, org.w3c.dom.Element)"})
+  public void testBuildAll_givenCheckboxWithParentIsBoldAndMessageFormatIsPresentationml()
       throws InvalidInputException, ProcessingException {
     // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    MessageMLParser parser = mock(MessageMLParser.class);
-    when(parser.getBiContext()).thenReturn(new BiContext());
-
-    // Act
-    checkbox.buildAll(parser, new IIOMetadataNode("foo"));
-
-    // Assert that nothing has changed
-    verify(parser).getBiContext();
-    assertEquals(0, checkbox.size());
-    assertTrue(checkbox.getChildren().isEmpty());
-  }
-
-  /**
-   * Test {@link GroupedElement#buildAll(MessageMLParser, Element)}.
-   * <ul>
-   *   <li>Then throw {@link InvalidInputException}.</li>
-   * </ul>
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
-   */
-  @Test
-  public void testBuildAll_thenThrowInvalidInputException() throws InvalidInputException, ProcessingException {
-    // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.PRESENTATIONML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.PRESENTATIONML);
     MessageMLParser parser = mock(MessageMLParser.class);
 
     // Act and Assert
-    assertThrows(InvalidInputException.class, () -> checkbox.buildAll(parser, new IIOMetadataNode("foo")));
+    assertThrows(
+        InvalidInputException.class, () -> checkbox.buildAll(parser, new IIOMetadataNode()));
   }
 
   /**
    * Test {@link GroupedElement#buildAll(MessageMLParser, Element)}.
+   *
    * <ul>
-   *   <li>Then throw {@link InvalidInputException}.</li>
+   *   <li>Given {@link Checkbox#Checkbox(Element, FormatEnum)} with parent is {@link
+   *       Bold#Bold(Element)} and messageFormat is {@code PRESENTATIONML}.
    * </ul>
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
+   *
+   * <p>Method under test: {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
-  public void testBuildAll_thenThrowInvalidInputException2() throws InvalidInputException, ProcessingException {
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.buildAll(MessageMLParser, org.w3c.dom.Element)"})
+  public void testBuildAll_givenCheckboxWithParentIsBoldAndMessageFormatIsPresentationml2()
+      throws InvalidInputException, ProcessingException {
     // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.PRESENTATIONML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.PRESENTATIONML);
     MessageMLParser parser = mock(MessageMLParser.class);
 
-    IIOMetadataNode element = new IIOMetadataNode("foo");
-    element.appendChild(new IIOMetadataNode(MessageML.MESSAGEML_TAG));
+    IIOMetadataNode element = new IIOMetadataNode();
+    element.appendChild(new IIOMetadataNode());
 
     // Act and Assert
     assertThrows(InvalidInputException.class, () -> checkbox.buildAll(parser, element));
@@ -182,50 +126,197 @@ public class GroupedElementDiffblueTest {
 
   /**
    * Test {@link GroupedElement#buildAll(MessageMLParser, Element)}.
+   *
    * <ul>
-   *   <li>When {@link MessageMLParser}
-   * {@link MessageMLParser#createElement(Element, Element)} return
-   * {@code null}.</li>
-   *   <li>Then calls {@link MessageMLParser#createElement(Element, Element)}.</li>
+   *   <li>Given {@link Code#Code(Element, String)} with parent is {@link Element} and language is
+   *       {@code en}.
+   *   <li>Then calls {@link MessageMLParser#clearBiContext()}.
    * </ul>
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
+   *
+   * <p>Method under test: {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
-  public void testBuildAll_whenMessageMLParserCreateElementReturnNull_thenCallsCreateElement()
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.buildAll(MessageMLParser, org.w3c.dom.Element)"})
+  public void testBuildAll_givenCodeWithParentIsElementAndLanguageIsEn_thenCallsClearBiContext()
       throws InvalidInputException, ProcessingException {
     // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.MESSAGEML);
+
     MessageMLParser parser = mock(MessageMLParser.class);
-    when(parser.createElement(Mockito.<org.w3c.dom.Element>any(), Mockito.<Element>any())).thenReturn(null);
+    doNothing().when(parser).clearBiContext();
+    Code parent3 = new Code(mock(Element.class), "en");
+    when(parser.createElement(Mockito.<org.w3c.dom.Element>any(), Mockito.<Element>any()))
+        .thenReturn(new BulletList(new Bold(parent3)));
     when(parser.getBiContext()).thenReturn(new BiContext());
 
-    IIOMetadataNode element = new IIOMetadataNode("foo");
-    element.appendChild(new IIOMetadataNode(MessageML.MESSAGEML_TAG));
+    IIOMetadataNode element = new IIOMetadataNode();
+    element.appendChild(new IIOMetadataNode());
+
+    // Act and Assert
+    assertThrows(InvalidInputException.class, () -> checkbox.buildAll(parser, element));
+    verify(parser).clearBiContext();
+    verify(parser).createElement(isA(org.w3c.dom.Element.class), isA(Element.class));
+    verify(parser).getBiContext();
+  }
+
+  /**
+   * Test {@link GroupedElement#buildAll(MessageMLParser, Element)}.
+   *
+   * <ul>
+   *   <li>Given {@link InvalidInputException#InvalidInputException(String)} with message is {@code
+   *       An error occurred}.
+   * </ul>
+   *
+   * <p>Method under test: {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.buildAll(MessageMLParser, org.w3c.dom.Element)"})
+  public void testBuildAll_givenInvalidInputExceptionWithMessageIsAnErrorOccurred()
+      throws InvalidInputException, ProcessingException {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.MESSAGEML);
+
+    MessageMLParser parser = mock(MessageMLParser.class);
+    when(parser.createElement(Mockito.<org.w3c.dom.Element>any(), Mockito.<Element>any()))
+        .thenThrow(new InvalidInputException("An error occurred"));
+
+    IIOMetadataNode element = new IIOMetadataNode();
+    element.appendChild(new IIOMetadataNode());
+
+    // Act and Assert
+    assertThrows(InvalidInputException.class, () -> checkbox.buildAll(parser, element));
+    verify(parser).createElement(isA(org.w3c.dom.Element.class), isA(Element.class));
+  }
+
+  /**
+   * Test {@link GroupedElement#buildAll(MessageMLParser, Element)}.
+   *
+   * <ul>
+   *   <li>Then {@link Checkbox#Checkbox(Element, FormatEnum)} with parent is {@link
+   *       Bold#Bold(Element)} and messageFormat is {@code MESSAGEML} size is zero.
+   * </ul>
+   *
+   * <p>Method under test: {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.buildAll(MessageMLParser, org.w3c.dom.Element)"})
+  public void testBuildAll_thenCheckboxWithParentIsBoldAndMessageFormatIsMessagemlSizeIsZero()
+      throws InvalidInputException, ProcessingException {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.MESSAGEML);
+
+    MessageMLParser parser = mock(MessageMLParser.class);
+    when(parser.getBiContext()).thenReturn(new BiContext());
 
     // Act
-    checkbox.buildAll(parser, element);
+    checkbox.buildAll(parser, new IIOMetadataNode());
 
     // Assert that nothing has changed
-    verify(parser).createElement(isA(org.w3c.dom.Element.class), isA(Element.class));
     verify(parser).getBiContext();
     assertEquals(0, checkbox.size());
     assertTrue(checkbox.getChildren().isEmpty());
   }
 
   /**
-   * Test
-   * {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Test {@link GroupedElement#buildAll(MessageMLParser, Element)}.
+   *
+   * <ul>
+   *   <li>Then {@link Checkbox#Checkbox(Element, FormatEnum)} with parent is {@link
+   *       Bold#Bold(Element)} and messageFormat is {@code MESSAGEML} size is zero.
+   * </ul>
+   *
+   * <p>Method under test: {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.buildAll(MessageMLParser, org.w3c.dom.Element)"})
+  public void testBuildAll_thenCheckboxWithParentIsBoldAndMessageFormatIsMessagemlSizeIsZero2()
+      throws InvalidInputException, ProcessingException {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.MESSAGEML);
+
+    BiContext biContext = new BiContext();
+    biContext.addItem(new BiItem(MessageML.MESSAGEML_TAG, MessageML.MESSAGEML_TAG));
+
+    MessageMLParser parser = mock(MessageMLParser.class);
+    when(parser.getBiContext()).thenReturn(biContext);
+
+    // Act
+    checkbox.buildAll(parser, new IIOMetadataNode());
+
+    // Assert that nothing has changed
+    verify(parser).getBiContext();
+    assertEquals(0, checkbox.size());
+    assertTrue(checkbox.getChildren().isEmpty());
+  }
+
+  /**
+   * Test {@link GroupedElement#buildAll(MessageMLParser, Element)}.
+   *
+   * <ul>
+   *   <li>Then {@link Checkbox#Checkbox(Element, FormatEnum)} with parent is {@link
+   *       Bold#Bold(Element)} and messageFormat is {@code MESSAGEML} size is zero.
+   * </ul>
+   *
+   * <p>Method under test: {@link GroupedElement#buildAll(MessageMLParser, org.w3c.dom.Element)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.buildAll(MessageMLParser, org.w3c.dom.Element)"})
+  public void testBuildAll_thenCheckboxWithParentIsBoldAndMessageFormatIsMessagemlSizeIsZero3()
+      throws InvalidInputException, ProcessingException {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.MESSAGEML);
+
+    BiContext biContext = new BiContext();
+    biContext.addItem(new BiItem(MessageML.MESSAGEML_TAG, MessageML.MESSAGEML_TAG));
+    biContext.addItem(new BiItem(MessageML.MESSAGEML_TAG, MessageML.MESSAGEML_TAG));
+
+    MessageMLParser parser = mock(MessageMLParser.class);
+    when(parser.getBiContext()).thenReturn(biContext);
+
+    // Act
+    checkbox.buildAll(parser, new IIOMetadataNode());
+
+    // Assert that nothing has changed
+    verify(parser).getBiContext();
+    assertEquals(0, checkbox.size());
+    assertTrue(checkbox.getChildren().isEmpty());
+  }
+
+  /**
+   * Test {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
     // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.MESSAGEML);
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
 
     // Act
     checkbox.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -235,18 +326,21 @@ public class GroupedElementDiffblueTest {
   }
 
   /**
-   * Test
-   * {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Test {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML2() {
     // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.MESSAGEML);
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.setPrintOffsets(true);
 
     // Act
@@ -257,18 +351,21 @@ public class GroupedElementDiffblueTest {
   }
 
   /**
-   * Test
-   * {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Test {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML3() {
     // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.MESSAGEML);
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.setNoIndent(true);
 
     // Act
@@ -279,18 +376,21 @@ public class GroupedElementDiffblueTest {
   }
 
   /**
-   * Test
-   * {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Test {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}.
+   *
+   * <p>Method under test: {@link GroupedElement#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void GroupedElement.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML4() {
     // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.MESSAGEML);
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.setNoNl(true);
 
     // Act
@@ -301,182 +401,60 @@ public class GroupedElementDiffblueTest {
   }
 
   /**
-   * Test
-   * {@link GroupedElement#buildElementFromGroupDiv(MessageMLParser, Element)}.
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildElementFromGroupDiv(MessageMLParser, org.w3c.dom.Element)}
-   */
-  @Test
-  public void testBuildElementFromGroupDiv() throws InvalidInputException, ProcessingException {
-    // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    MessageMLParser parser = mock(MessageMLParser.class);
-
-    IIOMetadataNode element = new IIOMetadataNode("foo");
-    element.appendChild(new IIOMetadataNode("Invalid PresentationML for the \"%s\" element"));
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> checkbox.buildElementFromGroupDiv(parser, element));
-  }
-
-  /**
-   * Test
-   * {@link GroupedElement#buildElementFromGroupDiv(MessageMLParser, Element)}.
+   * Test {@link GroupedElement#buildElementFromGroupDiv(MessageMLParser, Element)}.
+   *
    * <ul>
-   *   <li>Given {@link IIOMetadataNode#IIOMetadataNode(String)} with empty
-   * string.</li>
+   *   <li>When {@link IIOMetadataNode#IIOMetadataNode()}.
+   *   <li>Then throw {@link InvalidInputException}.
    * </ul>
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildElementFromGroupDiv(MessageMLParser, org.w3c.dom.Element)}
+   *
+   * <p>Method under test: {@link GroupedElement#buildElementFromGroupDiv(MessageMLParser,
+   * org.w3c.dom.Element)}
    */
   @Test
-  public void testBuildElementFromGroupDiv_givenIIOMetadataNodeWithEmptyString()
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void GroupedElement.buildElementFromGroupDiv(MessageMLParser, org.w3c.dom.Element)"
+  })
+  public void testBuildElementFromGroupDiv_whenIIOMetadataNode_thenThrowInvalidInputException()
       throws InvalidInputException, ProcessingException {
     // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    MessageMLParser parser = mock(MessageMLParser.class);
-
-    IIOMetadataNode element = new IIOMetadataNode("foo");
-    element.appendChild(new IIOMetadataNode(""));
-    element.appendChild(new IIOMetadataNode("Invalid PresentationML for the \"%s\" element"));
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> checkbox.buildElementFromGroupDiv(parser, element));
-  }
-
-  /**
-   * Test
-   * {@link GroupedElement#buildElementFromGroupDiv(MessageMLParser, Element)}.
-   * <ul>
-   *   <li>Given {@link IIOMetadataNode#IIOMetadataNode(String)} with
-   * {@code foo}.</li>
-   * </ul>
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildElementFromGroupDiv(MessageMLParser, org.w3c.dom.Element)}
-   */
-  @Test
-  public void testBuildElementFromGroupDiv_givenIIOMetadataNodeWithFoo()
-      throws InvalidInputException, ProcessingException {
-    // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    MessageMLParser parser = mock(MessageMLParser.class);
-
-    IIOMetadataNode element = new IIOMetadataNode("foo");
-    element.appendChild(new IIOMetadataNode("foo"));
-    element.appendChild(new IIOMetadataNode("Invalid PresentationML for the \"%s\" element"));
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> checkbox.buildElementFromGroupDiv(parser, element));
-  }
-
-  /**
-   * Test
-   * {@link GroupedElement#buildElementFromGroupDiv(MessageMLParser, Element)}.
-   * <ul>
-   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with
-   * {@code foo}.</li>
-   * </ul>
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildElementFromGroupDiv(MessageMLParser, org.w3c.dom.Element)}
-   */
-  @Test
-  public void testBuildElementFromGroupDiv_whenIIOMetadataNodeWithFoo()
-      throws InvalidInputException, ProcessingException {
-    // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Checkbox checkbox = new Checkbox(parent2, FormatEnum.MESSAGEML);
     MessageMLParser parser = mock(MessageMLParser.class);
 
     // Act and Assert
-    assertThrows(InvalidInputException.class,
-        () -> checkbox.buildElementFromGroupDiv(parser, new IIOMetadataNode("foo")));
-  }
-
-  /**
-   * Test
-   * {@link GroupedElement#buildElementAttrFromInputTag(MessageMLParser, Node)}.
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildElementAttrFromInputTag(MessageMLParser, Node)}
-   */
-  @Test
-  public void testBuildElementAttrFromInputTag() throws InvalidInputException, DOMException {
-    // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(null)), FormatEnum.MESSAGEML);
-    NamedNodeMap namedNodeMap = mock(NamedNodeMap.class);
-    when(namedNodeMap.getLength()).thenReturn(-1);
-    when(namedNodeMap.removeNamedItem(Mockito.<String>any())).thenReturn(new IIOMetadataNode("foo"));
-    Node node = mock(Node.class);
-    when(node.getNextSibling()).thenReturn(new IIOMetadataNode("foo"));
-    Node inputElement = mock(Node.class);
-    when(inputElement.getNextSibling()).thenReturn(node);
-    when(inputElement.getPreviousSibling()).thenReturn(new IIOMetadataNode("foo"));
-    when(inputElement.getAttributes()).thenReturn(namedNodeMap);
-
-    // Act
-    checkbox.buildElementAttrFromInputTag(null, inputElement);
-
-    // Assert
-    verify(namedNodeMap).getLength();
-    verify(namedNodeMap).removeNamedItem(eq("type"));
-    verify(inputElement).getAttributes();
-    verify(inputElement).getNextSibling();
-    verify(node).getNextSibling();
-    verify(inputElement).getPreviousSibling();
-  }
-
-  /**
-   * Test
-   * {@link GroupedElement#buildElementAttrFromInputTag(MessageMLParser, Node)}.
-   * <ul>
-   *   <li>Then calls {@link NamedNodeMap#getLength()}.</li>
-   * </ul>
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildElementAttrFromInputTag(MessageMLParser, Node)}
-   */
-  @Test
-  public void testBuildElementAttrFromInputTag_thenCallsGetLength() throws InvalidInputException, DOMException {
-    // Arrange
-    Checkbox checkbox = new Checkbox(new Bold(new BulletList(null)), FormatEnum.MESSAGEML);
-    NamedNodeMap namedNodeMap = mock(NamedNodeMap.class);
-    when(namedNodeMap.getLength()).thenReturn(-1);
-    when(namedNodeMap.removeNamedItem(Mockito.<String>any())).thenReturn(new IIOMetadataNode("foo"));
-    Node inputElement = mock(Node.class);
-    when(inputElement.getNextSibling()).thenReturn(new IIOMetadataNode("foo"));
-    when(inputElement.getPreviousSibling()).thenReturn(new IIOMetadataNode("foo"));
-    when(inputElement.getAttributes()).thenReturn(namedNodeMap);
-
-    // Act
-    checkbox.buildElementAttrFromInputTag(null, inputElement);
-
-    // Assert
-    verify(namedNodeMap).getLength();
-    verify(namedNodeMap).removeNamedItem(eq("type"));
-    verify(inputElement).getAttributes();
-    verify(inputElement).getNextSibling();
-    verify(inputElement).getPreviousSibling();
+    assertThrows(
+        InvalidInputException.class,
+        () -> checkbox.buildElementFromGroupDiv(parser, new IIOMetadataNode()));
   }
 
   /**
    * Test {@link GroupedElement#buildGroupedElementInputAttributes(String)}.
-   * <p>
-   * Method under test:
-   * {@link GroupedElement#buildGroupedElementInputAttributes(String)}
+   *
+   * <p>Method under test: {@link GroupedElement#buildGroupedElementInputAttributes(String)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Map GroupedElement.buildGroupedElementInputAttributes(String)"})
   public void testBuildGroupedElementInputAttributes() {
-    // Arrange and Act
-    Map<String, String> actualBuildGroupedElementInputAttributesResult = (new Checkbox(
-        new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML)).buildGroupedElementInputAttributes("42");
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    // Act
+    Map<String, String> actualBuildGroupedElementInputAttributesResult =
+        new Checkbox(parent2, FormatEnum.MESSAGEML).buildGroupedElementInputAttributes("42");
 
     // Assert
     assertEquals(3, actualBuildGroupedElementInputAttributesResult.size());
     assertEquals("on", actualBuildGroupedElementInputAttributesResult.get(Entity.VALUE_FIELD));
     assertNull(actualBuildGroupedElementInputAttributesResult.get("name"));
-    assertEquals(Checkbox.MESSAGEML_TAG, actualBuildGroupedElementInputAttributesResult.get(Entity.TYPE_FIELD));
+    assertEquals(
+        Checkbox.MESSAGEML_TAG,
+        actualBuildGroupedElementInputAttributesResult.get(Entity.TYPE_FIELD));
   }
 }

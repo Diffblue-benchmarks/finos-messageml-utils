@@ -1,13 +1,18 @@
 package org.symphonyoss.symphony.messageml.util;
 
 import static org.junit.Assert.assertEquals;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class TagAttributesDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link TagAttributes}
    *   <li>{@link TagAttributes#setBbgcompticker(String)}
@@ -41,6 +46,39 @@ public class TagAttributesDiffblueTest {
    * </ul>
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void TagAttributes.<init>()",
+    "String TagAttributes.getBbgcompticker()",
+    "String TagAttributes.getBbgmarketsector()",
+    "String TagAttributes.getCountrycode()",
+    "String TagAttributes.getFallbackTicker()",
+    "String TagAttributes.getFigi()",
+    "String TagAttributes.getFigiTicker()",
+    "String TagAttributes.getFullBbgCompTicker()",
+    "String TagAttributes.getInstrumentclass()",
+    "String TagAttributes.getIsin()",
+    "String TagAttributes.getLocalcode()",
+    "String TagAttributes.getOperationalMic()",
+    "String TagAttributes.getReturnMainListing()",
+    "String TagAttributes.getUniqueId()",
+    "String TagAttributes.getUscode()",
+    "void TagAttributes.setBbgcompticker(String)",
+    "void TagAttributes.setBbgmarketsector(String)",
+    "void TagAttributes.setCountrycode(String)",
+    "void TagAttributes.setFallbackTicker(String)",
+    "void TagAttributes.setFigi(String)",
+    "void TagAttributes.setFigiTicker(String)",
+    "void TagAttributes.setFullBbgCompTicker(String)",
+    "void TagAttributes.setInstrumentclass(String)",
+    "void TagAttributes.setIsin(String)",
+    "void TagAttributes.setLocalcode(String)",
+    "void TagAttributes.setOperationalMic(String)",
+    "void TagAttributes.setReturnMainListing(String)",
+    "void TagAttributes.setUniqueId(String)",
+    "void TagAttributes.setUscode(String)"
+  })
   public void testGettersAndSetters() {
     // Arrange and Act
     TagAttributes actualTagAttributes = new TagAttributes();

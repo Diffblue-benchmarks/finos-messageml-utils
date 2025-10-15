@@ -6,20 +6,25 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
+import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
 import org.commonmark.node.Text;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
+import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
@@ -30,20 +35,24 @@ import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 public class MentionDiffblueTest {
   /**
    * Test {@link Mention#Mention(Element, int, Long, IDataProvider)}.
-   * <p>
-   * Method under test: {@link Mention#Mention(Element, int, Long, IDataProvider)}
+   *
+   * <p>Method under test: {@link Mention#Mention(Element, int, Long, IDataProvider)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.<init>(Element, int, Long, IDataProvider)"})
   public void testNewMention() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act
-    Mention actualMention = new Mention(parent, 1, 1L, new NoOpDataProvider());
+    Mention actualMention = new Mention(parent2, 1, 1L, new NoOpDataProvider());
 
     // Assert
-    Element parent2 = actualMention.getParent();
-    assertTrue(parent2 instanceof Bold);
+    Element parent3 = actualMention.getParent();
+    assertTrue(parent3 instanceof Bold);
     assertEquals("1", actualMention.getEntityValue());
     assertEquals("1.0", actualMention.getEntityVersion());
     assertEquals("com.symphony.user.userId", actualMention.getEntitySubType());
@@ -57,25 +66,29 @@ public class MentionDiffblueTest {
     assertEquals(Mention.MESSAGEML_TAG, actualMention.getMessageMLTag());
     assertEquals(Mention.MESSAGEML_TAG, actualMention.getEntityIdPrefix());
     assertEquals(Span.MESSAGEML_TAG, actualMention.getPresentationMLTag());
-    assertSame(parent, parent2);
+    assertSame(parent2, parent3);
   }
 
   /**
    * Test {@link Mention#Mention(Element, int, IDataProvider)}.
-   * <p>
-   * Method under test: {@link Mention#Mention(Element, int, IDataProvider)}
+   *
+   * <p>Method under test: {@link Mention#Mention(Element, int, IDataProvider)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.<init>(Element, int, IDataProvider)"})
   public void testNewMention2() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act
-    Mention actualMention = new Mention(parent, 1, new NoOpDataProvider());
+    Mention actualMention = new Mention(parent2, 1, new NoOpDataProvider());
 
     // Assert
-    Element parent2 = actualMention.getParent();
-    assertTrue(parent2 instanceof Bold);
+    Element parent3 = actualMention.getParent();
+    assertTrue(parent3 instanceof Bold);
     assertEquals("1.0", actualMention.getEntityVersion());
     assertEquals("com.symphony.user.userId", actualMention.getEntitySubType());
     assertEquals("mention1", actualMention.entityId);
@@ -89,26 +102,29 @@ public class MentionDiffblueTest {
     assertEquals(Mention.MESSAGEML_TAG, actualMention.getMessageMLTag());
     assertEquals(Mention.MESSAGEML_TAG, actualMention.getEntityIdPrefix());
     assertEquals(Span.MESSAGEML_TAG, actualMention.getPresentationMLTag());
-    assertSame(parent, parent2);
+    assertSame(parent2, parent3);
   }
 
   /**
    * Test {@link Mention#Mention(Element, String, Long, IDataProvider)}.
-   * <p>
-   * Method under test:
-   * {@link Mention#Mention(Element, String, Long, IDataProvider)}
+   *
+   * <p>Method under test: {@link Mention#Mention(Element, String, Long, IDataProvider)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.<init>(Element, String, Long, IDataProvider)"})
   public void testNewMention3() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act
-    Mention actualMention = new Mention(parent, "Presentation Ml Tag", 1L, new NoOpDataProvider());
+    Mention actualMention = new Mention(parent2, "Presentation Ml Tag", 1L, new NoOpDataProvider());
 
     // Assert
-    Element parent2 = actualMention.getParent();
-    assertTrue(parent2 instanceof Bold);
+    Element parent3 = actualMention.getParent();
+    assertTrue(parent3 instanceof Bold);
     assertEquals("1", actualMention.getEntityValue());
     assertEquals("1.0", actualMention.getEntityVersion());
     assertEquals("Presentation Ml Tag", actualMention.getPresentationMLTag());
@@ -122,21 +138,50 @@ public class MentionDiffblueTest {
     assertEquals(Mention.ENTITY_TYPE, actualMention.getEntityType());
     assertEquals(Mention.MESSAGEML_TAG, actualMention.getMessageMLTag());
     assertEquals(Mention.MESSAGEML_TAG, actualMention.getEntityIdPrefix());
-    assertSame(parent, parent2);
+    assertSame(parent2, parent3);
+  }
+
+  /**
+   * Test {@link Mention#buildAttribute(MessageMLParser, Node)}.
+   *
+   * <ul>
+   *   <li>Then throw {@link InvalidInputException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Mention#buildAttribute(MessageMLParser, org.w3c.dom.Node)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.buildAttribute(MessageMLParser, org.w3c.dom.Node)"})
+  public void testBuildAttribute_thenThrowInvalidInputException() throws InvalidInputException {
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, new NoOpDataProvider());
+    MessageMLParser parser = mock(MessageMLParser.class);
+
+    // Act and Assert
+    assertThrows(
+        InvalidInputException.class,
+        () -> mention.buildAttribute(parser, new IIOMetadataNode(Element.CLASS_ATTR)));
   }
 
   /**
    * Test {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, new NoOpDataProvider());
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, new NoOpDataProvider());
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
 
     // Act
     mention.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -147,16 +192,19 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML2() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, 1L, new NoOpDataProvider());
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, 1L, new NoOpDataProvider());
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
 
     // Act
     mention.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -167,17 +215,20 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML3() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, 1L, new NoOpDataProvider());
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, 1L, new NoOpDataProvider());
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.setPrintOffsets(true);
 
     // Act
@@ -189,17 +240,20 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML4() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, 1L, new NoOpDataProvider());
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, 1L, new NoOpDataProvider());
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.setNoIndent(true);
 
     // Act
@@ -211,17 +265,20 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Mention#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML5() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, 1L, new NoOpDataProvider());
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, 1L, new NoOpDataProvider());
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.setNoNl(true);
 
     // Act
@@ -233,19 +290,24 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#asMarkdown()}.
+   *
    * <ul>
-   *   <li>Then return {@link Text}.</li>
+   *   <li>Then return {@link Text}.
    * </ul>
-   * <p>
-   * Method under test: {@link Mention#asMarkdown()}
+   *
+   * <p>Method under test: {@link Mention#asMarkdown()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node Mention.asMarkdown()"})
   public void testAsMarkdown_thenReturnText() throws InvalidInputException {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act
-    Node actualAsMarkdownResult = (new Mention(parent, 1, 1L, new NoOpDataProvider())).asMarkdown();
+    Node actualAsMarkdownResult = new Mention(parent2, 1, 1L, new NoOpDataProvider()).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof Text);
@@ -259,104 +321,166 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#asMarkdown()}.
+   *
    * <ul>
-   *   <li>Then throw {@link InvalidInputException}.</li>
+   *   <li>Then throw {@link InvalidInputException}.
    * </ul>
-   * <p>
-   * Method under test: {@link Mention#asMarkdown()}
+   *
+   * <p>Method under test: {@link Mention#asMarkdown()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node Mention.asMarkdown()"})
   public void testAsMarkdown_thenThrowInvalidInputException() throws InvalidInputException {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act and Assert
-    assertThrows(InvalidInputException.class, () -> (new Mention(parent, 1, new NoOpDataProvider())).asMarkdown());
+    assertThrows(
+        InvalidInputException.class,
+        () -> new Mention(parent2, 1, new NoOpDataProvider()).asMarkdown());
   }
 
   /**
    * Test {@link Mention#asEntityJson(ObjectNode)}.
-   * <p>
-   * Method under test: {@link Mention#asEntityJson(ObjectNode)}
+   *
+   * <p>Method under test: {@link Mention#asEntityJson(ObjectNode)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"ObjectNode Mention.asEntityJson(ObjectNode)"})
   public void testAsEntityJson() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, new NoOpDataProvider());
-    ObjectNode parent2 = new ObjectNode(JsonNodeFactory.withExactBigDecimals(true));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, new NoOpDataProvider());
+    JsonNodeFactory nc = JsonNodeFactory.withExactBigDecimals(true);
+    ObjectNode parent3 = new ObjectNode(nc);
 
     // Act
-    ObjectNode actualAsEntityJsonResult = mention.asEntityJson(parent2);
+    ObjectNode actualAsEntityJsonResult = mention.asEntityJson(parent3);
 
     // Assert
-    assertEquals("{ }", parent2.toPrettyString());
+    assertEquals("{ }", parent3.toPrettyString());
     assertNull(actualAsEntityJsonResult);
-    assertEquals(0, parent2.size());
-    assertFalse(parent2.iterator().hasNext());
-    assertTrue(parent2.isEmpty());
+    assertEquals(0, parent3.size());
+    assertFalse(parent3.iterator().hasNext());
+    assertTrue(parent3.isEmpty());
   }
 
   /**
    * Test {@link Mention#toString()}.
+   *
    * <ul>
-   *   <li>Then return {@code Mention(1)}.</li>
+   *   <li>Then return {@code Mention(1)}.
    * </ul>
-   * <p>
-   * Method under test: {@link Mention#toString()}
+   *
+   * <p>Method under test: {@link Mention#toString()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String Mention.toString()"})
   public void testToString_thenReturnMention1() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act and Assert
-    assertEquals("Mention(1)", (new Mention(parent, 1, 1L, new NoOpDataProvider())).toString());
+    assertEquals("Mention(1)", new Mention(parent2, 1, 1L, new NoOpDataProvider()).toString());
   }
 
   /**
    * Test {@link Mention#toString()}.
+   *
    * <ul>
-   *   <li>Then return {@code Mention(NULL)}.</li>
+   *   <li>Then return {@code Mention(NULL)}.
    * </ul>
-   * <p>
-   * Method under test: {@link Mention#toString()}
+   *
+   * <p>Method under test: {@link Mention#toString()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String Mention.toString()"})
   public void testToString_thenReturnMentionNull() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act and Assert
-    assertEquals("Mention(NULL)", (new Mention(parent, 1, new NoOpDataProvider())).toString());
+    assertEquals("Mention(NULL)", new Mention(parent2, 1, new NoOpDataProvider()).toString());
   }
 
   /**
    * Test {@link Mention#validate()}.
-   * <ul>
-   *   <li>Then calls {@link NoOpDataProvider#getUserPresentation(Long)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Mention#validate()}
+   *
+   * <p>Method under test: {@link Mention#validate()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.validate()"})
+  public void testValidate() throws InvalidInputException {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act and Assert
+    new Mention(parent, 1, new NoOpDataProvider()).validate();
+  }
+
+  /**
+   * Test {@link Mention#validate()}.
+   *
+   * <p>Method under test: {@link Mention#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.validate()"})
+  public void testValidate2() throws InvalidInputException {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act and Assert
+    new Mention(parent, 1, 1L, new NoOpDataProvider()).validate();
+  }
+
+  /**
+   * Test {@link Mention#validate()}.
+   *
+   * <ul>
+   *   <li>Then calls {@link NoOpDataProvider#getUserPresentation(Long)}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Mention#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.validate()"})
   public void testValidate_thenCallsGetUserPresentation() throws InvalidInputException {
     // Arrange
     NoOpDataProvider dataProvider = mock(NoOpDataProvider.class);
     when(dataProvider.getUserPresentation(Mockito.<Long>any()))
         .thenThrow(new InvalidInputException("An error occurred"));
+    Bold parent = new Bold(new BulletList(null));
 
     // Act
-    (new Mention(new Bold(new BulletList(null)), 1, 1L, dataProvider)).validate();
+    new Mention(parent, 1, 1L, dataProvider).validate();
 
     // Assert
-    verify(dataProvider).getUserPresentation(eq(1L));
+    verify(dataProvider).getUserPresentation(1L);
   }
 
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link Mention#getEntityIdPrefix()}
    *   <li>{@link Mention#getEntitySubType()}
@@ -366,6 +490,15 @@ public class MentionDiffblueTest {
    * </ul>
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "String Mention.getEntityIdPrefix()",
+    "String Mention.getEntitySubType()",
+    "String Mention.getEntityType()",
+    "String Mention.getEntityVersion()",
+    "org.symphonyoss.symphony.messageml.util.IUserPresentation Mention.getUserPresentation()"
+  })
   public void testGettersAndSetters() {
     // Arrange
     Bold parent = new Bold(new BulletList(null));
@@ -387,48 +520,62 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#getEntityValue()}.
+   *
    * <ul>
-   *   <li>Then return {@code 1}.</li>
+   *   <li>Then return {@code 1}.
    * </ul>
-   * <p>
-   * Method under test: {@link Mention#getEntityValue()}
+   *
+   * <p>Method under test: {@link Mention#getEntityValue()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String Mention.getEntityValue()"})
   public void testGetEntityValue_thenReturn1() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act and Assert
-    assertEquals("1", (new Mention(parent, 1, 1L, new NoOpDataProvider())).getEntityValue());
+    assertEquals("1", new Mention(parent2, 1, 1L, new NoOpDataProvider()).getEntityValue());
   }
 
   /**
    * Test {@link Mention#getEntityValue()}.
+   *
    * <ul>
-   *   <li>Then return {@code null}.</li>
+   *   <li>Then return {@code null}.
    * </ul>
-   * <p>
-   * Method under test: {@link Mention#getEntityValue()}
+   *
+   * <p>Method under test: {@link Mention#getEntityValue()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String Mention.getEntityValue()"})
   public void testGetEntityValue_thenReturnNull() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act and Assert
-    assertNull((new Mention(parent, 1, new NoOpDataProvider())).getEntityValue());
+    assertNull(new Mention(parent2, 1, new NoOpDataProvider()).getEntityValue());
   }
 
   /**
    * Test {@link Mention#updateBiContext(BiContext)}.
-   * <p>
-   * Method under test: {@link Mention#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Mention#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.updateBiContext(BiContext)"})
   public void testUpdateBiContext() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, new NoOpDataProvider());
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, new NoOpDataProvider());
 
     BiContext context = new BiContext();
     context.addItemWithValue("mentions", new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -455,17 +602,22 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Given {@code Item Value}.</li>
+   *   <li>Given {@code Item Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link Mention#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Mention#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.updateBiContext(BiContext)"})
   public void testUpdateBiContext_givenItemValue() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, new NoOpDataProvider());
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, new NoOpDataProvider());
 
     BiContext context = new BiContext();
     context.addItemWithValue("mentions", "Item Value");
@@ -492,18 +644,22 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size
-   * is two.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Mention#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Mention#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, new NoOpDataProvider());
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, new NoOpDataProvider());
 
     BiContext context = new BiContext();
     context.addItem(new BiItem("mentions", Element.STYLE_ATTR));
@@ -527,17 +683,22 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is three.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items size is three.
    * </ul>
-   * <p>
-   * Method under test: {@link Mention#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Mention#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsThree() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, new NoOpDataProvider());
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, new NoOpDataProvider());
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -562,18 +723,22 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is
-   * {@code mentions}.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code mentions}.
    * </ul>
-   * <p>
-   * Method under test: {@link Mention#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Mention#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsThirdNameIsMentions() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, new NoOpDataProvider());
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, new NoOpDataProvider());
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -594,19 +759,23 @@ public class MentionDiffblueTest {
 
   /**
    * Test {@link Mention#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is
-   * {@code mentions}.</li>
+   *   <li>When {@link BiContext} (default constructor).
+   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code mentions}.
    * </ul>
-   * <p>
-   * Method under test: {@link Mention#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Mention#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Mention.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsMentions() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-    Mention mention = new Mention(parent, 1, new NoOpDataProvider());
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Mention mention = new Mention(parent2, 1, new NoOpDataProvider());
     BiContext context = new BiContext();
 
     // Act

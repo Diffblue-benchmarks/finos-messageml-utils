@@ -3,13 +3,21 @@ package org.symphonyoss.symphony.messageml.elements;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
 import org.commonmark.node.Node;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
@@ -18,19 +26,26 @@ import org.symphonyoss.symphony.messageml.markdown.nodes.PreformattedNode;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
+@RunWith(MockitoJUnitRunner.class)
 public class PreformattedDiffblueTest {
+  @InjectMocks private Preformatted preformatted;
+
   /**
    * Test {@link Preformatted#Preformatted(Element)}.
-   * <p>
-   * Method under test: {@link Preformatted#Preformatted(Element)}
+   *
+   * <p>Method under test: {@link Preformatted#Preformatted(Element)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.<init>(Element)"})
   public void testNewPreformatted() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act
-    Preformatted actualPreformatted = new Preformatted(parent);
+    Preformatted actualPreformatted = new Preformatted(parent2);
 
     // Assert
     assertEquals(0, actualPreformatted.size());
@@ -39,20 +54,24 @@ public class PreformattedDiffblueTest {
     assertTrue(actualPreformatted.getAttributes().isEmpty());
     assertEquals(Preformatted.MESSAGEML_TAG, actualPreformatted.getMessageMLTag());
     assertEquals(Preformatted.MESSAGEML_TAG, actualPreformatted.getPresentationMLTag());
-    assertSame(parent, actualPreformatted.getParent());
+    assertSame(parent2, actualPreformatted.getParent());
   }
 
   /**
    * Test {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Preformatted preformatted = new Preformatted(parent2);
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
 
     // Act
     preformatted.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -63,16 +82,22 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML2() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
-    preformatted.addChild(new Bold(new BulletList(mock(Element.class))));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Preformatted preformatted = new Preformatted(parent2);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    preformatted.addChild(new Bold(parent3));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
 
     // Act
     preformatted.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -83,16 +108,23 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML3() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
-    preformatted.addChild(new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Preformatted preformatted = new Preformatted(parent2);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    Bold parent4 = new Bold(parent3);
+    preformatted.addChild(new Checkbox(parent4, FormatEnum.MESSAGEML));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
 
     // Act
     preformatted.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -103,16 +135,23 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML4() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
-    preformatted.addChild(new Button(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Preformatted preformatted = new Preformatted(parent2);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    Bold parent4 = new Bold(parent3);
+    preformatted.addChild(new Button(parent4, FormatEnum.MESSAGEML));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
 
     // Act
     preformatted.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -123,16 +162,23 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML5() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
-    preformatted.addChild(new CardBody(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Preformatted preformatted = new Preformatted(parent2);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    Bold parent4 = new Bold(parent3);
+    preformatted.addChild(new CardBody(parent4, FormatEnum.MESSAGEML));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
 
     // Act
     preformatted.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -143,16 +189,23 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML6() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
-    preformatted.addChild(new CashTag(new Bold(new BulletList(mock(Element.class))), 1));
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    Preformatted preformatted = new Preformatted(parent2);
+    BulletList parent3 = new BulletList(mock(Element.class));
+    Bold parent4 = new Bold(parent3);
+    preformatted.addChild(new CashTag(parent4, 1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
 
     // Act
     preformatted.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -163,16 +216,20 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test:
-   * {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
+   *
+   * <p>Method under test: {@link Preformatted#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML7() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Preformatted preformatted = new Preformatted(parent2);
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
     out.setNoNl(true);
 
     // Act
@@ -184,13 +241,20 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#asMarkdown()}.
-   * <p>
-   * Method under test: {@link Preformatted#asMarkdown()}
+   *
+   * <p>Method under test: {@link Preformatted#asMarkdown()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node Preformatted.asMarkdown()"})
   public void testAsMarkdown() throws InvalidInputException {
-    // Arrange and Act
-    Node actualAsMarkdownResult = (new Preformatted(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    // Act
+    Node actualAsMarkdownResult = new Preformatted(parent2).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof PreformattedNode);
@@ -204,22 +268,97 @@ public class PreformattedDiffblueTest {
   }
 
   /**
-   * Test {@link Preformatted#updateBiContext(BiContext)}.
+   * Test {@link Preformatted#validate()}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes
-   * {@code count} {@link BiItem}.</li>
+   *   <li>Given {@link Preformatted#Preformatted(Element)} with parent is {@link
+   *       Bold#Bold(Element)} addChild {@link Bold#Bold(Element)} with parent is {@link
+   *       BulletList#BulletList(Element)}.
    * </ul>
-   * <p>
-   * Method under test: {@link Preformatted#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Preformatted#validate()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.validate()"})
+  public void testValidate_givenPreformattedWithParentIsBoldAddChildBoldWithParentIsBulletList()
+      throws InvalidInputException {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    Preformatted preformatted = new Preformatted(parent);
+    preformatted.addChild(new Bold(new BulletList(null)));
+
+    // Act and Assert
+    preformatted.validate();
+  }
+
+  /**
+   * Test {@link Preformatted#validate()}.
+   *
+   * <ul>
+   *   <li>Given {@link Preformatted}.
+   *   <li>Then does not throw.
+   * </ul>
+   *
+   * <p>Method under test: {@link Preformatted#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.validate()"})
+  public void testValidate_givenPreformatted_thenDoesNotThrow() throws InvalidInputException {
+    // Arrange, Act and Assert
+    preformatted.validate();
+  }
+
+  /**
+   * Test {@link Preformatted#validate()}.
+   *
+   * <ul>
+   *   <li>Then throw {@link InvalidInputException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Preformatted#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.validate()"})
+  public void testValidate_thenThrowInvalidInputException() throws InvalidInputException {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    Preformatted preformatted = new Preformatted(parent);
+    preformatted.addChild(new BulletList(new Bold(new Code(null, "en"))));
+
+    // Act and Assert
+    assertThrows(InvalidInputException.class, () -> preformatted.validate());
+  }
+
+  /**
+   * Test {@link Preformatted#updateBiContext(BiContext)}.
+   *
+   * <ul>
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link
+   *       BiItem}.
+   * </ul>
+   *
+   * <p>Method under test: {@link Preformatted#updateBiContext(BiContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Preformatted preformatted = new Preformatted(parent2);
 
     BiContext context = new BiContext();
     BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
-
     context.addItemWithValue("pres", biItem);
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -243,17 +382,23 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes
-   * {@code count} is {@code Item Value}.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is
+   *       {@code Item Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link Preformatted#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Preformatted#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Preformatted preformatted = new Preformatted(parent2);
 
     BiContext context = new BiContext();
     context.addItemWithValue("pres", "Item Value");
@@ -276,17 +421,22 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size
-   * is two.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Preformatted#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Preformatted#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Preformatted preformatted = new Preformatted(parent2);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem("pres", Element.STYLE_ATTR));
@@ -305,16 +455,22 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link Preformatted#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Preformatted#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Preformatted preformatted = new Preformatted(parent2);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -334,17 +490,22 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is
-   * {@code pres}.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code pres}.
    * </ul>
-   * <p>
-   * Method under test: {@link Preformatted#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Preformatted#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsThirdNameIsPres() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Preformatted preformatted = new Preformatted(parent2);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -365,18 +526,23 @@ public class PreformattedDiffblueTest {
 
   /**
    * Test {@link Preformatted#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is
-   * {@code pres}.</li>
+   *   <li>When {@link BiContext} (default constructor).
+   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code pres}.
    * </ul>
-   * <p>
-   * Method under test: {@link Preformatted#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link Preformatted#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Preformatted.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsPres() {
     // Arrange
-    Preformatted preformatted = new Preformatted(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    Preformatted preformatted = new Preformatted(parent2);
     BiContext context = new BiContext();
 
     // Act

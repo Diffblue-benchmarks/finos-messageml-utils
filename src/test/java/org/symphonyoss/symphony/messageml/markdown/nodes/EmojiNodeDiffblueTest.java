@@ -2,18 +2,25 @@ package org.symphonyoss.symphony.messageml.markdown.nodes;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.commonmark.node.Document;
 import org.commonmark.node.Visitor;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.markdown.MarkdownRenderer;
 
 public class EmojiNodeDiffblueTest {
   /**
    * Test {@link EmojiNode#EmojiNode()}.
-   * <p>
-   * Method under test: {@link EmojiNode#EmojiNode()}
+   *
+   * <p>Method under test: {@link EmojiNode#EmojiNode()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void EmojiNode.<init>()"})
   public void testNewEmojiNode() {
     // Arrange and Act
     EmojiNode actualEmojiNode = new EmojiNode();
@@ -32,10 +39,13 @@ public class EmojiNodeDiffblueTest {
 
   /**
    * Test {@link EmojiNode#EmojiNode(String)}.
-   * <p>
-   * Method under test: {@link EmojiNode#EmojiNode(String)}
+   *
+   * <p>Method under test: {@link EmojiNode#EmojiNode(String)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void EmojiNode.<init>(String)"})
   public void testNewEmojiNode2() {
     // Arrange and Act
     EmojiNode actualEmojiNode = new EmojiNode("Shortcode");
@@ -54,14 +64,18 @@ public class EmojiNodeDiffblueTest {
 
   /**
    * Test {@link EmojiNode#accept(Visitor)}.
+   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is
-   * {@link Document} (default constructor) Text is {@code :Shortcode:}.</li>
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
+   *       Document} (default constructor) Text is {@code :Shortcode:}.
    * </ul>
-   * <p>
-   * Method under test: {@link EmojiNode#accept(Visitor)}
+   *
+   * <p>Method under test: {@link EmojiNode#accept(Visitor)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void EmojiNode.accept(Visitor)"})
   public void testAccept_thenMarkdownRendererWithDocumentIsDocumentTextIsShortcode() {
     // Arrange
     EmojiNode emojiNode = new EmojiNode();
@@ -77,8 +91,9 @@ public class EmojiNodeDiffblueTest {
 
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link EmojiNode#setAnnotation(String)}
    *   <li>{@link EmojiNode#setShortcode(String)}
@@ -89,6 +104,16 @@ public class EmojiNodeDiffblueTest {
    * </ul>
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "String EmojiNode.getAnnotation()",
+    "String EmojiNode.getClosingDelimiter()",
+    "String EmojiNode.getOpeningDelimiter()",
+    "String EmojiNode.getShortcode()",
+    "void EmojiNode.setAnnotation(String)",
+    "void EmojiNode.setShortcode(String)"
+  })
   public void testGettersAndSetters() {
     // Arrange
     EmojiNode emojiNode = new EmojiNode();

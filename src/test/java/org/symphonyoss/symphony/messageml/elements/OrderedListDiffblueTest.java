@@ -4,28 +4,38 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
 import org.commonmark.node.Node;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
+import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
 public class OrderedListDiffblueTest {
   /**
    * Test {@link OrderedList#OrderedList(Element)}.
-   * <p>
-   * Method under test: {@link OrderedList#OrderedList(Element)}
+   *
+   * <p>Method under test: {@link OrderedList#OrderedList(Element)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void OrderedList.<init>(Element)"})
   public void testNewOrderedList() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act
-    OrderedList actualOrderedList = new OrderedList(parent);
+    OrderedList actualOrderedList = new OrderedList(parent2);
 
     // Assert
     assertEquals(0, actualOrderedList.size());
@@ -34,18 +44,25 @@ public class OrderedListDiffblueTest {
     assertTrue(actualOrderedList.getAttributes().isEmpty());
     assertEquals(OrderedList.MESSAGEML_TAG, actualOrderedList.getMessageMLTag());
     assertEquals(OrderedList.MESSAGEML_TAG, actualOrderedList.getPresentationMLTag());
-    assertSame(parent, actualOrderedList.getParent());
+    assertSame(parent2, actualOrderedList.getParent());
   }
 
   /**
    * Test {@link OrderedList#asMarkdown()}.
-   * <p>
-   * Method under test: {@link OrderedList#asMarkdown()}
+   *
+   * <p>Method under test: {@link OrderedList#asMarkdown()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node OrderedList.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange and Act
-    Node actualAsMarkdownResult = (new OrderedList(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    // Act
+    Node actualAsMarkdownResult = new OrderedList(parent2).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof org.commonmark.node.OrderedList);
@@ -60,22 +77,77 @@ public class OrderedListDiffblueTest {
   }
 
   /**
-   * Test {@link OrderedList#updateBiContext(BiContext)}.
+   * Test {@link OrderedList#validate()}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes
-   * {@code count} {@link BiItem}.</li>
+   *   <li>Given {@link OrderedList#OrderedList(Element)} with parent is {@link Bold#Bold(Element)}
+   *       addChild {@link Bold#Bold(Element)} with parent is {@link
+   *       BulletList#BulletList(Element)}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedList#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link OrderedList#validate()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void OrderedList.validate()"})
+  public void testValidate_givenOrderedListWithParentIsBoldAddChildBoldWithParentIsBulletList()
+      throws InvalidInputException {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    OrderedList orderedList = new OrderedList(parent);
+    orderedList.addChild(new Bold(new BulletList(null)));
+
+    // Act and Assert
+    assertThrows(InvalidInputException.class, () -> orderedList.validate());
+  }
+
+  /**
+   * Test {@link OrderedList#validate()}.
+   *
+   * <ul>
+   *   <li>Given {@link OrderedList#OrderedList(Element)} with parent is {@link Bold#Bold(Element)}.
+   *   <li>Then throw {@link InvalidInputException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link OrderedList#validate()}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void OrderedList.validate()"})
+  public void testValidate_givenOrderedListWithParentIsBold_thenThrowInvalidInputException()
+      throws InvalidInputException {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act and Assert
+    assertThrows(InvalidInputException.class, () -> new OrderedList(parent).validate());
+  }
+
+  /**
+   * Test {@link OrderedList#updateBiContext(BiContext)}.
+   *
+   * <ul>
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link
+   *       BiItem}.
+   * </ul>
+   *
+   * <p>Method under test: {@link OrderedList#updateBiContext(BiContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void OrderedList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
     // Arrange
-    OrderedList orderedList = new OrderedList(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    OrderedList orderedList = new OrderedList(parent2);
 
     BiContext context = new BiContext();
     BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
-
     context.addItemWithValue("lists", biItem);
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -99,17 +171,23 @@ public class OrderedListDiffblueTest {
 
   /**
    * Test {@link OrderedList#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes
-   * {@code count} is {@code Item Value}.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is
+   *       {@code Item Value}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedList#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link OrderedList#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void OrderedList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
     // Arrange
-    OrderedList orderedList = new OrderedList(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    OrderedList orderedList = new OrderedList(parent2);
 
     BiContext context = new BiContext();
     context.addItemWithValue("lists", "Item Value");
@@ -132,17 +210,22 @@ public class OrderedListDiffblueTest {
 
   /**
    * Test {@link OrderedList#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size
-   * is two.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedList#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link OrderedList#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void OrderedList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
     // Arrange
-    OrderedList orderedList = new OrderedList(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    OrderedList orderedList = new OrderedList(parent2);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem("lists", Element.STYLE_ATTR));
@@ -161,16 +244,22 @@ public class OrderedListDiffblueTest {
 
   /**
    * Test {@link OrderedList#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items size is two.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedList#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link OrderedList#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void OrderedList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
     // Arrange
-    OrderedList orderedList = new OrderedList(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    OrderedList orderedList = new OrderedList(parent2);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -190,17 +279,22 @@ public class OrderedListDiffblueTest {
 
   /**
    * Test {@link OrderedList#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is
-   * {@code lists}.</li>
+   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code lists}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedList#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link OrderedList#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void OrderedList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsThirdNameIsLists() {
     // Arrange
-    OrderedList orderedList = new OrderedList(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    OrderedList orderedList = new OrderedList(parent2);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -221,18 +315,23 @@ public class OrderedListDiffblueTest {
 
   /**
    * Test {@link OrderedList#updateBiContext(BiContext)}.
+   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is
-   * {@code lists}.</li>
+   *   <li>When {@link BiContext} (default constructor).
+   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code lists}.
    * </ul>
-   * <p>
-   * Method under test: {@link OrderedList#updateBiContext(BiContext)}
+   *
+   * <p>Method under test: {@link OrderedList#updateBiContext(BiContext)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void OrderedList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsLists() {
     // Arrange
-    OrderedList orderedList = new OrderedList(new Bold(new BulletList(mock(Element.class))));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+    OrderedList orderedList = new OrderedList(parent2);
     BiContext context = new BiContext();
 
     // Act

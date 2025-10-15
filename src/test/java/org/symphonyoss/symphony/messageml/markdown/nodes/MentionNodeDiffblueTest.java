@@ -2,15 +2,22 @@ package org.symphonyoss.symphony.messageml.markdown.nodes;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class MentionNodeDiffblueTest {
   /**
    * Test {@link MentionNode#MentionNode(long)}.
-   * <p>
-   * Method under test: {@link MentionNode#MentionNode(long)}
+   *
+   * <p>Method under test: {@link MentionNode#MentionNode(long)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void MentionNode.<init>(long)"})
   public void testNewMentionNode() {
     // Arrange and Act
     MentionNode actualMentionNode = new MentionNode(1L);
@@ -30,14 +37,17 @@ public class MentionNodeDiffblueTest {
 
   /**
    * Test {@link MentionNode#MentionNode(long, String, String, String)}.
-   * <p>
-   * Method under test:
-   * {@link MentionNode#MentionNode(long, String, String, String)}
+   *
+   * <p>Method under test: {@link MentionNode#MentionNode(long, String, String, String)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void MentionNode.<init>(long, String, String, String)"})
   public void testNewMentionNode2() {
     // Arrange and Act
-    MentionNode actualMentionNode = new MentionNode(1L, "Pretty Name", "Screen Name", "jane.doe@example.org");
+    MentionNode actualMentionNode =
+        new MentionNode(1L, "Pretty Name", "Screen Name", "jane.doe@example.org");
 
     // Assert
     assertEquals("@Pretty Name", actualMentionNode.getText());
@@ -54,8 +64,9 @@ public class MentionNodeDiffblueTest {
 
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>{@link MentionNode#getEmail()}
    *   <li>{@link MentionNode#getPrettyName()}
@@ -64,6 +75,14 @@ public class MentionNodeDiffblueTest {
    * </ul>
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "String MentionNode.getEmail()",
+    "String MentionNode.getPrettyName()",
+    "String MentionNode.getScreenName()",
+    "long MentionNode.getUid()"
+  })
   public void testGettersAndSetters() {
     // Arrange
     MentionNode mentionNode = new MentionNode(1L);
@@ -82,30 +101,42 @@ public class MentionNodeDiffblueTest {
 
   /**
    * Test {@link MentionNode#getText()}.
+   *
    * <ul>
-   *   <li>Given {@link MentionNode#MentionNode(long)} with uid is one.</li>
-   *   <li>Then return empty string.</li>
+   *   <li>Given {@link MentionNode#MentionNode(long)} with uid is one.
+   *   <li>Then return empty string.
    * </ul>
-   * <p>
-   * Method under test: {@link MentionNode#getText()}
+   *
+   * <p>Method under test: {@link MentionNode#getText()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String MentionNode.getText()"})
   public void testGetText_givenMentionNodeWithUidIsOne_thenReturnEmptyString() {
     // Arrange, Act and Assert
-    assertEquals("", (new MentionNode(1L)).getText());
+    assertEquals("", new MentionNode(1L).getText());
   }
 
   /**
    * Test {@link MentionNode#getText()}.
+   *
    * <ul>
-   *   <li>Then return {@code @Pretty Name}.</li>
+   *   <li>Then return {@code @Pretty Name}.
    * </ul>
-   * <p>
-   * Method under test: {@link MentionNode#getText()}
+   *
+   * <p>Method under test: {@link MentionNode#getText()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"String MentionNode.getText()"})
   public void testGetText_thenReturnPrettyName() {
-    // Arrange, Act and Assert
-    assertEquals("@Pretty Name", (new MentionNode(1L, "Pretty Name", "Screen Name", "jane.doe@example.org")).getText());
+    // Arrange
+    MentionNode mentionNode =
+        new MentionNode(1L, "Pretty Name", "Screen Name", "jane.doe@example.org");
+
+    // Act and Assert
+    assertEquals("@Pretty Name", mentionNode.getText());
   }
 }

@@ -5,23 +5,31 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.commonmark.node.Emphasis;
 import org.commonmark.node.Node;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class SuperscriptDiffblueTest {
   /**
    * Test {@link Superscript#Superscript(Element)}.
-   * <p>
-   * Method under test: {@link Superscript#Superscript(Element)}
+   *
+   * <p>Method under test: {@link Superscript#Superscript(Element)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void Superscript.<init>(Element)"})
   public void testNewSuperscript() {
     // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
 
     // Act
-    Superscript actualSuperscript = new Superscript(parent);
+    Superscript actualSuperscript = new Superscript(parent2);
 
     // Assert
     assertEquals(0, actualSuperscript.size());
@@ -30,18 +38,25 @@ public class SuperscriptDiffblueTest {
     assertTrue(actualSuperscript.getAttributes().isEmpty());
     assertEquals(Superscript.MESSAGEML_TAG, actualSuperscript.getMessageMLTag());
     assertEquals(Superscript.MESSAGEML_TAG, actualSuperscript.getPresentationMLTag());
-    assertSame(parent, actualSuperscript.getParent());
+    assertSame(parent2, actualSuperscript.getParent());
   }
 
   /**
    * Test {@link Superscript#asMarkdown()}.
-   * <p>
-   * Method under test: {@link Superscript#asMarkdown()}
+   *
+   * <p>Method under test: {@link Superscript#asMarkdown()}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"Node Superscript.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange and Act
-    Node actualAsMarkdownResult = (new Superscript(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
+    // Arrange
+    BulletList parent = new BulletList(mock(Element.class));
+    Bold parent2 = new Bold(parent);
+
+    // Act
+    Node actualAsMarkdownResult = new Superscript(parent2).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof Emphasis);

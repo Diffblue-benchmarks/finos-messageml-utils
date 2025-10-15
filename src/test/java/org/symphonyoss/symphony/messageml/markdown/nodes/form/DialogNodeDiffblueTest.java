@@ -4,16 +4,21 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import com.diffblue.cover.annotations.ContributionFromDiffblue;
+import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.commonmark.node.HardLineBreak;
 import org.commonmark.node.Node;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.markdown.nodes.EmojiNode;
 
 public class DialogNodeDiffblueTest {
   /**
    * Test getters and setters.
-   * <p>
-   * Methods under test:
+   *
+   * <p>Methods under test:
+   *
    * <ul>
    *   <li>default or parameterless constructor of {@link DialogNode}
    *   <li>{@link DialogNode#getClosingDelimiter()}
@@ -21,6 +26,13 @@ public class DialogNodeDiffblueTest {
    * </ul>
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({
+    "void DialogNode.<init>()",
+    "String DialogNode.getClosingDelimiter()",
+    "String DialogNode.getOpeningDelimiter()"
+  })
   public void testGettersAndSetters() {
     // Arrange and Act
     DialogNode actualDialogNode = new DialogNode();
@@ -40,14 +52,18 @@ public class DialogNodeDiffblueTest {
 
   /**
    * Test {@link DialogNode#appendChild(Node)}.
+   *
    * <ul>
-   *   <li>When {@link EmojiNode#EmojiNode()}.</li>
-   *   <li>Then {@link EmojiNode#EmojiNode()} Next {@link HardLineBreak}.</li>
+   *   <li>When {@link EmojiNode#EmojiNode()}.
+   *   <li>Then {@link EmojiNode#EmojiNode()} Next {@link HardLineBreak}.
    * </ul>
-   * <p>
-   * Method under test: {@link DialogNode#appendChild(Node)}
+   *
+   * <p>Method under test: {@link DialogNode#appendChild(Node)}
    */
   @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void DialogNode.appendChild(Node)"})
   public void testAppendChild_whenEmojiNode_thenEmojiNodeNextHardLineBreak() {
     // Arrange
     DialogNode dialogNode = new DialogNode();
