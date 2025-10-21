@@ -2,8 +2,7 @@ package org.symphonyoss.symphony.messageml.markdown.nodes;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -11,9 +10,8 @@ import org.junit.experimental.categories.Category;
 public class KeywordNodeDiffblueTest {
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link KeywordNode#KeywordNode(String, String)}
    *   <li>{@link KeywordNode#getPrefix()}
@@ -21,13 +19,9 @@ public class KeywordNodeDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void KeywordNode.<init>(String, String)",
-    "String KeywordNode.getPrefix()",
-    "String KeywordNode.getText()"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void KeywordNode.<init>(String, String)", "String KeywordNode.getPrefix()",
+      "String KeywordNode.getText()"})
   public void testGettersAndSetters() {
     // Arrange and Act
     KeywordNode actualKeywordNode = new KeywordNode("Prefix", "Text");

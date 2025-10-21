@@ -1,8 +1,7 @@
 package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -10,12 +9,11 @@ import org.junit.experimental.categories.Category;
 public class DatePickerNodeDiffblueTest {
   /**
    * Test {@link DatePickerNode#DatePickerNode(String, String, String)}.
-   *
-   * <p>Method under test: {@link DatePickerNode#DatePickerNode(String, String, String)}
+   * <p>
+   * Method under test: {@link DatePickerNode#DatePickerNode(String, String, String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void DatePickerNode.<init>(String, String, String)"})
   public void testNewDatePickerNode() {
     // Arrange and Act

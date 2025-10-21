@@ -4,8 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,9 +14,8 @@ import org.junit.experimental.categories.Category;
 public class BiItemDiffblueTest {
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link BiItem#BiItem(String, Map)}
    *   <li>{@link BiItem#getAttributes()}
@@ -25,13 +23,8 @@ public class BiItemDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void BiItem.<init>(String, Map)",
-    "Map BiItem.getAttributes()",
-    "String BiItem.getName()"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void BiItem.<init>(String, Map)", "Map BiItem.getAttributes()", "String BiItem.getName()"})
   public void testGettersAndSetters() {
     // Arrange
     HashMap<String, Object> attributes = new HashMap<>();
@@ -48,12 +41,11 @@ public class BiItemDiffblueTest {
 
   /**
    * Test {@link BiItem#BiItem(String, String)}.
-   *
-   * <p>Method under test: {@link BiItem#BiItem(String, String)}
+   * <p>
+   * Method under test: {@link BiItem#BiItem(String, String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BiItem.<init>(String, String)"})
   public void testNewBiItem() {
     // Arrange and Act
@@ -68,12 +60,11 @@ public class BiItemDiffblueTest {
 
   /**
    * Test {@link BiItem#increaseAttributeCount(String)}.
-   *
-   * <p>Method under test: {@link BiItem#increaseAttributeCount(String)}
+   * <p>
+   * Method under test: {@link BiItem#increaseAttributeCount(String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BiItem.increaseAttributeCount(String)"})
   public void testIncreaseAttributeCount() {
     // Arrange
@@ -91,17 +82,14 @@ public class BiItemDiffblueTest {
 
   /**
    * Test {@link BiItem#setMaxAttribute(String, Integer)}.
-   *
    * <ul>
-   *   <li>Then {@link BiItem#BiItem(String, String)} with {@code Name} and {@code Attribute}
-   *       Attributes size is two.
+   *   <li>Then {@link BiItem#BiItem(String, String)} with {@code Name} and {@code Attribute} Attributes size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BiItem#setMaxAttribute(String, Integer)}
+   * <p>
+   * Method under test: {@link BiItem#setMaxAttribute(String, Integer)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BiItem.setMaxAttribute(String, Integer)"})
   public void testSetMaxAttribute_thenBiItemWithNameAndAttributeAttributesSizeIsTwo() {
     // Arrange
@@ -119,18 +107,15 @@ public class BiItemDiffblueTest {
 
   /**
    * Test {@link BiItem#setMaxAttribute(String, Integer)}.
-   *
    * <ul>
-   *   <li>When zero.
-   *   <li>Then {@link BiItem#BiItem(String, String)} with {@code Name} and {@code Attribute}
-   *       Attributes size is one.
+   *   <li>When zero.</li>
+   *   <li>Then {@link BiItem#BiItem(String, String)} with {@code Name} and {@code Attribute} Attributes size is one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BiItem#setMaxAttribute(String, Integer)}
+   * <p>
+   * Method under test: {@link BiItem#setMaxAttribute(String, Integer)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BiItem.setMaxAttribute(String, Integer)"})
   public void testSetMaxAttribute_whenZero_thenBiItemWithNameAndAttributeAttributesSizeIsOne() {
     // Arrange
@@ -147,22 +132,19 @@ public class BiItemDiffblueTest {
 
   /**
    * Test {@link BiItem#equals(Object)}, and {@link BiItem#hashCode()}.
-   *
    * <ul>
-   *   <li>When other is equal.
-   *   <li>Then return equal.
+   *   <li>When other is equal.</li>
+   *   <li>Then return equal.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link BiItem#equals(Object)}
    *   <li>{@link BiItem#hashCode()}
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean BiItem.equals(Object)", "int BiItem.hashCode()"})
   public void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
@@ -171,27 +153,25 @@ public class BiItemDiffblueTest {
 
     // Act and Assert
     assertEquals(biItem, biItem2);
-    assertEquals(biItem.hashCode(), biItem2.hashCode());
+    int expectedHashCodeResult = biItem.hashCode();
+    assertEquals(expectedHashCodeResult, biItem2.hashCode());
   }
 
   /**
    * Test {@link BiItem#equals(Object)}, and {@link BiItem#hashCode()}.
-   *
    * <ul>
-   *   <li>When other is same.
-   *   <li>Then return equal.
+   *   <li>When other is same.</li>
+   *   <li>Then return equal.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link BiItem#equals(Object)}
    *   <li>{@link BiItem#hashCode()}
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean BiItem.equals(Object)", "int BiItem.hashCode()"})
   public void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
@@ -205,17 +185,15 @@ public class BiItemDiffblueTest {
 
   /**
    * Test {@link BiItem#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is different.
-   *   <li>Then return not equal.
+   *   <li>When other is different.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BiItem#equals(Object)}
+   * <p>
+   * Method under test: {@link BiItem#equals(Object)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean BiItem.equals(Object)", "int BiItem.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
@@ -227,21 +205,19 @@ public class BiItemDiffblueTest {
 
   /**
    * Test {@link BiItem#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is different.
-   *   <li>Then return not equal.
+   *   <li>When other is different.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BiItem#equals(Object)}
+   * <p>
+   * Method under test: {@link BiItem#equals(Object)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean BiItem.equals(Object)", "int BiItem.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
-    BiItem biItem = new BiItem("Name", new HashMap<>());
+    BiItem biItem = new BiItem("Name", (String) null);
 
     // Act and Assert
     assertNotEquals(biItem, new BiItem("Name", "Attribute"));
@@ -249,17 +225,15 @@ public class BiItemDiffblueTest {
 
   /**
    * Test {@link BiItem#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is {@code null}.
-   *   <li>Then return not equal.
+   *   <li>When other is {@code null}.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BiItem#equals(Object)}
+   * <p>
+   * Method under test: {@link BiItem#equals(Object)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean BiItem.equals(Object)", "int BiItem.hashCode()"})
   public void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange, Act and Assert
@@ -268,17 +242,15 @@ public class BiItemDiffblueTest {
 
   /**
    * Test {@link BiItem#equals(Object)}.
-   *
    * <ul>
-   *   <li>When other is wrong type.
-   *   <li>Then return not equal.
+   *   <li>When other is wrong type.</li>
+   *   <li>Then return not equal.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BiItem#equals(Object)}
+   * <p>
+   * Method under test: {@link BiItem#equals(Object)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean BiItem.equals(Object)", "int BiItem.hashCode()"})
   public void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange, Act and Assert

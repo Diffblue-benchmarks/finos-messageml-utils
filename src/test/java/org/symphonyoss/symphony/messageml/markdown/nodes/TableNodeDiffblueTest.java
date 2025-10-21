@@ -2,8 +2,7 @@ package org.symphonyoss.symphony.messageml.markdown.nodes;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -11,9 +10,8 @@ import org.junit.experimental.categories.Category;
 public class TableNodeDiffblueTest {
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>default or parameterless constructor of {@link TableNode}
    *   <li>{@link TableNode#getClosingDelimiter()}
@@ -21,13 +19,9 @@ public class TableNodeDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void TableNode.<init>()",
-    "String TableNode.getClosingDelimiter()",
-    "String TableNode.getOpeningDelimiter()"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void TableNode.<init>()", "String TableNode.getClosingDelimiter()",
+      "String TableNode.getOpeningDelimiter()"})
   public void testGettersAndSetters() {
     // Arrange and Act
     TableNode actualTableNode = new TableNode();

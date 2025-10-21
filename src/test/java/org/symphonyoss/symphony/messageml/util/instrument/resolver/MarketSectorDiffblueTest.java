@@ -2,8 +2,7 @@ package org.symphonyoss.symphony.messageml.util.instrument.resolver;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import org.junit.Test;
@@ -12,17 +11,15 @@ import org.junit.experimental.categories.Category;
 public class MarketSectorDiffblueTest {
   /**
    * Test {@link MarketSector#fromValue(String)}.
-   *
    * <ul>
-   *   <li>When {@code Equity}.
-   *   <li>Then return {@code EQUITY}.
+   *   <li>When {@code Equity}.</li>
+   *   <li>Then return {@code EQUITY}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarketSector#fromValue(String)}
+   * <p>
+   * Method under test: {@link MarketSector#fromValue(String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"MarketSector MarketSector.fromValue(String)"})
   public void testFromValue_whenEquity_thenReturnEquity() {
     // Arrange, Act and Assert
@@ -31,17 +28,15 @@ public class MarketSectorDiffblueTest {
 
   /**
    * Test {@link MarketSector#fromValue(String)}.
-   *
    * <ul>
-   *   <li>When {@code Text}.
-   *   <li>Then return {@code null}.
+   *   <li>When {@code Text}.</li>
+   *   <li>Then return {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarketSector#fromValue(String)}
+   * <p>
+   * Method under test: {@link MarketSector#fromValue(String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"MarketSector MarketSector.fromValue(String)"})
   public void testFromValue_whenText_thenReturnNull() {
     // Arrange, Act and Assert
@@ -50,12 +45,11 @@ public class MarketSectorDiffblueTest {
 
   /**
    * Test {@link MarketSector#toValues()}.
-   *
-   * <p>Method under test: {@link MarketSector#toValues()}
+   * <p>
+   * Method under test: {@link MarketSector#toValues()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"List MarketSector.toValues()"})
   public void testToValues() {
     // Arrange and Act
@@ -77,12 +71,11 @@ public class MarketSectorDiffblueTest {
 
   /**
    * Test {@link MarketSector#getValue()}.
-   *
-   * <p>Method under test: {@link MarketSector#getValue()}
+   * <p>
+   * Method under test: {@link MarketSector#getValue()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String MarketSector.getValue()"})
   public void testGetValue() {
     // Arrange, Act and Assert

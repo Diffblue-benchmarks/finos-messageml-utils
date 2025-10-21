@@ -6,8 +6,7 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
@@ -22,29 +21,26 @@ import org.symphonyoss.symphony.messageml.markdown.nodes.KeywordNode;
 public class HashTagDiffblueTest {
   /**
    * Test {@link HashTag#HashTag(Element, int)}.
-   *
-   * <p>Method under test: {@link HashTag#HashTag(Element, int)}
+   * <p>
+   * Method under test: {@link HashTag#HashTag(Element, int)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashTag.<init>(Element, int)"})
   public void testNewHashTag() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
 
     // Act
-    HashTag actualHashTag = new HashTag(parent2, 1);
+    HashTag actualHashTag = new HashTag(parent, 1);
 
     // Assert
-    Element parent3 = actualHashTag.getParent();
-    assertTrue(parent3 instanceof Bold);
+    Element parent2 = actualHashTag.getParent();
+    assertTrue(parent2 instanceof Bold);
     assertEquals("1.0", actualHashTag.getEntityVersion());
     assertEquals("keyword", actualHashTag.getEntityIdPrefix());
     assertEquals("keyword1", actualHashTag.entityId);
     assertEquals("org.symphonyoss.taxonomy.hashtag", actualHashTag.getEntitySubType());
-    assertNull(actualHashTag.getTag());
     assertNull(actualHashTag.getEntityValue());
     assertEquals(0, actualHashTag.size());
     assertEquals(FormatEnum.MESSAGEML, actualHashTag.getFormat());
@@ -54,31 +50,28 @@ public class HashTagDiffblueTest {
     assertEquals(HashTag.HASHTAG_PATTERN, actualHashTag.getTagPattern());
     assertEquals(HashTag.MESSAGEML_TAG, actualHashTag.getMessageMLTag());
     assertEquals(Span.MESSAGEML_TAG, actualHashTag.getPresentationMLTag());
-    assertSame(parent2, parent3);
+    assertSame(parent, parent2);
   }
 
   /**
    * Test {@link HashTag#HashTag(Element, int, String)}.
-   *
-   * <p>Method under test: {@link HashTag#HashTag(Element, int, String)}
+   * <p>
+   * Method under test: {@link HashTag#HashTag(Element, int, String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashTag.<init>(Element, int, String)"})
   public void testNewHashTag2() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
 
     // Act
-    HashTag actualHashTag = new HashTag(parent2, 1, "42");
+    HashTag actualHashTag = new HashTag(parent, 1, "42");
 
     // Assert
-    Element parent3 = actualHashTag.getParent();
-    assertTrue(parent3 instanceof Bold);
+    Element parent2 = actualHashTag.getParent();
+    assertTrue(parent2 instanceof Bold);
     assertEquals("1.0", actualHashTag.getEntityVersion());
-    assertEquals("42", actualHashTag.getTag());
     assertEquals("42", actualHashTag.getEntityValue());
     assertEquals("keyword", actualHashTag.getEntityIdPrefix());
     assertEquals("keyword1", actualHashTag.entityId);
@@ -91,31 +84,28 @@ public class HashTagDiffblueTest {
     assertEquals(HashTag.HASHTAG_PATTERN, actualHashTag.getTagPattern());
     assertEquals(HashTag.MESSAGEML_TAG, actualHashTag.getMessageMLTag());
     assertEquals(Span.MESSAGEML_TAG, actualHashTag.getPresentationMLTag());
-    assertSame(parent2, parent3);
+    assertSame(parent, parent2);
   }
 
   /**
    * Test {@link HashTag#HashTag(Element, String, String)}.
-   *
-   * <p>Method under test: {@link HashTag#HashTag(Element, String, String)}
+   * <p>
+   * Method under test: {@link HashTag#HashTag(Element, String, String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashTag.<init>(Element, String, String)"})
   public void testNewHashTag3() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
 
     // Act
-    HashTag actualHashTag = new HashTag(parent2, "Presentation Ml Tag", "42");
+    HashTag actualHashTag = new HashTag(parent, "Presentation Ml Tag", "42");
 
     // Assert
-    Element parent3 = actualHashTag.getParent();
-    assertTrue(parent3 instanceof Bold);
+    Element parent2 = actualHashTag.getParent();
+    assertTrue(parent2 instanceof Bold);
     assertEquals("1.0", actualHashTag.getEntityVersion());
-    assertEquals("42", actualHashTag.getTag());
     assertEquals("42", actualHashTag.getEntityValue());
     assertEquals("Presentation Ml Tag", actualHashTag.getPresentationMLTag());
     assertEquals("keyword", actualHashTag.getEntityIdPrefix());
@@ -128,210 +118,50 @@ public class HashTagDiffblueTest {
     assertEquals(HashTag.ENTITY_TYPE, actualHashTag.getEntityType());
     assertEquals(HashTag.HASHTAG_PATTERN, actualHashTag.getTagPattern());
     assertEquals(HashTag.MESSAGEML_TAG, actualHashTag.getMessageMLTag());
-    assertSame(parent2, parent3);
+    assertSame(parent, parent2);
   }
 
   /**
    * Test {@link HashTag#validate()}.
-   *
-   * <p>Method under test: {@link HashTag#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void HashTag.validate()"})
-  public void testValidate() throws InvalidInputException {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act and Assert
-    new HashTag(parent, 1, HashTag.HASHTAG_PATTERN).validate();
-  }
-
-  /**
-   * Test {@link HashTag#validate()}.
-   *
-   * <p>Method under test: {@link HashTag#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void HashTag.validate()"})
-  public void testValidate2() throws InvalidInputException {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act and Assert
-    new HashTag(parent, 1, HashTag.MESSAGEML_TAG).validate();
-  }
-
-  /**
-   * Test {@link HashTag#validate()}.
-   *
-   * <p>Method under test: {@link HashTag#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void HashTag.validate()"})
-  public void testValidate3() throws InvalidInputException {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act and Assert
-    new HashTag(parent, 1, Span.MESSAGEML_TAG).validate();
-  }
-
-  /**
-   * Test {@link HashTag#validate()}.
-   *
    * <ul>
-   *   <li>Given {@link Bold#Bold(Element)} with parent is {@code null}.
-   *   <li>Then throw {@link InvalidInputException}.
+   *   <li>Then throw {@link InvalidInputException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashTag#validate()}
+   * <p>
+   * Method under test: {@link HashTag#validate()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashTag.validate()"})
-  public void testValidate_givenBoldWithParentIsNull_thenThrowInvalidInputException()
-      throws InvalidInputException {
-    // Arrange
-    HashTag hashTag = new HashTag(new Bold(null), "UUU", "42");
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> hashTag.validate());
-  }
-
-  /**
-   * Test {@link HashTag#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link HashTag#HashTag(Element, int, String)} with parent is {@link
-   *       Bold#Bold(Element)} and entityIndex is one and {@code Value}.
-   * </ul>
-   *
-   * <p>Method under test: {@link HashTag#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void HashTag.validate()"})
-  public void testValidate_givenHashTagWithParentIsBoldAndEntityIndexIsOneAndValue()
-      throws InvalidInputException {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act and Assert
-    new HashTag(parent, 1, "Value").validate();
-  }
-
-  /**
-   * Test {@link HashTag#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link HashTag#HashTag(Element, int, String)} with parent is {@link
-   *       Bold#Bold(Element)} and entityIndex is one and value is {@code 42}.
-   * </ul>
-   *
-   * <p>Method under test: {@link HashTag#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void HashTag.validate()"})
-  public void testValidate_givenHashTagWithParentIsBoldAndEntityIndexIsOneAndValueIs42()
-      throws InvalidInputException {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act and Assert
-    new HashTag(parent, 1, "42").validate();
-  }
-
-  /**
-   * Test {@link HashTag#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link HashTag#HashTag(Element, int, String)} with parent is {@link
-   *       Bold#Bold(Element)} and entityIndex is one and value is {@link HashTag#PREFIX}.
-   * </ul>
-   *
-   * <p>Method under test: {@link HashTag#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void HashTag.validate()"})
-  public void testValidate_givenHashTagWithParentIsBoldAndEntityIndexIsOneAndValueIsPrefix()
-      throws InvalidInputException {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act and Assert
-    assertThrows(
-        InvalidInputException.class, () -> new HashTag(parent, 1, HashTag.PREFIX).validate());
-  }
-
-  /**
-   * Test {@link HashTag#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link HashTag#HashTag(Element, int, String)} with parent is {@link
-   *       Bold#Bold(Element)} and entityIndex is one and value is {@code UUU}.
-   * </ul>
-   *
-   * <p>Method under test: {@link HashTag#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void HashTag.validate()"})
-  public void testValidate_givenHashTagWithParentIsBoldAndEntityIndexIsOneAndValueIsUuu()
-      throws InvalidInputException {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act and Assert
-    new HashTag(parent, 1, "UUU").validate();
+  public void testValidate_thenThrowInvalidInputException() throws InvalidInputException {
+    // Arrange, Act and Assert
+    assertThrows(InvalidInputException.class,
+        () -> (new HashTag(new Bold(new BulletList(mock(Element.class))), 1, HashTag.PREFIX)).validate());
   }
 
   /**
    * Test {@link HashTag#asText()}.
-   *
-   * <p>Method under test: {@link HashTag#asText()}
+   * <p>
+   * Method under test: {@link HashTag#asText()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String HashTag.asText()"})
   public void testAsText() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act and Assert
-    assertEquals("#null", new HashTag(parent2, 1).asText());
+    // Arrange, Act and Assert
+    assertEquals("#null", (new HashTag(new Bold(new BulletList(mock(Element.class))), 1)).asText());
   }
 
   /**
    * Test {@link HashTag#asMarkdown()}.
-   *
-   * <p>Method under test: {@link HashTag#asMarkdown()}
+   * <p>
+   * Method under test: {@link HashTag#asMarkdown()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Node HashTag.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act
-    Node actualAsMarkdownResult = new HashTag(parent2, 1).asMarkdown();
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new HashTag(new Bold(new BulletList(mock(Element.class))), 1)).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof KeywordNode);
@@ -346,9 +176,8 @@ public class HashTagDiffblueTest {
 
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link HashTag#toString()}
    *   <li>{@link HashTag#getEntitySubType()}
@@ -358,19 +187,12 @@ public class HashTagDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "String HashTag.getEntitySubType()",
-    "String HashTag.getEntityType()",
-    "String HashTag.getEntityVersion()",
-    "String HashTag.getTagPattern()",
-    "String HashTag.toString()"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"String HashTag.getEntitySubType()", "String HashTag.getEntityType()",
+      "String HashTag.getEntityVersion()", "String HashTag.getTagPattern()", "String HashTag.toString()"})
   public void testGettersAndSetters() {
     // Arrange
-    Bold parent = new Bold(new BulletList(null));
-    HashTag hashTag = new HashTag(parent, 1);
+    HashTag hashTag = new HashTag(new Bold(new BulletList(null)), 1);
 
     // Act
     String actualToStringResult = hashTag.toString();
@@ -388,18 +210,15 @@ public class HashTagDiffblueTest {
 
   /**
    * Test {@link HashTag#updateBiContext(BiContext)}.
-   *
-   * <p>Method under test: {@link HashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link HashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    HashTag hashTag = new HashTag(parent2, 1);
+    HashTag hashTag = new HashTag(new Bold(new BulletList(mock(Element.class))), 1);
 
     BiContext context = new BiContext();
     context.addItemWithValue("hashtags", new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -426,22 +245,18 @@ public class HashTagDiffblueTest {
 
   /**
    * Test {@link HashTag#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Given {@code Item Value}.
+   *   <li>Given {@code Item Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link HashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext_givenItemValue() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    HashTag hashTag = new HashTag(parent2, 1);
+    HashTag hashTag = new HashTag(new Bold(new BulletList(mock(Element.class))), 1);
 
     BiContext context = new BiContext();
     context.addItemWithValue("hashtags", "Item Value");
@@ -468,22 +283,18 @@ public class HashTagDiffblueTest {
 
   /**
    * Test {@link HashTag#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link HashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    HashTag hashTag = new HashTag(parent2, 1);
+    HashTag hashTag = new HashTag(new Bold(new BulletList(mock(Element.class))), 1);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem("hashtags", Element.STYLE_ATTR));
@@ -507,22 +318,18 @@ public class HashTagDiffblueTest {
 
   /**
    * Test {@link HashTag#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is three.
+   *   <li>Then {@link BiContext} (default constructor) Items size is three.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link HashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsThree() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    HashTag hashTag = new HashTag(parent2, 1);
+    HashTag hashTag = new HashTag(new Bold(new BulletList(mock(Element.class))), 1);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -547,22 +354,18 @@ public class HashTagDiffblueTest {
 
   /**
    * Test {@link HashTag#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code hashtags}.
+   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code hashtags}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link HashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsThirdNameIsHashtags() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    HashTag hashTag = new HashTag(parent2, 1);
+    HashTag hashTag = new HashTag(new Bold(new BulletList(mock(Element.class))), 1);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -583,23 +386,19 @@ public class HashTagDiffblueTest {
 
   /**
    * Test {@link HashTag#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code hashtags}.
+   *   <li>When {@link BiContext} (default constructor).</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code hashtags}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link HashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link HashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsHashtags() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    HashTag hashTag = new HashTag(parent2, 1);
+    HashTag hashTag = new HashTag(new Bold(new BulletList(mock(Element.class))), 1);
     BiContext context = new BiContext();
 
     // Act

@@ -5,8 +5,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
@@ -19,20 +18,18 @@ import org.symphonyoss.symphony.messageml.bi.BiItem;
 public class ParagraphDiffblueTest {
   /**
    * Test {@link Paragraph#Paragraph(Element)}.
-   *
-   * <p>Method under test: {@link Paragraph#Paragraph(Element)}
+   * <p>
+   * Method under test: {@link Paragraph#Paragraph(Element)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Paragraph.<init>(Element)"})
   public void testNewParagraph() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
 
     // Act
-    Paragraph actualParagraph = new Paragraph(parent2);
+    Paragraph actualParagraph = new Paragraph(parent);
 
     // Assert
     assertEquals(0, actualParagraph.size());
@@ -41,43 +38,33 @@ public class ParagraphDiffblueTest {
     assertTrue(actualParagraph.getAttributes().isEmpty());
     assertEquals(Paragraph.MESSAGEML_TAG, actualParagraph.getMessageMLTag());
     assertEquals(Paragraph.MESSAGEML_TAG, actualParagraph.getPresentationMLTag());
-    assertSame(parent2, actualParagraph.getParent());
+    assertSame(parent, actualParagraph.getParent());
   }
 
   /**
    * Test {@link Paragraph#asText()}.
-   *
-   * <p>Method under test: {@link Paragraph#asText()}
+   * <p>
+   * Method under test: {@link Paragraph#asText()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String Paragraph.asText()"})
   public void testAsText() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act and Assert
-    assertEquals("\n", new Paragraph(parent2).asText());
+    // Arrange, Act and Assert
+    assertEquals("\n", (new Paragraph(new Bold(new BulletList(mock(Element.class))))).asText());
   }
 
   /**
    * Test {@link Paragraph#asMarkdown()}.
-   *
-   * <p>Method under test: {@link Paragraph#asMarkdown()}
+   * <p>
+   * Method under test: {@link Paragraph#asMarkdown()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Node Paragraph.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act
-    Node actualAsMarkdownResult = new Paragraph(parent2).asMarkdown();
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new Paragraph(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof org.commonmark.node.Paragraph);
@@ -90,43 +77,35 @@ public class ParagraphDiffblueTest {
 
   /**
    * Test {@link Paragraph#toString()}.
-   *
-   * <p>Method under test: {@link Paragraph#toString()}
+   * <p>
+   * Method under test: {@link Paragraph#toString()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String Paragraph.toString()"})
   public void testToString() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act and Assert
-    assertEquals("\n\n", new Paragraph(parent).toString());
+    // Arrange, Act and Assert
+    assertEquals("\n\n", (new Paragraph(new Bold(new BulletList(null)))).toString());
   }
 
   /**
    * Test {@link Paragraph#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link
-   *       BiItem}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link BiItem}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Paragraph#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Paragraph paragraph = new Paragraph(parent2);
+    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
     context.addItemWithValue("paragraphs", biItem);
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -150,23 +129,18 @@ public class ParagraphDiffblueTest {
 
   /**
    * Test {@link Paragraph#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is
-   *       {@code Item Value}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is {@code Item Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Paragraph#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Paragraph paragraph = new Paragraph(parent2);
+    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItemWithValue("paragraphs", "Item Value");
@@ -189,22 +163,18 @@ public class ParagraphDiffblueTest {
 
   /**
    * Test {@link Paragraph#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Paragraph#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Paragraph paragraph = new Paragraph(parent2);
+    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem("paragraphs", Element.STYLE_ATTR));
@@ -223,22 +193,18 @@ public class ParagraphDiffblueTest {
 
   /**
    * Test {@link Paragraph#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Paragraph#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Paragraph paragraph = new Paragraph(parent2);
+    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -258,22 +224,18 @@ public class ParagraphDiffblueTest {
 
   /**
    * Test {@link Paragraph#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code paragraphs}.
+   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code paragraphs}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Paragraph#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsThirdNameIsParagraphs() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Paragraph paragraph = new Paragraph(parent2);
+    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -294,23 +256,19 @@ public class ParagraphDiffblueTest {
 
   /**
    * Test {@link Paragraph#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code paragraphs}.
+   *   <li>When {@link BiContext} (default constructor).</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code paragraphs}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Paragraph#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsParagraphs() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Paragraph paragraph = new Paragraph(parent2);
+    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
     BiContext context = new BiContext();
 
     // Act

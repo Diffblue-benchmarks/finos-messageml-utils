@@ -5,37 +5,31 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
-import javax.imageio.metadata.IIOMetadataNode;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
-import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
-import org.w3c.dom.Node;
 
 public class ChimeDiffblueTest {
   /**
    * Test {@link Chime#Chime(Element, FormatEnum)}.
-   *
    * <ul>
-   *   <li>Then Parent return {@link MessageML}.
+   *   <li>Then Parent return {@link MessageML}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Chime#Chime(Element, FormatEnum)}
+   * <p>
+   * Method under test: {@link Chime#Chime(Element, FormatEnum)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.<init>(Element, FormatEnum)"})
   public void testNewChime_thenParentReturnMessageML() throws InvalidInputException {
     // Arrange
@@ -59,67 +53,36 @@ public class ChimeDiffblueTest {
 
   /**
    * Test {@link Chime#Chime(Element, FormatEnum)}.
-   *
    * <ul>
-   *   <li>When {@link BulletList#BulletList(Element)} with parent is {@link Element}.
-   *   <li>Then throw {@link InvalidInputException}.
+   *   <li>When {@link BulletList#BulletList(Element)} with parent is {@link Element}.</li>
+   *   <li>Then throw {@link InvalidInputException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Chime#Chime(Element, FormatEnum)}
+   * <p>
+   * Method under test: {@link Chime#Chime(Element, FormatEnum)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.<init>(Element, FormatEnum)"})
   public void testNewChime_whenBulletListWithParentIsElement_thenThrowInvalidInputException()
       throws InvalidInputException {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    // Arrange, Act and Assert
+    assertThrows(InvalidInputException.class,
+        () -> new Chime(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
 
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> new Chime(parent2, FormatEnum.MESSAGEML));
-  }
-
-  /**
-   * Test {@link Chime#buildAttribute(MessageMLParser, Node)}.
-   *
-   * <ul>
-   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with {@code foo}.
-   *   <li>Then throw {@link InvalidInputException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link Chime#buildAttribute(MessageMLParser, Node)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void Chime.buildAttribute(MessageMLParser, Node)"})
-  public void testBuildAttribute_whenIIOMetadataNodeWithFoo_thenThrowInvalidInputException()
-      throws InvalidInputException {
-    // Arrange
-    Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
-    MessageMLParser parser = mock(MessageMLParser.class);
-
-    // Act and Assert
-    assertThrows(
-        InvalidInputException.class,
-        () -> chime.buildAttribute(parser, new IIOMetadataNode("foo")));
   }
 
   /**
    * Test {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   *
-   * <p>Method under test: {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * <p>
+   * Method under test: {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() throws InvalidInputException {
     // Arrange
     Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
     chime.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
@@ -130,18 +93,17 @@ public class ChimeDiffblueTest {
 
   /**
    * Test {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   *
-   * <p>Method under test: {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * <p>
+   * Method under test: {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML2() throws InvalidInputException {
     // Arrange
     Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
     out.setPrintOffsets(true);
 
     // Act
@@ -153,18 +115,17 @@ public class ChimeDiffblueTest {
 
   /**
    * Test {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   *
-   * <p>Method under test: {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * <p>
+   * Method under test: {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML3() throws InvalidInputException {
     // Arrange
     Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
     out.setNoIndent(true);
 
     // Act
@@ -176,18 +137,17 @@ public class ChimeDiffblueTest {
 
   /**
    * Test {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   *
-   * <p>Method under test: {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * <p>
+   * Method under test: {@link Chime#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML4() throws InvalidInputException {
     // Arrange
     Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
 
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream());
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
     out.setNoNl(true);
 
     // Act
@@ -199,86 +159,39 @@ public class ChimeDiffblueTest {
 
   /**
    * Test {@link Chime#asText()}.
-   *
    * <ul>
-   *   <li>Then return empty string.
+   *   <li>Then return empty string.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Chime#asText()}
+   * <p>
+   * Method under test: {@link Chime#asText()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String Chime.asText()"})
   public void testAsText_thenReturnEmptyString() throws InvalidInputException {
     // Arrange, Act and Assert
-    assertEquals(
-        "", new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML).asText());
-  }
-
-  /**
-   * Test {@link Chime#validate()}.
-   *
-   * <ul>
-   *   <li>Then does not throw.
-   * </ul>
-   *
-   * <p>Method under test: {@link Chime#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void Chime.validate()"})
-  public void testValidate_thenDoesNotThrow() throws InvalidInputException {
-    // Arrange, Act and Assert
-    new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML).validate();
-  }
-
-  /**
-   * Test {@link Chime#validate()}.
-   *
-   * <ul>
-   *   <li>Then throw {@link InvalidInputException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link Chime#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void Chime.validate()"})
-  public void testValidate_thenThrowInvalidInputException() throws InvalidInputException {
-    // Arrange
-    Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
-    chime.addChild(new Bold(new BulletList(null)));
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> chime.validate());
+    assertEquals("", (new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML)).asText());
   }
 
   /**
    * Test {@link Chime#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link
-   *       BiItem}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link BiItem}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Chime#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Chime#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem()
-      throws InvalidInputException {
+  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() throws InvalidInputException {
     // Arrange
     Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
 
     BiContext context = new BiContext();
     BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
     context.addItemWithValue("chimes", biItem);
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
 
     // Act
@@ -286,7 +199,7 @@ public class ChimeDiffblueTest {
 
     // Assert that nothing has changed
     List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
+    assertEquals(2, items.size());
     Map<String, Object> attributes = items.get(0).getAttributes();
     assertEquals(1, attributes.size());
     Object getResult = attributes.get("count");
@@ -294,32 +207,26 @@ public class ChimeDiffblueTest {
     Map<String, Object> attributes2 = items.get(1).getAttributes();
     assertEquals(1, attributes2.size());
     assertTrue(attributes2.containsKey(Element.STYLE_ATTR));
-    assertEquals(attributes2, items.get(2).getAttributes());
     assertSame(biItem, getResult);
   }
 
   /**
    * Test {@link Chime#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is
-   *       {@code Item Value}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is {@code Item Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Chime#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Chime#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue()
-      throws InvalidInputException {
+  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() throws InvalidInputException {
     // Arrange
     Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
 
     BiContext context = new BiContext();
     context.addItemWithValue("chimes", "Item Value");
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
 
     // Act
@@ -327,7 +234,7 @@ public class ChimeDiffblueTest {
 
     // Assert that nothing has changed
     List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
+    assertEquals(2, items.size());
     Map<String, Object> attributes = items.get(0).getAttributes();
     assertEquals(1, attributes.size());
     assertEquals("Item Value", attributes.get("count"));
@@ -338,19 +245,16 @@ public class ChimeDiffblueTest {
 
   /**
    * Test {@link Chime#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Chime#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Chime#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo()
-      throws InvalidInputException {
+  public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() throws InvalidInputException {
     // Arrange
     Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
 
@@ -371,18 +275,16 @@ public class ChimeDiffblueTest {
 
   /**
    * Test {@link Chime#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items second Name is {@code chimes}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Chime#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Chime#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() throws InvalidInputException {
+  public void testUpdateBiContext_thenBiContextItemsSecondNameIsChimes() throws InvalidInputException {
     // Arrange
     Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
 
@@ -404,19 +306,16 @@ public class ChimeDiffblueTest {
 
   /**
    * Test {@link Chime#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code chimes}.
+   *   <li>Then {@link BiContext} (default constructor) Items size is three.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Chime#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Chime#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsThirdNameIsChimes()
-      throws InvalidInputException {
+  public void testUpdateBiContext_thenBiContextItemsSizeIsThree() throws InvalidInputException {
     // Arrange
     Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
 
@@ -439,20 +338,17 @@ public class ChimeDiffblueTest {
 
   /**
    * Test {@link Chime#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code chimes}.
+   *   <li>When {@link BiContext} (default constructor).</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code chimes}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Chime#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Chime#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Chime.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsChimes()
-      throws InvalidInputException {
+  public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsChimes() throws InvalidInputException {
     // Arrange
     Chime chime = new Chime(new MessageML(FormatEnum.MESSAGEML, "1.0.2"), FormatEnum.MESSAGEML);
     BiContext context = new BiContext();

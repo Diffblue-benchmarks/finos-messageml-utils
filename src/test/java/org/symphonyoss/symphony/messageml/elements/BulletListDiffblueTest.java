@@ -4,11 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
@@ -17,25 +15,22 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
-import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
 public class BulletListDiffblueTest {
   /**
    * Test {@link BulletList#BulletList(Element)}.
-   *
-   * <p>Method under test: {@link BulletList#BulletList(Element)}
+   * <p>
+   * Method under test: {@link BulletList#BulletList(Element)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BulletList.<init>(Element)"})
   public void testNewBulletList() {
     // Arrange
-    Code parent = new Code(mock(Element.class), "en");
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new Code(mock(Element.class), "en"));
 
     // Act
-    BulletList actualBulletList = new BulletList(parent2);
+    BulletList actualBulletList = new BulletList(parent);
 
     // Assert
     assertEquals(0, actualBulletList.size());
@@ -44,24 +39,20 @@ public class BulletListDiffblueTest {
     assertTrue(actualBulletList.getAttributes().isEmpty());
     assertEquals(BulletList.MESSAGEML_TAG, actualBulletList.getMessageMLTag());
     assertEquals(BulletList.MESSAGEML_TAG, actualBulletList.getPresentationMLTag());
-    assertSame(parent2, actualBulletList.getParent());
+    assertSame(parent, actualBulletList.getParent());
   }
 
   /**
    * Test {@link BulletList#asMarkdown()}.
-   *
-   * <p>Method under test: {@link BulletList#asMarkdown()}
+   * <p>
+   * Method under test: {@link BulletList#asMarkdown()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Node BulletList.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange
-    Bold parent = new Bold(mock(Element.class));
-
-    // Act
-    Node actualAsMarkdownResult = new BulletList(parent).asMarkdown();
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new BulletList(new Bold(mock(Element.class)))).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof org.commonmark.node.BulletList);
@@ -75,70 +66,23 @@ public class BulletListDiffblueTest {
   }
 
   /**
-   * Test {@link BulletList#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link BulletList#BulletList(Element)} with parent is {@link Bold#Bold(Element)}.
-   *   <li>Then throw {@link InvalidInputException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link BulletList#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void BulletList.validate()"})
-  public void testValidate_givenBulletListWithParentIsBold_thenThrowInvalidInputException()
-      throws InvalidInputException {
-    // Arrange, Act and Assert
-    assertThrows(InvalidInputException.class, () -> new BulletList(new Bold(null)).validate());
-  }
-
-  /**
-   * Test {@link BulletList#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link BulletList#BulletList(Element)} with parent is {@code null}.
-   *   <li>Then throw {@link InvalidInputException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link BulletList#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void BulletList.validate()"})
-  public void testValidate_givenBulletListWithParentIsNull_thenThrowInvalidInputException()
-      throws InvalidInputException {
-    // Arrange
-    BulletList bulletList = new BulletList(new Bold(null));
-    bulletList.addChild(new Bold(new BulletList(null)));
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> bulletList.validate());
-  }
-
-  /**
    * Test {@link BulletList#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link
-   *       BiItem}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link BiItem}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BulletList#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link BulletList#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BulletList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
     // Arrange
-    Bold parent = new Bold(mock(Element.class));
-    BulletList bulletList = new BulletList(parent);
+    BulletList bulletList = new BulletList(new Bold(mock(Element.class)));
 
     BiContext context = new BiContext();
     BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
     context.addItemWithValue("lists", biItem);
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -162,22 +106,18 @@ public class BulletListDiffblueTest {
 
   /**
    * Test {@link BulletList#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is
-   *       {@code Item Value}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is {@code Item Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BulletList#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link BulletList#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BulletList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
     // Arrange
-    Bold parent = new Bold(mock(Element.class));
-    BulletList bulletList = new BulletList(parent);
+    BulletList bulletList = new BulletList(new Bold(mock(Element.class)));
 
     BiContext context = new BiContext();
     context.addItemWithValue("lists", "Item Value");
@@ -200,21 +140,18 @@ public class BulletListDiffblueTest {
 
   /**
    * Test {@link BulletList#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BulletList#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link BulletList#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BulletList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
     // Arrange
-    Bold parent = new Bold(mock(Element.class));
-    BulletList bulletList = new BulletList(parent);
+    BulletList bulletList = new BulletList(new Bold(mock(Element.class)));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem("lists", Element.STYLE_ATTR));
@@ -233,21 +170,18 @@ public class BulletListDiffblueTest {
 
   /**
    * Test {@link BulletList#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BulletList#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link BulletList#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BulletList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
     // Arrange
-    Bold parent = new Bold(mock(Element.class));
-    BulletList bulletList = new BulletList(parent);
+    BulletList bulletList = new BulletList(new Bold(mock(Element.class)));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -267,21 +201,18 @@ public class BulletListDiffblueTest {
 
   /**
    * Test {@link BulletList#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code lists}.
+   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code lists}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BulletList#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link BulletList#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BulletList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsThirdNameIsLists() {
     // Arrange
-    Bold parent = new Bold(mock(Element.class));
-    BulletList bulletList = new BulletList(parent);
+    BulletList bulletList = new BulletList(new Bold(mock(Element.class)));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -302,22 +233,19 @@ public class BulletListDiffblueTest {
 
   /**
    * Test {@link BulletList#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code lists}.
+   *   <li>When {@link BiContext} (default constructor).</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code lists}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link BulletList#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link BulletList#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void BulletList.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsLists() {
     // Arrange
-    Bold parent = new Bold(mock(Element.class));
-    BulletList bulletList = new BulletList(parent);
+    BulletList bulletList = new BulletList(new Bold(mock(Element.class)));
     BiContext context = new BiContext();
 
     // Act

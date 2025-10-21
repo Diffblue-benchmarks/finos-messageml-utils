@@ -2,8 +2,7 @@ package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -11,12 +10,11 @@ import org.junit.experimental.categories.Category;
 public class DateSelectorNodeDiffblueTest {
   /**
    * Test {@link DateSelectorNode#DateSelectorNode(String)}.
-   *
-   * <p>Method under test: {@link DateSelectorNode#DateSelectorNode(String)}
+   * <p>
+   * Method under test: {@link DateSelectorNode#DateSelectorNode(String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void DateSelectorNode.<init>(String)"})
   public void testNewDateSelectorNode() {
     // Arrange and Act
@@ -33,39 +31,35 @@ public class DateSelectorNodeDiffblueTest {
 
   /**
    * Test {@link DateSelectorNode#getText()}.
-   *
    * <ul>
-   *   <li>Given {@link DateSelectorNode#DateSelectorNode(String)} with placeholder is {@code null}.
-   *   <li>Then return empty string.
+   *   <li>Given {@link DateSelectorNode#DateSelectorNode(String)} with placeholder is {@code null}.</li>
+   *   <li>Then return empty string.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateSelectorNode#getText()}
+   * <p>
+   * Method under test: {@link DateSelectorNode#getText()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String DateSelectorNode.getText()"})
   public void testGetText_givenDateSelectorNodeWithPlaceholderIsNull_thenReturnEmptyString() {
     // Arrange, Act and Assert
-    assertEquals("", new DateSelectorNode(null).getText());
+    assertEquals("", (new DateSelectorNode(null)).getText());
   }
 
   /**
    * Test {@link DateSelectorNode#getText()}.
-   *
    * <ul>
-   *   <li>Given {@link DateSelectorNode#DateSelectorNode(String)} with {@code Placeholder}.
-   *   <li>Then return {@code :[Placeholder]}.
+   *   <li>Given {@link DateSelectorNode#DateSelectorNode(String)} with {@code Placeholder}.</li>
+   *   <li>Then return {@code :[Placeholder]}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateSelectorNode#getText()}
+   * <p>
+   * Method under test: {@link DateSelectorNode#getText()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String DateSelectorNode.getText()"})
   public void testGetText_givenDateSelectorNodeWithPlaceholder_thenReturnPlaceholder() {
     // Arrange, Act and Assert
-    assertEquals(":[Placeholder]", new DateSelectorNode("Placeholder").getText());
+    assertEquals(":[Placeholder]", (new DateSelectorNode("Placeholder")).getText());
   }
 }

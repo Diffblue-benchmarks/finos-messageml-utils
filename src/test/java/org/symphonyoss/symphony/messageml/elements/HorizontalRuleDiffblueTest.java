@@ -4,44 +4,31 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
-import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
 import org.commonmark.node.Paragraph;
 import org.commonmark.node.Text;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.symphonyoss.symphony.messageml.MessageMLParser;
-import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
-@RunWith(MockitoJUnitRunner.class)
 public class HorizontalRuleDiffblueTest {
-  @InjectMocks private HorizontalRule horizontalRule;
-
   /**
    * Test {@link HorizontalRule#HorizontalRule(Element)}.
-   *
-   * <p>Method under test: {@link HorizontalRule#HorizontalRule(Element)}
+   * <p>
+   * Method under test: {@link HorizontalRule#HorizontalRule(Element)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void HorizontalRule.<init>(Element)"})
   public void testNewHorizontalRule() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
 
     // Act
-    HorizontalRule actualHorizontalRule = new HorizontalRule(parent2);
+    HorizontalRule actualHorizontalRule = new HorizontalRule(parent);
 
     // Assert
     assertEquals(0, actualHorizontalRule.size());
@@ -50,71 +37,33 @@ public class HorizontalRuleDiffblueTest {
     assertTrue(actualHorizontalRule.getAttributes().isEmpty());
     assertEquals(HorizontalRule.MESSAGEML_TAG, actualHorizontalRule.getMessageMLTag());
     assertEquals(HorizontalRule.MESSAGEML_TAG, actualHorizontalRule.getPresentationMLTag());
-    assertSame(parent2, actualHorizontalRule.getParent());
-  }
-
-  /**
-   * Test {@link HorizontalRule#buildAttribute(MessageMLParser, Node)}.
-   *
-   * <ul>
-   *   <li>When {@link IIOMetadataNode#IIOMetadataNode()}.
-   *   <li>Then throw {@link InvalidInputException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link HorizontalRule#buildAttribute(MessageMLParser, org.w3c.dom.Node)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void HorizontalRule.buildAttribute(MessageMLParser, org.w3c.dom.Node)"})
-  public void testBuildAttribute_whenIIOMetadataNode_thenThrowInvalidInputException()
-      throws InvalidInputException {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    HorizontalRule horizontalRule = new HorizontalRule(parent2);
-    MessageMLParser parser = mock(MessageMLParser.class);
-
-    // Act and Assert
-    assertThrows(
-        InvalidInputException.class,
-        () -> horizontalRule.buildAttribute(parser, new IIOMetadataNode()));
+    assertSame(parent, actualHorizontalRule.getParent());
   }
 
   /**
    * Test {@link HorizontalRule#asText()}.
-   *
-   * <p>Method under test: {@link HorizontalRule#asText()}
+   * <p>
+   * Method under test: {@link HorizontalRule#asText()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.lang.String HorizontalRule.asText()"})
   public void testAsText() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act and Assert
-    assertEquals("\n", new HorizontalRule(parent2).asText());
+    // Arrange, Act and Assert
+    assertEquals("\n", (new HorizontalRule(new Bold(new BulletList(mock(Element.class))))).asText());
   }
 
   /**
    * Test {@link HorizontalRule#asMarkdown()}.
-   *
-   * <p>Method under test: {@link HorizontalRule#asMarkdown()}
+   * <p>
+   * Method under test: {@link HorizontalRule#asMarkdown()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Node HorizontalRule.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act
-    Node actualAsMarkdownResult = new HorizontalRule(parent2).asMarkdown();
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new HorizontalRule(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof Paragraph);
@@ -132,82 +81,28 @@ public class HorizontalRuleDiffblueTest {
   }
 
   /**
-   * Test {@link HorizontalRule#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link BulletList#BulletList(Element)} with parent is {@code null}.
-   *   <li>Then throw {@link InvalidInputException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link HorizontalRule#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void HorizontalRule.validate()"})
-  public void testValidate_givenBulletListWithParentIsNull_thenThrowInvalidInputException()
-      throws InvalidInputException {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    HorizontalRule horizontalRule = new HorizontalRule(parent);
-    horizontalRule.addChild(new Bold(new BulletList(null)));
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> horizontalRule.validate());
-  }
-
-  /**
-   * Test {@link HorizontalRule#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link HorizontalRule}.
-   *   <li>Then does not throw.
-   * </ul>
-   *
-   * <p>Method under test: {@link HorizontalRule#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void HorizontalRule.validate()"})
-  public void testValidate_givenHorizontalRule_thenDoesNotThrow() throws InvalidInputException {
-    // Arrange, Act and Assert
-    horizontalRule.validate();
-  }
-
-  /**
    * Test {@link HorizontalRule#areNestedElementsAllowed()}.
-   *
-   * <p>Method under test: {@link HorizontalRule#areNestedElementsAllowed()}
+   * <p>
+   * Method under test: {@link HorizontalRule#areNestedElementsAllowed()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean HorizontalRule.areNestedElementsAllowed()"})
   public void testAreNestedElementsAllowed() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act and Assert
-    assertFalse(new HorizontalRule(parent2).areNestedElementsAllowed());
+    // Arrange, Act and Assert
+    assertFalse((new HorizontalRule(new Bold(new BulletList(mock(Element.class))))).areNestedElementsAllowed());
   }
 
   /**
    * Test {@link HorizontalRule#toString()}.
-   *
-   * <p>Method under test: {@link HorizontalRule#toString()}
+   * <p>
+   * Method under test: {@link HorizontalRule#toString()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"java.lang.String HorizontalRule.toString()"})
   public void testToString() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act and Assert
-    assertEquals("\n", new HorizontalRule(parent).toString());
+    // Arrange, Act and Assert
+    assertEquals("\n", (new HorizontalRule(new Bold(new BulletList(null)))).toString());
   }
 }

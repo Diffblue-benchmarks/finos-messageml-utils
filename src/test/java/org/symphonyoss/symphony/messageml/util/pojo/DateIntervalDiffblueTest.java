@@ -5,8 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThrows;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -15,25 +14,23 @@ import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 public class DateIntervalDiffblueTest {
   /**
    * Test {@link DateInterval#getType()}.
-   *
    * <ul>
-   *   <li>Given {@link DateInterval} (default constructor) Day is {@code foo}.
-   *   <li>Then return {@code date}.
+   *   <li>Given {@link DateInterval} (default constructor) Day is {@code foo}.</li>
+   *   <li>Then return {@code date}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#getType()}
+   * <p>
+   * Method under test: {@link DateInterval#getType()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String DateInterval.getType()"})
   public void testGetType_givenDateIntervalDayIsFoo_thenReturnDate() {
     // Arrange
     DateInterval dateInterval = new DateInterval();
     dateInterval.setFrom(null);
+    dateInterval.setTo(null);
     dateInterval.setDay("foo");
     dateInterval.setDaysOfWeek(null);
-    dateInterval.setTo(null);
 
     // Act and Assert
     assertEquals("date", dateInterval.getType());
@@ -41,26 +38,23 @@ public class DateIntervalDiffblueTest {
 
   /**
    * Test {@link DateInterval#getType()}.
-   *
    * <ul>
-   *   <li>Given {@link DateInterval} (default constructor) DaysOfWeek is array of {@link Integer}
-   *       with one.
-   *   <li>Then return {@code null}.
+   *   <li>Given {@link DateInterval} (default constructor) Day is {@code foo}.</li>
+   *   <li>Then return {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#getType()}
+   * <p>
+   * Method under test: {@link DateInterval#getType()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String DateInterval.getType()"})
-  public void testGetType_givenDateIntervalDaysOfWeekIsArrayOfIntegerWithOne_thenReturnNull() {
+  public void testGetType_givenDateIntervalDayIsFoo_thenReturnNull() {
     // Arrange
     DateInterval dateInterval = new DateInterval();
     dateInterval.setFrom(null);
-    dateInterval.setDay(null);
-    dateInterval.setDaysOfWeek(new Integer[] {1});
-    dateInterval.setTo("foo");
+    dateInterval.setTo(null);
+    dateInterval.setDay("foo");
+    dateInterval.setDaysOfWeek(new Integer[]{1});
 
     // Act and Assert
     assertNull(dateInterval.getType());
@@ -68,25 +62,23 @@ public class DateIntervalDiffblueTest {
 
   /**
    * Test {@link DateInterval#getType()}.
-   *
    * <ul>
-   *   <li>Given {@link DateInterval} (default constructor) From is {@code foo}.
-   *   <li>Then return {@code null}.
+   *   <li>Given {@link DateInterval} (default constructor) From is {@code foo}.</li>
+   *   <li>Then return {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#getType()}
+   * <p>
+   * Method under test: {@link DateInterval#getType()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String DateInterval.getType()"})
   public void testGetType_givenDateIntervalFromIsFoo_thenReturnNull() {
     // Arrange
     DateInterval dateInterval = new DateInterval();
     dateInterval.setFrom("foo");
+    dateInterval.setTo(null);
     dateInterval.setDay(null);
     dateInterval.setDaysOfWeek(null);
-    dateInterval.setTo(null);
 
     // Act and Assert
     assertNull(dateInterval.getType());
@@ -94,25 +86,23 @@ public class DateIntervalDiffblueTest {
 
   /**
    * Test {@link DateInterval#getType()}.
-   *
    * <ul>
-   *   <li>Given {@link DateInterval} (default constructor) From is {@code foo}.
-   *   <li>Then return {@code range}.
+   *   <li>Given {@link DateInterval} (default constructor) To is {@code foo}.</li>
+   *   <li>Then return {@code range}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#getType()}
+   * <p>
+   * Method under test: {@link DateInterval#getType()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String DateInterval.getType()"})
-  public void testGetType_givenDateIntervalFromIsFoo_thenReturnRange() {
+  public void testGetType_givenDateIntervalToIsFoo_thenReturnRange() {
     // Arrange
     DateInterval dateInterval = new DateInterval();
     dateInterval.setFrom("foo");
+    dateInterval.setTo("foo");
     dateInterval.setDay(null);
     dateInterval.setDaysOfWeek(null);
-    dateInterval.setTo("foo");
 
     // Act and Assert
     assertEquals("range", dateInterval.getType());
@@ -120,43 +110,39 @@ public class DateIntervalDiffblueTest {
 
   /**
    * Test {@link DateInterval#getType()}.
-   *
    * <ul>
-   *   <li>Given {@link DateInterval} (default constructor).
-   *   <li>Then return {@code null}.
+   *   <li>Given {@link DateInterval} (default constructor).</li>
+   *   <li>Then return {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#getType()}
+   * <p>
+   * Method under test: {@link DateInterval#getType()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String DateInterval.getType()"})
   public void testGetType_givenDateInterval_thenReturnNull() {
     // Arrange, Act and Assert
-    assertNull(new DateInterval().getType());
+    assertNull((new DateInterval()).getType());
   }
 
   /**
    * Test {@link DateInterval#getType()}.
-   *
    * <ul>
-   *   <li>Then return {@code weekdays}.
+   *   <li>Then return {@code weekdays}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#getType()}
+   * <p>
+   * Method under test: {@link DateInterval#getType()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String DateInterval.getType()"})
   public void testGetType_thenReturnWeekdays() {
     // Arrange
     DateInterval dateInterval = new DateInterval();
     dateInterval.setFrom(null);
-    dateInterval.setDay(null);
-    dateInterval.setDaysOfWeek(new Integer[] {1});
     dateInterval.setTo(null);
+    dateInterval.setDay(null);
+    dateInterval.setDaysOfWeek(new Integer[]{1});
 
     // Act and Assert
     assertEquals("weekdays", dateInterval.getType());
@@ -164,26 +150,24 @@ public class DateIntervalDiffblueTest {
 
   /**
    * Test {@link DateInterval#assertIsValid()}.
-   *
    * <ul>
-   *   <li>Given {@link DateInterval} (default constructor) Day is {@code foo}.
-   *   <li>Then throw {@link InvalidInputException}.
+   *   <li>Given {@link DateInterval} (default constructor) Day is {@code foo}.</li>
+   *   <li>Then throw {@link InvalidInputException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#assertIsValid()}
+   * <p>
+   * Method under test: {@link DateInterval#assertIsValid()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void DateInterval.assertIsValid()"})
   public void testAssertIsValid_givenDateIntervalDayIsFoo_thenThrowInvalidInputException()
       throws InvalidInputException {
     // Arrange
     DateInterval dateInterval = new DateInterval();
     dateInterval.setFrom(null);
+    dateInterval.setTo(null);
     dateInterval.setDay("foo");
     dateInterval.setDaysOfWeek(null);
-    dateInterval.setTo(null);
 
     // Act and Assert
     assertThrows(InvalidInputException.class, () -> dateInterval.assertIsValid());
@@ -191,26 +175,24 @@ public class DateIntervalDiffblueTest {
 
   /**
    * Test {@link DateInterval#assertIsValid()}.
-   *
    * <ul>
-   *   <li>Given {@link DateInterval} (default constructor) DaysOfWeek is array of {@link Integer}
-   *       with minus one.
+   *   <li>Given {@link DateInterval} (default constructor) Day is {@code foo}.</li>
+   *   <li>Then throw {@link InvalidInputException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#assertIsValid()}
+   * <p>
+   * Method under test: {@link DateInterval#assertIsValid()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void DateInterval.assertIsValid()"})
-  public void testAssertIsValid_givenDateIntervalDaysOfWeekIsArrayOfIntegerWithMinusOne()
+  public void testAssertIsValid_givenDateIntervalDayIsFoo_thenThrowInvalidInputException2()
       throws InvalidInputException {
     // Arrange
     DateInterval dateInterval = new DateInterval();
     dateInterval.setFrom(null);
-    dateInterval.setDay(null);
-    dateInterval.setDaysOfWeek(new Integer[] {-1});
     dateInterval.setTo(null);
+    dateInterval.setDay("foo");
+    dateInterval.setDaysOfWeek(new Integer[]{1});
 
     // Act and Assert
     assertThrows(InvalidInputException.class, () -> dateInterval.assertIsValid());
@@ -218,26 +200,22 @@ public class DateIntervalDiffblueTest {
 
   /**
    * Test {@link DateInterval#assertIsValid()}.
-   *
    * <ul>
-   *   <li>Given {@link DateInterval} (default constructor) DaysOfWeek is array of {@link Integer}
-   *       with one.
+   *   <li>Given {@link DateInterval} (default constructor) DaysOfWeek is array of {@link Integer} with minus one.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#assertIsValid()}
+   * <p>
+   * Method under test: {@link DateInterval#assertIsValid()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void DateInterval.assertIsValid()"})
-  public void testAssertIsValid_givenDateIntervalDaysOfWeekIsArrayOfIntegerWithOne()
-      throws InvalidInputException {
+  public void testAssertIsValid_givenDateIntervalDaysOfWeekIsArrayOfIntegerWithMinusOne() throws InvalidInputException {
     // Arrange
     DateInterval dateInterval = new DateInterval();
     dateInterval.setFrom(null);
+    dateInterval.setTo(null);
     dateInterval.setDay(null);
-    dateInterval.setDaysOfWeek(new Integer[] {1});
-    dateInterval.setTo("foo");
+    dateInterval.setDaysOfWeek(new Integer[]{-1});
 
     // Act and Assert
     assertThrows(InvalidInputException.class, () -> dateInterval.assertIsValid());
@@ -245,26 +223,24 @@ public class DateIntervalDiffblueTest {
 
   /**
    * Test {@link DateInterval#assertIsValid()}.
-   *
    * <ul>
-   *   <li>Given {@link DateInterval} (default constructor) From is {@code foo}.
-   *   <li>Then throw {@link InvalidInputException}.
+   *   <li>Given {@link DateInterval} (default constructor) From is {@code foo}.</li>
+   *   <li>Then throw {@link InvalidInputException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#assertIsValid()}
+   * <p>
+   * Method under test: {@link DateInterval#assertIsValid()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void DateInterval.assertIsValid()"})
   public void testAssertIsValid_givenDateIntervalFromIsFoo_thenThrowInvalidInputException()
       throws InvalidInputException {
     // Arrange
     DateInterval dateInterval = new DateInterval();
     dateInterval.setFrom("foo");
+    dateInterval.setTo(null);
     dateInterval.setDay(null);
     dateInterval.setDaysOfWeek(null);
-    dateInterval.setTo(null);
 
     // Act and Assert
     assertThrows(InvalidInputException.class, () -> dateInterval.assertIsValid());
@@ -272,26 +248,23 @@ public class DateIntervalDiffblueTest {
 
   /**
    * Test {@link DateInterval#assertIsValid()}.
-   *
    * <ul>
-   *   <li>Given {@link DateInterval} (default constructor) From is {@code foo}.
-   *   <li>Then throw {@link InvalidInputException}.
+   *   <li>Given {@link DateInterval} (default constructor) To is {@code foo}.</li>
+   *   <li>Then throw {@link InvalidInputException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#assertIsValid()}
+   * <p>
+   * Method under test: {@link DateInterval#assertIsValid()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void DateInterval.assertIsValid()"})
-  public void testAssertIsValid_givenDateIntervalFromIsFoo_thenThrowInvalidInputException2()
-      throws InvalidInputException {
+  public void testAssertIsValid_givenDateIntervalToIsFoo_thenThrowInvalidInputException() throws InvalidInputException {
     // Arrange
     DateInterval dateInterval = new DateInterval();
     dateInterval.setFrom("foo");
+    dateInterval.setTo("foo");
     dateInterval.setDay(null);
     dateInterval.setDaysOfWeek(null);
-    dateInterval.setTo("foo");
 
     // Act and Assert
     assertThrows(InvalidInputException.class, () -> dateInterval.assertIsValid());
@@ -299,29 +272,25 @@ public class DateIntervalDiffblueTest {
 
   /**
    * Test {@link DateInterval#assertIsValid()}.
-   *
    * <ul>
-   *   <li>Given {@link DateInterval} (default constructor).
-   *   <li>Then throw {@link InvalidInputException}.
+   *   <li>Given {@link DateInterval} (default constructor).</li>
+   *   <li>Then throw {@link InvalidInputException}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link DateInterval#assertIsValid()}
+   * <p>
+   * Method under test: {@link DateInterval#assertIsValid()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void DateInterval.assertIsValid()"})
-  public void testAssertIsValid_givenDateInterval_thenThrowInvalidInputException()
-      throws InvalidInputException {
+  public void testAssertIsValid_givenDateInterval_thenThrowInvalidInputException() throws InvalidInputException {
     // Arrange, Act and Assert
-    assertThrows(InvalidInputException.class, () -> new DateInterval().assertIsValid());
+    assertThrows(InvalidInputException.class, () -> (new DateInterval()).assertIsValid());
   }
 
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>default or parameterless constructor of {@link DateInterval}
    *   <li>{@link DateInterval#setDay(String)}
@@ -335,24 +304,16 @@ public class DateIntervalDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void DateInterval.<init>()",
-    "String DateInterval.getDay()",
-    "Integer[] DateInterval.getDaysOfWeek()",
-    "String DateInterval.getFrom()",
-    "String DateInterval.getTo()",
-    "void DateInterval.setDay(String)",
-    "void DateInterval.setDaysOfWeek(Integer[])",
-    "void DateInterval.setFrom(String)",
-    "void DateInterval.setTo(String)"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void DateInterval.<init>()", "String DateInterval.getDay()",
+      "Integer[] DateInterval.getDaysOfWeek()", "String DateInterval.getFrom()", "String DateInterval.getTo()",
+      "void DateInterval.setDay(String)", "void DateInterval.setDaysOfWeek(Integer[])",
+      "void DateInterval.setFrom(String)", "void DateInterval.setTo(String)"})
   public void testGettersAndSetters() {
     // Arrange and Act
     DateInterval actualDateInterval = new DateInterval();
     actualDateInterval.setDay("Day");
-    Integer[] daysOfWeek = new Integer[] {1};
+    Integer[] daysOfWeek = new Integer[]{1};
     actualDateInterval.setDaysOfWeek(daysOfWeek);
     actualDateInterval.setFrom("jane.doe@example.org");
     actualDateInterval.setTo("alice.liddell@example.org");
@@ -365,6 +326,6 @@ public class DateIntervalDiffblueTest {
     assertEquals("alice.liddell@example.org", actualDateInterval.getTo());
     assertEquals("jane.doe@example.org", actualFrom);
     assertSame(daysOfWeek, actualDaysOfWeek);
-    assertArrayEquals(new Integer[] {1}, actualDaysOfWeek);
+    assertArrayEquals(new Integer[]{1}, actualDaysOfWeek);
   }
 }

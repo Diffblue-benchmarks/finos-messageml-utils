@@ -2,8 +2,7 @@ package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -11,13 +10,11 @@ import org.junit.experimental.categories.Category;
 public class FormElementNodeDiffblueTest {
   /**
    * Test getters and setters.
-   *
    * <ul>
-   *   <li>Then return Text is empty string.
+   *   <li>Then return Text is empty string.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link FormElementNode#FormElementNode(String)}
    *   <li>{@link FormElementNode#getClosingDelimiter()}
@@ -25,15 +22,10 @@ public class FormElementNodeDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void FormElementNode.<init>()",
-    "void FormElementNode.<init>(String)",
-    "void FormElementNode.<init>(String, String)",
-    "String FormElementNode.getClosingDelimiter()",
-    "String FormElementNode.getText()"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void FormElementNode.<init>()", "void FormElementNode.<init>(String)",
+      "void FormElementNode.<init>(String, String)", "String FormElementNode.getClosingDelimiter()",
+      "String FormElementNode.getText()"})
   public void testGettersAndSetters_thenReturnTextIsEmptyString() {
     // Arrange and Act
     FormElementNode actualFormElementNode = new FormElementNode("Tag Representation On Markdown");
@@ -51,13 +43,11 @@ public class FormElementNodeDiffblueTest {
 
   /**
    * Test getters and setters.
-   *
    * <ul>
-   *   <li>Then return Text is {@code null}.
+   *   <li>Then return Text is {@code null}.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link FormElementNode#FormElementNode()}
    *   <li>{@link FormElementNode#getClosingDelimiter()}
@@ -65,15 +55,10 @@ public class FormElementNodeDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void FormElementNode.<init>()",
-    "void FormElementNode.<init>(String)",
-    "void FormElementNode.<init>(String, String)",
-    "String FormElementNode.getClosingDelimiter()",
-    "String FormElementNode.getText()"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void FormElementNode.<init>()", "void FormElementNode.<init>(String)",
+      "void FormElementNode.<init>(String, String)", "String FormElementNode.getClosingDelimiter()",
+      "String FormElementNode.getText()"})
   public void testGettersAndSetters_thenReturnTextIsNull() {
     // Arrange and Act
     FormElementNode actualFormElementNode = new FormElementNode();
@@ -91,14 +76,12 @@ public class FormElementNodeDiffblueTest {
 
   /**
    * Test getters and setters.
-   *
    * <ul>
-   *   <li>When {@code Text}.
-   *   <li>Then return {@code Text}.
+   *   <li>When {@code Text}.</li>
+   *   <li>Then return {@code Text}.</li>
    * </ul>
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link FormElementNode#FormElementNode(String, String)}
    *   <li>{@link FormElementNode#getClosingDelimiter()}
@@ -106,19 +89,13 @@ public class FormElementNodeDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void FormElementNode.<init>()",
-    "void FormElementNode.<init>(String)",
-    "void FormElementNode.<init>(String, String)",
-    "String FormElementNode.getClosingDelimiter()",
-    "String FormElementNode.getText()"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void FormElementNode.<init>()", "void FormElementNode.<init>(String)",
+      "void FormElementNode.<init>(String, String)", "String FormElementNode.getClosingDelimiter()",
+      "String FormElementNode.getText()"})
   public void testGettersAndSetters_whenText_thenReturnText() {
     // Arrange and Act
-    FormElementNode actualFormElementNode =
-        new FormElementNode("Tag Representation On Markdown", "Text");
+    FormElementNode actualFormElementNode = new FormElementNode("Tag Representation On Markdown", "Text");
     String actualClosingDelimiter = actualFormElementNode.getClosingDelimiter();
 
     // Assert
@@ -133,17 +110,15 @@ public class FormElementNodeDiffblueTest {
 
   /**
    * Test {@link FormElementNode#getOpeningDelimiter()}.
-   *
-   * <p>Method under test: {@link FormElementNode#getOpeningDelimiter()}
+   * <p>
+   * Method under test: {@link FormElementNode#getOpeningDelimiter()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String FormElementNode.getOpeningDelimiter()"})
   public void testGetOpeningDelimiter() {
     // Arrange, Act and Assert
-    assertEquals(
-        "(Tag Representation On Markdown",
-        new FormElementNode("Tag Representation On Markdown").getOpeningDelimiter());
+    assertEquals("(Tag Representation On Markdown",
+        (new FormElementNode("Tag Representation On Markdown")).getOpeningDelimiter());
   }
 }

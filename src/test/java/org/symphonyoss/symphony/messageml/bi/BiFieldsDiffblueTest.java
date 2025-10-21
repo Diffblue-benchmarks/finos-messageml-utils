@@ -2,8 +2,7 @@ package org.symphonyoss.symphony.messageml.bi;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -11,9 +10,8 @@ import org.junit.experimental.categories.Category;
 public class BiFieldsDiffblueTest {
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link BiFields#getDefaultValue()}
    *   <li>{@link BiFields#getType()}
@@ -21,13 +19,9 @@ public class BiFieldsDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "String BiFields.getDefaultValue()",
-    "BiEventType BiFields.getType()",
-    "String BiFields.getValue()"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"String BiFields.getDefaultValue()", "BiEventType BiFields.getType()",
+      "String BiFields.getValue()"})
   public void testGettersAndSetters() {
     // Arrange
     BiFields valueOfResult = BiFields.valueOf("FORM");

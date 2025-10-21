@@ -1,67 +1,47 @@
 package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertEquals;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 public class PlaceholderLabelTooltipNodeDiffblueTest {
   /**
-   * Test {@link PlaceholderLabelTooltipNode#generateMarkdownPlaceholderLabelAndTooltip(String,
-   * String, String)}.
-   *
+   * Test {@link PlaceholderLabelTooltipNode#generateMarkdownPlaceholderLabelAndTooltip(String, String, String)}.
    * <ul>
-   *   <li>When {@code Label}.
-   *   <li>Then return {@code :[Label]}.
+   *   <li>When {@code Label}.</li>
+   *   <li>Then return {@code :[Label]}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link
-   * PlaceholderLabelTooltipNode#generateMarkdownPlaceholderLabelAndTooltip(String, String, String)}
+   * <p>
+   * Method under test: {@link PlaceholderLabelTooltipNode#generateMarkdownPlaceholderLabelAndTooltip(String, String, String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({
-    "String PlaceholderLabelTooltipNode.generateMarkdownPlaceholderLabelAndTooltip(String, String, String)"
-  })
+      "String PlaceholderLabelTooltipNode.generateMarkdownPlaceholderLabelAndTooltip(String, String, String)"})
   public void testGenerateMarkdownPlaceholderLabelAndTooltip_whenLabel_thenReturnLabel() {
-    // Arrange
-    PersonSelectorNode personSelectorNode =
-        new PersonSelectorNode("Placeholder", "Label", "127.0.0.1");
-
-    // Act and Assert
-    assertEquals(
-        ":[Label]",
-        personSelectorNode.generateMarkdownPlaceholderLabelAndTooltip(null, "Label", null));
+    // Arrange, Act and Assert
+    assertEquals(":[Label]", (new PersonSelectorNode("Placeholder", "Label", "127.0.0.1"))
+        .generateMarkdownPlaceholderLabelAndTooltip(null, "Label", null));
   }
 
   /**
-   * Test {@link PlaceholderLabelTooltipNode#generateMarkdownPlaceholderLabelAndTooltip(String,
-   * String, String)}.
-   *
+   * Test {@link PlaceholderLabelTooltipNode#generateMarkdownPlaceholderLabelAndTooltip(String, String, String)}.
    * <ul>
-   *   <li>When {@code null}.
-   *   <li>Then return empty string.
+   *   <li>When {@code null}.</li>
+   *   <li>Then return empty string.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link
-   * PlaceholderLabelTooltipNode#generateMarkdownPlaceholderLabelAndTooltip(String, String, String)}
+   * <p>
+   * Method under test: {@link PlaceholderLabelTooltipNode#generateMarkdownPlaceholderLabelAndTooltip(String, String, String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({
-    "String PlaceholderLabelTooltipNode.generateMarkdownPlaceholderLabelAndTooltip(String, String, String)"
-  })
+      "String PlaceholderLabelTooltipNode.generateMarkdownPlaceholderLabelAndTooltip(String, String, String)"})
   public void testGenerateMarkdownPlaceholderLabelAndTooltip_whenNull_thenReturnEmptyString() {
-    // Arrange
-    PersonSelectorNode personSelectorNode =
-        new PersonSelectorNode("Placeholder", "Label", "127.0.0.1");
-
-    // Act and Assert
-    assertEquals(
-        "", personSelectorNode.generateMarkdownPlaceholderLabelAndTooltip(null, null, null));
+    // Arrange, Act and Assert
+    assertEquals("", (new PersonSelectorNode("Placeholder", "Label", "127.0.0.1"))
+        .generateMarkdownPlaceholderLabelAndTooltip(null, null, null));
   }
 }

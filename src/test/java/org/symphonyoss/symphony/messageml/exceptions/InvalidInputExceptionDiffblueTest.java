@@ -3,8 +3,7 @@ package org.symphonyoss.symphony.messageml.exceptions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -12,17 +11,15 @@ import org.junit.experimental.categories.Category;
 public class InvalidInputExceptionDiffblueTest {
   /**
    * Test {@link InvalidInputException#InvalidInputException(String, Object[])}.
-   *
-   * <p>Method under test: {@link InvalidInputException#InvalidInputException(String, Object[])}
+   * <p>
+   * Method under test: {@link InvalidInputException#InvalidInputException(String, Object[])}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void InvalidInputException.<init>(String, Object[])"})
   public void testNewInvalidInputException() {
     // Arrange and Act
-    InvalidInputException actualInvalidInputException =
-        new InvalidInputException("An error occurred", "Args");
+    InvalidInputException actualInvalidInputException = new InvalidInputException("An error occurred", "Args");
 
     // Assert
     assertEquals("An error occurred", actualInvalidInputException.getLocalizedMessage());
@@ -33,25 +30,20 @@ public class InvalidInputExceptionDiffblueTest {
 
   /**
    * Test {@link InvalidInputException#InvalidInputException(String)}.
-   *
    * <ul>
-   *   <li>When {@code An error occurred}.
-   *   <li>Then return Cause is {@code null}.
+   *   <li>When {@code An error occurred}.</li>
+   *   <li>Then return Cause is {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link InvalidInputException#InvalidInputException(String)}
+   * <p>
+   * Method under test: {@link InvalidInputException#InvalidInputException(String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void InvalidInputException.<init>(String)",
-    "void InvalidInputException.<init>(String, Throwable)"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void InvalidInputException.<init>(String)",
+      "void InvalidInputException.<init>(String, Throwable)"})
   public void testNewInvalidInputException_whenAnErrorOccurred_thenReturnCauseIsNull() {
     // Arrange and Act
-    InvalidInputException actualInvalidInputException =
-        new InvalidInputException("An error occurred");
+    InvalidInputException actualInvalidInputException = new InvalidInputException("An error occurred");
 
     // Assert
     assertEquals("An error occurred", actualInvalidInputException.getMessage());
@@ -61,28 +53,23 @@ public class InvalidInputExceptionDiffblueTest {
 
   /**
    * Test {@link InvalidInputException#InvalidInputException(String, Throwable)}.
-   *
    * <ul>
-   *   <li>When {@link Throwable#Throwable()}.
-   *   <li>Then return Cause is {@link Throwable#Throwable()}.
+   *   <li>When {@link Throwable#Throwable()}.</li>
+   *   <li>Then return Cause is {@link Throwable#Throwable()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link InvalidInputException#InvalidInputException(String, Throwable)}
+   * <p>
+   * Method under test: {@link InvalidInputException#InvalidInputException(String, Throwable)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void InvalidInputException.<init>(String)",
-    "void InvalidInputException.<init>(String, Throwable)"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void InvalidInputException.<init>(String)",
+      "void InvalidInputException.<init>(String, Throwable)"})
   public void testNewInvalidInputException_whenThrowable_thenReturnCauseIsThrowable() {
     // Arrange
     Throwable cause = new Throwable();
 
     // Act
-    InvalidInputException actualInvalidInputException =
-        new InvalidInputException("An error occurred", cause);
+    InvalidInputException actualInvalidInputException = new InvalidInputException("An error occurred", cause);
 
     // Assert
     assertEquals("An error occurred", actualInvalidInputException.getMessage());

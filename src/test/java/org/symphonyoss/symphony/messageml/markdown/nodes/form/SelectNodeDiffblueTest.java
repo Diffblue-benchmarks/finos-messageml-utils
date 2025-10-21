@@ -2,8 +2,7 @@ package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -11,9 +10,8 @@ import org.junit.experimental.categories.Category;
 public class SelectNodeDiffblueTest {
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link SelectNode#SelectNode(String, String, String)}
    *   <li>{@link SelectNode#getClosingDelimiter()}
@@ -21,13 +19,9 @@ public class SelectNodeDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void SelectNode.<init>(String, String, String)",
-    "String SelectNode.getClosingDelimiter()",
-    "String SelectNode.getOpeningDelimiter()"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void SelectNode.<init>(String, String, String)", "String SelectNode.getClosingDelimiter()",
+      "String SelectNode.getOpeningDelimiter()"})
   public void testGettersAndSetters() {
     // Arrange and Act
     SelectNode actualSelectNode = new SelectNode("Placeholder", "Label", "127.0.0.1");
@@ -46,66 +40,33 @@ public class SelectNodeDiffblueTest {
 
   /**
    * Test {@link SelectNode#getText()}.
-   *
    * <ul>
-   *   <li>Given {@link SelectNode#SelectNode(String, String, String)} with {@code Placeholder} and
-   *       label is {@code null} and tooltip is {@code 127.0.0.1}.
+   *   <li>Then return empty string.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link SelectNode#getText()}
+   * <p>
+   * Method under test: {@link SelectNode#getText()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String SelectNode.getText()"})
-  public void testGetText_givenSelectNodeWithPlaceholderAndLabelIsNullAndTooltipIs127001() {
-    // Arrange
-    SelectNode selectNode = new SelectNode("Placeholder", null, "127.0.0.1");
-
-    // Act and Assert
-    assertEquals("", selectNode.getText());
+  public void testGetText_thenReturnEmptyString() {
+    // Arrange, Act and Assert
+    assertEquals("", (new SelectNode("Placeholder", "", "127.0.0.1")).getText());
   }
 
   /**
    * Test {@link SelectNode#getText()}.
-   *
    * <ul>
-   *   <li>Given {@link SelectNode#SelectNode(String, String, String)} with {@code Placeholder} and
-   *       label is space and tooltip is {@code 127.0.0.1}.
+   *   <li>Then return {@code Label}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link SelectNode#getText()}
+   * <p>
+   * Method under test: {@link SelectNode#getText()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"String SelectNode.getText()"})
-  public void testGetText_givenSelectNodeWithPlaceholderAndLabelIsSpaceAndTooltipIs127001() {
-    // Arrange
-    SelectNode selectNode = new SelectNode("Placeholder", " ", "127.0.0.1");
-
-    // Act and Assert
-    assertEquals("", selectNode.getText());
-  }
-
-  /**
-   * Test {@link SelectNode#getText()}.
-   *
-   * <ul>
-   *   <li>Then return {@code Label}.
-   * </ul>
-   *
-   * <p>Method under test: {@link SelectNode#getText()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String SelectNode.getText()"})
   public void testGetText_thenReturnLabel() {
-    // Arrange
-    SelectNode selectNode = new SelectNode("Placeholder", "Label", "127.0.0.1");
-
-    // Act and Assert
-    assertEquals("Label", selectNode.getText());
+    // Arrange, Act and Assert
+    assertEquals("Label", (new SelectNode("Placeholder", "Label", "127.0.0.1")).getText());
   }
 }

@@ -3,49 +3,36 @@ package org.symphonyoss.symphony.messageml.elements;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.List;
 import java.util.Map;
-import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
 import org.commonmark.node.Paragraph;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
-import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
-@RunWith(MockitoJUnitRunner.class)
 public class DivDiffblueTest {
-  @InjectMocks private Div div;
-
   /**
    * Test {@link Div#Div(Element)}.
-   *
-   * <p>Method under test: {@link Div#Div(Element)}
+   * <p>
+   * Method under test: {@link Div#Div(Element)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Div.<init>(Element)"})
   public void testNewDiv() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
 
     // Act
-    Div actualDiv = new Div(parent2);
+    Div actualDiv = new Div(parent);
 
     // Assert
     assertEquals(0, actualDiv.size());
@@ -54,52 +41,20 @@ public class DivDiffblueTest {
     assertTrue(actualDiv.getAttributes().isEmpty());
     assertEquals(Div.MESSAGEML_TAG, actualDiv.getMessageMLTag());
     assertEquals(Div.MESSAGEML_TAG, actualDiv.getPresentationMLTag());
-    assertSame(parent2, actualDiv.getParent());
-  }
-
-  /**
-   * Test {@link Div#buildAttribute(MessageMLParser, Node)}.
-   *
-   * <ul>
-   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with {@code foo}.
-   *   <li>Then throw {@link InvalidInputException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link Div#buildAttribute(MessageMLParser, org.w3c.dom.Node)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void Div.buildAttribute(MessageMLParser, org.w3c.dom.Node)"})
-  public void testBuildAttribute_whenIIOMetadataNodeWithFoo_thenThrowInvalidInputException()
-      throws InvalidInputException {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Div div = new Div(parent2);
-    MessageMLParser parser = mock(MessageMLParser.class);
-
-    // Act and Assert
-    assertThrows(
-        InvalidInputException.class, () -> div.buildAttribute(parser, new IIOMetadataNode("foo")));
+    assertSame(parent, actualDiv.getParent());
   }
 
   /**
    * Test {@link Div#asMarkdown()}.
-   *
-   * <p>Method under test: {@link Div#asMarkdown()}
+   * <p>
+   * Method under test: {@link Div#asMarkdown()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Node Div.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act
-    Node actualAsMarkdownResult = new Div(parent2).asMarkdown();
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new Div(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof Paragraph);
@@ -112,63 +67,38 @@ public class DivDiffblueTest {
 
   /**
    * Test {@link Div#asEntityJson(ObjectNode)}.
-   *
-   * <p>Method under test: {@link Div#asEntityJson(ObjectNode)}
+   * <p>
+   * Method under test: {@link Div#asEntityJson(ObjectNode)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"ObjectNode Div.asEntityJson(ObjectNode)"})
   public void testAsEntityJson() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Div div = new Div(parent2);
-    JsonNodeFactory nc = JsonNodeFactory.withExactBigDecimals(true);
+    Div div = new Div(new Bold(new BulletList(mock(Element.class))));
 
-    // Act
-    ObjectNode actualAsEntityJsonResult = div.asEntityJson(new ObjectNode(nc));
-
-    // Assert
-    assertNull(actualAsEntityJsonResult);
-  }
-
-  /**
-   * Test {@link Div#validate()}.
-   *
-   * <p>Method under test: {@link Div#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void Div.validate()"})
-  public void testValidate() throws InvalidInputException {
-    // Arrange, Act and Assert
-    div.validate();
+    // Act and Assert
+    assertNull(div.asEntityJson(new ObjectNode(JsonNodeFactory.withExactBigDecimals(true))));
   }
 
   /**
    * Test {@link Div#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link
-   *       BiItem}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link BiItem}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Div#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Div#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Div.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Div div = new Div(parent2);
+    Div div = new Div(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
     context.addItemWithValue("divs", biItem);
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -192,23 +122,18 @@ public class DivDiffblueTest {
 
   /**
    * Test {@link Div#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is
-   *       {@code Item Value}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is {@code Item Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Div#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Div#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Div.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Div div = new Div(parent2);
+    Div div = new Div(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItemWithValue("divs", "Item Value");
@@ -231,22 +156,18 @@ public class DivDiffblueTest {
 
   /**
    * Test {@link Div#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Div#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Div#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Div.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Div div = new Div(parent2);
+    Div div = new Div(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem("divs", Element.STYLE_ATTR));
@@ -265,22 +186,18 @@ public class DivDiffblueTest {
 
   /**
    * Test {@link Div#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Div#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Div#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Div.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Div div = new Div(parent2);
+    Div div = new Div(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -300,22 +217,18 @@ public class DivDiffblueTest {
 
   /**
    * Test {@link Div#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code divs}.
+   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code divs}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Div#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Div#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Div.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsThirdNameIsDivs() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Div div = new Div(parent2);
+    Div div = new Div(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -336,23 +249,19 @@ public class DivDiffblueTest {
 
   /**
    * Test {@link Div#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code divs}.
+   *   <li>When {@link BiContext} (default constructor).</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code divs}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link Div#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link Div#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void Div.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsDivs() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    Div div = new Div(parent2);
+    Div div = new Div(new Bold(new BulletList(mock(Element.class))));
     BiContext context = new BiContext();
 
     // Act

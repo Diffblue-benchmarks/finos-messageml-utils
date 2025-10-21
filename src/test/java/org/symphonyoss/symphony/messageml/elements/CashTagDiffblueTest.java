@@ -5,8 +5,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
@@ -20,29 +19,26 @@ import org.symphonyoss.symphony.messageml.markdown.nodes.KeywordNode;
 public class CashTagDiffblueTest {
   /**
    * Test {@link CashTag#CashTag(Element, int)}.
-   *
-   * <p>Method under test: {@link CashTag#CashTag(Element, int)}
+   * <p>
+   * Method under test: {@link CashTag#CashTag(Element, int)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CashTag.<init>(Element, int)"})
   public void testNewCashTag() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
 
     // Act
-    CashTag actualCashTag = new CashTag(parent2, 1);
+    CashTag actualCashTag = new CashTag(parent, 1);
 
     // Assert
-    Element parent3 = actualCashTag.getParent();
-    assertTrue(parent3 instanceof Bold);
+    Element parent2 = actualCashTag.getParent();
+    assertTrue(parent2 instanceof Bold);
     assertEquals("1.0", actualCashTag.getEntityVersion());
     assertEquals("keyword", actualCashTag.getEntityIdPrefix());
     assertEquals("keyword1", actualCashTag.entityId);
     assertEquals("org.symphonyoss.fin.security.id.ticker", actualCashTag.getEntitySubType());
-    assertNull(actualCashTag.getTag());
     assertNull(actualCashTag.getEntityValue());
     assertEquals(0, actualCashTag.size());
     assertEquals(FormatEnum.MESSAGEML, actualCashTag.getFormat());
@@ -51,31 +47,28 @@ public class CashTagDiffblueTest {
     assertEquals(CashTag.ENTITY_TYPE, actualCashTag.getEntityType());
     assertEquals(CashTag.MESSAGEML_TAG, actualCashTag.getMessageMLTag());
     assertEquals(Span.MESSAGEML_TAG, actualCashTag.getPresentationMLTag());
-    assertSame(parent2, parent3);
+    assertSame(parent, parent2);
   }
 
   /**
    * Test {@link CashTag#CashTag(Element, int, String)}.
-   *
-   * <p>Method under test: {@link CashTag#CashTag(Element, int, String)}
+   * <p>
+   * Method under test: {@link CashTag#CashTag(Element, int, String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CashTag.<init>(Element, int, String)"})
   public void testNewCashTag2() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
 
     // Act
-    CashTag actualCashTag = new CashTag(parent2, 1, "42");
+    CashTag actualCashTag = new CashTag(parent, 1, "42");
 
     // Assert
-    Element parent3 = actualCashTag.getParent();
-    assertTrue(parent3 instanceof Bold);
+    Element parent2 = actualCashTag.getParent();
+    assertTrue(parent2 instanceof Bold);
     assertEquals("1.0", actualCashTag.getEntityVersion());
-    assertEquals("42", actualCashTag.getTag());
     assertEquals("42", actualCashTag.getEntityValue());
     assertEquals("keyword", actualCashTag.getEntityIdPrefix());
     assertEquals("keyword1", actualCashTag.entityId);
@@ -87,31 +80,28 @@ public class CashTagDiffblueTest {
     assertEquals(CashTag.ENTITY_TYPE, actualCashTag.getEntityType());
     assertEquals(CashTag.MESSAGEML_TAG, actualCashTag.getMessageMLTag());
     assertEquals(Span.MESSAGEML_TAG, actualCashTag.getPresentationMLTag());
-    assertSame(parent2, parent3);
+    assertSame(parent, parent2);
   }
 
   /**
    * Test {@link CashTag#CashTag(Element, String, String)}.
-   *
-   * <p>Method under test: {@link CashTag#CashTag(Element, String, String)}
+   * <p>
+   * Method under test: {@link CashTag#CashTag(Element, String, String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CashTag.<init>(Element, String, String)"})
   public void testNewCashTag3() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
 
     // Act
-    CashTag actualCashTag = new CashTag(parent2, "Presentation Ml Tag", "42");
+    CashTag actualCashTag = new CashTag(parent, "Presentation Ml Tag", "42");
 
     // Assert
-    Element parent3 = actualCashTag.getParent();
-    assertTrue(parent3 instanceof Bold);
+    Element parent2 = actualCashTag.getParent();
+    assertTrue(parent2 instanceof Bold);
     assertEquals("1.0", actualCashTag.getEntityVersion());
-    assertEquals("42", actualCashTag.getTag());
     assertEquals("42", actualCashTag.getEntityValue());
     assertEquals("Presentation Ml Tag", actualCashTag.getPresentationMLTag());
     assertEquals("keyword", actualCashTag.getEntityIdPrefix());
@@ -123,43 +113,33 @@ public class CashTagDiffblueTest {
     assertTrue(actualCashTag.getAttributes().isEmpty());
     assertEquals(CashTag.ENTITY_TYPE, actualCashTag.getEntityType());
     assertEquals(CashTag.MESSAGEML_TAG, actualCashTag.getMessageMLTag());
-    assertSame(parent2, parent3);
+    assertSame(parent, parent2);
   }
 
   /**
    * Test {@link CashTag#asText()}.
-   *
-   * <p>Method under test: {@link CashTag#asText()}
+   * <p>
+   * Method under test: {@link CashTag#asText()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String CashTag.asText()"})
   public void testAsText() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act and Assert
-    assertEquals("$null", new CashTag(parent2, 1).asText());
+    // Arrange, Act and Assert
+    assertEquals("$null", (new CashTag(new Bold(new BulletList(mock(Element.class))), 1)).asText());
   }
 
   /**
    * Test {@link CashTag#asMarkdown()}.
-   *
-   * <p>Method under test: {@link CashTag#asMarkdown()}
+   * <p>
+   * Method under test: {@link CashTag#asMarkdown()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Node CashTag.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act
-    Node actualAsMarkdownResult = new CashTag(parent2, 1).asMarkdown();
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new CashTag(new Bold(new BulletList(mock(Element.class))), 1)).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof KeywordNode);
@@ -174,9 +154,8 @@ public class CashTagDiffblueTest {
 
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link CashTag#toString()}
    *   <li>{@link CashTag#getEntitySubType()}
@@ -185,18 +164,12 @@ public class CashTagDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "String CashTag.getEntitySubType()",
-    "String CashTag.getEntityType()",
-    "String CashTag.getEntityVersion()",
-    "String CashTag.toString()"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"String CashTag.getEntitySubType()", "String CashTag.getEntityType()",
+      "String CashTag.getEntityVersion()", "String CashTag.toString()"})
   public void testGettersAndSetters() {
     // Arrange
-    Bold parent = new Bold(new BulletList(null));
-    CashTag cashTag = new CashTag(parent, 1);
+    CashTag cashTag = new CashTag(new Bold(new BulletList(null)), 1);
 
     // Act
     String actualToStringResult = cashTag.toString();
@@ -212,18 +185,15 @@ public class CashTagDiffblueTest {
 
   /**
    * Test {@link CashTag#updateBiContext(BiContext)}.
-   *
-   * <p>Method under test: {@link CashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link CashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    CashTag cashTag = new CashTag(parent2, 1);
+    CashTag cashTag = new CashTag(new Bold(new BulletList(mock(Element.class))), 1);
 
     BiContext context = new BiContext();
     context.addItemWithValue("cashtags", new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -250,22 +220,18 @@ public class CashTagDiffblueTest {
 
   /**
    * Test {@link CashTag#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Given {@code Item Value}.
+   *   <li>Given {@code Item Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link CashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext_givenItemValue() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    CashTag cashTag = new CashTag(parent2, 1);
+    CashTag cashTag = new CashTag(new Bold(new BulletList(mock(Element.class))), 1);
 
     BiContext context = new BiContext();
     context.addItemWithValue("cashtags", "Item Value");
@@ -292,22 +258,18 @@ public class CashTagDiffblueTest {
 
   /**
    * Test {@link CashTag#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link CashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    CashTag cashTag = new CashTag(parent2, 1);
+    CashTag cashTag = new CashTag(new Bold(new BulletList(mock(Element.class))), 1);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem("cashtags", Element.STYLE_ATTR));
@@ -331,22 +293,18 @@ public class CashTagDiffblueTest {
 
   /**
    * Test {@link CashTag#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is three.
+   *   <li>Then {@link BiContext} (default constructor) Items size is three.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link CashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsThree() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    CashTag cashTag = new CashTag(parent2, 1);
+    CashTag cashTag = new CashTag(new Bold(new BulletList(mock(Element.class))), 1);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -371,22 +329,18 @@ public class CashTagDiffblueTest {
 
   /**
    * Test {@link CashTag#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code cashtags}.
+   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code cashtags}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link CashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsThirdNameIsCashtags() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    CashTag cashTag = new CashTag(parent2, 1);
+    CashTag cashTag = new CashTag(new Bold(new BulletList(mock(Element.class))), 1);
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -407,23 +361,19 @@ public class CashTagDiffblueTest {
 
   /**
    * Test {@link CashTag#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code cashtags}.
+   *   <li>When {@link BiContext} (default constructor).</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code cashtags}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link CashTag#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link CashTag#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void CashTag.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsCashtags() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    CashTag cashTag = new CashTag(parent2, 1);
+    CashTag cashTag = new CashTag(new Bold(new BulletList(mock(Element.class))), 1);
     BiContext context = new BiContext();
 
     // Act

@@ -4,47 +4,34 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
-import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.HardLineBreak;
 import org.commonmark.node.Node;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.symphonyoss.symphony.messageml.MessageMLParser;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
-import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
-@RunWith(MockitoJUnitRunner.class)
 public class LineBreakDiffblueTest {
-  @InjectMocks private LineBreak lineBreak;
-
   /**
    * Test {@link LineBreak#LineBreak(Element)}.
-   *
-   * <p>Method under test: {@link LineBreak#LineBreak(Element)}
+   * <p>
+   * Method under test: {@link LineBreak#LineBreak(Element)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LineBreak.<init>(Element)"})
   public void testNewLineBreak() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
 
     // Act
-    LineBreak actualLineBreak = new LineBreak(parent2);
+    LineBreak actualLineBreak = new LineBreak(parent);
 
     // Assert
     assertEquals(0, actualLineBreak.size());
@@ -53,70 +40,33 @@ public class LineBreakDiffblueTest {
     assertTrue(actualLineBreak.getAttributes().isEmpty());
     assertEquals(LineBreak.MESSAGEML_TAG, actualLineBreak.getMessageMLTag());
     assertEquals(LineBreak.MESSAGEML_TAG, actualLineBreak.getPresentationMLTag());
-    assertSame(parent2, actualLineBreak.getParent());
-  }
-
-  /**
-   * Test {@link LineBreak#buildAttribute(MessageMLParser, Node)}.
-   *
-   * <ul>
-   *   <li>When {@link IIOMetadataNode#IIOMetadataNode()}.
-   *   <li>Then throw {@link InvalidInputException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link LineBreak#buildAttribute(MessageMLParser, org.w3c.dom.Node)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void LineBreak.buildAttribute(MessageMLParser, org.w3c.dom.Node)"})
-  public void testBuildAttribute_whenIIOMetadataNode_thenThrowInvalidInputException()
-      throws InvalidInputException {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    LineBreak lineBreak = new LineBreak(parent2);
-    MessageMLParser parser = mock(MessageMLParser.class);
-
-    // Act and Assert
-    assertThrows(
-        InvalidInputException.class, () -> lineBreak.buildAttribute(parser, new IIOMetadataNode()));
+    assertSame(parent, actualLineBreak.getParent());
   }
 
   /**
    * Test {@link LineBreak#asText()}.
-   *
-   * <p>Method under test: {@link LineBreak#asText()}
+   * <p>
+   * Method under test: {@link LineBreak#asText()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String LineBreak.asText()"})
   public void testAsText() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act and Assert
-    assertEquals("\n", new LineBreak(parent2).asText());
+    // Arrange, Act and Assert
+    assertEquals("\n", (new LineBreak(new Bold(new BulletList(mock(Element.class))))).asText());
   }
 
   /**
    * Test {@link LineBreak#asMarkdown()}.
-   *
-   * <p>Method under test: {@link LineBreak#asMarkdown()}
+   * <p>
+   * Method under test: {@link LineBreak#asMarkdown()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Node LineBreak.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act
-    Node actualAsMarkdownResult = new LineBreak(parent2).asMarkdown();
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new LineBreak(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof HardLineBreak);
@@ -128,107 +78,49 @@ public class LineBreakDiffblueTest {
   }
 
   /**
-   * Test {@link LineBreak#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link BulletList#BulletList(Element)} with parent is {@code null}.
-   *   <li>Then throw {@link InvalidInputException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link LineBreak#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void LineBreak.validate()"})
-  public void testValidate_givenBulletListWithParentIsNull_thenThrowInvalidInputException()
-      throws InvalidInputException {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    LineBreak lineBreak = new LineBreak(parent);
-    lineBreak.addChild(new Bold(new BulletList(null)));
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> lineBreak.validate());
-  }
-
-  /**
-   * Test {@link LineBreak#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link LineBreak}.
-   *   <li>Then does not throw.
-   * </ul>
-   *
-   * <p>Method under test: {@link LineBreak#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void LineBreak.validate()"})
-  public void testValidate_givenLineBreak_thenDoesNotThrow() throws InvalidInputException {
-    // Arrange, Act and Assert
-    lineBreak.validate();
-  }
-
-  /**
    * Test {@link LineBreak#areNestedElementsAllowed()}.
-   *
-   * <p>Method under test: {@link LineBreak#areNestedElementsAllowed()}
+   * <p>
+   * Method under test: {@link LineBreak#areNestedElementsAllowed()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"boolean LineBreak.areNestedElementsAllowed()"})
   public void testAreNestedElementsAllowed() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act and Assert
-    assertFalse(new LineBreak(parent2).areNestedElementsAllowed());
+    // Arrange, Act and Assert
+    assertFalse((new LineBreak(new Bold(new BulletList(mock(Element.class))))).areNestedElementsAllowed());
   }
 
   /**
    * Test {@link LineBreak#toString()}.
-   *
-   * <p>Method under test: {@link LineBreak#toString()}
+   * <p>
+   * Method under test: {@link LineBreak#toString()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String LineBreak.toString()"})
   public void testToString() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act and Assert
-    assertEquals("\n", new LineBreak(parent).toString());
+    // Arrange, Act and Assert
+    assertEquals("\n", (new LineBreak(new Bold(new BulletList(null)))).toString());
   }
 
   /**
    * Test {@link LineBreak#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link
-   *       BiItem}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link BiItem}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link LineBreak#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link LineBreak#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LineBreak.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    LineBreak lineBreak = new LineBreak(parent2);
+    LineBreak lineBreak = new LineBreak(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
     context.addItemWithValue("linebreaks", biItem);
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -252,23 +144,18 @@ public class LineBreakDiffblueTest {
 
   /**
    * Test {@link LineBreak#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is
-   *       {@code Item Value}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is {@code Item Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link LineBreak#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link LineBreak#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LineBreak.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    LineBreak lineBreak = new LineBreak(parent2);
+    LineBreak lineBreak = new LineBreak(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItemWithValue("linebreaks", "Item Value");
@@ -291,22 +178,18 @@ public class LineBreakDiffblueTest {
 
   /**
    * Test {@link LineBreak#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link LineBreak#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link LineBreak#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LineBreak.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    LineBreak lineBreak = new LineBreak(parent2);
+    LineBreak lineBreak = new LineBreak(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem("linebreaks", Element.STYLE_ATTR));
@@ -325,22 +208,18 @@ public class LineBreakDiffblueTest {
 
   /**
    * Test {@link LineBreak#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link LineBreak#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link LineBreak#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LineBreak.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    LineBreak lineBreak = new LineBreak(parent2);
+    LineBreak lineBreak = new LineBreak(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -360,22 +239,18 @@ public class LineBreakDiffblueTest {
 
   /**
    * Test {@link LineBreak#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code linebreaks}.
+   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code linebreaks}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link LineBreak#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link LineBreak#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LineBreak.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsThirdNameIsLinebreaks() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    LineBreak lineBreak = new LineBreak(parent2);
+    LineBreak lineBreak = new LineBreak(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -396,23 +271,19 @@ public class LineBreakDiffblueTest {
 
   /**
    * Test {@link LineBreak#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>When {@link BiContext} (default constructor).
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code linebreaks}.
+   *   <li>When {@link BiContext} (default constructor).</li>
+   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code linebreaks}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link LineBreak#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link LineBreak#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void LineBreak.updateBiContext(BiContext)"})
   public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsLinebreaks() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    LineBreak lineBreak = new LineBreak(parent2);
+    LineBreak lineBreak = new LineBreak(new Bold(new BulletList(mock(Element.class))));
     BiContext context = new BiContext();
 
     // Act

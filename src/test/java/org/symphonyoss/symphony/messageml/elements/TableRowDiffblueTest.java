@@ -3,45 +3,34 @@ package org.symphonyoss.symphony.messageml.elements;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
 import org.commonmark.node.Node;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
-import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.markdown.nodes.TableRowNode;
 
-@RunWith(MockitoJUnitRunner.class)
 public class TableRowDiffblueTest {
-  @InjectMocks private TableRow tableRow;
-
   /**
    * Test {@link TableRow#TableRow(Element)}.
-   *
-   * <p>Method under test: {@link TableRow#TableRow(Element)}
+   * <p>
+   * Method under test: {@link TableRow#TableRow(Element)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TableRow.<init>(Element)"})
   public void testNewTableRow() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
 
     // Act
-    TableRow actualTableRow = new TableRow(parent2);
+    TableRow actualTableRow = new TableRow(parent);
 
     // Assert
     assertEquals(0, actualTableRow.size());
@@ -50,25 +39,20 @@ public class TableRowDiffblueTest {
     assertTrue(actualTableRow.getAttributes().isEmpty());
     assertEquals(TableRow.MESSAGEML_TAG, actualTableRow.getMessageMLTag());
     assertEquals(TableRow.MESSAGEML_TAG, actualTableRow.getPresentationMLTag());
-    assertSame(parent2, actualTableRow.getParent());
+    assertSame(parent, actualTableRow.getParent());
   }
 
   /**
    * Test {@link TableRow#asMarkdown()}.
-   *
-   * <p>Method under test: {@link TableRow#asMarkdown()}
+   * <p>
+   * Method under test: {@link TableRow#asMarkdown()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Node TableRow.asMarkdown()"})
   public void testAsMarkdown() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act
-    Node actualAsMarkdownResult = new TableRow(parent2).asMarkdown();
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new TableRow(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
 
     // Assert
     assertTrue(actualAsMarkdownResult instanceof TableRowNode);
@@ -82,83 +66,29 @@ public class TableRowDiffblueTest {
 
   /**
    * Test {@link TableRow#toString()}.
-   *
-   * <p>Method under test: {@link TableRow#toString()}
+   * <p>
+   * Method under test: {@link TableRow#toString()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String TableRow.toString()"})
   public void testToString() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act and Assert
-    assertEquals("Row", new TableRow(parent).toString());
-  }
-
-  /**
-   * Test {@link TableRow#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link BulletList#BulletList(Element)} with parent is {@code null}.
-   *   <li>Then throw {@link InvalidInputException}.
-   * </ul>
-   *
-   * <p>Method under test: {@link TableRow#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void TableRow.validate()"})
-  public void testValidate_givenBulletListWithParentIsNull_thenThrowInvalidInputException()
-      throws InvalidInputException {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    TableRow tableRow = new TableRow(parent);
-    tableRow.addChild(new Bold(new BulletList(null)));
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> tableRow.validate());
-  }
-
-  /**
-   * Test {@link TableRow#validate()}.
-   *
-   * <ul>
-   *   <li>Given {@link TableRow}.
-   *   <li>Then does not throw.
-   * </ul>
-   *
-   * <p>Method under test: {@link TableRow#validate()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void TableRow.validate()"})
-  public void testValidate_givenTableRow_thenDoesNotThrow() throws InvalidInputException {
     // Arrange, Act and Assert
-    tableRow.validate();
+    assertEquals("Row", (new TableRow(new Bold(new BulletList(null)))).toString());
   }
 
   /**
    * Test {@link TableRow#updateBiContext(BiContext)}.
-   *
-   * <p>Method under test: {@link TableRow#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link TableRow#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TableRow.updateBiContext(BiContext)"})
   public void testUpdateBiContext() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    TableRow tableRow = new TableRow(parent2);
-    BulletList parent3 = new BulletList(mock(Element.class));
-    tableRow.addChild(new Bold(parent3));
+    TableRow tableRow = new TableRow(new Bold(new BulletList(mock(Element.class))));
+    tableRow.addChild(new Bold(new BulletList(mock(Element.class))));
     BiContext context = new BiContext();
 
     // Act
@@ -176,23 +106,18 @@ public class TableRowDiffblueTest {
 
   /**
    * Test {@link TableRow#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes containsKey {@link
-   *       Element#STYLE_ATTR}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes containsKey {@link Element#STYLE_ATTR}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TableRow#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link TableRow#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TableRow.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesContainsKeyStyle_attr() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    TableRow tableRow = new TableRow(parent2);
+    TableRow tableRow = new TableRow(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem("table_columns_max", Element.STYLE_ATTR));
@@ -212,23 +137,18 @@ public class TableRowDiffblueTest {
 
   /**
    * Test {@link TableRow#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count}
-   *       intValue is zero.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} intValue is zero.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TableRow#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link TableRow#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TableRow.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIntValueIsZero() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    TableRow tableRow = new TableRow(parent2);
+    TableRow tableRow = new TableRow(new Bold(new BulletList(mock(Element.class))));
     BiContext context = new BiContext();
 
     // Act
@@ -246,23 +166,18 @@ public class TableRowDiffblueTest {
 
   /**
    * Test {@link TableRow#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is
-   *       {@code Item Value}.
+   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is {@code Item Value}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TableRow#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link TableRow#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TableRow.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    TableRow tableRow = new TableRow(parent2);
+    TableRow tableRow = new TableRow(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItemWithValue("table_columns_max", "Item Value");
@@ -287,22 +202,18 @@ public class TableRowDiffblueTest {
 
   /**
    * Test {@link TableRow#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.
+   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TableRow#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link TableRow#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TableRow.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    TableRow tableRow = new TableRow(parent2);
+    TableRow tableRow = new TableRow(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
@@ -322,23 +233,18 @@ public class TableRowDiffblueTest {
 
   /**
    * Test {@link TableRow#updateBiContext(BiContext)}.
-   *
    * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code
-   *       table_columns_max}.
+   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code table_columns_max}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TableRow#updateBiContext(BiContext)}
+   * <p>
+   * Method under test: {@link TableRow#updateBiContext(BiContext)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TableRow.updateBiContext(BiContext)"})
   public void testUpdateBiContext_thenBiContextItemsThirdNameIsTableColumnsMax() {
     // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-    TableRow tableRow = new TableRow(parent2);
+    TableRow tableRow = new TableRow(new Bold(new BulletList(mock(Element.class))));
 
     BiContext context = new BiContext();
     context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));

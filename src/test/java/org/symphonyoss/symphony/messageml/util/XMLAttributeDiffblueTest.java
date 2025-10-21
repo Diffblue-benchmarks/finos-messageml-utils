@@ -1,8 +1,7 @@
 package org.symphonyoss.symphony.messageml.util;
 
 import static org.junit.Assert.assertEquals;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
@@ -11,16 +10,14 @@ import org.symphonyoss.symphony.messageml.util.XMLAttribute.Format;
 public class XMLAttributeDiffblueTest {
   /**
    * Test {@link XMLAttribute#of(String, Format)}.
-   *
    * <ul>
-   *   <li>When {@code null}.
+   *   <li>When {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link XMLAttribute#of(String, Format)}
+   * <p>
+   * Method under test: {@link XMLAttribute#of(String, Format)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"XMLAttribute XMLAttribute.of(String, Format)"})
   public void testOf_whenNull() {
     // Arrange and Act
@@ -33,16 +30,14 @@ public class XMLAttributeDiffblueTest {
 
   /**
    * Test {@link XMLAttribute#of(String, Format)}.
-   *
    * <ul>
-   *   <li>When {@code STANDARD}.
+   *   <li>When {@code STANDARD}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link XMLAttribute#of(String, Format)}
+   * <p>
+   * Method under test: {@link XMLAttribute#of(String, Format)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"XMLAttribute XMLAttribute.of(String, Format)"})
   public void testOf_whenStandard() {
     // Arrange and Act
@@ -55,17 +50,15 @@ public class XMLAttributeDiffblueTest {
 
   /**
    * Test getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link XMLAttribute#getFormat()}
    *   <li>{@link XMLAttribute#toString()}
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"Format XMLAttribute.getFormat()", "String XMLAttribute.toString()"})
   public void testGettersAndSetters() {
     // Arrange

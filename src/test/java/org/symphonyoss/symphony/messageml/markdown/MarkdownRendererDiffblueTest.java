@@ -3,19 +3,17 @@ package org.symphonyoss.symphony.messageml.markdown;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.ContributionFromDiffblue;
-import com.diffblue.cover.annotations.ManagedByDiffblue;
+import com.diffblue.cover.annotations.MaintainedByDiffblue;
 import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.DoubleNode;
 import com.fasterxml.jackson.databind.node.JsonNodeType;
+import com.fasterxml.jackson.databind.node.MissingNode;
 import com.fasterxml.jackson.databind.node.NullNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.fasterxml.jackson.databind.node.TreeTraversingParser;
 import java.util.Iterator;
-import org.commonmark.node.BlockQuote;
 import org.commonmark.node.BulletList;
 import org.commonmark.node.Code;
 import org.commonmark.node.CustomBlock;
@@ -41,80 +39,21 @@ import org.symphonyoss.symphony.messageml.markdown.nodes.TableRowNode;
 import org.symphonyoss.symphony.messageml.markdown.nodes.TagNode;
 import org.symphonyoss.symphony.messageml.markdown.nodes.form.ButtonNode;
 import org.symphonyoss.symphony.messageml.markdown.nodes.form.CheckboxNode;
-import org.symphonyoss.symphony.messageml.markdown.nodes.form.DateSelectorNode;
+import org.symphonyoss.symphony.messageml.markdown.nodes.form.DatePickerNode;
 import org.symphonyoss.symphony.messageml.markdown.nodes.form.DialogNode;
 import org.symphonyoss.symphony.messageml.markdown.nodes.form.OptionNode;
 
 public class MarkdownRendererDiffblueTest {
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Given {@link BlockQuote} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
+   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableCellNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
-  public void testNewMarkdownRenderer_givenBlockQuoteAppendChildEmojiNode() {
-    // Arrange
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    BlockQuote child2 = new BlockQuote();
-    child2.appendChild(child);
-
-    Document document = new Document();
-    document.appendChild(child2);
-
-    // Act and Assert
-    assertEquals(":Shortcode:", new MarkdownRenderer(document).getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
-   * <ul>
-   *   <li>Given {@link BulletList} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
-  public void testNewMarkdownRenderer_givenBulletListAppendChildEmojiNode() {
-    // Arrange
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    BulletList child2 = new BulletList();
-    child2.appendChild(child);
-
-    Document document = new Document();
-    document.appendChild(child2);
-
-    // Act and Assert
-    assertEquals(":Shortcode:\n", new MarkdownRenderer(document).getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
-   * <ul>
-   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableCellNode} (default
-   *       constructor).
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_givenDialogNodeAppendChildTableCellNode() {
     // Arrange
@@ -125,22 +64,19 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(child);
 
     // Act and Assert
-    assertEquals("---\n**Dialog**\n   \n---\n", new MarkdownRenderer(document).getText());
+    assertEquals("---\n**Dialog**\n   \n---\n", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableRowNode} (default
-   *       constructor).
+   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableRowNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_givenDialogNodeAppendChildTableRowNode() {
     // Arrange
@@ -151,50 +87,19 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(child);
 
     // Act and Assert
-    assertEquals("---\n**Dialog**\n\n---\n", new MarkdownRenderer(document).getText());
+    assertEquals("---\n**Dialog**\n\n---\n", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Given {@link Document} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
+   *   <li>Given {@link FencedCodeBlock} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
-  public void testNewMarkdownRenderer_givenDocumentAppendChildEmojiNode() {
-    // Arrange
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    Document child2 = new Document();
-    child2.appendChild(child);
-
-    Document document = new Document();
-    document.appendChild(child2);
-
-    // Act and Assert
-    assertEquals(":Shortcode:", new MarkdownRenderer(document).getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
-   * <ul>
-   *   <li>Given {@link FencedCodeBlock} (default constructor) appendChild {@link
-   *       EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_givenFencedCodeBlockAppendChildEmojiNode() {
     // Arrange
@@ -205,22 +110,20 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(child);
 
     // Act and Assert
-    assertEquals("", new MarkdownRenderer(document).getText());
+    assertEquals("", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Given {@link FencedCodeBlock} (default constructor) Info is space.
-   *   <li>Then return Text is space lf.
+   *   <li>Given {@link FencedCodeBlock} (default constructor) Info is space.</li>
+   *   <li>Then return Text is space lf.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_givenFencedCodeBlockInfoIsSpace_thenReturnTextIsSpaceLf() {
     // Arrange
@@ -232,22 +135,20 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(child);
 
     // Act and Assert
-    assertEquals(" \n", new MarkdownRenderer(document).getText());
+    assertEquals(" \n", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Given {@link PreformattedNode} (default constructor).
-   *   <li>Then return Text is lf lf.
+   *   <li>Given {@link PreformattedNode} (default constructor).</li>
+   *   <li>Then return Text is lf lf.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_givenPreformattedNode_thenReturnTextIsLfLf() {
     // Arrange
@@ -255,23 +156,20 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(new PreformattedNode());
 
     // Act and Assert
-    assertEquals("\n\n", new MarkdownRenderer(document).getText());
+    assertEquals("\n\n", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Given {@link TableCellNode} (default constructor).
-   *   <li>When {@link Document} (default constructor) appendChild {@link TableCellNode} (default
-   *       constructor).
+   *   <li>Given {@link TableCellNode} (default constructor).</li>
+   *   <li>When {@link Document} (default constructor) appendChild {@link TableCellNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_givenTableCellNode_whenDocumentAppendChildTableCellNode() {
     // Arrange
@@ -279,23 +177,20 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(new TableCellNode());
 
     // Act and Assert
-    assertEquals("", new MarkdownRenderer(document).getText());
+    assertEquals("", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Given {@link TableRowNode} (default constructor).
-   *   <li>When {@link Document} (default constructor) appendChild {@link TableRowNode} (default
-   *       constructor).
+   *   <li>Given {@link TableRowNode} (default constructor).</li>
+   *   <li>When {@link Document} (default constructor) appendChild {@link TableRowNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_givenTableRowNode_whenDocumentAppendChildTableRowNode() {
     // Arrange
@@ -303,21 +198,19 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(new TableRowNode());
 
     // Act and Assert
-    assertEquals("", new MarkdownRenderer(document).getText());
+    assertEquals("", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Then return Text is {@code (Button::(:)}.
+   *   <li>Then return Text is {@code (Button::(:)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_thenReturnTextIsButton() {
     // Arrange
@@ -331,21 +224,19 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(child2);
 
     // Act and Assert
-    assertEquals("(Button::(:)", new MarkdownRenderer(document).getText());
+    assertEquals("(Button::(:)", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Then return Text is {@code Delimiter Delimiter}.
+   *   <li>Then return Text is {@code Delimiter Delimiter}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_thenReturnTextIsDelimiterDelimiter() {
     // Arrange
@@ -356,21 +247,19 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(child);
 
     // Act and Assert
-    assertEquals("Delimiter\nDelimiter", new MarkdownRenderer(document).getText());
+    assertEquals("Delimiter\nDelimiter", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Then return Text is {@code Delimiter:Shortcode:Delimiter}.
+   *   <li>Then return Text is {@code Delimiter:Shortcode:Delimiter}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_thenReturnTextIsDelimiterShortcodeDelimiter() {
     // Arrange
@@ -384,21 +273,19 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(child2);
 
     // Act and Assert
-    assertEquals("Delimiter:Shortcode:Delimiter", new MarkdownRenderer(document).getText());
+    assertEquals("Delimiter:Shortcode:Delimiter", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Then return Text is {@code --- **Dialog** :--- **Dialog** : ---}.
+   *   <li>Then return Text is {@code --- **Dialog** :--- **Dialog** : ---}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_thenReturnTextIsDialogDialog() {
     // Arrange
@@ -412,22 +299,19 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(child);
 
     // Act and Assert
-    assertEquals(
-        "---\n**Dialog**\n:---\n**Dialog**\n:\n---\n", new MarkdownRenderer(document).getText());
+    assertEquals("---\n**Dialog**\n:---\n**Dialog**\n:\n---\n", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Then return Text is lf space space space lf lf space space space lf.
+   *   <li>Then return Text is lf space space space lf lf space space space lf.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_thenReturnTextIsLfSpaceSpaceSpaceLfLfSpaceSpaceSpaceLf() {
     // Arrange
@@ -435,21 +319,19 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(new TableNode());
 
     // Act and Assert
-    assertEquals("\n   \n\n   \n", new MarkdownRenderer(document).getText());
+    assertEquals("\n   \n\n   \n", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Then return Text is null null null null null null.
+   *   <li>Then return Text is null null null null null null.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_thenReturnTextIsNullNullNullNullNullNull() {
     // Arrange
@@ -461,21 +343,68 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(child);
 
     // Act and Assert
-    assertEquals("\u0000\u0000\u0000\u0000\u0000\u0000", new MarkdownRenderer(document).getText());
+    assertEquals("\u0000\u0000\u0000\u0000\u0000\u0000", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>Then return Text is space space.
+   *   <li>Then return Text is {@code :Shortcode:}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
+  public void testNewMarkdownRenderer_thenReturnTextIsShortcode() {
+    // Arrange
+    EmojiNode child = new EmojiNode();
+    child.setShortcode("Shortcode");
+
+    Document document = new Document();
+    document.appendChild(child);
+
+    // Act and Assert
+    assertEquals(":Shortcode:", (new MarkdownRenderer(document)).getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
+   * <ul>
+   *   <li>Then return Text is {@code :Shortcode:}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
+  public void testNewMarkdownRenderer_thenReturnTextIsShortcode2() {
+    // Arrange
+    EmojiNode child = new EmojiNode();
+    child.setShortcode("Shortcode");
+
+    BulletList child2 = new BulletList();
+    child2.appendChild(child);
+
+    Document document = new Document();
+    document.appendChild(child2);
+
+    // Act and Assert
+    assertEquals(":Shortcode:\n", (new MarkdownRenderer(document)).getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
+   * <ul>
+   *   <li>Then return Text is space space.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_thenReturnTextIsSpaceSpace() {
     // Arrange
@@ -486,114 +415,35 @@ public class MarkdownRendererDiffblueTest {
     document.appendChild(child);
 
     // Act and Assert
-    assertEquals("  ", new MarkdownRenderer(document).getText());
+    assertEquals("  ", (new MarkdownRenderer(document)).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
    * <ul>
-   *   <li>When {@link Document} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
+   *   <li>When {@link Document} (default constructor).</li>
+   *   <li>Then return Text is empty string.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
-  public void testNewMarkdownRenderer_whenDocumentAppendChildEmojiNode() {
-    // Arrange
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    Document document = new Document();
-    document.appendChild(child);
-
-    // Act and Assert
-    assertEquals(":Shortcode:", new MarkdownRenderer(document).getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#MarkdownRenderer(Document)}.
-   *
-   * <ul>
-   *   <li>When {@link Document} (default constructor).
-   *   <li>Then return Text is empty string.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#MarkdownRenderer(Document)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.<init>(Document)"})
   public void testNewMarkdownRenderer_whenDocument_thenReturnTextIsEmptyString() {
     // Arrange, Act and Assert
-    assertEquals("", new MarkdownRenderer(new Document()).getText());
+    assertEquals("", (new MarkdownRenderer(new Document())).getText());
   }
 
   /**
    * Test TrackingWriter {@link TrackingWriter#doubleLine()}.
-   *
-   * <p>Method under test: {@link TrackingWriter#doubleLine()}
+   * <p>
+   * Method under test: {@link TrackingWriter#doubleLine()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TrackingWriter.doubleLine()"})
   public void testTrackingWriterDoubleLine() {
-    // Arrange
-    StringBuilder out = new StringBuilder("foo");
-    out.appendCodePoint(0);
-    TrackingWriter trackingWriter = new MarkdownRenderer(new Document()).new TrackingWriter(out);
-
-    // Act
-    trackingWriter.doubleLine();
-
-    // Assert that nothing has changed
-    assertEquals("foo\u0000", trackingWriter.out.toString());
-    assertEquals('\u0000', trackingWriter.getLastChar());
-    assertEquals(4, trackingWriter.length());
-  }
-
-  /**
-   * Test TrackingWriter {@link TrackingWriter#doubleLine()}.
-   *
-   * <p>Method under test: {@link TrackingWriter#doubleLine()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void TrackingWriter.doubleLine()"})
-  public void testTrackingWriterDoubleLine2() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-    TrackingWriter trackingWriter = markdownRenderer.new TrackingWriter(new StringBuilder(""));
-
-    // Act
-    trackingWriter.doubleLine();
-
-    // Assert that nothing has changed
-    assertEquals("", trackingWriter.out.toString());
-    assertEquals('\u0000', trackingWriter.getLastChar());
-    assertEquals(0, trackingWriter.length());
-  }
-
-  /**
-   * Test TrackingWriter {@link TrackingWriter#doubleLine()}.
-   *
-   * <ul>
-   *   <li>Given {@link StringBuilder#StringBuilder(String)} with {@code foo}.
-   * </ul>
-   *
-   * <p>Method under test: {@link TrackingWriter#doubleLine()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void TrackingWriter.doubleLine()"})
-  public void testTrackingWriterDoubleLine_givenStringBuilderWithFoo() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
     TrackingWriter trackingWriter = markdownRenderer.new TrackingWriter(new StringBuilder("foo"));
@@ -609,101 +459,106 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test TrackingWriter {@link TrackingWriter#doubleLine()}.
-   *
-   * <ul>
-   *   <li>Given {@link StringBuilder#StringBuilder(String)} with {@code foo} append lf lf.
-   * </ul>
-   *
-   * <p>Method under test: {@link TrackingWriter#doubleLine()}
+   * <p>
+   * Method under test: {@link TrackingWriter#doubleLine()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void TrackingWriter.doubleLine()"})
-  public void testTrackingWriterDoubleLine_givenStringBuilderWithFooAppendLfLf() {
+  public void testTrackingWriterDoubleLine2() {
     // Arrange
-    StringBuilder out = new StringBuilder("foo");
-    out.append("\n\n");
-    TrackingWriter trackingWriter = new MarkdownRenderer(new Document()).new TrackingWriter(out);
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+    TrackingWriter trackingWriter = markdownRenderer.new TrackingWriter(new StringBuilder("\n\n"));
 
     // Act
     trackingWriter.doubleLine();
 
     // Assert that nothing has changed
-    assertEquals("foo\n\n", trackingWriter.out.toString());
+    assertEquals("\n\n", trackingWriter.out.toString());
     assertEquals('\n', trackingWriter.getLastChar());
-    assertEquals(5, trackingWriter.length());
+    assertEquals(2, trackingWriter.length());
+  }
+
+  /**
+   * Test TrackingWriter {@link TrackingWriter#doubleLine()}.
+   * <p>
+   * Method under test: {@link TrackingWriter#doubleLine()}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void TrackingWriter.doubleLine()"})
+  public void testTrackingWriterDoubleLine3() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+    TrackingWriter trackingWriter = markdownRenderer.new TrackingWriter(new StringBuilder(""));
+
+    // Act
+    trackingWriter.doubleLine();
+
+    // Assert that nothing has changed
+    assertEquals("", trackingWriter.out.toString());
+    assertEquals('\u0000', trackingWriter.getLastChar());
+    assertEquals(0, trackingWriter.length());
   }
 
   /**
    * Test TrackingWriter {@link TrackingWriter#getLastChar()}.
-   *
    * <ul>
-   *   <li>Given {@link StringBuilder#StringBuilder(String)} with empty string.
-   *   <li>Then return null.
+   *   <li>Given {@link StringBuilder#StringBuilder(String)} with empty string.</li>
+   *   <li>Then return null.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TrackingWriter#getLastChar()}
+   * <p>
+   * Method under test: {@link TrackingWriter#getLastChar()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"char TrackingWriter.getLastChar()"})
   public void testTrackingWriterGetLastChar_givenStringBuilderWithEmptyString_thenReturnNull() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
     // Act and Assert
-    assertEquals(
-        '\u0000', markdownRenderer.new TrackingWriter(new StringBuilder("")).getLastChar());
+    assertEquals('\u0000', (markdownRenderer.new TrackingWriter(new StringBuilder(""))).getLastChar());
   }
 
   /**
    * Test TrackingWriter {@link TrackingWriter#getLastChar()}.
-   *
    * <ul>
-   *   <li>Given {@link StringBuilder#StringBuilder(String)} with {@code foo}.
-   *   <li>Then return {@code o}.
+   *   <li>Given {@link StringBuilder#StringBuilder(String)} with {@code foo}.</li>
+   *   <li>Then return {@code o}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TrackingWriter#getLastChar()}
+   * <p>
+   * Method under test: {@link TrackingWriter#getLastChar()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"char TrackingWriter.getLastChar()"})
   public void testTrackingWriterGetLastChar_givenStringBuilderWithFoo_thenReturnO() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
     // Act and Assert
-    assertEquals('o', markdownRenderer.new TrackingWriter(new StringBuilder("foo")).getLastChar());
+    assertEquals('o', (markdownRenderer.new TrackingWriter(new StringBuilder("foo"))).getLastChar());
   }
 
   /**
    * Test TrackingWriter getters and setters.
-   *
-   * <p>Methods under test:
-   *
+   * <p>
+   * Methods under test:
    * <ul>
    *   <li>{@link TrackingWriter#TrackingWriter(MarkdownRenderer, StringBuilder)}
    *   <li>{@link TrackingWriter#toString()}
    * </ul>
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "void TrackingWriter.<init>(MarkdownRenderer, StringBuilder)",
-    "String TrackingWriter.toString()"
-  })
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void TrackingWriter.<init>(MarkdownRenderer, StringBuilder)", "String TrackingWriter.toString()"})
   public void testTrackingWriterGettersAndSetters() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
     // Act
-    TrackingWriter actualTrackingWriter =
-        markdownRenderer.new TrackingWriter(new StringBuilder("foo"));
+    TrackingWriter actualTrackingWriter = markdownRenderer.new TrackingWriter(new StringBuilder("foo"));
     String actualToStringResult = actualTrackingWriter.toString();
 
     // Assert
@@ -713,36 +568,58 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test TrackingWriter {@link TrackingWriter#length()}.
-   *
    * <ul>
-   *   <li>Given {@link StringBuilder#StringBuilder(String)} with {@code foo}.
-   *   <li>Then return three.
+   *   <li>Given {@link StringBuilder#StringBuilder(String)} with {@code foo}.</li>
+   *   <li>Then return three.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link TrackingWriter#length()}
+   * <p>
+   * Method under test: {@link TrackingWriter#length()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"int TrackingWriter.length()"})
   public void testTrackingWriterLength_givenStringBuilderWithFoo_thenReturnThree() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
     // Act and Assert
-    assertEquals(3, markdownRenderer.new TrackingWriter(new StringBuilder("foo")).length());
+    assertEquals(3, (markdownRenderer.new TrackingWriter(new StringBuilder("foo"))).length());
   }
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
   public void testVisitWithBulletList() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    EmojiNode child = new EmojiNode();
+    child.setShortcode("Shortcode");
+
+    BulletList ul = new BulletList();
+    ul.appendChild(child);
+
+    // Act
+    markdownRenderer.visit(ul);
+
+    // Assert
+    assertEquals(":Shortcode:\n", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
+  public void testVisitWithBulletList2() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
@@ -758,14 +635,13 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
-  public void testVisitWithBulletList2() {
+  public void testVisitWithBulletList3() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
@@ -784,14 +660,41 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
-  public void testVisitWithBulletList3() {
+  public void testVisitWithBulletList4() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    EmojiNode child = new EmojiNode();
+    child.setShortcode("Shortcode");
+
+    Document child2 = new Document();
+    child2.appendChild(child);
+
+    BulletList ul = new BulletList();
+    ul.appendChild(child2);
+
+    // Act
+    markdownRenderer.visit(ul);
+
+    // Assert
+    assertEquals(":Shortcode:\n", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
+  public void testVisitWithBulletList5() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
@@ -813,14 +716,13 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
-  public void testVisitWithBulletList4() {
+  public void testVisitWithBulletList6() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
@@ -839,14 +741,13 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
-  public void testVisitWithBulletList5() {
+  public void testVisitWithBulletList7() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
@@ -866,207 +767,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
-  public void testVisitWithBulletList6() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode node = new EmojiNode();
-    node.setShortcode("---\n**Dialog**\n");
-
-    DialogNode child = new DialogNode();
-    child.appendChild(node);
-
-    BulletList ul = new BulletList();
-    ul.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(ul);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n:---\n**Dialog**\n:\n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
    * <ul>
-   *   <li>Given {@link BlockQuote} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
+   *   <li>Given {@link FencedCodeBlock} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
-  public void testVisitWithBulletList_givenBlockQuoteAppendChildEmojiNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    BlockQuote child2 = new BlockQuote();
-    child2.appendChild(child);
-
-    BulletList ul = new BulletList();
-    ul.appendChild(child2);
-
-    // Act
-    markdownRenderer.visit(ul);
-
-    // Assert
-    assertEquals(":Shortcode:\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
-   * <ul>
-   *   <li>Given {@link BulletList} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
-  public void testVisitWithBulletList_givenBulletListAppendChildEmojiNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    BulletList child2 = new BulletList();
-    child2.appendChild(child);
-
-    BulletList ul = new BulletList();
-    ul.appendChild(child2);
-
-    // Act
-    markdownRenderer.visit(ul);
-
-    // Assert
-    assertEquals(":Shortcode:\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
-   * <ul>
-   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableCellNode} (default
-   *       constructor).
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
-  public void testVisitWithBulletList_givenDialogNodeAppendChildTableCellNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    DialogNode child = new DialogNode();
-    child.appendChild(new TableCellNode());
-
-    BulletList ul = new BulletList();
-    ul.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(ul);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n   \n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
-   * <ul>
-   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableRowNode} (default
-   *       constructor).
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
-  public void testVisitWithBulletList_givenDialogNodeAppendChildTableRowNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    DialogNode child = new DialogNode();
-    child.appendChild(new TableRowNode());
-
-    BulletList ul = new BulletList();
-    ul.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(ul);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n\n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
-   * <ul>
-   *   <li>Given {@link Document} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
-  public void testVisitWithBulletList_givenDocumentAppendChildEmojiNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    Document child2 = new Document();
-    child2.appendChild(child);
-
-    BulletList ul = new BulletList();
-    ul.appendChild(child2);
-
-    // Act
-    markdownRenderer.visit(ul);
-
-    // Assert
-    assertEquals(":Shortcode:\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
-   * <ul>
-   *   <li>Given {@link FencedCodeBlock} (default constructor) appendChild {@link
-   *       EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
   public void testVisitWithBulletList_givenFencedCodeBlockAppendChildEmojiNode() {
     // Arrange
@@ -1087,16 +795,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
    * <ul>
-   *   <li>Given {@link TableCellNode} (default constructor).
+   *   <li>Given {@link TableCellNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
   public void testVisitWithBulletList_givenTableCellNode() {
     // Arrange
@@ -1114,18 +820,15 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
    * <ul>
-   *   <li>Given {@link TableRowNode} (default constructor).
-   *   <li>When {@link BulletList} (default constructor) appendChild {@link TableRowNode} (default
-   *       constructor).
+   *   <li>Given {@link TableRowNode} (default constructor).</li>
+   *   <li>When {@link BulletList} (default constructor) appendChild {@link TableRowNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
   public void testVisitWithBulletList_givenTableRowNode_whenBulletListAppendChildTableRowNode() {
     // Arrange
@@ -1143,17 +846,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is {@code (Button::(:)}.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is {@code (Button::(:)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
   public void testVisitWithBulletList_thenMarkdownRendererWithDocumentIsDocumentTextIsButton() {
     // Arrange
@@ -1177,17 +877,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is lf lf.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is lf lf.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
   public void testVisitWithBulletList_thenMarkdownRendererWithDocumentIsDocumentTextIsLfLf() {
     // Arrange
@@ -1205,17 +902,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is space lf.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is space lf.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
   public void testVisitWithBulletList_thenMarkdownRendererWithDocumentIsDocumentTextIsSpaceLf() {
     // Arrange
@@ -1237,16 +931,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
    * <ul>
-   *   <li>When {@link BulletList} (default constructor).
+   *   <li>When {@link BulletList} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
   public void testVisitWithBulletList_whenBulletList() {
     // Arrange
@@ -1261,42 +953,33 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(BulletList)} with {@code BulletList}.
-   *
    * <ul>
-   *   <li>When {@link BulletList} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
+   *   <li>When {@link BulletList} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(BulletList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(BulletList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(BulletList)"})
-  public void testVisitWithBulletList_whenBulletListAppendChildEmojiNode() {
+  public void testVisitWithBulletList_whenBulletList2() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    BulletList ul = new BulletList();
-    ul.appendChild(child);
-
     // Act
-    markdownRenderer.visit(ul);
+    markdownRenderer.visit(new BulletList());
 
-    // Assert
-    assertEquals(":Shortcode:\n", markdownRenderer.getText());
+    // Assert that nothing has changed
+    assertEquals("", markdownRenderer.getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock() {
     // Arrange
@@ -1311,12 +994,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock2() {
     // Arrange
@@ -1337,12 +1019,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock3() {
     // Arrange
@@ -1360,60 +1041,13 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock4() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    CheckboxNode node = new CheckboxNode(" * ");
-    node.appendChild(new EmojiNode());
-
-    // Act
-    markdownRenderer.visit(node);
-
-    // Assert
-    assertEquals("  *  ", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
-  public void testVisitWithCustomBlock5() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    DateSelectorNode node = new DateSelectorNode(" * ");
-    node.appendChild(new EmojiNode());
-
-    // Act
-    markdownRenderer.visit(node);
-
-    // Assert
-    assertEquals("(Date Selector:[ \\* ])", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
-  public void testVisitWithCustomBlock6() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
@@ -1432,14 +1066,13 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
-  public void testVisitWithCustomBlock7() {
+  public void testVisitWithCustomBlock5() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
@@ -1458,16 +1091,147 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
-   * <ul>
-   *   <li>Given {@link TableCellNode} (default constructor).
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
+  public void testVisitWithCustomBlock6() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new CheckboxNode(" * "));
+
+    // Assert
+    assertEquals("  *  ", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
+  public void testVisitWithCustomBlock7() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new CheckboxNode("\\_"));
+
+    // Assert
+    assertEquals(" \\\\_ ", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
+  public void testVisitWithCustomBlock8() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new DatePickerNode(" * ", " * ", "Placeholder"));
+
+    // Assert
+    assertEquals("(Date Picker:[ \\* ][ \\* ][Placeholder])", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
+  public void testVisitWithCustomBlock9() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new DatePickerNode(" * ", "_", "Placeholder"));
+
+    // Assert
+    assertEquals("(Date Picker:[ \\* ][\\_][Placeholder])", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
+  public void testVisitWithCustomBlock10() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new DatePickerNode(" * ", "-", "Placeholder"));
+
+    // Assert
+    assertEquals("(Date Picker:[ \\* ][\\-][Placeholder])", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
+  public void testVisitWithCustomBlock11() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new DatePickerNode(" * ", " * ", "_"));
+
+    // Assert
+    assertEquals("(Date Picker:[ \\* ][ \\* ][\\_])", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
+  public void testVisitWithCustomBlock12() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new DatePickerNode(" * ", " * ", "-"));
+
+    // Assert
+    assertEquals("(Date Picker:[ \\* ][ \\* ][\\-])", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
+   * <ul>
+   *   <li>Given {@link TableCellNode} (default constructor).</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock_givenTableCellNode() {
     // Arrange
@@ -1485,18 +1249,15 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
    * <ul>
-   *   <li>Given {@link TableRowNode} (default constructor).
-   *   <li>When {@link DialogNode} (default constructor) appendChild {@link TableRowNode} (default
-   *       constructor).
+   *   <li>Given {@link TableRowNode} (default constructor).</li>
+   *   <li>When {@link DialogNode} (default constructor) appendChild {@link TableRowNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock_givenTableRowNode_whenDialogNodeAppendChildTableRowNode() {
     // Arrange
@@ -1514,17 +1275,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is {@code (Button:)}.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is {@code (Button:)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock_thenMarkdownRendererWithDocumentIsDocumentTextIsButton() {
     // Arrange
@@ -1539,17 +1297,36 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is lf lf.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is {@code Label}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
+  public void testVisitWithCustomBlock_thenMarkdownRendererWithDocumentIsDocumentTextIsLabel() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new CheckboxNode("Label"));
+
+    // Assert
+    assertEquals(" Label ", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
+   * <ul>
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is lf lf.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock_thenMarkdownRendererWithDocumentIsDocumentTextIsLfLf() {
     // Arrange
@@ -1564,16 +1341,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
    * <ul>
-   *   <li>When {@link CheckboxNode#CheckboxNode()} appendChild {@link EmojiNode#EmojiNode()}.
+   *   <li>When {@link CheckboxNode#CheckboxNode()} appendChild {@link EmojiNode#EmojiNode()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock_whenCheckboxNodeAppendChildEmojiNode() {
     // Arrange
@@ -1591,27 +1366,21 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
    * <ul>
-   *   <li>When {@link CheckboxNode#CheckboxNode(String)} with label is space appendChild {@link
-   *       EmojiNode#EmojiNode()}.
+   *   <li>When {@link CheckboxNode#CheckboxNode(String)} with label is space.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
-  public void testVisitWithCustomBlock_whenCheckboxNodeWithLabelIsSpaceAppendChildEmojiNode() {
+  public void testVisitWithCustomBlock_whenCheckboxNodeWithLabelIsSpace() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
-    CheckboxNode node = new CheckboxNode(" ");
-    node.appendChild(new EmojiNode());
-
     // Act
-    markdownRenderer.visit(node);
+    markdownRenderer.visit(new CheckboxNode(" "));
 
     // Assert
     assertEquals("  ", markdownRenderer.getText());
@@ -1619,16 +1388,36 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
    * <ul>
-   *   <li>When {@code null}.
+   *   <li>When {@link DialogNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
+  public void testVisitWithCustomBlock_whenDialogNode() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new DialogNode());
+
+    // Assert
+    assertEquals("---\n**Dialog**\n---\n", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
+   * <ul>
+   *   <li>When {@code null}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock_whenNull() {
     // Arrange
@@ -1643,16 +1432,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
    * <ul>
-   *   <li>When {@link TableCellNode} (default constructor).
+   *   <li>When {@link TableCellNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock_whenTableCellNode() {
     // Arrange
@@ -1667,16 +1454,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomBlock)} with {@code CustomBlock}.
-   *
    * <ul>
-   *   <li>When {@link TableRowNode} (default constructor).
+   *   <li>When {@link TableRowNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomBlock)"})
   public void testVisitWithCustomBlock_whenTableRowNode() {
     // Arrange
@@ -1691,12 +1476,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomNode)} with {@code CustomNode}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomNode)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomNode)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomNode)"})
   public void testVisitWithCustomNode() {
     // Arrange
@@ -1717,12 +1501,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomNode)} with {@code CustomNode}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomNode)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomNode)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomNode)"})
   public void testVisitWithCustomNode2() {
     // Arrange
@@ -1740,12 +1523,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomNode)} with {@code CustomNode}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomNode)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomNode)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomNode)"})
   public void testVisitWithCustomNode3() {
     // Arrange
@@ -1764,35 +1546,15 @@ public class MarkdownRendererDiffblueTest {
     assertTrue(nextResult2 instanceof ObjectNode);
     Iterator<JsonNode> iteratorResult2 = nextResult2.iterator();
     assertTrue(iteratorResult2.next() instanceof TextNode);
-    assertEquals(
-        "[ {\n"
-            + "  \"id\" : \"indexStartText\",\n"
-            + "  \"text\" : \"indexStartText\",\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"indexEnd\" : 14,\n"
-            + "  \"type\" : \"KEYWORD\"\n"
-            + "} ]",
+    assertEquals("[ {\n" + "  \"id\" : \"indexStartText\",\n" + "  \"text\" : \"indexStartText\",\n"
+        + "  \"indexStart\" : 0,\n" + "  \"indexEnd\" : 14,\n" + "  \"type\" : \"KEYWORD\"\n" + "} ]",
         nextResult.toPrettyString());
     assertEquals("indexStartText", markdownRenderer.getText());
-    assertEquals(
-        "{\n"
-            + "  \"hashtags\" : [ {\n"
-            + "    \"id\" : \"indexStartText\",\n"
-            + "    \"text\" : \"indexStartText\",\n"
-            + "    \"indexStart\" : 0,\n"
-            + "    \"indexEnd\" : 14,\n"
-            + "    \"type\" : \"KEYWORD\"\n"
-            + "  } ]\n"
-            + "}",
-        json.toPrettyString());
-    assertEquals(
-        "{\n"
-            + "  \"id\" : \"indexStartText\",\n"
-            + "  \"text\" : \"indexStartText\",\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"indexEnd\" : 14,\n"
-            + "  \"type\" : \"KEYWORD\"\n"
-            + "}",
+    assertEquals("{\n" + "  \"hashtags\" : [ {\n" + "    \"id\" : \"indexStartText\",\n"
+        + "    \"text\" : \"indexStartText\",\n" + "    \"indexStart\" : 0,\n" + "    \"indexEnd\" : 14,\n"
+        + "    \"type\" : \"KEYWORD\"\n" + "  } ]\n" + "}", json.toPrettyString());
+    assertEquals("{\n" + "  \"id\" : \"indexStartText\",\n" + "  \"text\" : \"indexStartText\",\n"
+        + "  \"indexStart\" : 0,\n" + "  \"indexEnd\" : 14,\n" + "  \"type\" : \"KEYWORD\"\n" + "}",
         nextResult2.toPrettyString());
     assertFalse(elementsResult.hasNext());
     assertFalse(iteratorResult.hasNext());
@@ -1801,20 +1563,18 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomNode)} with {@code CustomNode}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomNode)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomNode)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomNode)"})
   public void testVisitWithCustomNode4() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-    TagNode node = new TagNode("Prefix", "Text", DoubleNode.valueOf(10.0d));
 
     // Act
-    markdownRenderer.visit(node);
+    markdownRenderer.visit(new TagNode("Prefix", "Text", MissingNode.getInstance()));
 
     // Assert
     ObjectNode json = markdownRenderer.getJson();
@@ -1823,43 +1583,25 @@ public class MarkdownRendererDiffblueTest {
     assertTrue(nextResult instanceof ArrayNode);
     assertTrue(nextResult.traverse() instanceof TreeTraversingParser);
     assertEquals(
-        "[ {\n"
-            + "  \"id\" : \"PrefixText\",\n"
-            + "  \"text\" : \"PrefixText\",\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"indexEnd\" : 10,\n"
-            + "  \"type\" : \"KEYWORD\",\n"
-            + "  \"data\" : 10.0\n"
-            + "} ]",
+        "[ {\n" + "  \"id\" : \"PrefixText\",\n" + "  \"text\" : \"PrefixText\",\n" + "  \"indexStart\" : 0,\n"
+            + "  \"indexEnd\" : 10,\n" + "  \"type\" : \"KEYWORD\",\n" + "  \"data\" : null\n" + "} ]",
         nextResult.toPrettyString());
-    assertEquals(
-        "{\n"
-            + "  \"hashtags\" : [ {\n"
-            + "    \"id\" : \"PrefixText\",\n"
-            + "    \"text\" : \"PrefixText\",\n"
-            + "    \"indexStart\" : 0,\n"
-            + "    \"indexEnd\" : 10,\n"
-            + "    \"type\" : \"KEYWORD\",\n"
-            + "    \"data\" : 10.0\n"
-            + "  } ]\n"
-            + "}",
-        json.toPrettyString());
+    assertEquals("{\n" + "  \"hashtags\" : [ {\n" + "    \"id\" : \"PrefixText\",\n"
+        + "    \"text\" : \"PrefixText\",\n" + "    \"indexStart\" : 0,\n" + "    \"indexEnd\" : 10,\n"
+        + "    \"type\" : \"KEYWORD\",\n" + "    \"data\" : null\n" + "  } ]\n" + "}", json.toPrettyString());
     assertFalse(iteratorResult.hasNext());
   }
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomNode)} with {@code CustomNode}.
-   *
    * <ul>
-   *   <li>When {@link KeywordNode#KeywordNode(String, String)} with {@code Prefix} and {@code
-   *       Text}.
+   *   <li>When {@link KeywordNode#KeywordNode(String, String)} with {@code Prefix} and {@code Text}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomNode)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomNode)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomNode)"})
   public void testVisitWithCustomNode_whenKeywordNodeWithPrefixAndText() {
     // Arrange
@@ -1879,36 +1621,14 @@ public class MarkdownRendererDiffblueTest {
     Iterator<JsonNode> iteratorResult2 = nextResult2.iterator();
     JsonNode nextResult3 = iteratorResult2.next();
     assertTrue(nextResult3 instanceof TextNode);
-    assertEquals(
-        "[ {\n"
-            + "  \"id\" : \"PrefixText\",\n"
-            + "  \"text\" : \"PrefixText\",\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"indexEnd\" : 10,\n"
-            + "  \"type\" : \"KEYWORD\"\n"
-            + "} ]",
-        nextResult.toPrettyString());
+    assertEquals("[ {\n" + "  \"id\" : \"PrefixText\",\n" + "  \"text\" : \"PrefixText\",\n" + "  \"indexStart\" : 0,\n"
+        + "  \"indexEnd\" : 10,\n" + "  \"type\" : \"KEYWORD\"\n" + "} ]", nextResult.toPrettyString());
     assertEquals("\"PrefixText\"", nextResult3.toPrettyString());
-    assertEquals(
-        "{\n"
-            + "  \"hashtags\" : [ {\n"
-            + "    \"id\" : \"PrefixText\",\n"
-            + "    \"text\" : \"PrefixText\",\n"
-            + "    \"indexStart\" : 0,\n"
-            + "    \"indexEnd\" : 10,\n"
-            + "    \"type\" : \"KEYWORD\"\n"
-            + "  } ]\n"
-            + "}",
-        json.toPrettyString());
-    assertEquals(
-        "{\n"
-            + "  \"id\" : \"PrefixText\",\n"
-            + "  \"text\" : \"PrefixText\",\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"indexEnd\" : 10,\n"
-            + "  \"type\" : \"KEYWORD\"\n"
-            + "}",
-        nextResult2.toPrettyString());
+    assertEquals("{\n" + "  \"hashtags\" : [ {\n" + "    \"id\" : \"PrefixText\",\n"
+        + "    \"text\" : \"PrefixText\",\n" + "    \"indexStart\" : 0,\n" + "    \"indexEnd\" : 10,\n"
+        + "    \"type\" : \"KEYWORD\"\n" + "  } ]\n" + "}", json.toPrettyString());
+    assertEquals("{\n" + "  \"id\" : \"PrefixText\",\n" + "  \"text\" : \"PrefixText\",\n" + "  \"indexStart\" : 0,\n"
+        + "  \"indexEnd\" : 10,\n" + "  \"type\" : \"KEYWORD\"\n" + "}", nextResult2.toPrettyString());
     assertFalse(elementsResult.hasNext());
     assertFalse(iteratorResult.hasNext());
     assertTrue(iteratorResult2.hasNext());
@@ -1916,25 +1636,21 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(CustomNode)} with {@code CustomNode}.
-   *
    * <ul>
-   *   <li>When {@link TagNode#TagNode(String, String, JsonNode)} with {@code Prefix} and {@code
-   *       Text} and data is {@code null}.
+   *   <li>When {@link TagNode#TagNode(String, String, JsonNode)} with {@code Prefix} and {@code Text} and data is {@code null}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(CustomNode)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(CustomNode)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(CustomNode)"})
   public void testVisitWithCustomNode_whenTagNodeWithPrefixAndTextAndDataIsNull() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-    TagNode node = new TagNode("Prefix", "Text", null);
 
     // Act
-    markdownRenderer.visit(node);
+    markdownRenderer.visit(new TagNode("Prefix", "Text", null));
 
     // Assert
     ObjectNode json = markdownRenderer.getJson();
@@ -1947,36 +1663,14 @@ public class MarkdownRendererDiffblueTest {
     Iterator<JsonNode> iteratorResult2 = nextResult2.iterator();
     JsonNode nextResult3 = iteratorResult2.next();
     assertTrue(nextResult3 instanceof TextNode);
-    assertEquals(
-        "[ {\n"
-            + "  \"id\" : \"PrefixText\",\n"
-            + "  \"text\" : \"PrefixText\",\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"indexEnd\" : 10,\n"
-            + "  \"type\" : \"KEYWORD\"\n"
-            + "} ]",
-        nextResult.toPrettyString());
+    assertEquals("[ {\n" + "  \"id\" : \"PrefixText\",\n" + "  \"text\" : \"PrefixText\",\n" + "  \"indexStart\" : 0,\n"
+        + "  \"indexEnd\" : 10,\n" + "  \"type\" : \"KEYWORD\"\n" + "} ]", nextResult.toPrettyString());
     assertEquals("\"PrefixText\"", nextResult3.toPrettyString());
-    assertEquals(
-        "{\n"
-            + "  \"hashtags\" : [ {\n"
-            + "    \"id\" : \"PrefixText\",\n"
-            + "    \"text\" : \"PrefixText\",\n"
-            + "    \"indexStart\" : 0,\n"
-            + "    \"indexEnd\" : 10,\n"
-            + "    \"type\" : \"KEYWORD\"\n"
-            + "  } ]\n"
-            + "}",
-        json.toPrettyString());
-    assertEquals(
-        "{\n"
-            + "  \"id\" : \"PrefixText\",\n"
-            + "  \"text\" : \"PrefixText\",\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"indexEnd\" : 10,\n"
-            + "  \"type\" : \"KEYWORD\"\n"
-            + "}",
-        nextResult2.toPrettyString());
+    assertEquals("{\n" + "  \"hashtags\" : [ {\n" + "    \"id\" : \"PrefixText\",\n"
+        + "    \"text\" : \"PrefixText\",\n" + "    \"indexStart\" : 0,\n" + "    \"indexEnd\" : 10,\n"
+        + "    \"type\" : \"KEYWORD\"\n" + "  } ]\n" + "}", json.toPrettyString());
+    assertEquals("{\n" + "  \"id\" : \"PrefixText\",\n" + "  \"text\" : \"PrefixText\",\n" + "  \"indexStart\" : 0,\n"
+        + "  \"indexEnd\" : 10,\n" + "  \"type\" : \"KEYWORD\"\n" + "}", nextResult2.toPrettyString());
     assertFalse(elementsResult.hasNext());
     assertFalse(iteratorResult.hasNext());
     assertTrue(iteratorResult2.hasNext());
@@ -1984,12 +1678,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument() {
     // Arrange
@@ -2007,12 +1700,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument2() {
     // Arrange
@@ -2036,12 +1728,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument3() {
     // Arrange
@@ -2062,12 +1753,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument4() {
     // Arrange
@@ -2089,207 +1779,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
-  public void testVisitWithDocument5() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode node = new EmojiNode();
-    node.setShortcode("---\n**Dialog**\n");
-
-    DialogNode child = new DialogNode();
-    child.appendChild(node);
-
-    Document document = new Document();
-    document.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(document);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n:---\n**Dialog**\n:\n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
    * <ul>
-   *   <li>Given {@link BlockQuote} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
+   *   <li>Given {@link FencedCodeBlock} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
-  public void testVisitWithDocument_givenBlockQuoteAppendChildEmojiNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    BlockQuote child2 = new BlockQuote();
-    child2.appendChild(child);
-
-    Document document = new Document();
-    document.appendChild(child2);
-
-    // Act
-    markdownRenderer.visit(document);
-
-    // Assert
-    assertEquals(":Shortcode:", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
-   * <ul>
-   *   <li>Given {@link BulletList} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
-  public void testVisitWithDocument_givenBulletListAppendChildEmojiNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    BulletList child2 = new BulletList();
-    child2.appendChild(child);
-
-    Document document = new Document();
-    document.appendChild(child2);
-
-    // Act
-    markdownRenderer.visit(document);
-
-    // Assert
-    assertEquals(":Shortcode:\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
-   * <ul>
-   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableCellNode} (default
-   *       constructor).
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
-  public void testVisitWithDocument_givenDialogNodeAppendChildTableCellNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    DialogNode child = new DialogNode();
-    child.appendChild(new TableCellNode());
-
-    Document document = new Document();
-    document.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(document);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n   \n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
-   * <ul>
-   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableRowNode} (default
-   *       constructor).
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
-  public void testVisitWithDocument_givenDialogNodeAppendChildTableRowNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    DialogNode child = new DialogNode();
-    child.appendChild(new TableRowNode());
-
-    Document document = new Document();
-    document.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(document);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n\n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
-   * <ul>
-   *   <li>Given {@link Document} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
-  public void testVisitWithDocument_givenDocumentAppendChildEmojiNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    Document child2 = new Document();
-    child2.appendChild(child);
-
-    Document document = new Document();
-    document.appendChild(child2);
-
-    // Act
-    markdownRenderer.visit(document);
-
-    // Assert
-    assertEquals(":Shortcode:", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
-   * <ul>
-   *   <li>Given {@link FencedCodeBlock} (default constructor) appendChild {@link
-   *       EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument_givenFencedCodeBlockAppendChildEmojiNode() {
     // Arrange
@@ -2310,18 +1807,15 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
    * <ul>
-   *   <li>Given {@link TableCellNode} (default constructor).
-   *   <li>When {@link Document} (default constructor) appendChild {@link TableCellNode} (default
-   *       constructor).
+   *   <li>Given {@link TableCellNode} (default constructor).</li>
+   *   <li>When {@link Document} (default constructor) appendChild {@link TableCellNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument_givenTableCellNode_whenDocumentAppendChildTableCellNode() {
     // Arrange
@@ -2339,18 +1833,15 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
    * <ul>
-   *   <li>Given {@link TableRowNode} (default constructor).
-   *   <li>When {@link Document} (default constructor) appendChild {@link TableRowNode} (default
-   *       constructor).
+   *   <li>Given {@link TableRowNode} (default constructor).</li>
+   *   <li>When {@link Document} (default constructor) appendChild {@link TableRowNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument_givenTableRowNode_whenDocumentAppendChildTableRowNode() {
     // Arrange
@@ -2368,17 +1859,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is {@code (Button::(:)}.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is {@code (Button::(:)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument_thenMarkdownRendererWithDocumentIsDocumentTextIsButton() {
     // Arrange
@@ -2402,17 +1890,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is lf lf.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is lf lf.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument_thenMarkdownRendererWithDocumentIsDocumentTextIsLfLf() {
     // Arrange
@@ -2430,17 +1915,73 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is space lf.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is {@code :Shortcode:}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
+  public void testVisitWithDocument_thenMarkdownRendererWithDocumentIsDocumentTextIsShortcode() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    EmojiNode child = new EmojiNode();
+    child.setShortcode("Shortcode");
+
+    Document document = new Document();
+    document.appendChild(child);
+
+    // Act
+    markdownRenderer.visit(document);
+
+    // Assert
+    assertEquals(":Shortcode:", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
+   * <ul>
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is {@code :Shortcode:}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
+  public void testVisitWithDocument_thenMarkdownRendererWithDocumentIsDocumentTextIsShortcode2() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    EmojiNode child = new EmojiNode();
+    child.setShortcode("Shortcode");
+
+    BulletList child2 = new BulletList();
+    child2.appendChild(child);
+
+    Document document = new Document();
+    document.appendChild(child2);
+
+    // Act
+    markdownRenderer.visit(document);
+
+    // Assert
+    assertEquals(":Shortcode:\n", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
+   * <ul>
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is space lf.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument_thenMarkdownRendererWithDocumentIsDocumentTextIsSpaceLf() {
     // Arrange
@@ -2462,17 +2003,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is space space.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is space space.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument_thenMarkdownRendererWithDocumentIsDocumentTextIsSpaceSpace() {
     // Arrange
@@ -2493,16 +2031,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
    * <ul>
-   *   <li>When {@link Document} (default constructor).
+   *   <li>When {@link Document} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Document)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
   public void testVisitWithDocument_whenDocument() {
     // Arrange
@@ -2516,43 +2052,12 @@ public class MarkdownRendererDiffblueTest {
   }
 
   /**
-   * Test {@link MarkdownRenderer#visit(Document)} with {@code Document}.
-   *
-   * <ul>
-   *   <li>When {@link Document} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Document)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Document)"})
-  public void testVisitWithDocument_whenDocumentAppendChildEmojiNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    Document document = new Document();
-    document.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(document);
-
-    // Assert
-    assertEquals(":Shortcode:", markdownRenderer.getText());
-  }
-
-  /**
    * Test {@link MarkdownRenderer#visit(Emphasis)} with {@code Emphasis}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Emphasis)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Emphasis)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Emphasis)"})
   public void testVisitWithEmphasis() {
     // Arrange
@@ -2573,12 +2078,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Emphasis)} with {@code Emphasis}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Emphasis)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Emphasis)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Emphasis)"})
   public void testVisitWithEmphasis2() {
     // Arrange
@@ -2596,12 +2100,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Emphasis)} with {@code Emphasis}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Emphasis)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Emphasis)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Emphasis)"})
   public void testVisitWithEmphasis3() {
     // Arrange
@@ -2619,16 +2122,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Emphasis)} with {@code Emphasis}.
-   *
    * <ul>
-   *   <li>Given {@link Code#Code(String)} with {@code Literal}.
+   *   <li>Given {@link Code#Code(String)} with {@code Literal}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Emphasis)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Emphasis)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Emphasis)"})
   public void testVisitWithEmphasis_givenCodeWithLiteral() {
     // Arrange
@@ -2646,16 +2147,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Emphasis)} with {@code Emphasis}.
-   *
    * <ul>
-   *   <li>When {@link Emphasis#Emphasis(String)} with {@code Delimiter}.
+   *   <li>When {@link Emphasis#Emphasis(String)} with {@code Delimiter}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Emphasis)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Emphasis)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Emphasis)"})
   public void testVisitWithEmphasis_whenEmphasisWithDelimiter() {
     // Arrange
@@ -2670,12 +2169,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(FencedCodeBlock)} with {@code FencedCodeBlock}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(FencedCodeBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(FencedCodeBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(FencedCodeBlock)"})
   public void testVisitWithFencedCodeBlock() {
     // Arrange
@@ -2693,12 +2191,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(FencedCodeBlock)} with {@code FencedCodeBlock}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(FencedCodeBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(FencedCodeBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(FencedCodeBlock)"})
   public void testVisitWithFencedCodeBlock2() {
     // Arrange
@@ -2717,12 +2214,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(FencedCodeBlock)} with {@code FencedCodeBlock}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(FencedCodeBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(FencedCodeBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(FencedCodeBlock)"})
   public void testVisitWithFencedCodeBlock3() {
     // Arrange
@@ -2741,16 +2237,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(FencedCodeBlock)} with {@code FencedCodeBlock}.
-   *
    * <ul>
-   *   <li>When {@link FencedCodeBlock} (default constructor).
+   *   <li>When {@link FencedCodeBlock} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(FencedCodeBlock)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(FencedCodeBlock)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(FencedCodeBlock)"})
   public void testVisitWithFencedCodeBlock_whenFencedCodeBlock() {
     // Arrange
@@ -2765,19 +2259,13 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Link)} with {@code Link}.
-   *
-   * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is {@code [ Dr ]()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Link)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Link)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Link)"})
-  public void testVisitWithLink_thenMarkdownRendererWithDocumentIsDocumentTextIsDr() {
+  public void testVisitWithLink() {
     // Arrange
     MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
 
@@ -2796,38 +2284,94 @@ public class MarkdownRendererDiffblueTest {
     JsonNode nextResult3 = iteratorResult2.next();
     assertTrue(nextResult3 instanceof TextNode);
     assertEquals("[ Dr ]()", markdownRenderer.getText());
-    assertEquals(
-        "[ {\n"
-            + "  \"id\" : \"\",\n"
-            + "  \"type\" : \"URL\",\n"
-            + "  \"indexEnd\" : 8,\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"text\" : \"Dr\",\n"
-            + "  \"expandedUrl\" : \"\"\n"
-            + "} ]",
+    assertEquals("[ {\n" + "  \"id\" : \"\",\n" + "  \"type\" : \"URL\",\n" + "  \"indexEnd\" : 8,\n"
+        + "  \"indexStart\" : 0,\n" + "  \"text\" : \"Dr\",\n" + "  \"expandedUrl\" : \"\"\n" + "} ]",
         nextResult.toPrettyString());
     assertEquals("\"\"", nextResult3.toPrettyString());
+    assertEquals("{\n" + "  \"id\" : \"\",\n" + "  \"type\" : \"URL\",\n" + "  \"indexEnd\" : 8,\n"
+        + "  \"indexStart\" : 0,\n" + "  \"text\" : \"Dr\",\n" + "  \"expandedUrl\" : \"\"\n" + "}",
+        nextResult2.toPrettyString());
+    assertEquals("{\n" + "  \"urls\" : [ {\n" + "    \"id\" : \"\",\n" + "    \"type\" : \"URL\",\n"
+        + "    \"indexEnd\" : 8,\n" + "    \"indexStart\" : 0,\n" + "    \"text\" : \"Dr\",\n"
+        + "    \"expandedUrl\" : \"\"\n" + "  } ]\n" + "}", json.toPrettyString());
+    assertFalse(elementsResult.hasNext());
+    assertFalse(iteratorResult.hasNext());
+    assertTrue(iteratorResult2.hasNext());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(Link)} with {@code Link}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Link)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(Link)"})
+  public void testVisitWithLink2() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new Link("Destination", ""));
+
+    // Assert
+    ObjectNode json = markdownRenderer.getJson();
+    Iterator<JsonNode> iteratorResult = json.iterator();
+    JsonNode nextResult = iteratorResult.next();
+    assertTrue(nextResult instanceof ArrayNode);
+    Iterator<JsonNode> elementsResult = nextResult.elements();
+    JsonNode nextResult2 = elementsResult.next();
+    assertTrue(nextResult2 instanceof ObjectNode);
+    assertEquals("[ Destination ](Destination)", markdownRenderer.getText());
+    assertEquals("[ {\n" + "  \"id\" : \"Destination\",\n" + "  \"type\" : \"URL\",\n" + "  \"indexEnd\" : 28,\n"
+        + "  \"indexStart\" : 0,\n" + "  \"text\" : \"Destination\",\n" + "  \"expandedUrl\" : \"Destination\"\n"
+        + "} ]", nextResult.toPrettyString());
+    assertEquals("{\n" + "  \"id\" : \"Destination\",\n" + "  \"type\" : \"URL\",\n" + "  \"indexEnd\" : 28,\n"
+        + "  \"indexStart\" : 0,\n" + "  \"text\" : \"Destination\",\n" + "  \"expandedUrl\" : \"Destination\"\n" + "}",
+        nextResult2.toPrettyString());
+    assertEquals("{\n" + "  \"urls\" : [ {\n" + "    \"id\" : \"Destination\",\n" + "    \"type\" : \"URL\",\n"
+        + "    \"indexEnd\" : 28,\n" + "    \"indexStart\" : 0,\n" + "    \"text\" : \"Destination\",\n"
+        + "    \"expandedUrl\" : \"Destination\"\n" + "  } ]\n" + "}", json.toPrettyString());
+    assertFalse(elementsResult.hasNext());
+    assertFalse(iteratorResult.hasNext());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(Link)} with {@code Link}.
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Link)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(Link)"})
+  public void testVisitWithLink3() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new Link());
+
+    // Assert
+    ObjectNode json = markdownRenderer.getJson();
+    Iterator<JsonNode> iteratorResult = json.iterator();
+    JsonNode nextResult = iteratorResult.next();
+    assertTrue(nextResult instanceof ArrayNode);
+    Iterator<JsonNode> elementsResult = nextResult.elements();
+    JsonNode nextResult2 = elementsResult.next();
+    Iterator<JsonNode> iteratorResult2 = nextResult2.iterator();
+    assertTrue(iteratorResult2.next() instanceof NullNode);
+    assertTrue(nextResult2 instanceof ObjectNode);
+    assertEquals("[ null ](null)", markdownRenderer.getText());
     assertEquals(
-        "{\n"
-            + "  \"id\" : \"\",\n"
-            + "  \"type\" : \"URL\",\n"
-            + "  \"indexEnd\" : 8,\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"text\" : \"Dr\",\n"
-            + "  \"expandedUrl\" : \"\"\n"
-            + "}",
+        "[ {\n" + "  \"id\" : null,\n" + "  \"type\" : \"URL\",\n" + "  \"indexEnd\" : 14,\n"
+            + "  \"indexStart\" : 0,\n" + "  \"text\" : null,\n" + "  \"expandedUrl\" : null\n" + "} ]",
+        nextResult.toPrettyString());
+    assertEquals("{\n" + "  \"id\" : null,\n" + "  \"type\" : \"URL\",\n" + "  \"indexEnd\" : 14,\n"
+        + "  \"indexStart\" : 0,\n" + "  \"text\" : null,\n" + "  \"expandedUrl\" : null\n" + "}",
         nextResult2.toPrettyString());
     assertEquals(
-        "{\n"
-            + "  \"urls\" : [ {\n"
-            + "    \"id\" : \"\",\n"
-            + "    \"type\" : \"URL\",\n"
-            + "    \"indexEnd\" : 8,\n"
-            + "    \"indexStart\" : 0,\n"
-            + "    \"text\" : \"Dr\",\n"
-            + "    \"expandedUrl\" : \"\"\n"
-            + "  } ]\n"
-            + "}",
+        "{\n" + "  \"urls\" : [ {\n" + "    \"id\" : null,\n" + "    \"type\" : \"URL\",\n" + "    \"indexEnd\" : 14,\n"
+            + "    \"indexStart\" : 0,\n" + "    \"text\" : null,\n" + "    \"expandedUrl\" : null\n" + "  } ]\n" + "}",
         json.toPrettyString());
     assertFalse(elementsResult.hasNext());
     assertFalse(iteratorResult.hasNext());
@@ -2836,17 +2380,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Link)} with {@code Link}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is {@code [ Dr ](Destination)}.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is {@code [ Dr ](Destination)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Link)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Link)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Link)"})
   public void testVisitWithLink_thenMarkdownRendererWithDocumentIsDocumentTextIsDrDestination() {
     // Arrange
@@ -2863,195 +2404,29 @@ public class MarkdownRendererDiffblueTest {
     Iterator<JsonNode> elementsResult = nextResult.elements();
     JsonNode nextResult2 = elementsResult.next();
     assertTrue(nextResult2 instanceof ObjectNode);
-    Iterator<JsonNode> iteratorResult2 = nextResult2.iterator();
-    JsonNode nextResult3 = iteratorResult2.next();
-    assertTrue(nextResult3 instanceof TextNode);
     assertEquals("[ Dr ](Destination)", markdownRenderer.getText());
     assertEquals(
-        "[ {\n"
-            + "  \"id\" : \"Destination\",\n"
-            + "  \"type\" : \"URL\",\n"
-            + "  \"indexEnd\" : 19,\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"text\" : \"Dr\",\n"
-            + "  \"expandedUrl\" : \"Destination\"\n"
-            + "} ]",
-        nextResult.toPrettyString());
-    assertEquals("\"Destination\"", nextResult3.toPrettyString());
-    assertEquals(
-        "{\n"
-            + "  \"id\" : \"Destination\",\n"
-            + "  \"type\" : \"URL\",\n"
-            + "  \"indexEnd\" : 19,\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"text\" : \"Dr\",\n"
-            + "  \"expandedUrl\" : \"Destination\"\n"
-            + "}",
-        nextResult2.toPrettyString());
-    assertEquals(
-        "{\n"
-            + "  \"urls\" : [ {\n"
-            + "    \"id\" : \"Destination\",\n"
-            + "    \"type\" : \"URL\",\n"
-            + "    \"indexEnd\" : 19,\n"
-            + "    \"indexStart\" : 0,\n"
-            + "    \"text\" : \"Dr\",\n"
-            + "    \"expandedUrl\" : \"Destination\"\n"
-            + "  } ]\n"
-            + "}",
-        json.toPrettyString());
-    assertFalse(elementsResult.hasNext());
-    assertFalse(iteratorResult.hasNext());
-    assertTrue(iteratorResult2.hasNext());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Link)} with {@code Link}.
-   *
-   * <ul>
-   *   <li>When {@link Link#Link(String, String)} with destination is {@code null} and title is
-   *       {@code null}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Link)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Link)"})
-  public void testVisitWithLink_whenLinkWithDestinationIsNullAndTitleIsNull() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-    Link a = new Link(null, null);
-
-    // Act
-    markdownRenderer.visit(a);
-
-    // Assert
-    ObjectNode json = markdownRenderer.getJson();
-    Iterator<JsonNode> iteratorResult = json.iterator();
-    JsonNode nextResult = iteratorResult.next();
-    assertTrue(nextResult instanceof ArrayNode);
-    Iterator<JsonNode> elementsResult = nextResult.elements();
-    JsonNode nextResult2 = elementsResult.next();
-    Iterator<JsonNode> iteratorResult2 = nextResult2.iterator();
-    assertTrue(iteratorResult2.next() instanceof NullNode);
-    assertTrue(nextResult2 instanceof ObjectNode);
-    assertEquals("[ null ](null)", markdownRenderer.getText());
-    assertEquals(
-        "[ {\n"
-            + "  \"id\" : null,\n"
-            + "  \"type\" : \"URL\",\n"
-            + "  \"indexEnd\" : 14,\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"text\" : null,\n"
-            + "  \"expandedUrl\" : null\n"
-            + "} ]",
+        "[ {\n" + "  \"id\" : \"Destination\",\n" + "  \"type\" : \"URL\",\n" + "  \"indexEnd\" : 19,\n"
+            + "  \"indexStart\" : 0,\n" + "  \"text\" : \"Dr\",\n" + "  \"expandedUrl\" : \"Destination\"\n" + "} ]",
         nextResult.toPrettyString());
     assertEquals(
-        "{\n"
-            + "  \"id\" : null,\n"
-            + "  \"type\" : \"URL\",\n"
-            + "  \"indexEnd\" : 14,\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"text\" : null,\n"
-            + "  \"expandedUrl\" : null\n"
-            + "}",
+        "{\n" + "  \"id\" : \"Destination\",\n" + "  \"type\" : \"URL\",\n" + "  \"indexEnd\" : 19,\n"
+            + "  \"indexStart\" : 0,\n" + "  \"text\" : \"Dr\",\n" + "  \"expandedUrl\" : \"Destination\"\n" + "}",
         nextResult2.toPrettyString());
-    assertEquals(
-        "{\n"
-            + "  \"urls\" : [ {\n"
-            + "    \"id\" : null,\n"
-            + "    \"type\" : \"URL\",\n"
-            + "    \"indexEnd\" : 14,\n"
-            + "    \"indexStart\" : 0,\n"
-            + "    \"text\" : null,\n"
-            + "    \"expandedUrl\" : null\n"
-            + "  } ]\n"
-            + "}",
-        json.toPrettyString());
+    assertEquals("{\n" + "  \"urls\" : [ {\n" + "    \"id\" : \"Destination\",\n" + "    \"type\" : \"URL\",\n"
+        + "    \"indexEnd\" : 19,\n" + "    \"indexStart\" : 0,\n" + "    \"text\" : \"Dr\",\n"
+        + "    \"expandedUrl\" : \"Destination\"\n" + "  } ]\n" + "}", json.toPrettyString());
     assertFalse(elementsResult.hasNext());
     assertFalse(iteratorResult.hasNext());
-    assertTrue(iteratorResult2.hasNext());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Link)} with {@code Link}.
-   *
-   * <ul>
-   *   <li>When {@link Link#Link(String, String)} with destination is {@code null} and title is
-   *       space.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Link)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Link)"})
-  public void testVisitWithLink_whenLinkWithDestinationIsNullAndTitleIsSpace() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    // Act
-    markdownRenderer.visit(new Link(null, " "));
-
-    // Assert
-    ObjectNode json = markdownRenderer.getJson();
-    Iterator<JsonNode> iteratorResult = json.iterator();
-    JsonNode nextResult = iteratorResult.next();
-    assertTrue(nextResult instanceof ArrayNode);
-    Iterator<JsonNode> elementsResult = nextResult.elements();
-    JsonNode nextResult2 = elementsResult.next();
-    Iterator<JsonNode> iteratorResult2 = nextResult2.iterator();
-    assertTrue(iteratorResult2.next() instanceof NullNode);
-    assertTrue(nextResult2 instanceof ObjectNode);
-    assertEquals("[ null ](null)", markdownRenderer.getText());
-    assertEquals(
-        "[ {\n"
-            + "  \"id\" : null,\n"
-            + "  \"type\" : \"URL\",\n"
-            + "  \"indexEnd\" : 14,\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"text\" : null,\n"
-            + "  \"expandedUrl\" : null\n"
-            + "} ]",
-        nextResult.toPrettyString());
-    assertEquals(
-        "{\n"
-            + "  \"id\" : null,\n"
-            + "  \"type\" : \"URL\",\n"
-            + "  \"indexEnd\" : 14,\n"
-            + "  \"indexStart\" : 0,\n"
-            + "  \"text\" : null,\n"
-            + "  \"expandedUrl\" : null\n"
-            + "}",
-        nextResult2.toPrettyString());
-    assertEquals(
-        "{\n"
-            + "  \"urls\" : [ {\n"
-            + "    \"id\" : null,\n"
-            + "    \"type\" : \"URL\",\n"
-            + "    \"indexEnd\" : 14,\n"
-            + "    \"indexStart\" : 0,\n"
-            + "    \"text\" : null,\n"
-            + "    \"expandedUrl\" : null\n"
-            + "  } ]\n"
-            + "}",
-        json.toPrettyString());
-    assertFalse(elementsResult.hasNext());
-    assertFalse(iteratorResult.hasNext());
-    assertTrue(iteratorResult2.hasNext());
   }
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList() {
     // Arrange
@@ -3069,12 +2444,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList2() {
     // Arrange
@@ -3095,12 +2469,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList3() {
     // Arrange
@@ -3124,12 +2497,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList4() {
     // Arrange
@@ -3150,12 +2522,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList5() {
     // Arrange
@@ -3177,78 +2548,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
-  public void testVisitWithOrderedList6() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode node = new EmojiNode();
-    node.setShortcode("---\n**Dialog**\n");
-
-    DialogNode child = new DialogNode();
-    child.appendChild(node);
-
-    OrderedList ol = new OrderedList();
-    ol.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(ol);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n:---\n**Dialog**\n:\n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
    * <ul>
-   *   <li>Given {@link BlockQuote} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
+   *   <li>Given {@link BulletList} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
-  public void testVisitWithOrderedList_givenBlockQuoteAppendChildEmojiNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    BlockQuote child2 = new BlockQuote();
-    child2.appendChild(child);
-
-    OrderedList ol = new OrderedList();
-    ol.appendChild(child2);
-
-    // Act
-    markdownRenderer.visit(ol);
-
-    // Assert
-    assertEquals(":Shortcode:\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
-   * <ul>
-   *   <li>Given {@link BulletList} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList_givenBulletListAppendChildEmojiNode() {
     // Arrange
@@ -3272,78 +2579,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
    * <ul>
-   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableCellNode} (default
-   *       constructor).
+   *   <li>Given {@link Document} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
-  public void testVisitWithOrderedList_givenDialogNodeAppendChildTableCellNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    DialogNode child = new DialogNode();
-    child.appendChild(new TableCellNode());
-
-    OrderedList ol = new OrderedList();
-    ol.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(ol);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n   \n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
-   * <ul>
-   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableRowNode} (default
-   *       constructor).
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
-  public void testVisitWithOrderedList_givenDialogNodeAppendChildTableRowNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    DialogNode child = new DialogNode();
-    child.appendChild(new TableRowNode());
-
-    OrderedList ol = new OrderedList();
-    ol.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(ol);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n\n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
-   * <ul>
-   *   <li>Given {@link Document} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList_givenDocumentAppendChildEmojiNode() {
     // Arrange
@@ -3367,17 +2610,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
    * <ul>
-   *   <li>Given {@link FencedCodeBlock} (default constructor) appendChild {@link
-   *       EmojiNode#EmojiNode()}.
+   *   <li>Given {@link FencedCodeBlock} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList_givenFencedCodeBlockAppendChildEmojiNode() {
     // Arrange
@@ -3398,16 +2638,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
    * <ul>
-   *   <li>Given {@link TableCellNode} (default constructor).
+   *   <li>Given {@link TableCellNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList_givenTableCellNode() {
     // Arrange
@@ -3425,16 +2663,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
    * <ul>
-   *   <li>Given {@link TableRowNode} (default constructor).
+   *   <li>Given {@link TableRowNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList_givenTableRowNode() {
     // Arrange
@@ -3452,17 +2688,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is {@code (Button::(:)}.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is {@code (Button::(:)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList_thenMarkdownRendererWithDocumentIsDocumentTextIsButton() {
     // Arrange
@@ -3486,17 +2719,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is lf lf.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is lf lf.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList_thenMarkdownRendererWithDocumentIsDocumentTextIsLfLf() {
     // Arrange
@@ -3514,17 +2744,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is space lf.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is space lf.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList_thenMarkdownRendererWithDocumentIsDocumentTextIsSpaceLf() {
     // Arrange
@@ -3546,16 +2773,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
    * <ul>
-   *   <li>When {@link OrderedList} (default constructor).
+   *   <li>When {@link OrderedList} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList_whenOrderedList() {
     // Arrange
@@ -3570,16 +2795,36 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
-   *
    * <ul>
-   *   <li>When {@link OrderedList} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
+   *   <li>When {@link OrderedList} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
+  @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
+  public void testVisitWithOrderedList_whenOrderedList2() {
+    // Arrange
+    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
+
+    // Act
+    markdownRenderer.visit(new OrderedList());
+
+    // Assert that nothing has changed
+    assertEquals("", markdownRenderer.getText());
+  }
+
+  /**
+   * Test {@link MarkdownRenderer#visit(OrderedList)} with {@code OrderedList}.
+   * <ul>
+   *   <li>When {@link OrderedList} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.</li>
+   * </ul>
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(OrderedList)}
+   */
+  @Test
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(OrderedList)"})
   public void testVisitWithOrderedList_whenOrderedListAppendChildEmojiNode() {
     // Arrange
@@ -3600,12 +2845,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph() {
     // Arrange
@@ -3623,12 +2867,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph2() {
     // Arrange
@@ -3649,12 +2892,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph3() {
     // Arrange
@@ -3678,12 +2920,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph4() {
     // Arrange
@@ -3704,12 +2945,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph5() {
     // Arrange
@@ -3731,78 +2971,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
-  public void testVisitWithParagraph6() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode node = new EmojiNode();
-    node.setShortcode("---\n**Dialog**\n");
-
-    DialogNode child = new DialogNode();
-    child.appendChild(node);
-
-    Paragraph paragraph = new Paragraph();
-    paragraph.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(paragraph);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n:---\n**Dialog**\n:\n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
    * <ul>
-   *   <li>Given {@link BlockQuote} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
+   *   <li>Given {@link BulletList} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
-  public void testVisitWithParagraph_givenBlockQuoteAppendChildEmojiNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    EmojiNode child = new EmojiNode();
-    child.setShortcode("Shortcode");
-
-    BlockQuote child2 = new BlockQuote();
-    child2.appendChild(child);
-
-    Paragraph paragraph = new Paragraph();
-    paragraph.appendChild(child2);
-
-    // Act
-    markdownRenderer.visit(paragraph);
-
-    // Assert
-    assertEquals(":Shortcode:\n\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
-   * <ul>
-   *   <li>Given {@link BulletList} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph_givenBulletListAppendChildEmojiNode() {
     // Arrange
@@ -3826,78 +3002,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
    * <ul>
-   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableCellNode} (default
-   *       constructor).
+   *   <li>Given {@link Document} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
-  public void testVisitWithParagraph_givenDialogNodeAppendChildTableCellNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    DialogNode child = new DialogNode();
-    child.appendChild(new TableCellNode());
-
-    Paragraph paragraph = new Paragraph();
-    paragraph.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(paragraph);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n   \n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
-   * <ul>
-   *   <li>Given {@link DialogNode} (default constructor) appendChild {@link TableRowNode} (default
-   *       constructor).
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
-  public void testVisitWithParagraph_givenDialogNodeAppendChildTableRowNode() {
-    // Arrange
-    MarkdownRenderer markdownRenderer = new MarkdownRenderer(new Document());
-
-    DialogNode child = new DialogNode();
-    child.appendChild(new TableRowNode());
-
-    Paragraph paragraph = new Paragraph();
-    paragraph.appendChild(child);
-
-    // Act
-    markdownRenderer.visit(paragraph);
-
-    // Assert
-    assertEquals("---\n**Dialog**\n\n---\n", markdownRenderer.getText());
-  }
-
-  /**
-   * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
-   * <ul>
-   *   <li>Given {@link Document} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
-   * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph_givenDocumentAppendChildEmojiNode() {
     // Arrange
@@ -3921,17 +3033,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
    * <ul>
-   *   <li>Given {@link FencedCodeBlock} (default constructor) appendChild {@link
-   *       EmojiNode#EmojiNode()}.
+   *   <li>Given {@link FencedCodeBlock} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph_givenFencedCodeBlockAppendChildEmojiNode() {
     // Arrange
@@ -3952,18 +3061,15 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
    * <ul>
-   *   <li>Given {@link TableCellNode} (default constructor).
-   *   <li>When {@link Paragraph} (default constructor) appendChild {@link TableCellNode} (default
-   *       constructor).
+   *   <li>Given {@link TableCellNode} (default constructor).</li>
+   *   <li>When {@link Paragraph} (default constructor) appendChild {@link TableCellNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph_givenTableCellNode_whenParagraphAppendChildTableCellNode() {
     // Arrange
@@ -3981,18 +3087,15 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
    * <ul>
-   *   <li>Given {@link TableRowNode} (default constructor).
-   *   <li>When {@link Paragraph} (default constructor) appendChild {@link TableRowNode} (default
-   *       constructor).
+   *   <li>Given {@link TableRowNode} (default constructor).</li>
+   *   <li>When {@link Paragraph} (default constructor) appendChild {@link TableRowNode} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph_givenTableRowNode_whenParagraphAppendChildTableRowNode() {
     // Arrange
@@ -4010,17 +3113,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is {@code (Button::(:)}.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is {@code (Button::(:)}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph_thenMarkdownRendererWithDocumentIsDocumentTextIsButton() {
     // Arrange
@@ -4044,17 +3144,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is lf lf.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is lf lf.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph_thenMarkdownRendererWithDocumentIsDocumentTextIsLfLf() {
     // Arrange
@@ -4072,17 +3169,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is space lf.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is space lf.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph_thenMarkdownRendererWithDocumentIsDocumentTextIsSpaceLf() {
     // Arrange
@@ -4104,16 +3198,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
    * <ul>
-   *   <li>When {@link Paragraph} (default constructor).
+   *   <li>When {@link Paragraph} (default constructor).</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph_whenParagraph() {
     // Arrange
@@ -4128,16 +3220,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Paragraph)} with {@code Paragraph}.
-   *
    * <ul>
-   *   <li>When {@link Paragraph} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.
+   *   <li>When {@link Paragraph} (default constructor) appendChild {@link EmojiNode#EmojiNode()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Paragraph)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Paragraph)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Paragraph)"})
   public void testVisitWithParagraph_whenParagraphAppendChildEmojiNode() {
     // Arrange
@@ -4158,12 +3248,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(StrongEmphasis)} with {@code StrongEmphasis}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(StrongEmphasis)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(StrongEmphasis)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(StrongEmphasis)"})
   public void testVisitWithStrongEmphasis() {
     // Arrange
@@ -4184,12 +3273,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(StrongEmphasis)} with {@code StrongEmphasis}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(StrongEmphasis)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(StrongEmphasis)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(StrongEmphasis)"})
   public void testVisitWithStrongEmphasis2() {
     // Arrange
@@ -4207,12 +3295,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(StrongEmphasis)} with {@code StrongEmphasis}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(StrongEmphasis)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(StrongEmphasis)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(StrongEmphasis)"})
   public void testVisitWithStrongEmphasis3() {
     // Arrange
@@ -4230,16 +3317,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(StrongEmphasis)} with {@code StrongEmphasis}.
-   *
    * <ul>
-   *   <li>Given {@link Code#Code(String)} with {@code Literal}.
+   *   <li>Given {@link Code#Code(String)} with {@code Literal}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(StrongEmphasis)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(StrongEmphasis)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(StrongEmphasis)"})
   public void testVisitWithStrongEmphasis_givenCodeWithLiteral() {
     // Arrange
@@ -4257,16 +3342,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(StrongEmphasis)} with {@code StrongEmphasis}.
-   *
    * <ul>
-   *   <li>When {@link StrongEmphasis#StrongEmphasis(String)} with {@code Delimiter}.
+   *   <li>When {@link StrongEmphasis#StrongEmphasis(String)} with {@code Delimiter}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(StrongEmphasis)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(StrongEmphasis)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(StrongEmphasis)"})
   public void testVisitWithStrongEmphasis_whenStrongEmphasisWithDelimiter() {
     // Arrange
@@ -4281,12 +3364,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Text)} with {@code Text}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Text)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Text)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Text)"})
   public void testVisitWithText() {
     // Arrange
@@ -4301,12 +3383,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Text)} with {@code Text}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Text)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Text)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Text)"})
   public void testVisitWithText2() {
     // Arrange
@@ -4321,12 +3402,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Text)} with {@code Text}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Text)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Text)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Text)"})
   public void testVisitWithText3() {
     // Arrange
@@ -4341,12 +3421,11 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Text)} with {@code Text}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Text)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Text)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Text)"})
   public void testVisitWithText4() {
     // Arrange
@@ -4361,17 +3440,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Text)} with {@code Text}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is {@code *}.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is {@code *}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Text)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Text)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Text)"})
   public void testVisitWithText_thenMarkdownRendererWithDocumentIsDocumentTextIsAsterisk() {
     // Arrange
@@ -4386,17 +3462,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Text)} with {@code Text}.
-   *
    * <ul>
-   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link
-   *       Document} (default constructor) Text is {@code Literal}.
+   *   <li>Then {@link MarkdownRenderer#MarkdownRenderer(Document)} with document is {@link Document} (default constructor) Text is {@code Literal}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Text)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Text)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Text)"})
   public void testVisitWithText_thenMarkdownRendererWithDocumentIsDocumentTextIsLiteral() {
     // Arrange
@@ -4411,16 +3484,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Text)} with {@code Text}.
-   *
    * <ul>
-   *   <li>When {@link Text#Text()}.
+   *   <li>When {@link Text#Text()}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Text)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Text)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Text)"})
   public void testVisitWithText_whenText() {
     // Arrange
@@ -4435,16 +3506,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#visit(Text)} with {@code Text}.
-   *
    * <ul>
-   *   <li>When {@link Text#Text(String)} with literal is empty string.
+   *   <li>When {@link Text#Text(String)} with literal is empty string.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#visit(Text)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#visit(Text)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"void MarkdownRenderer.visit(Text)"})
   public void testVisitWithText_whenTextWithLiteralIsEmptyString() {
     // Arrange
@@ -4459,16 +3528,14 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#addEscapeCharacter(String)}.
-   *
    * <ul>
-   *   <li>Then return {@code \\_}.
+   *   <li>Then return {@code \\_}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#addEscapeCharacter(String)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#addEscapeCharacter(String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String MarkdownRenderer.addEscapeCharacter(String)"})
   public void testAddEscapeCharacter_thenReturnBackslashBackslashUnderscore() {
     // Arrange, Act and Assert
@@ -4477,37 +3544,31 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#addEscapeCharacter(String)}.
-   *
    * <ul>
-   *   <li>Then return {@code Not all who wander are lost}.
+   *   <li>Then return {@code Not all who wander are lost}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#addEscapeCharacter(String)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#addEscapeCharacter(String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String MarkdownRenderer.addEscapeCharacter(String)"})
   public void testAddEscapeCharacter_thenReturnNotAllWhoWanderAreLost() {
     // Arrange, Act and Assert
-    assertEquals(
-        "Not all who wander are lost",
-        MarkdownRenderer.addEscapeCharacter("Not all who wander are lost"));
+    assertEquals("Not all who wander are lost", MarkdownRenderer.addEscapeCharacter("Not all who wander are lost"));
   }
 
   /**
    * Test {@link MarkdownRenderer#addEscapeCharacter(String)}.
-   *
    * <ul>
-   *   <li>When {@code *}.
-   *   <li>Then return {@code *}.
+   *   <li>When {@code *}.</li>
+   *   <li>Then return {@code *}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#addEscapeCharacter(String)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#addEscapeCharacter(String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String MarkdownRenderer.addEscapeCharacter(String)"})
   public void testAddEscapeCharacter_whenAsterisk_thenReturnAsterisk() {
     // Arrange, Act and Assert
@@ -4516,17 +3577,15 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#addEscapeCharacter(String)}.
-   *
    * <ul>
-   *   <li>When empty string.
-   *   <li>Then return empty string.
+   *   <li>When empty string.</li>
+   *   <li>Then return empty string.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#addEscapeCharacter(String)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#addEscapeCharacter(String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String MarkdownRenderer.addEscapeCharacter(String)"})
   public void testAddEscapeCharacter_whenEmptyString_thenReturnEmptyString() {
     // Arrange, Act and Assert
@@ -4535,51 +3594,46 @@ public class MarkdownRendererDiffblueTest {
 
   /**
    * Test {@link MarkdownRenderer#addEscapeCharacter(String)}.
-   *
    * <ul>
-   *   <li>When {@code ^\s*([_*\-+`])\1*\s*$}.
-   *   <li>Then return {@code ^\s\*([\_\*\\-\+\`])\1\*\s\*$}.
+   *   <li>When {@code ^\s*([_*\-+`])\1*\s*$}.</li>
+   *   <li>Then return {@code ^\s\*([\_\*\\-\+\`])\1\*\s\*$}.</li>
    * </ul>
-   *
-   * <p>Method under test: {@link MarkdownRenderer#addEscapeCharacter(String)}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#addEscapeCharacter(String)}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String MarkdownRenderer.addEscapeCharacter(String)"})
   public void testAddEscapeCharacter_whenS1S_thenReturnS1S() {
     // Arrange, Act and Assert
-    assertEquals(
-        "^\\s\\*([\\_\\*\\\\-\\+\\`])\\1\\*\\s\\*$",
+    assertEquals("^\\s\\*([\\_\\*\\\\-\\+\\`])\\1\\*\\s\\*$",
         MarkdownRenderer.addEscapeCharacter("^\\s*([_*\\-+`])\\1*\\s*$"));
   }
 
   /**
    * Test {@link MarkdownRenderer#getText()}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#getText()}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#getText()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"String MarkdownRenderer.getText()"})
   public void testGetText() {
     // Arrange, Act and Assert
-    assertEquals("", new MarkdownRenderer(new Document()).getText());
+    assertEquals("", (new MarkdownRenderer(new Document())).getText());
   }
 
   /**
    * Test {@link MarkdownRenderer#getJson()}.
-   *
-   * <p>Method under test: {@link MarkdownRenderer#getJson()}
+   * <p>
+   * Method under test: {@link MarkdownRenderer#getJson()}
    */
   @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
+  @Category(MaintainedByDiffblue.class)
   @MethodsUnderTest({"ObjectNode MarkdownRenderer.getJson()"})
   public void testGetJson() {
     // Arrange and Act
-    ObjectNode actualJson = new MarkdownRenderer(new Document()).getJson();
+    ObjectNode actualJson = (new MarkdownRenderer(new Document())).getJson();
 
     // Assert
     assertTrue(actualJson.traverse() instanceof TreeTraversingParser);
