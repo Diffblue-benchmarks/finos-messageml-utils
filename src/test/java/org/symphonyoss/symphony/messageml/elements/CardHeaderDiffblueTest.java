@@ -5,55 +5,20 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import org.commonmark.node.Node;
 import org.commonmark.node.Paragraph;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
 public class CardHeaderDiffblueTest {
   /**
-   * Test getters and setters.
-   * <p>
-   * Methods under test:
-   * <ul>
-   *   <li>{@link CardHeader#CardHeader(Element, FormatEnum)}
-   *   <li>{@link CardHeader#getPresentationMLTag()}
-   * </ul>
+   * Method under test:
+   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.<init>(Element, FormatEnum)", "String CardHeader.getPresentationMLTag()"})
-  public void testGettersAndSetters() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act
-    CardHeader actualCardHeader = new CardHeader(parent, FormatEnum.MESSAGEML);
-    String actualPresentationMLTag = actualCardHeader.getPresentationMLTag();
-
-    // Assert
-    assertEquals(FormatEnum.MESSAGEML, actualCardHeader.getFormat());
-    assertTrue(actualCardHeader.getChildren().isEmpty());
-    assertTrue(actualCardHeader.getAttributes().isEmpty());
-    assertEquals(CardHeader.MESSAGEML_TAG, actualCardHeader.getMessageMLTag());
-    assertEquals(Div.MESSAGEML_TAG, actualPresentationMLTag);
-    assertSame(parent, actualCardHeader.getParent());
-  }
-
-  /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
     // Arrange
     CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -67,13 +32,10 @@ public class CardHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML2() {
     // Arrange
     CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -88,13 +50,10 @@ public class CardHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML3() {
     // Arrange
     CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -109,13 +68,10 @@ public class CardHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML4() {
     // Arrange
     CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -130,13 +86,10 @@ public class CardHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML5() {
     // Arrange
     CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -151,13 +104,10 @@ public class CardHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML6() {
     // Arrange
     CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -172,13 +122,10 @@ public class CardHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML7() {
     // Arrange
     Bold child = new Bold(new BulletList(mock(Element.class)));
@@ -196,13 +143,10 @@ public class CardHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML8() {
     // Arrange
     CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -217,13 +161,10 @@ public class CardHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML9() {
     // Arrange
     CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -239,13 +180,10 @@ public class CardHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML10() {
     // Arrange
     CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -261,13 +199,10 @@ public class CardHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link CardHeader#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void CardHeader.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML11() {
     // Arrange
     CardHeader cardHeader = new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -283,13 +218,9 @@ public class CardHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link CardHeader#asMarkdown()}.
-   * <p>
    * Method under test: {@link CardHeader#asMarkdown()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node CardHeader.asMarkdown()"})
   public void testAsMarkdown() {
     // Arrange and Act
     Node actualAsMarkdownResult = (new CardHeader(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML))
@@ -302,5 +233,30 @@ public class CardHeaderDiffblueTest {
     assertNull(actualAsMarkdownResult.getLastChild());
     assertNull(actualAsMarkdownResult.getNext());
     assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
+   * Methods under test:
+   * <ul>
+   *   <li>{@link CardHeader#CardHeader(Element, FormatEnum)}
+   *   <li>{@link CardHeader#getPresentationMLTag()}
+   * </ul>
+   */
+  @Test
+  public void testGettersAndSetters() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act
+    CardHeader actualCardHeader = new CardHeader(parent, FormatEnum.MESSAGEML);
+    String actualPresentationMLTag = actualCardHeader.getPresentationMLTag();
+
+    // Assert
+    assertEquals(FormatEnum.MESSAGEML, actualCardHeader.getFormat());
+    assertTrue(actualCardHeader.getChildren().isEmpty());
+    assertTrue(actualCardHeader.getAttributes().isEmpty());
+    assertEquals(CardHeader.MESSAGEML_TAG, actualCardHeader.getMessageMLTag());
+    assertEquals(Div.MESSAGEML_TAG, actualPresentationMLTag);
+    assertSame(parent, actualCardHeader.getParent());
   }
 }

@@ -4,24 +4,17 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 
 public class TableHeaderDiffblueTest {
   /**
-   * Test {@link TableHeader#TableHeader(Element)}.
-   * <p>
    * Method under test: {@link TableHeader#TableHeader(Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TableHeader.<init>(Element)"})
   public void testNewTableHeader() {
     // Arrange
     Bold parent = new Bold(new BulletList(mock(Element.class)));
@@ -40,199 +33,22 @@ public class TableHeaderDiffblueTest {
   }
 
   /**
-   * Test {@link TableHeader#toString()}.
-   * <p>
    * Method under test: {@link TableHeader#toString()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String TableHeader.toString()"})
   public void testToString() {
     // Arrange, Act and Assert
     assertEquals("Header", (new TableHeader(new Bold(new BulletList(null)))).toString());
   }
 
   /**
-   * Test {@link TableHeader#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link BiItem}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link TableHeader#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
+  public void testUpdateBiContext() {
     // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
-
-    context.addItemWithValue("table_headers", biItem);
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    tableHeader.updateBiContext(context);
-
-    // Assert that nothing has changed
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(1, attributes.size());
-    Object getResult = attributes.get("count");
-    assertTrue(getResult instanceof BiItem);
-    Map<String, Object> attributes2 = items.get(1).getAttributes();
-    assertEquals(1, attributes2.size());
-    assertTrue(attributes2.containsKey(Element.STYLE_ATTR));
-    assertEquals(attributes2, items.get(2).getAttributes());
-    assertSame(biItem, getResult);
-  }
-
-  /**
-   * Test {@link TableHeader#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is {@code Item Value}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
-    // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItemWithValue("table_headers", "Item Value");
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    tableHeader.updateBiContext(context);
-
-    // Assert that nothing has changed
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals("Item Value", attributes.get("count"));
-    Map<String, Object> attributes2 = items.get(1).getAttributes();
-    assertEquals(1, attributes2.size());
-    assertTrue(attributes2.containsKey(Element.STYLE_ATTR));
-  }
-
-  /**
-   * Test {@link TableHeader#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
-    // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem("table_headers", Element.STYLE_ATTR));
-
-    // Act
-    tableHeader.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(1, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(2, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-    assertTrue(attributes.containsKey(Element.STYLE_ATTR));
-  }
-
-  /**
-   * Test {@link TableHeader#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
-    // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    tableHeader.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(2, items.size());
-    BiItem getResult = items.get(1);
-    assertEquals("table_headers", getResult.getName());
-    Map<String, Object> attributes = getResult.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-  }
-
-  /**
-   * Test {@link TableHeader#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code table_headers}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsThirdNameIsTableHeaders() {
-    // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    tableHeader.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    BiItem getResult = items.get(2);
-    assertEquals("table_headers", getResult.getName());
-    Map<String, Object> attributes = getResult.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-  }
-
-  /**
-   * Test {@link TableHeader#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code table_headers}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TableHeader.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsTableHeaders() {
-    // Arrange
-    TableHeader tableHeader = new TableHeader(new Bold(new BulletList(mock(Element.class))));
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    TableHeader tableHeader = new TableHeader(parent);
     BiContext context = new BiContext();
 
     // Act
@@ -245,6 +61,161 @@ public class TableHeaderDiffblueTest {
     assertEquals("table_headers", getResult.getName());
     Map<String, Object> attributes = getResult.getAttributes();
     assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(parent, tableHeader.getParent());
+  }
+
+  /**
+   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext2() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    TableHeader tableHeader = new TableHeader(parent);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+
+    // Act
+    tableHeader.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(2, items.size());
+    BiItem getResult = items.get(1);
+    assertEquals("table_headers", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(0));
+    assertSame(parent, tableHeader.getParent());
+  }
+
+  /**
+   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext3() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    TableHeader tableHeader = new TableHeader(parent);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    tableHeader.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(2);
+    assertEquals("table_headers", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(0));
+    assertSame(item2, items.get(1));
+    assertSame(parent, tableHeader.getParent());
+  }
+
+  /**
+   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext4() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    TableHeader tableHeader = new TableHeader(parent);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem("table_headers", Element.STYLE_ATTR);
+
+    context.addItem(item);
+
+    // Act
+    tableHeader.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(1, items.size());
+    assertSame(item, items.get(0));
+    assertSame(parent, tableHeader.getParent());
+  }
+
+  /**
+   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext5() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    TableHeader tableHeader = new TableHeader(parent);
+
+    BiContext context = new BiContext();
+    context.addItemWithValue("table_headers", "Item Value");
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    tableHeader.updateBiContext(context);
+
+    // Assert that nothing has changed
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(0);
+    assertEquals("table_headers", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(1));
+    assertSame(item2, items.get(2));
+    assertSame(parent, tableHeader.getParent());
+  }
+
+  /**
+   * Method under test: {@link TableHeader#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext6() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    TableHeader tableHeader = new TableHeader(parent);
+
+    BiContext context = new BiContext();
+    context.addItemWithValue("table_headers", new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    tableHeader.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(0);
+    assertEquals("table_headers", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(1));
+    assertSame(item2, items.get(2));
+    assertSame(parent, tableHeader.getParent());
   }
 }

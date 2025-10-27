@@ -1,20 +1,37 @@
 package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import org.commonmark.node.BlockQuote;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class PersonSelectorNodeDiffblueTest {
   /**
-   * Test {@link PersonSelectorNode#PersonSelectorNode(String, String, String)}.
-   * <p>
-   * Method under test: {@link PersonSelectorNode#PersonSelectorNode(String, String, String)}
+   * Method under test: {@link PersonSelectorNode#getText()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void PersonSelectorNode.<init>(String, String, String)"})
+  public void testGetText() {
+    // Arrange
+    BlockQuote child = mock(BlockQuote.class);
+    doNothing().when(child).unlink();
+
+    PersonSelectorNode personSelectorNode = new PersonSelectorNode("Placeholder", "Label", "127.0.0.1");
+    personSelectorNode.appendChild(child);
+
+    // Act
+    personSelectorNode.getText();
+
+    // Assert
+    verify(child).unlink();
+  }
+
+  /**
+   * Method under test:
+   * {@link PersonSelectorNode#PersonSelectorNode(String, String, String)}
+   */
+  @Test
   public void testNewPersonSelectorNode() {
     // Arrange and Act
     PersonSelectorNode actualPersonSelectorNode = new PersonSelectorNode("Placeholder", "Label", "127.0.0.1");

@@ -1,56 +1,10 @@
 package org.symphonyoss.symphony.messageml.util;
 
 import static org.junit.Assert.assertEquals;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.symphonyoss.symphony.messageml.util.XMLAttribute.Format;
 
 public class XMLAttributeDiffblueTest {
   /**
-   * Test {@link XMLAttribute#of(String, Format)}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XMLAttribute#of(String, Format)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"XMLAttribute XMLAttribute.of(String, Format)"})
-  public void testOf_whenNull() {
-    // Arrange and Act
-    XMLAttribute actualOfResult = XMLAttribute.of("Name", null);
-
-    // Assert
-    assertEquals("Name", actualOfResult.toString());
-    assertEquals(Format.STANDARD, actualOfResult.getFormat());
-  }
-
-  /**
-   * Test {@link XMLAttribute#of(String, Format)}.
-   * <ul>
-   *   <li>When {@code STANDARD}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XMLAttribute#of(String, Format)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"XMLAttribute XMLAttribute.of(String, Format)"})
-  public void testOf_whenStandard() {
-    // Arrange and Act
-    XMLAttribute actualOfResult = XMLAttribute.of("Name", Format.STANDARD);
-
-    // Assert
-    assertEquals("Name", actualOfResult.toString());
-    assertEquals(Format.STANDARD, actualOfResult.getFormat());
-  }
-
-  /**
-   * Test getters and setters.
-   * <p>
    * Methods under test:
    * <ul>
    *   <li>{@link XMLAttribute#getFormat()}
@@ -58,17 +12,41 @@ public class XMLAttributeDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Format XMLAttribute.getFormat()", "String XMLAttribute.toString()"})
   public void testGettersAndSetters() {
     // Arrange
-    XMLAttribute ofResult = XMLAttribute.of("Name", Format.STANDARD);
+    XMLAttribute ofResult = XMLAttribute.of("Name", XMLAttribute.Format.STANDARD);
 
     // Act
-    Format actualFormat = ofResult.getFormat();
+    XMLAttribute.Format actualFormat = ofResult.getFormat();
 
     // Assert
     assertEquals("Name", ofResult.toString());
-    assertEquals(Format.STANDARD, actualFormat);
+    assertEquals(XMLAttribute.Format.STANDARD, actualFormat);
+  }
+
+  /**
+   * Method under test: {@link XMLAttribute#of(String, XMLAttribute.Format)}
+   */
+  @Test
+  public void testOf() {
+    // Arrange and Act
+    XMLAttribute actualOfResult = XMLAttribute.of("Name", XMLAttribute.Format.STANDARD);
+
+    // Assert
+    assertEquals("Name", actualOfResult.toString());
+    assertEquals(XMLAttribute.Format.STANDARD, actualOfResult.getFormat());
+  }
+
+  /**
+   * Method under test: {@link XMLAttribute#of(String, XMLAttribute.Format)}
+   */
+  @Test
+  public void testOf2() {
+    // Arrange and Act
+    XMLAttribute actualOfResult = XMLAttribute.of("Name", null);
+
+    // Assert
+    assertEquals("Name", actualOfResult.toString());
+    assertEquals(XMLAttribute.Format.STANDARD, actualOfResult.getFormat());
   }
 }

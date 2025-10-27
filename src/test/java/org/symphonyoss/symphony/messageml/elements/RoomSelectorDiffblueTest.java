@@ -9,14 +9,11 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.MessageMLParser;
@@ -30,72 +27,36 @@ import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
 public class RoomSelectorDiffblueTest {
   /**
-   * Test getters and setters.
-   * <p>
-   * Methods under test:
-   * <ul>
-   *   <li>{@link RoomSelector#RoomSelector(Element, FormatEnum)}
-   *   <li>{@link RoomSelector#getElementId()}
-   *   <li>{@link RoomSelector#getPresentationMLTag()}
-   * </ul>
+   * Method under test:
+   * {@link RoomSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RoomSelector.<init>(Element, FormatEnum)", "String RoomSelector.getElementId()",
-      "String RoomSelector.getPresentationMLTag()"})
-  public void testGettersAndSetters() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act
-    RoomSelector actualRoomSelector = new RoomSelector(parent, FormatEnum.MESSAGEML);
-    String actualElementId = actualRoomSelector.getElementId();
-    String actualPresentationMLTag = actualRoomSelector.getPresentationMLTag();
-
-    // Assert
-    assertEquals(FormatEnum.MESSAGEML, actualRoomSelector.getFormat());
-    assertTrue(actualRoomSelector.getChildren().isEmpty());
-    assertTrue(actualRoomSelector.getAttributes().isEmpty());
-    assertEquals(Div.MESSAGEML_TAG, actualPresentationMLTag);
-    assertEquals(RoomSelector.MESSAGEML_TAG, actualRoomSelector.getMessageMLTag());
-    assertEquals(RoomSelector.MESSAGEML_TAG, actualElementId);
-    assertSame(parent, actualRoomSelector.getParent());
-  }
-
-  /**
-   * Test {@link RoomSelector#buildAll(MessageMLParser, Element)}.
-   * <p>
-   * Method under test: {@link RoomSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RoomSelector.buildAll(MessageMLParser, org.w3c.dom.Element)"})
   public void testBuildAll() throws InvalidInputException, ProcessingException {
     // Arrange
-    RoomSelector roomSelector = new RoomSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    RoomSelector roomSelector = new RoomSelector(parent, FormatEnum.MESSAGEML);
     MessageMLParser parser = mock(MessageMLParser.class);
     when(parser.getBiContext()).thenReturn(new BiContext());
 
     // Act
     roomSelector.buildAll(parser, new IIOMetadataNode("foo"));
 
-    // Assert that nothing has changed
+    // Assert
     verify(parser).getBiContext();
     assertEquals(0, roomSelector.size());
     assertTrue(roomSelector.getChildren().isEmpty());
+    assertSame(parent, roomSelector.getParent());
   }
 
   /**
-   * Test {@link RoomSelector#buildAll(MessageMLParser, Element)}.
-   * <p>
-   * Method under test: {@link RoomSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
+   * Method under test:
+   * {@link RoomSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RoomSelector.buildAll(MessageMLParser, org.w3c.dom.Element)"})
   public void testBuildAll2() throws InvalidInputException, ProcessingException {
     // Arrange
-    RoomSelector roomSelector = new RoomSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    RoomSelector roomSelector = new RoomSelector(parent, FormatEnum.MESSAGEML);
     MessageMLParser parser = mock(MessageMLParser.class);
     Bold bold = new Bold(new BulletList(mock(Element.class)));
     when(parser.createElement(Mockito.<org.w3c.dom.Element>any(), Mockito.<Element>any())).thenReturn(bold);
@@ -114,23 +75,18 @@ public class RoomSelectorDiffblueTest {
     assertEquals(1, children.size());
     assertEquals(1, roomSelector.size());
     assertSame(bold, children.get(0));
+    assertSame(parent, roomSelector.getParent());
   }
 
   /**
-   * Test {@link RoomSelector#buildAll(MessageMLParser, Element)}.
-   * <ul>
-   *   <li>When {@link MessageMLParser} {@link MessageMLParser#createElement(Element, Element)} return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link RoomSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
+   * Method under test:
+   * {@link RoomSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RoomSelector.buildAll(MessageMLParser, org.w3c.dom.Element)"})
-  public void testBuildAll_whenMessageMLParserCreateElementReturnNull()
-      throws InvalidInputException, ProcessingException {
+  public void testBuildAll3() throws InvalidInputException, ProcessingException {
     // Arrange
-    RoomSelector roomSelector = new RoomSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    RoomSelector roomSelector = new RoomSelector(parent, FormatEnum.MESSAGEML);
     MessageMLParser parser = mock(MessageMLParser.class);
     when(parser.createElement(Mockito.<org.w3c.dom.Element>any(), Mockito.<Element>any())).thenReturn(null);
     when(parser.getBiContext()).thenReturn(new BiContext());
@@ -141,22 +97,37 @@ public class RoomSelectorDiffblueTest {
     // Act
     roomSelector.buildAll(parser, element);
 
-    // Assert that nothing has changed
+    // Assert
     verify(parser).createElement(isA(org.w3c.dom.Element.class), isA(Element.class));
     verify(parser).getBiContext();
     assertEquals(0, roomSelector.size());
     assertTrue(roomSelector.getChildren().isEmpty());
+    assertSame(parent, roomSelector.getParent());
   }
 
   /**
-   * Test {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RoomSelector.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
+    // Arrange
+    RoomSelector roomSelector = new RoomSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    roomSelector.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(46L, out.getOffset());
+  }
+
+  /**
+   * Method under test:
+   * {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  public void testAsPresentationML2() {
     // Arrange
     RoomSelector roomSelector = new RoomSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -171,14 +142,11 @@ public class RoomSelectorDiffblueTest {
   }
 
   /**
-   * Test {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RoomSelector.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML2() {
+  public void testAsPresentationML3() {
     // Arrange
     RoomSelector roomSelector = new RoomSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -193,14 +161,11 @@ public class RoomSelectorDiffblueTest {
   }
 
   /**
-   * Test {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RoomSelector.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML3() {
+  public void testAsPresentationML4() {
     // Arrange
     RoomSelector roomSelector = new RoomSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -215,36 +180,9 @@ public class RoomSelectorDiffblueTest {
   }
 
   /**
-   * Test {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <ul>
-   *   <li>When {@link XmlPrintStream#XmlPrintStream(OutputStream)} with outputStream is {@link ByteArrayOutputStream#ByteArrayOutputStream(int)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link RoomSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RoomSelector.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML_whenXmlPrintStreamWithOutputStreamIsByteArrayOutputStream() {
-    // Arrange
-    RoomSelector roomSelector = new RoomSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    roomSelector.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
-
-    // Assert
-    assertEquals(46L, out.getOffset());
-  }
-
-  /**
-   * Test {@link RoomSelector#asMarkdown()}.
-   * <p>
    * Method under test: {@link RoomSelector#asMarkdown()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node RoomSelector.asMarkdown()"})
   public void testAsMarkdown() {
     // Arrange and Act
     Node actualAsMarkdownResult = (new RoomSelector(new Bold(new BulletList(mock(Element.class))),
@@ -263,20 +201,13 @@ public class RoomSelectorDiffblueTest {
   }
 
   /**
-   * Test {@link RoomSelector#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link RoomSelector#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RoomSelector.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_whenBiContext_thenBiContextItemsSizeIsOne() {
+  public void testUpdateBiContext() {
     // Arrange
-    RoomSelector roomSelector = new RoomSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    RoomSelector roomSelector = new RoomSelector(parent, FormatEnum.MESSAGEML);
     BiContext context = new BiContext();
 
     // Act
@@ -288,5 +219,35 @@ public class RoomSelectorDiffblueTest {
     BiItem getResult = items.get(0);
     assertEquals("roomselector", getResult.getName());
     assertTrue(getResult.getAttributes().isEmpty());
+    assertTrue(roomSelector.getAttributes().isEmpty());
+    assertSame(parent, roomSelector.getParent());
+  }
+
+  /**
+   * Methods under test:
+   * <ul>
+   *   <li>{@link RoomSelector#RoomSelector(Element, FormatEnum)}
+   *   <li>{@link RoomSelector#getElementId()}
+   *   <li>{@link RoomSelector#getPresentationMLTag()}
+   * </ul>
+   */
+  @Test
+  public void testGettersAndSetters() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act
+    RoomSelector actualRoomSelector = new RoomSelector(parent, FormatEnum.MESSAGEML);
+    String actualElementId = actualRoomSelector.getElementId();
+    String actualPresentationMLTag = actualRoomSelector.getPresentationMLTag();
+
+    // Assert
+    assertEquals(FormatEnum.MESSAGEML, actualRoomSelector.getFormat());
+    assertTrue(actualRoomSelector.getChildren().isEmpty());
+    assertTrue(actualRoomSelector.getAttributes().isEmpty());
+    assertEquals(Div.MESSAGEML_TAG, actualPresentationMLTag);
+    assertEquals(RoomSelector.MESSAGEML_TAG, actualRoomSelector.getMessageMLTag());
+    assertEquals(RoomSelector.MESSAGEML_TAG, actualElementId);
+    assertSame(parent, actualRoomSelector.getParent());
   }
 }

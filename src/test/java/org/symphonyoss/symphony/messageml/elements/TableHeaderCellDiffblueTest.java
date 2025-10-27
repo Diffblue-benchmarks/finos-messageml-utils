@@ -5,22 +5,33 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.commonmark.node.Node;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.markdown.nodes.TableCellNode;
 
 public class TableHeaderCellDiffblueTest {
   /**
-   * Test {@link TableHeaderCell#TableHeaderCell(Element)}.
-   * <p>
+   * Method under test: {@link TableHeaderCell#asMarkdown()}
+   */
+  @Test
+  public void testAsMarkdown() {
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new TableHeaderCell(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
+
+    // Assert
+    assertTrue(actualAsMarkdownResult instanceof TableCellNode);
+    assertEquals("   ", ((TableCellNode) actualAsMarkdownResult).getDelimiter());
+    assertNull(actualAsMarkdownResult.getParent());
+    assertNull(actualAsMarkdownResult.getFirstChild());
+    assertNull(actualAsMarkdownResult.getLastChild());
+    assertNull(actualAsMarkdownResult.getNext());
+    assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
    * Method under test: {@link TableHeaderCell#TableHeaderCell(Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TableHeaderCell.<init>(Element)"})
   public void testNewTableHeaderCell() {
     // Arrange
     Bold parent = new Bold(new BulletList(mock(Element.class)));
@@ -39,35 +50,9 @@ public class TableHeaderCellDiffblueTest {
   }
 
   /**
-   * Test {@link TableHeaderCell#asMarkdown()}.
-   * <p>
-   * Method under test: {@link TableHeaderCell#asMarkdown()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node TableHeaderCell.asMarkdown()"})
-  public void testAsMarkdown() {
-    // Arrange and Act
-    Node actualAsMarkdownResult = (new TableHeaderCell(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
-
-    // Assert
-    assertTrue(actualAsMarkdownResult instanceof TableCellNode);
-    assertEquals("   ", ((TableCellNode) actualAsMarkdownResult).getDelimiter());
-    assertNull(actualAsMarkdownResult.getParent());
-    assertNull(actualAsMarkdownResult.getFirstChild());
-    assertNull(actualAsMarkdownResult.getLastChild());
-    assertNull(actualAsMarkdownResult.getNext());
-    assertNull(actualAsMarkdownResult.getPrevious());
-  }
-
-  /**
-   * Test {@link TableHeaderCell#toString()}.
-   * <p>
    * Method under test: {@link TableHeaderCell#toString()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String TableHeaderCell.toString()"})
   public void testToString() {
     // Arrange, Act and Assert
     assertEquals("Cell", (new TableHeaderCell(new Bold(new BulletList(null)))).toString());

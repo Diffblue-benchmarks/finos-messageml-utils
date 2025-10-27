@@ -2,15 +2,10 @@ package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class OptionNodeDiffblueTest {
   /**
-   * Test getters and setters.
-   * <p>
    * Methods under test:
    * <ul>
    *   <li>default or parameterless constructor of {@link OptionNode}
@@ -19,9 +14,6 @@ public class OptionNodeDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void OptionNode.<init>()", "String OptionNode.getClosingDelimiter()",
-      "String OptionNode.getOpeningDelimiter()"})
   public void testGettersAndSetters() {
     // Arrange and Act
     OptionNode actualOptionNode = new OptionNode();

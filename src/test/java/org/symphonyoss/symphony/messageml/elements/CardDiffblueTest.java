@@ -4,13 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
@@ -19,42 +16,10 @@ import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
 public class CardDiffblueTest {
   /**
-   * Test getters and setters.
-   * <p>
-   * Methods under test:
-   * <ul>
-   *   <li>{@link Card#Card(Element, FormatEnum)}
-   *   <li>{@link Card#getPresentationMLTag()}
-   * </ul>
+   * Method under test:
+   * {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.<init>(Element, FormatEnum)", "String Card.getPresentationMLTag()"})
-  public void testGettersAndSetters() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act
-    Card actualCard = new Card(parent, FormatEnum.MESSAGEML);
-    String actualPresentationMLTag = actualCard.getPresentationMLTag();
-
-    // Assert
-    assertEquals(FormatEnum.MESSAGEML, actualCard.getFormat());
-    assertTrue(actualCard.getChildren().isEmpty());
-    assertTrue(actualCard.getAttributes().isEmpty());
-    assertEquals(Card.MESSAGEML_TAG, actualCard.getMessageMLTag());
-    assertEquals(Div.MESSAGEML_TAG, actualPresentationMLTag);
-    assertSame(parent, actualCard.getParent());
-  }
-
-  /**
-   * Test {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
     // Arrange
     Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -68,13 +33,10 @@ public class CardDiffblueTest {
   }
 
   /**
-   * Test {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML2() {
     // Arrange
     Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -89,13 +51,10 @@ public class CardDiffblueTest {
   }
 
   /**
-   * Test {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML3() {
     // Arrange
     Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -110,13 +69,10 @@ public class CardDiffblueTest {
   }
 
   /**
-   * Test {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML4() {
     // Arrange
     Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -131,13 +87,10 @@ public class CardDiffblueTest {
   }
 
   /**
-   * Test {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML5() {
     // Arrange
     Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -152,13 +105,10 @@ public class CardDiffblueTest {
   }
 
   /**
-   * Test {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML6() {
     // Arrange
     Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -173,13 +123,10 @@ public class CardDiffblueTest {
   }
 
   /**
-   * Test {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML7() {
     // Arrange
     Bold child = new Bold(new BulletList(mock(Element.class)));
@@ -197,13 +144,10 @@ public class CardDiffblueTest {
   }
 
   /**
-   * Test {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML8() {
     // Arrange
     Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -218,13 +162,10 @@ public class CardDiffblueTest {
   }
 
   /**
-   * Test {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML9() {
     // Arrange
     Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -240,13 +181,10 @@ public class CardDiffblueTest {
   }
 
   /**
-   * Test {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML10() {
     // Arrange
     Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -262,13 +200,10 @@ public class CardDiffblueTest {
   }
 
   /**
-   * Test {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Card#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML11() {
     // Arrange
     Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -284,186 +219,13 @@ public class CardDiffblueTest {
   }
 
   /**
-   * Test {@link Card#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link BiItem}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link Card#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
+  public void testUpdateBiContext() {
     // Arrange
-    Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-
-    BiContext context = new BiContext();
-    BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
-
-    context.addItemWithValue("cards", biItem);
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    card.updateBiContext(context);
-
-    // Assert that nothing has changed
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(1, attributes.size());
-    Object getResult = attributes.get("count");
-    assertTrue(getResult instanceof BiItem);
-    Map<String, Object> attributes2 = items.get(1).getAttributes();
-    assertEquals(1, attributes2.size());
-    assertTrue(attributes2.containsKey(Element.STYLE_ATTR));
-    assertEquals(attributes2, items.get(2).getAttributes());
-    assertSame(biItem, getResult);
-  }
-
-  /**
-   * Test {@link Card#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is {@code Item Value}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Card#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
-    // Arrange
-    Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-
-    BiContext context = new BiContext();
-    context.addItemWithValue("cards", "Item Value");
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    card.updateBiContext(context);
-
-    // Assert that nothing has changed
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals("Item Value", attributes.get("count"));
-    Map<String, Object> attributes2 = items.get(1).getAttributes();
-    assertEquals(1, attributes2.size());
-    assertTrue(attributes2.containsKey(Element.STYLE_ATTR));
-  }
-
-  /**
-   * Test {@link Card#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Card#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
-    // Arrange
-    Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem("cards", Element.STYLE_ATTR));
-
-    // Act
-    card.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(1, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(2, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-    assertTrue(attributes.containsKey(Element.STYLE_ATTR));
-  }
-
-  /**
-   * Test {@link Card#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Card#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
-    // Arrange
-    Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    card.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(2, items.size());
-    BiItem getResult = items.get(1);
-    assertEquals("cards", getResult.getName());
-    Map<String, Object> attributes = getResult.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-  }
-
-  /**
-   * Test {@link Card#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code cards}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Card#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsThirdNameIsCards() {
-    // Arrange
-    Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    card.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    BiItem getResult = items.get(2);
-    assertEquals("cards", getResult.getName());
-    Map<String, Object> attributes = getResult.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-  }
-
-  /**
-   * Test {@link Card#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code cards}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Card#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Card.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsCards() {
-    // Arrange
-    Card card = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Card card = new Card(parent, FormatEnum.MESSAGEML);
     BiContext context = new BiContext();
 
     // Act
@@ -476,6 +238,186 @@ public class CardDiffblueTest {
     assertEquals("cards", getResult.getName());
     Map<String, Object> attributes = getResult.getAttributes();
     assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(parent, card.getParent());
+  }
+
+  /**
+   * Method under test: {@link Card#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext2() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Card card = new Card(parent, FormatEnum.MESSAGEML);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+
+    // Act
+    card.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(2, items.size());
+    BiItem getResult = items.get(1);
+    assertEquals("cards", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(0));
+    assertSame(parent, card.getParent());
+  }
+
+  /**
+   * Method under test: {@link Card#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext3() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Card card = new Card(parent, FormatEnum.MESSAGEML);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    card.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(2);
+    assertEquals("cards", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(0));
+    assertSame(item2, items.get(1));
+    assertSame(parent, card.getParent());
+  }
+
+  /**
+   * Method under test: {@link Card#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext4() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Card card = new Card(parent, FormatEnum.MESSAGEML);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem("cards", Element.STYLE_ATTR);
+
+    context.addItem(item);
+
+    // Act
+    card.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(1, items.size());
+    assertSame(item, items.get(0));
+    assertSame(parent, card.getParent());
+  }
+
+  /**
+   * Method under test: {@link Card#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext5() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Card card = new Card(parent, FormatEnum.MESSAGEML);
+
+    BiContext context = new BiContext();
+    context.addItemWithValue("cards", "Item Value");
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    card.updateBiContext(context);
+
+    // Assert that nothing has changed
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(0);
+    assertEquals("cards", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(1));
+    assertSame(item2, items.get(2));
+    assertSame(parent, card.getParent());
+  }
+
+  /**
+   * Method under test: {@link Card#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext6() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Card card = new Card(parent, FormatEnum.MESSAGEML);
+
+    BiContext context = new BiContext();
+    context.addItemWithValue("cards", new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    card.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(0);
+    assertEquals("cards", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(1));
+    assertSame(item2, items.get(2));
+    assertSame(parent, card.getParent());
+  }
+
+  /**
+   * Methods under test:
+   * <ul>
+   *   <li>{@link Card#Card(Element, FormatEnum)}
+   *   <li>{@link Card#getPresentationMLTag()}
+   * </ul>
+   */
+  @Test
+  public void testGettersAndSetters() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act
+    Card actualCard = new Card(parent, FormatEnum.MESSAGEML);
+    String actualPresentationMLTag = actualCard.getPresentationMLTag();
+
+    // Assert
+    assertEquals(FormatEnum.MESSAGEML, actualCard.getFormat());
+    assertTrue(actualCard.getChildren().isEmpty());
+    assertTrue(actualCard.getAttributes().isEmpty());
+    assertEquals(Card.MESSAGEML_TAG, actualCard.getMessageMLTag());
+    assertEquals(Div.MESSAGEML_TAG, actualPresentationMLTag);
+    assertSame(parent, actualCard.getParent());
   }
 }

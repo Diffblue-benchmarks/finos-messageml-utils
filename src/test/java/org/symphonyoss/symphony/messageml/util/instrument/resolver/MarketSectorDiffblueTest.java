@@ -2,55 +2,33 @@ package org.symphonyoss.symphony.messageml.util.instrument.resolver;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class MarketSectorDiffblueTest {
   /**
-   * Test {@link MarketSector#fromValue(String)}.
-   * <ul>
-   *   <li>When {@code Equity}.</li>
-   *   <li>Then return {@code EQUITY}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link MarketSector#fromValue(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"MarketSector MarketSector.fromValue(String)"})
-  public void testFromValue_whenEquity_thenReturnEquity() {
+  public void testFromValue() {
     // Arrange, Act and Assert
+    assertNull(MarketSector.fromValue("Text"));
     assertEquals(MarketSector.EQUITY, MarketSector.fromValue("Equity"));
   }
 
   /**
-   * Test {@link MarketSector#fromValue(String)}.
-   * <ul>
-   *   <li>When {@code Text}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link MarketSector#fromValue(String)}
+   * Method under test: {@link MarketSector#getValue()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"MarketSector MarketSector.fromValue(String)"})
-  public void testFromValue_whenText_thenReturnNull() {
+  public void testGetValue() {
     // Arrange, Act and Assert
-    assertNull(MarketSector.fromValue("Text"));
+    assertEquals("Equity", MarketSector.valueOf("EQUITY").getValue());
   }
 
   /**
-   * Test {@link MarketSector#toValues()}.
-   * <p>
    * Method under test: {@link MarketSector#toValues()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"List MarketSector.toValues()"})
   public void testToValues() {
     // Arrange and Act
     List<String> actualToValuesResult = MarketSector.toValues();
@@ -67,18 +45,5 @@ public class MarketSectorDiffblueTest {
     assertEquals("Mtge", actualToValuesResult.get(7));
     assertEquals("Muni", actualToValuesResult.get(8));
     assertEquals("Pfd", actualToValuesResult.get(9));
-  }
-
-  /**
-   * Test {@link MarketSector#getValue()}.
-   * <p>
-   * Method under test: {@link MarketSector#getValue()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String MarketSector.getValue()"})
-  public void testGetValue() {
-    // Arrange, Act and Assert
-    assertEquals("Equity", MarketSector.valueOf("EQUITY").getValue());
   }
 }

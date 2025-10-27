@@ -2,18 +2,21 @@ package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class RadioNodeDiffblueTest {
   /**
-   * Test getters and setters.
-   * <ul>
-   *   <li>Then return Text is empty string.</li>
-   * </ul>
-   * <p>
+   * Method under test: {@link RadioNode#getText()}
+   */
+  @Test
+  public void testGetText() {
+    // Arrange, Act and Assert
+    assertEquals("Label", (new RadioNode("Label")).getText());
+    assertEquals("", (new RadioNode("")).getText());
+    assertEquals("", (new RadioNode()).getText());
+  }
+
+  /**
    * Methods under test:
    * <ul>
    *   <li>{@link RadioNode#RadioNode()}
@@ -22,10 +25,7 @@ public class RadioNodeDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RadioNode.<init>()", "void RadioNode.<init>(String)",
-      "String RadioNode.getClosingDelimiter()", "String RadioNode.getOpeningDelimiter()"})
-  public void testGettersAndSetters_thenReturnTextIsEmptyString() {
+  public void testGettersAndSetters() {
     // Arrange and Act
     RadioNode actualRadioNode = new RadioNode();
     String actualClosingDelimiter = actualRadioNode.getClosingDelimiter();
@@ -42,12 +42,6 @@ public class RadioNodeDiffblueTest {
   }
 
   /**
-   * Test getters and setters.
-   * <ul>
-   *   <li>When {@code Label}.</li>
-   *   <li>Then return Text is {@code Label}.</li>
-   * </ul>
-   * <p>
    * Methods under test:
    * <ul>
    *   <li>{@link RadioNode#RadioNode(String)}
@@ -56,10 +50,7 @@ public class RadioNodeDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RadioNode.<init>()", "void RadioNode.<init>(String)",
-      "String RadioNode.getClosingDelimiter()", "String RadioNode.getOpeningDelimiter()"})
-  public void testGettersAndSetters_whenLabel_thenReturnTextIsLabel() {
+  public void testGettersAndSetters2() {
     // Arrange and Act
     RadioNode actualRadioNode = new RadioNode("Label");
     String actualClosingDelimiter = actualRadioNode.getClosingDelimiter();
@@ -73,56 +64,5 @@ public class RadioNodeDiffblueTest {
     assertNull(actualRadioNode.getLastChild());
     assertNull(actualRadioNode.getNext());
     assertNull(actualRadioNode.getPrevious());
-  }
-
-  /**
-   * Test {@link RadioNode#getText()}.
-   * <ul>
-   *   <li>Given {@link RadioNode#RadioNode(String)} with label is empty string.</li>
-   *   <li>Then return empty string.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link RadioNode#getText()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String RadioNode.getText()"})
-  public void testGetText_givenRadioNodeWithLabelIsEmptyString_thenReturnEmptyString() {
-    // Arrange, Act and Assert
-    assertEquals("", (new RadioNode("")).getText());
-  }
-
-  /**
-   * Test {@link RadioNode#getText()}.
-   * <ul>
-   *   <li>Given {@link RadioNode#RadioNode(String)} with {@code Label}.</li>
-   *   <li>Then return {@code Label}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link RadioNode#getText()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String RadioNode.getText()"})
-  public void testGetText_givenRadioNodeWithLabel_thenReturnLabel() {
-    // Arrange, Act and Assert
-    assertEquals("Label", (new RadioNode("Label")).getText());
-  }
-
-  /**
-   * Test {@link RadioNode#getText()}.
-   * <ul>
-   *   <li>Given {@link RadioNode#RadioNode()}.</li>
-   *   <li>Then return empty string.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link RadioNode#getText()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String RadioNode.getText()"})
-  public void testGetText_givenRadioNode_thenReturnEmptyString() {
-    // Arrange, Act and Assert
-    assertEquals("", (new RadioNode()).getText());
   }
 }

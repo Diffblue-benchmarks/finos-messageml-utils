@@ -9,14 +9,11 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import java.time.DateTimeException;
 import java.util.List;
 import org.commonmark.node.Node;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
@@ -27,37 +24,9 @@ import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
 public class TimezonePickerDiffblueTest {
   /**
-   * Test {@link TimezonePicker#TimezonePicker(Element, FormatEnum)}.
-   * <p>
-   * Method under test: {@link TimezonePicker#TimezonePicker(Element, FormatEnum)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimezonePicker.<init>(Element, FormatEnum)"})
-  public void testNewTimezonePicker() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act
-    TimezonePicker actualTimezonePicker = new TimezonePicker(parent, FormatEnum.MESSAGEML);
-
-    // Assert
-    assertEquals(FormatEnum.MESSAGEML, actualTimezonePicker.getFormat());
-    assertTrue(actualTimezonePicker.getChildren().isEmpty());
-    assertTrue(actualTimezonePicker.getAttributes().isEmpty());
-    assertEquals(TimezonePicker.MESSAGEML_TAG, actualTimezonePicker.getMessageMLTag());
-    assertEquals(TimezonePicker.MESSAGEML_TAG, actualTimezonePicker.getPresentationMLTag());
-    assertSame(parent, actualTimezonePicker.getParent());
-  }
-
-  /**
-   * Test {@link TimezonePicker#validate()}.
-   * <p>
    * Method under test: {@link TimezonePicker#validate()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimezonePicker.validate()"})
   public void testValidate() throws InvalidInputException {
     // Arrange
     Element parent = mock(Element.class);
@@ -364,14 +333,29 @@ public class TimezonePickerDiffblueTest {
   }
 
   /**
-   * Test {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimezonePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
+    // Arrange
+    TimezonePicker timezonePicker = new TimezonePicker(new Bold(new BulletList(mock(Element.class))),
+        FormatEnum.MESSAGEML);
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    timezonePicker.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(37L, out.getOffset());
+  }
+
+  /**
+   * Method under test:
+   * {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  public void testAsPresentationML2() {
     // Arrange
     TimezonePicker timezonePicker = new TimezonePicker(new Bold(new BulletList(mock(Element.class))),
         FormatEnum.MESSAGEML);
@@ -387,14 +371,11 @@ public class TimezonePickerDiffblueTest {
   }
 
   /**
-   * Test {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimezonePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML2() {
+  public void testAsPresentationML3() {
     // Arrange
     TimezonePicker timezonePicker = new TimezonePicker(new Bold(new BulletList(mock(Element.class))),
         FormatEnum.MESSAGEML);
@@ -410,14 +391,11 @@ public class TimezonePickerDiffblueTest {
   }
 
   /**
-   * Test {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimezonePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML3() {
+  public void testAsPresentationML4() {
     // Arrange
     TimezonePicker timezonePicker = new TimezonePicker(new Bold(new BulletList(mock(Element.class))),
         FormatEnum.MESSAGEML);
@@ -433,45 +411,13 @@ public class TimezonePickerDiffblueTest {
   }
 
   /**
-   * Test {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <ul>
-   *   <li>When {@link XmlPrintStream#XmlPrintStream(OutputStream)} with outputStream is {@link ByteArrayOutputStream#ByteArrayOutputStream(int)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TimezonePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimezonePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML_whenXmlPrintStreamWithOutputStreamIsByteArrayOutputStream() {
-    // Arrange
-    TimezonePicker timezonePicker = new TimezonePicker(new Bold(new BulletList(mock(Element.class))),
-        FormatEnum.MESSAGEML);
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    timezonePicker.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
-
-    // Assert
-    assertEquals(37L, out.getOffset());
-  }
-
-  /**
-   * Test {@link TimezonePicker#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link TimezonePicker#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimezonePicker.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_whenBiContext_thenBiContextItemsSizeIsOne() {
+  public void testUpdateBiContext() {
     // Arrange
-    TimezonePicker timezonePicker = new TimezonePicker(new Bold(new BulletList(mock(Element.class))),
-        FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    TimezonePicker timezonePicker = new TimezonePicker(parent, FormatEnum.MESSAGEML);
     BiContext context = new BiContext();
 
     // Act
@@ -483,20 +429,15 @@ public class TimezonePickerDiffblueTest {
     BiItem getResult = items.get(0);
     assertEquals("timezonepicker", getResult.getName());
     assertTrue(getResult.getAttributes().isEmpty());
+    assertTrue(timezonePicker.getAttributes().isEmpty());
+    assertSame(parent, timezonePicker.getParent());
   }
 
   /**
-   * Test {@link TimezonePicker#asMarkdown()}.
-   * <ul>
-   *   <li>Given {@link TimezonePicker#TimezonePicker(Element, FormatEnum)} with parent is {@link Bold#Bold(Element)} and format is {@code MESSAGEML}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link TimezonePicker#asMarkdown()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node TimezonePicker.asMarkdown()"})
-  public void testAsMarkdown_givenTimezonePickerWithParentIsBoldAndFormatIsMessageml() {
+  public void testAsMarkdown() {
     // Arrange and Act
     Node actualAsMarkdownResult = (new TimezonePicker(new Bold(new BulletList(mock(Element.class))),
         FormatEnum.MESSAGEML)).asMarkdown();
@@ -514,17 +455,10 @@ public class TimezonePickerDiffblueTest {
   }
 
   /**
-   * Test {@link TimezonePicker#asMarkdown()}.
-   * <ul>
-   *   <li>Given {@link TimezonePicker#TimezonePicker(Element, FormatEnum)} with parent is {@link Bold#Bold(Element)} and format is {@code PRESENTATIONML}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link TimezonePicker#asMarkdown()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node TimezonePicker.asMarkdown()"})
-  public void testAsMarkdown_givenTimezonePickerWithParentIsBoldAndFormatIsPresentationml() {
+  public void testAsMarkdown2() {
     // Arrange and Act
     Node actualAsMarkdownResult = (new TimezonePicker(new Bold(new BulletList(mock(Element.class))),
         FormatEnum.PRESENTATIONML)).asMarkdown();
@@ -539,5 +473,25 @@ public class TimezonePickerDiffblueTest {
     assertNull(actualAsMarkdownResult.getLastChild());
     assertNull(actualAsMarkdownResult.getNext());
     assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
+   * Method under test: {@link TimezonePicker#TimezonePicker(Element, FormatEnum)}
+   */
+  @Test
+  public void testNewTimezonePicker() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act
+    TimezonePicker actualTimezonePicker = new TimezonePicker(parent, FormatEnum.MESSAGEML);
+
+    // Assert
+    assertEquals(FormatEnum.MESSAGEML, actualTimezonePicker.getFormat());
+    assertTrue(actualTimezonePicker.getChildren().isEmpty());
+    assertTrue(actualTimezonePicker.getAttributes().isEmpty());
+    assertEquals(TimezonePicker.MESSAGEML_TAG, actualTimezonePicker.getMessageMLTag());
+    assertEquals(TimezonePicker.MESSAGEML_TAG, actualTimezonePicker.getPresentationMLTag());
+    assertSame(parent, actualTimezonePicker.getParent());
   }
 }

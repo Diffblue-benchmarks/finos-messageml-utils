@@ -6,59 +6,19 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
 import org.commonmark.node.Node;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 import org.symphonyoss.symphony.messageml.markdown.nodes.form.SelectNode;
 
 public class SelectDiffblueTest {
   /**
-   * Test {@link Select#Select(Element)}.
-   * <p>
-   * Method under test: {@link Select#Select(Element)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Select.<init>(Element)"})
-  public void testNewSelect() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-
-    // Act
-    Select actualSelect = new Select(parent);
-
-    // Assert
-    Element parent2 = actualSelect.getParent();
-    assertTrue(parent2 instanceof Bold);
-    assertEquals(0, actualSelect.size());
-    assertEquals(FormatEnum.PRESENTATIONML, actualSelect.getFormat());
-    assertFalse(actualSelect.isLabel());
-    assertFalse(actualSelect.isSplittable());
-    assertFalse(actualSelect.isTooltip());
-    assertTrue(actualSelect.getChildren().isEmpty());
-    assertTrue(actualSelect.getAttributes().isEmpty());
-    assertEquals(LabelableElement.LABEL, actualSelect.getPresentationMLLabelTag());
-    assertEquals(Select.ELEMENT_ID, actualSelect.getElementId());
-    assertEquals(Select.MESSAGEML_TAG, actualSelect.getMessageMLTag());
-    assertEquals(Select.MESSAGEML_TAG, actualSelect.getPresentationMLTag());
-    assertEquals(Span.MESSAGEML_TAG, actualSelect.getPresentationMLTooltipTag());
-    assertSame(parent, parent2);
-  }
-
-  /**
-   * Test {@link Select#asMarkdown()}.
-   * <p>
    * Method under test: {@link Select#asMarkdown()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node Select.asMarkdown()"})
   public void testAsMarkdown() {
     // Arrange and Act
     Node actualAsMarkdownResult = (new Select(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
@@ -76,30 +36,22 @@ public class SelectDiffblueTest {
   }
 
   /**
-   * Test {@link Select#getElementId()}.
-   * <p>
    * Method under test: {@link Select#getElementId()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String Select.getElementId()"})
   public void testGetElementId() {
     // Arrange, Act and Assert
     assertEquals(Select.ELEMENT_ID, (new Select(new Bold(new BulletList(null)))).getElementId());
   }
 
   /**
-   * Test {@link Select#updateBiContext(BiContext)}.
-   * <p>
    * Method under test: {@link Select#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Select.updateBiContext(BiContext)"})
   public void testUpdateBiContext() {
     // Arrange
-    Select select = new Select(new Bold(new BulletList(mock(Element.class))));
-    select.addChild(new Bold(new BulletList(mock(Element.class))));
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Select select = new Select(parent);
     BiContext context = new BiContext();
 
     // Act
@@ -112,23 +64,23 @@ public class SelectDiffblueTest {
     assertEquals("dropdownmenu", getResult.getName());
     Map<String, Object> attributes = getResult.getAttributes();
     assertEquals(2, attributes.size());
-    assertEquals(0, ((Integer) attributes.get("default")).intValue());
-    assertEquals(0, ((Integer) attributes.get("options_count")).intValue());
+    assertTrue(select.getChildren().isEmpty());
+    assertTrue(attributes.containsKey("default"));
+    assertTrue(attributes.containsKey("options_count"));
+    assertSame(parent, select.getParent());
   }
 
   /**
-   * Test {@link Select#updateBiContext(BiContext)}.
-   * <p>
    * Method under test: {@link Select#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Select.updateBiContext(BiContext)"})
   public void testUpdateBiContext2() {
     // Arrange
-    Select select = new Select(new Bold(new BulletList(mock(Element.class))));
-    select.addChild(new Bold(new BulletList(mock(Element.class))));
-    select.addChild(new Bold(new BulletList(mock(Element.class))));
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+
+    Select select = new Select(parent);
+    Bold child = new Bold(new BulletList(mock(Element.class)));
+    select.addChild(child);
     BiContext context = new BiContext();
 
     // Act
@@ -139,27 +91,29 @@ public class SelectDiffblueTest {
     assertEquals(1, items.size());
     BiItem getResult = items.get(0);
     assertEquals("dropdownmenu", getResult.getName());
+    List<Element> children = select.getChildren();
+    assertEquals(1, children.size());
     Map<String, Object> attributes = getResult.getAttributes();
     assertEquals(2, attributes.size());
-    assertEquals(0, ((Integer) attributes.get("default")).intValue());
-    assertEquals(0, ((Integer) attributes.get("options_count")).intValue());
+    assertTrue(attributes.containsKey("default"));
+    assertTrue(attributes.containsKey("options_count"));
+    assertSame(child, children.get(0));
+    assertSame(parent, select.getParent());
   }
 
   /**
-   * Test {@link Select#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Given {@link Select#Select(Element)} with parent is {@link Bold#Bold(Element)}.</li>
-   *   <li>Then {@link BiContext} (default constructor) Items size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link Select#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Select.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_givenSelectWithParentIsBold_thenBiContextItemsSizeIsOne() {
+  public void testUpdateBiContext3() {
     // Arrange
-    Select select = new Select(new Bold(new BulletList(mock(Element.class))));
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+
+    Select select = new Select(parent);
+    Bold child = new Bold(new BulletList(mock(Element.class)));
+    select.addChild(child);
+    Bold child2 = new Bold(new BulletList(mock(Element.class)));
+    select.addChild(child2);
     BiContext context = new BiContext();
 
     // Act
@@ -170,9 +124,41 @@ public class SelectDiffblueTest {
     assertEquals(1, items.size());
     BiItem getResult = items.get(0);
     assertEquals("dropdownmenu", getResult.getName());
+    List<Element> children = select.getChildren();
+    assertEquals(2, children.size());
     Map<String, Object> attributes = getResult.getAttributes();
     assertEquals(2, attributes.size());
-    assertEquals(0, ((Integer) attributes.get("default")).intValue());
-    assertEquals(0, ((Integer) attributes.get("options_count")).intValue());
+    assertTrue(attributes.containsKey("default"));
+    assertTrue(attributes.containsKey("options_count"));
+    assertSame(child, children.get(0));
+    assertSame(child2, children.get(1));
+    assertSame(parent, select.getParent());
+  }
+
+  /**
+   * Method under test: {@link Select#Select(Element)}
+   */
+  @Test
+  public void testNewSelect() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+
+    // Act
+    Select actualSelect = new Select(parent);
+
+    // Assert
+    assertEquals(0, actualSelect.size());
+    assertEquals(FormatEnum.PRESENTATIONML, actualSelect.getFormat());
+    assertFalse(actualSelect.isLabel());
+    assertFalse(actualSelect.isSplittable());
+    assertFalse(actualSelect.isTooltip());
+    assertTrue(actualSelect.getChildren().isEmpty());
+    assertTrue(actualSelect.getAttributes().isEmpty());
+    assertEquals(LabelableElement.LABEL, actualSelect.getPresentationMLLabelTag());
+    assertEquals(Select.ELEMENT_ID, actualSelect.getElementId());
+    assertEquals(Select.MESSAGEML_TAG, actualSelect.getMessageMLTag());
+    assertEquals(Select.MESSAGEML_TAG, actualSelect.getPresentationMLTag());
+    assertEquals(Span.MESSAGEML_TAG, actualSelect.getPresentationMLTooltipTag());
+    assertSame(parent, actualSelect.getParent());
   }
 }

@@ -1,20 +1,37 @@
 package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import org.commonmark.node.BlockQuote;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class DatePickerNodeDiffblueTest {
   /**
-   * Test {@link DatePickerNode#DatePickerNode(String, String, String)}.
-   * <p>
-   * Method under test: {@link DatePickerNode#DatePickerNode(String, String, String)}
+   * Method under test: {@link DatePickerNode#getText()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DatePickerNode.<init>(String, String, String)"})
+  public void testGetText() {
+    // Arrange
+    BlockQuote child = mock(BlockQuote.class);
+    doNothing().when(child).unlink();
+
+    DatePickerNode datePickerNode = new DatePickerNode("Label", "127.0.0.1", "Placeholder");
+    datePickerNode.appendChild(child);
+
+    // Act
+    datePickerNode.getText();
+
+    // Assert
+    verify(child).unlink();
+  }
+
+  /**
+   * Method under test:
+   * {@link DatePickerNode#DatePickerNode(String, String, String)}
+   */
+  @Test
   public void testNewDatePickerNode() {
     // Arrange and Act
     DatePickerNode actualDatePickerNode = new DatePickerNode("Label", "127.0.0.1", "Placeholder");

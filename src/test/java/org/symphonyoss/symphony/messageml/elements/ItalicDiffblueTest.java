@@ -5,22 +5,34 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.commonmark.node.Emphasis;
 import org.commonmark.node.Node;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class ItalicDiffblueTest {
   /**
-   * Test {@link Italic#Italic(Element)}.
-   * <p>
+   * Method under test: {@link Italic#asMarkdown()}
+   */
+  @Test
+  public void testAsMarkdown() {
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new Italic(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
+
+    // Assert
+    assertTrue(actualAsMarkdownResult instanceof Emphasis);
+    assertEquals("_", ((Emphasis) actualAsMarkdownResult).getClosingDelimiter());
+    assertEquals("_", ((Emphasis) actualAsMarkdownResult).getOpeningDelimiter());
+    assertNull(actualAsMarkdownResult.getFirstChild());
+    assertNull(actualAsMarkdownResult.getLastChild());
+    assertNull(actualAsMarkdownResult.getNext());
+    assertNull(actualAsMarkdownResult.getParent());
+    assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
    * Method under test: {@link Italic#Italic(Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Italic.<init>(Element)"})
   public void testNewItalic() {
     // Arrange
     Bold parent = new Bold(new BulletList(mock(Element.class)));
@@ -36,28 +48,5 @@ public class ItalicDiffblueTest {
     assertEquals(Italic.MESSAGEML_TAG, actualItalic.getMessageMLTag());
     assertEquals(Italic.MESSAGEML_TAG, actualItalic.getPresentationMLTag());
     assertSame(parent, actualItalic.getParent());
-  }
-
-  /**
-   * Test {@link Italic#asMarkdown()}.
-   * <p>
-   * Method under test: {@link Italic#asMarkdown()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node Italic.asMarkdown()"})
-  public void testAsMarkdown() {
-    // Arrange and Act
-    Node actualAsMarkdownResult = (new Italic(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
-
-    // Assert
-    assertTrue(actualAsMarkdownResult instanceof Emphasis);
-    assertEquals("_", ((Emphasis) actualAsMarkdownResult).getClosingDelimiter());
-    assertEquals("_", ((Emphasis) actualAsMarkdownResult).getOpeningDelimiter());
-    assertNull(actualAsMarkdownResult.getFirstChild());
-    assertNull(actualAsMarkdownResult.getLastChild());
-    assertNull(actualAsMarkdownResult.getNext());
-    assertNull(actualAsMarkdownResult.getParent());
-    assertNull(actualAsMarkdownResult.getPrevious());
   }
 }

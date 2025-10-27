@@ -2,16 +2,15 @@ package org.symphonyoss.symphony.messageml.elements;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
@@ -19,13 +18,10 @@ import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
 public class ElementDiffblueTest {
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -39,13 +35,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML2() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -60,13 +53,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML3() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -81,13 +71,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML4() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -102,13 +89,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML5() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -123,13 +107,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML6() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -144,13 +125,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML7() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -165,13 +143,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML8() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -186,13 +161,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML9() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -208,13 +180,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML10() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -230,13 +199,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML11() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -252,13 +218,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML12() {
     // Arrange
     Button child = new Button(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -276,13 +239,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML13() {
     // Arrange
     Code child = new Code(new Bold(mock(Element.class)), "en");
@@ -300,13 +260,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML14() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -317,143 +274,187 @@ public class ElementDiffblueTest {
 
     // Assert
     assertEquals(9L, out.getOffset());
+    assertTrue(bold.getChildren().isEmpty());
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML15() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
-    bold.addChild(new Bold(new BulletList(mock(Element.class))));
+    Bold child = new Bold(new BulletList(mock(Element.class)));
+    bold.addChild(child);
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
     bold.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    Element getResult = children.get(0);
+    assertTrue(getResult instanceof Bold);
     assertEquals(20L, out.getOffset());
+    assertSame(child, getResult);
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML16() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
-    bold.addChild(new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
+    Checkbox child = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+
+    bold.addChild(child);
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
     bold.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    Element getResult = children.get(0);
+    assertTrue(getResult instanceof Checkbox);
     assertEquals(53L, out.getOffset());
+    assertSame(child, getResult);
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML17() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
-    bold.addChild(new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
+    Button child = new Button(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+
+    bold.addChild(child);
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
     bold.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
-    assertEquals(37L, out.getOffset());
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    assertEquals(44L, out.getOffset());
+    assertSame(child, children.get(0));
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML18() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
-    bold.addChild(new CardBody(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML));
+    Card child = new Card(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+
+    bold.addChild(child);
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
     bold.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
-    assertEquals(41L, out.getOffset());
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    Element getResult = children.get(0);
+    assertTrue(getResult instanceof Card);
+    assertEquals(37L, out.getOffset());
+    assertSame(child, getResult);
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML19() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
-    bold.addChild(new Code(new Bold(mock(Element.class)), "en"));
+    CardBody child = new CardBody(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+
+    bold.addChild(child);
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
     bold.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
-    assertEquals(45L, out.getOffset());
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    Element getResult = children.get(0);
+    assertTrue(getResult instanceof CardBody);
+    assertEquals(41L, out.getOffset());
+    assertSame(child, getResult);
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML20() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
-    bold.addChild(new CashTag(new Bold(new BulletList(mock(Element.class))), 1));
+    Code child = new Code(new Bold(mock(Element.class)), "en");
+
+    bold.addChild(child);
     XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
     bold.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
-    assertEquals(73L, out.getOffset());
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    Element getResult = children.get(0);
+    assertTrue(getResult instanceof Code);
+    assertEquals(45L, out.getOffset());
+    assertSame(child, getResult);
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML21() {
+    // Arrange
+    Bold bold = new Bold(new BulletList(mock(Element.class)));
+    CashTag child = new CashTag(new Bold(new BulletList(mock(Element.class))), 1);
+
+    bold.addChild(child);
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    bold.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    Element getResult = children.get(0);
+    assertTrue(getResult instanceof CashTag);
+    assertEquals(73L, out.getOffset());
+    assertSame(child, getResult);
+  }
+
+  /**
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  public void testAsPresentationML22() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
 
@@ -465,17 +466,15 @@ public class ElementDiffblueTest {
 
     // Assert
     assertEquals(9L, out.getOffset());
+    assertTrue(bold.getChildren().isEmpty());
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML22() {
+  public void testAsPresentationML23() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
 
@@ -487,17 +486,15 @@ public class ElementDiffblueTest {
 
     // Assert
     assertEquals(9L, out.getOffset());
+    assertTrue(bold.getChildren().isEmpty());
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML23() {
+  public void testAsPresentationML24() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
 
@@ -509,17 +506,64 @@ public class ElementDiffblueTest {
 
     // Assert
     assertEquals(7L, out.getOffset());
+    assertTrue(bold.getChildren().isEmpty());
   }
 
   /**
-   * Test {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML24() {
+  public void testAsPresentationML25() {
+    // Arrange
+    Checkbox child = new Checkbox(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    child.addChild(new Bold(new BulletList(mock(Element.class))));
+
+    Bold bold = new Bold(new BulletList(mock(Element.class)));
+    bold.addChild(child);
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    bold.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    Element getResult = children.get(0);
+    assertTrue(getResult instanceof Checkbox);
+    assertSame(child, getResult);
+  }
+
+  /**
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  public void testAsPresentationML26() {
+    // Arrange
+    Button child = new Button(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    child.addChild(new Bold(new BulletList(mock(Element.class))));
+
+    Bold bold = new Bold(new BulletList(mock(Element.class)));
+    bold.addChild(child);
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    bold.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    assertEquals(57L, out.getOffset());
+    assertSame(child, children.get(0));
+  }
+
+  /**
+   * Method under test:
+   * {@link Element#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  public void testAsPresentationML27() {
     // Arrange
     Code child = new Code(new Bold(mock(Element.class)), "en");
     child.addChild(new Bold(new BulletList(mock(Element.class))));
@@ -532,21 +576,29 @@ public class ElementDiffblueTest {
     bold.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
 
     // Assert
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    Element getResult = children.get(0);
+    assertTrue(getResult instanceof Code);
     assertEquals(58L, out.getOffset());
+    assertSame(child, getResult);
   }
 
   /**
-   * Test {@link Element#asText()}.
-   * <ul>
-   *   <li>Given {@link Bold#Bold(Element)} with parent is {@link BulletList#BulletList(Element)} addChild {@link Bold#Bold(Element)} with parent is {@link BulletList#BulletList(Element)}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link Element#asText()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String Element.asText()"})
-  public void testAsText_givenBoldWithParentIsBulletListAddChildBoldWithParentIsBulletList() {
+  public void testAsText() {
+    // Arrange, Act and Assert
+    assertEquals("", (new Bold(new BulletList(mock(Element.class)))).asText());
+    assertEquals("", (new Bold(new BulletList(mock(Element.class)))).asText());
+  }
+
+  /**
+   * Method under test: {@link Element#asText()}
+   */
+  @Test
+  public void testAsText2() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
     bold.addChild(new Bold(new BulletList(mock(Element.class))));
@@ -556,17 +608,23 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asText()}.
-   * <ul>
-   *   <li>Given {@link Bold#Bold(Element)} with parent is {@link BulletList#BulletList(Element)} addChild {@link Bold#Bold(Element)} with parent is {@link BulletList#BulletList(Element)}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link Element#asText()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String Element.asText()"})
-  public void testAsText_givenBoldWithParentIsBulletListAddChildBoldWithParentIsBulletList2() {
+  public void testAsText3() {
+    // Arrange
+    Bold bold = new Bold(new BulletList(mock(Element.class)));
+    bold.addChild(new CashTag(new Bold(new BulletList(mock(Element.class))), 1));
+
+    // Act and Assert
+    assertEquals("$null", bold.asText());
+  }
+
+  /**
+   * Method under test: {@link Element#asText()}
+   */
+  @Test
+  public void testAsText4() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
     bold.addChild(new Bold(new BulletList(mock(Element.class))));
@@ -576,51 +634,10 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asText()}.
-   * <ul>
-   *   <li>Given {@link Bold#Bold(Element)} with parent is {@link BulletList#BulletList(Element)}.</li>
-   *   <li>Then return empty string.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link Element#asText()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String Element.asText()"})
-  public void testAsText_givenBoldWithParentIsBulletList_thenReturnEmptyString() {
-    // Arrange, Act and Assert
-    assertEquals("", (new Bold(new BulletList(mock(Element.class)))).asText());
-  }
-
-  /**
-   * Test {@link Element#asText()}.
-   * <ul>
-   *   <li>Given {@link Bold#Bold(Element)} with parent is {@link BulletList#BulletList(Element)}.</li>
-   *   <li>Then return empty string.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Element#asText()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String Element.asText()"})
-  public void testAsText_givenBoldWithParentIsBulletList_thenReturnEmptyString2() {
-    // Arrange, Act and Assert
-    assertEquals("", (new Bold(new BulletList(mock(Element.class)))).asText());
-  }
-
-  /**
-   * Test {@link Element#asText()}.
-   * <ul>
-   *   <li>Then return {@code $null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Element#asText()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String Element.asText()"})
-  public void testAsText_thenReturnNull() {
+  public void testAsText5() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
     bold.addChild(new CashTag(new Bold(new BulletList(mock(Element.class))), 1));
@@ -630,33 +647,9 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asText()}.
-   * <ul>
-   *   <li>Then return {@code $null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Element#asText()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String Element.asText()"})
-  public void testAsText_thenReturnNull2() {
-    // Arrange
-    Bold bold = new Bold(new BulletList(mock(Element.class)));
-    bold.addChild(new CashTag(new Bold(new BulletList(mock(Element.class))), 1));
-
-    // Act and Assert
-    assertEquals("$null", bold.asText());
-  }
-
-  /**
-   * Test {@link Element#asEntityJson(ObjectNode)}.
-   * <p>
    * Method under test: {@link Element#asEntityJson(ObjectNode)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ObjectNode Element.asEntityJson(ObjectNode)"})
   public void testAsEntityJson() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -666,13 +659,9 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#asEntityJson(ObjectNode)}.
-   * <p>
    * Method under test: {@link Element#asEntityJson(ObjectNode)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ObjectNode Element.asEntityJson(ObjectNode)"})
   public void testAsEntityJson2() {
     // Arrange
     Bold bold = new Bold(new BulletList(mock(Element.class)));
@@ -682,56 +671,62 @@ public class ElementDiffblueTest {
   }
 
   /**
-   * Test {@link Element#assertAttributeNotBlank(String)}.
-   * <p>
    * Method under test: {@link Element#assertAttributeNotBlank(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.assertAttributeNotBlank(String)"})
   public void testAssertAttributeNotBlank() throws InvalidInputException {
     // Arrange, Act and Assert
     assertThrows(InvalidInputException.class,
         () -> (new Bold(new BulletList(mock(Element.class)))).assertAttributeNotBlank("Attribute Name"));
-  }
-
-  /**
-   * Test {@link Element#assertAttributeNotBlank(String)}.
-   * <p>
-   * Method under test: {@link Element#assertAttributeNotBlank(String)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Element.assertAttributeNotBlank(String)"})
-  public void testAssertAttributeNotBlank2() throws InvalidInputException {
-    // Arrange, Act and Assert
     assertThrows(InvalidInputException.class,
         () -> (new Bold(new BulletList(mock(Element.class)))).assertAttributeNotBlank("Attribute Name"));
   }
 
   /**
-   * Test {@link Element#areNestedElementsAllowed()}.
-   * <p>
    * Method under test: {@link Element#areNestedElementsAllowed()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean Element.areNestedElementsAllowed()"})
   public void testAreNestedElementsAllowed() {
     // Arrange, Act and Assert
+    assertTrue((new Bold(new BulletList(mock(Element.class)))).areNestedElementsAllowed());
     assertTrue((new Bold(new BulletList(mock(Element.class)))).areNestedElementsAllowed());
   }
 
   /**
-   * Test {@link Element#areNestedElementsAllowed()}.
-   * <p>
-   * Method under test: {@link Element#areNestedElementsAllowed()}
+   * Method under test: {@link Element#addChild(Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean Element.areNestedElementsAllowed()"})
-  public void testAreNestedElementsAllowed2() {
-    // Arrange, Act and Assert
-    assertTrue((new Bold(new BulletList(mock(Element.class)))).areNestedElementsAllowed());
+  public void testAddChild() {
+    // Arrange
+    Bold bold = new Bold(new BulletList(mock(BulletList.class)));
+    Bold child = new Bold(new BulletList(null));
+
+    // Act
+    bold.addChild(child);
+
+    // Assert
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    assertEquals(1, bold.size());
+    assertSame(child, children.get(0));
+  }
+
+  /**
+   * Method under test: {@link Element#addChild(Element)}
+   */
+  @Test
+  public void testAddChild2() {
+    // Arrange
+    Bold bold = new Bold(new BulletList(mock(BulletList.class)));
+    Bold child = new Bold(new BulletList(null));
+
+    // Act
+    bold.addChild(child);
+
+    // Assert
+    List<Element> children = bold.getChildren();
+    assertEquals(1, children.size());
+    assertEquals(1, bold.size());
+    assertSame(child, children.get(0));
   }
 }

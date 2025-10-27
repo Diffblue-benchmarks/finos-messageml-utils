@@ -4,75 +4,21 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
+import static org.mockito.Mockito.mock;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PipedOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiFunction;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.symphonyoss.symphony.messageml.util.XMLAttribute.Format;
 
 public class XmlPrintStreamDiffblueTest {
   /**
-   * Test {@link XmlPrintStream#XmlPrintStream(OutputStream)}.
-   * <ul>
-   *   <li>When {@link ByteArrayOutputStream#ByteArrayOutputStream(int)} with one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#XmlPrintStream(OutputStream)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.<init>(OutputStream)"})
-  public void testNewXmlPrintStream_whenByteArrayOutputStreamWithOne() {
-    // Arrange and Act
-    XmlPrintStream actualXmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Assert
-    assertNull(actualXmlPrintStream.getLinePrefix());
-    assertEquals(0L, actualXmlPrintStream.getOffset());
-    assertFalse(actualXmlPrintStream.getPrintOffsets());
-    assertFalse(actualXmlPrintStream.isNoIndent());
-    assertFalse(actualXmlPrintStream.isNoNl());
-    assertTrue(actualXmlPrintStream.isRemoveNl());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#XmlPrintStream(OutputStream)}.
-   * <ul>
-   *   <li>When {@link CountedOutputStream#CountedOutputStream(OutputStream)} with out is {@link ByteArrayOutputStream#ByteArrayOutputStream(int)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#XmlPrintStream(OutputStream)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.<init>(OutputStream)"})
-  public void testNewXmlPrintStream_whenCountedOutputStreamWithOutIsByteArrayOutputStream() {
-    // Arrange and Act
-    XmlPrintStream actualXmlPrintStream = new XmlPrintStream(new CountedOutputStream(new ByteArrayOutputStream(1)));
-
-    // Assert
-    assertNull(actualXmlPrintStream.getLinePrefix());
-    assertEquals(0L, actualXmlPrintStream.getOffset());
-    assertFalse(actualXmlPrintStream.getPrintOffsets());
-    assertFalse(actualXmlPrintStream.isNoIndent());
-    assertFalse(actualXmlPrintStream.isNoNl());
-    assertTrue(actualXmlPrintStream.isRemoveNl());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#openElement(String)} with {@code String}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String)"})
-  public void testOpenElementWithString() {
+  public void testOpenElement() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -84,14 +30,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String)} with {@code String}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String)"})
-  public void testOpenElementWithString2() {
+  public void testOpenElement2() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new PipedOutputStream());
 
@@ -103,14 +45,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String)} with {@code String}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String)"})
-  public void testOpenElementWithString3() {
+  public void testOpenElement3() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.append(ShortID.DEFAULT_ALPHABET);
@@ -123,14 +61,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String)} with {@code String}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String)"})
-  public void testOpenElementWithString4() {
+  public void testOpenElement4() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.setNoNl(true);
@@ -144,14 +78,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Map)} with {@code String}, {@code Map}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Map)"})
-  public void testOpenElementWithStringMap() {
+  public void testOpenElement5() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -163,14 +93,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Map)} with {@code String}, {@code Map}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Map)"})
-  public void testOpenElementWithStringMap2() {
+  public void testOpenElement6() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new PipedOutputStream());
 
@@ -182,14 +108,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Map)} with {@code String}, {@code Map}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Map)"})
-  public void testOpenElementWithStringMap3() {
+  public void testOpenElement7() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -204,14 +126,29 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Map)} with {@code String}, {@code Map}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Map)"})
-  public void testOpenElementWithStringMap4() {
+  public void testOpenElement8() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    HashMap<Object, Object> attributes = new HashMap<>();
+    attributes.computeIfPresent("42", mock(BiFunction.class));
+    attributes.put("42", "42");
+
+    // Act
+    xmlPrintStream.openElement("Name", attributes);
+
+    // Assert
+    assertEquals(15L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#openElement(String, Map)}
+   */
+  @Test
+  public void testOpenElement9() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -226,14 +163,28 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Map)} with {@code String}, {@code Map}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Map)"})
-  public void testOpenElementWithStringMap5() {
+  public void testOpenElement10() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    HashMap<Object, Object> attributes = new HashMap<>();
+    attributes.put("42", "<");
+
+    // Act
+    xmlPrintStream.openElement("Name", attributes);
+
+    // Assert
+    assertEquals(17L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#openElement(String, Map)}
+   */
+  @Test
+  public void testOpenElement11() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -248,19 +199,15 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Map)} with {@code String}, {@code Map}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Map)"})
-  public void testOpenElementWithStringMap6() {
+  public void testOpenElement12() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     HashMap<Object, Object> attributes = new HashMap<>();
-    attributes.put("42", XMLAttribute.of("<", Format.STANDARD));
+    attributes.put("42", XMLAttribute.of("<", XMLAttribute.Format.STANDARD));
 
     // Act
     xmlPrintStream.openElement("Name", attributes);
@@ -270,14 +217,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Map)} with {@code String}, {@code Map}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Map)"})
-  public void testOpenElementWithStringMap7() {
+  public void testOpenElement13() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -292,18 +235,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Map)} with {@code String}, {@code Map}.
-   * <ul>
-   *   <li>Given {@code >}.</li>
-   *   <li>When {@link HashMap#HashMap()} {@code 42} is {@code >}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Map)"})
-  public void testOpenElementWithStringMap_givenGreaterThanSign_whenHashMap42IsGreaterThanSign() {
+  public void testOpenElement14() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -318,40 +253,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Map)} with {@code String}, {@code Map}.
-   * <ul>
-   *   <li>Given {@code <}.</li>
-   *   <li>When {@link HashMap#HashMap()} {@code 42} is {@code <}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#openElement(String, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Map)"})
-  public void testOpenElementWithStringMap_givenLessThanSign_whenHashMap42IsLessThanSign() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    HashMap<Object, Object> attributes = new HashMap<>();
-    attributes.put("42", "<");
-
-    // Act
-    xmlPrintStream.openElement("Name", attributes);
-
-    // Assert
-    assertEquals(17L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#openElement(String, Object[])} with {@code String}, {@code Object[]}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Object[])"})
-  public void testOpenElementWithStringObject() {
+  public void testOpenElement15() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -363,14 +268,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Object[])} with {@code String}, {@code Object[]}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Object[])"})
-  public void testOpenElementWithStringObject2() {
+  public void testOpenElement16() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new PipedOutputStream());
 
@@ -382,14 +283,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Object[])} with {@code String}, {@code Object[]}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Object[])"})
-  public void testOpenElementWithStringObject3() {
+  public void testOpenElement17() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.append(ShortID.DEFAULT_ALPHABET);
@@ -402,14 +299,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Object[])} with {@code String}, {@code Object[]}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Object[])"})
-  public void testOpenElementWithStringObject4() {
+  public void testOpenElement18() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.setPrintOffsets(true);
@@ -423,14 +316,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Object[])} with {@code String}, {@code Object[]}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Object[])"})
-  public void testOpenElementWithStringObject5() {
+  public void testOpenElement19() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.setNoIndent(true);
@@ -444,14 +333,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Object[])} with {@code String}, {@code Object[]}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Object[])"})
-  public void testOpenElementWithStringObject6() {
+  public void testOpenElement20() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.setNoNl(true);
@@ -465,14 +350,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#openElement(String, Object[])} with {@code String}, {@code Object[]}.
-   * <p>
    * Method under test: {@link XmlPrintStream#openElement(String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.openElement(String, Object[])"})
-  public void testOpenElementWithStringObject7() {
+  public void testOpenElement21() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -484,209 +365,73 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, Map)} with {@code elementName}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   * Method under test: {@link XmlPrintStream#printElement(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Map)"})
-  public void testPrintElementWithElementNameAttributes() {
+  public void testPrintElement() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     // Act
-    xmlPrintStream.printElement("Element Name", (Map<?, ?>) new HashMap<>());
+    xmlPrintStream.printElement("Name");
 
     // Assert
-    assertEquals(16L, xmlPrintStream.getOffset());
+    assertEquals(8L, xmlPrintStream.getOffset());
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, Map)} with {@code elementName}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   * Method under test: {@link XmlPrintStream#printElement(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Map)"})
-  public void testPrintElementWithElementNameAttributes2() {
+  public void testPrintElement2() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new PipedOutputStream());
 
     // Act
-    xmlPrintStream.printElement("Element Name", (Map<?, ?>) new HashMap<>());
+    xmlPrintStream.printElement("Name");
 
     // Assert
-    assertEquals(13L, xmlPrintStream.getOffset());
+    assertEquals(7L, xmlPrintStream.getOffset());
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, Map)} with {@code elementName}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   * Method under test: {@link XmlPrintStream#printElement(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Map)"})
-  public void testPrintElementWithElementNameAttributes3() {
+  public void testPrintElement3() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    HashMap<Object, Object> attributes = new HashMap<>();
-    attributes.put("42", "42");
+    xmlPrintStream.append(ShortID.DEFAULT_ALPHABET);
 
     // Act
-    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
+    xmlPrintStream.printElement("Name");
 
     // Assert
-    assertEquals(24L, xmlPrintStream.getOffset());
+    assertEquals(72L, xmlPrintStream.getOffset());
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, Map)} with {@code elementName}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   * Method under test: {@link XmlPrintStream#printElement(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Map)"})
-  public void testPrintElementWithElementNameAttributes4() {
+  public void testPrintElement4() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    HashMap<Object, Object> attributes = new HashMap<>();
-    attributes.put("", "42");
+    xmlPrintStream.setNoNl(true);
+    xmlPrintStream.append(ShortID.DEFAULT_ALPHABET);
 
     // Act
-    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
+    xmlPrintStream.printElement("Name");
 
     // Assert
-    assertEquals(22L, xmlPrintStream.getOffset());
+    assertEquals(71L, xmlPrintStream.getOffset());
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, Map)} with {@code elementName}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Map)"})
-  public void testPrintElementWithElementNameAttributes5() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    HashMap<Object, Object> attributes = new HashMap<>();
-    attributes.put("42", null);
-
-    // Act
-    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
-
-    // Assert
-    assertEquals(20L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, Map)} with {@code elementName}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Map)"})
-  public void testPrintElementWithElementNameAttributes6() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    HashMap<Object, Object> attributes = new HashMap<>();
-    attributes.put("42", XMLAttribute.of("<", Format.STANDARD));
-
-    // Act
-    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
-
-    // Assert
-    assertEquals(26L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, Map)} with {@code elementName}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Map)"})
-  public void testPrintElementWithElementNameAttributes7() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    HashMap<Object, Object> attributes = new HashMap<>();
-    attributes.put("42", "=\"");
-
-    // Act
-    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
-
-    // Assert
-    assertEquals(29L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, Map)} with {@code elementName}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Map)"})
-  public void testPrintElementWithElementNameAttributes8() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    HashMap<Object, Object> attributes = new HashMap<>();
-    attributes.put("42", "/>");
-
-    // Act
-    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
-
-    // Assert
-    assertEquals(27L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, Map)} with {@code elementName}, {@code attributes}.
-   * <ul>
-   *   <li>Given {@code <}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Map)"})
-  public void testPrintElementWithElementNameAttributes_givenLessThanSign() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    HashMap<Object, Object> attributes = new HashMap<>();
-    attributes.put("42", "<");
-
-    // Act
-    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
-
-    // Assert
-    assertEquals(26L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, Object)} with {@code elementName}, {@code value}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Object)"})
-  public void testPrintElementWithElementNameValue() {
+  public void testPrintElement5() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -698,14 +443,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, Object)} with {@code elementName}, {@code value}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Object)"})
-  public void testPrintElementWithElementNameValue2() {
+  public void testPrintElement6() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new PipedOutputStream());
 
@@ -717,14 +458,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, Object)} with {@code elementName}, {@code value}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Object)"})
-  public void testPrintElementWithElementNameValue3() {
+  public void testPrintElement7() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.append(ShortID.DEFAULT_ALPHABET);
@@ -737,14 +474,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, Object)} with {@code elementName}, {@code value}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Object)"})
-  public void testPrintElementWithElementNameValue4() {
+  public void testPrintElement8() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.setNoNl(true);
@@ -758,14 +491,40 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, Object)} with {@code elementName}, {@code value}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Object)"})
-  public void testPrintElementWithElementNameValue5() {
+  public void testPrintElement9() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    xmlPrintStream.printElement("Element Name", "<");
+
+    // Assert
+    assertEquals(34L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Object)}
+   */
+  @Test
+  public void testPrintElement10() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    xmlPrintStream.printElement("Element Name", ">");
+
+    // Assert
+    assertEquals(34L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Object)}
+   */
+  @Test
+  public void testPrintElement11() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -777,14 +536,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Map)} with {@code elementName}, {@code value}, {@code attributes}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Map)"})
-  public void testPrintElementWithElementNameValueAttributes() {
+  public void testPrintElement12() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -796,14 +551,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Map)} with {@code elementName}, {@code value}, {@code attributes}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Map)"})
-  public void testPrintElementWithElementNameValueAttributes2() {
+  public void testPrintElement13() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new PipedOutputStream());
 
@@ -815,14 +566,40 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Map)} with {@code elementName}, {@code value}, {@code attributes}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Map)"})
-  public void testPrintElementWithElementNameValueAttributes3() {
+  public void testPrintElement14() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    xmlPrintStream.printElement("Element Name", "<", new HashMap<>());
+
+    // Assert
+    assertEquals(34L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
+   */
+  @Test
+  public void testPrintElement15() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    xmlPrintStream.printElement("Element Name", ">", new HashMap<>());
+
+    // Assert
+    assertEquals(34L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
+   */
+  @Test
+  public void testPrintElement16() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -834,14 +611,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Map)} with {@code elementName}, {@code value}, {@code attributes}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Map)"})
-  public void testPrintElementWithElementNameValueAttributes4() {
+  public void testPrintElement17() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -856,14 +629,29 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Map)} with {@code elementName}, {@code value}, {@code attributes}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Map)"})
-  public void testPrintElementWithElementNameValueAttributes5() {
+  public void testPrintElement18() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    HashMap<Object, Object> attributes = new HashMap<>();
+    attributes.computeIfPresent("42", mock(BiFunction.class));
+    attributes.put("42", "42");
+
+    // Act
+    xmlPrintStream.printElement("Element Name", "42", attributes);
+
+    // Assert
+    assertEquals(40L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
+   */
+  @Test
+  public void testPrintElement19() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -878,14 +666,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Map)} with {@code elementName}, {@code value}, {@code attributes}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Map)"})
-  public void testPrintElementWithElementNameValueAttributes6() {
+  public void testPrintElement20() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -900,19 +684,15 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Map)} with {@code elementName}, {@code value}, {@code attributes}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Map)"})
-  public void testPrintElementWithElementNameValueAttributes7() {
+  public void testPrintElement21() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
     HashMap<Object, Object> attributes = new HashMap<>();
-    attributes.put("42", XMLAttribute.of("<", Format.STANDARD));
+    attributes.put("42", XMLAttribute.of("<", XMLAttribute.Format.STANDARD));
 
     // Act
     xmlPrintStream.printElement("Element Name", "42", attributes);
@@ -922,14 +702,10 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Map)} with {@code elementName}, {@code value}, {@code attributes}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Map)"})
-  public void testPrintElementWithElementNameValueAttributes8() {
+  public void testPrintElement22() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -944,181 +720,11 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Map)} with {@code elementName}, {@code value}, {@code attributes}.
-   * <ul>
-   *   <li>When {@code >}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
+   * Method under test:
+   * {@link XmlPrintStream#printElement(String, String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Map)"})
-  public void testPrintElementWithElementNameValueAttributes_whenGreaterThanSign() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    xmlPrintStream.printElement("Element Name", ">", new HashMap<>());
-
-    // Assert
-    assertEquals(34L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, String, Map)} with {@code elementName}, {@code value}, {@code attributes}.
-   * <ul>
-   *   <li>When {@code <}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Map)"})
-  public void testPrintElementWithElementNameValueAttributes_whenLessThanSign() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    xmlPrintStream.printElement("Element Name", "<", new HashMap<>());
-
-    // Assert
-    assertEquals(34L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, Object)} with {@code elementName}, {@code value}.
-   * <ul>
-   *   <li>When {@code >}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Object)"})
-  public void testPrintElementWithElementNameValue_whenGreaterThanSign() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    xmlPrintStream.printElement("Element Name", ">");
-
-    // Assert
-    assertEquals(34L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, Object)} with {@code elementName}, {@code value}.
-   * <ul>
-   *   <li>When {@code <}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, Object)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, Object)"})
-  public void testPrintElementWithElementNameValue_whenLessThanSign() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    xmlPrintStream.printElement("Element Name", "<");
-
-    // Assert
-    assertEquals(34L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String)} with {@code name}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String)"})
-  public void testPrintElementWithName() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    xmlPrintStream.printElement("Name");
-
-    // Assert
-    assertEquals(8L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String)} with {@code name}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String)"})
-  public void testPrintElementWithName2() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new PipedOutputStream());
-
-    // Act
-    xmlPrintStream.printElement("Name");
-
-    // Assert
-    assertEquals(7L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String)} with {@code name}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String)"})
-  public void testPrintElementWithName3() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-    xmlPrintStream.append(ShortID.DEFAULT_ALPHABET);
-
-    // Act
-    xmlPrintStream.printElement("Name");
-
-    // Assert
-    assertEquals(72L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String)} with {@code name}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String)"})
-  public void testPrintElementWithName4() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-    xmlPrintStream.setNoNl(true);
-    xmlPrintStream.append(ShortID.DEFAULT_ALPHABET);
-
-    // Act
-    xmlPrintStream.printElement("Name");
-
-    // Assert
-    assertEquals(71L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, String, Object[])} with {@code name}, {@code value}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Object[])}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Object[])"})
-  public void testPrintElementWithNameValueAttributes() {
+  public void testPrintElement23() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -1130,14 +736,11 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Object[])} with {@code name}, {@code value}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Object[])}
+   * Method under test:
+   * {@link XmlPrintStream#printElement(String, String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Object[])"})
-  public void testPrintElementWithNameValueAttributes2() {
+  public void testPrintElement24() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new PipedOutputStream());
 
@@ -1149,14 +752,11 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Object[])} with {@code name}, {@code value}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Object[])}
+   * Method under test:
+   * {@link XmlPrintStream#printElement(String, String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Object[])"})
-  public void testPrintElementWithNameValueAttributes3() {
+  public void testPrintElement25() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.append(ShortID.DEFAULT_ALPHABET);
@@ -1169,14 +769,11 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Object[])} with {@code name}, {@code value}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Object[])}
+   * Method under test:
+   * {@link XmlPrintStream#printElement(String, String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Object[])"})
-  public void testPrintElementWithNameValueAttributes4() {
+  public void testPrintElement26() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.setPrintOffsets(true);
@@ -1190,14 +787,11 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Object[])} with {@code name}, {@code value}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Object[])}
+   * Method under test:
+   * {@link XmlPrintStream#printElement(String, String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Object[])"})
-  public void testPrintElementWithNameValueAttributes5() {
+  public void testPrintElement27() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.setNoIndent(true);
@@ -1211,14 +805,11 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Object[])} with {@code name}, {@code value}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Object[])}
+   * Method under test:
+   * {@link XmlPrintStream#printElement(String, String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Object[])"})
-  public void testPrintElementWithNameValueAttributes6() {
+  public void testPrintElement28() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
     xmlPrintStream.setNoNl(true);
@@ -1232,77 +823,11 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printElement(String, String, Object[])} with {@code name}, {@code value}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Object[])}
+   * Method under test:
+   * {@link XmlPrintStream#printElement(String, String, Object[])}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Object[])"})
-  public void testPrintElementWithNameValueAttributes7() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    xmlPrintStream.printElement("Name", null, "Attributes");
-
-    // Assert
-    assertEquals(23L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, String, Object[])} with {@code name}, {@code value}, {@code attributes}.
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Object[])}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Object[])"})
-  public void testPrintElementWithNameValueAttributes8() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    xmlPrintStream.printElement("Name", "42", "Attributes", "Attributes");
-
-    // Assert
-    assertEquals(42L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, String, Object[])} with {@code name}, {@code value}, {@code attributes}.
-   * <ul>
-   *   <li>When {@code >}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Object[])}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Object[])"})
-  public void testPrintElementWithNameValueAttributes_whenGreaterThanSign() {
-    // Arrange
-    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    xmlPrintStream.printElement("Name", ">", "Attributes");
-
-    // Assert
-    assertEquals(33L, xmlPrintStream.getOffset());
-  }
-
-  /**
-   * Test {@link XmlPrintStream#printElement(String, String, Object[])} with {@code name}, {@code value}, {@code attributes}.
-   * <ul>
-   *   <li>When {@code <}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#printElement(String, String, Object[])}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printElement(String, String, Object[])"})
-  public void testPrintElementWithNameValueAttributes_whenLessThanSign() {
+  public void testPrintElement29() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
 
@@ -1314,13 +839,232 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printComment(String)}.
-   * <p>
+   * Method under test:
+   * {@link XmlPrintStream#printElement(String, String, Object[])}
+   */
+  @Test
+  public void testPrintElement30() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    xmlPrintStream.printElement("Name", ">", "Attributes");
+
+    // Assert
+    assertEquals(33L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test:
+   * {@link XmlPrintStream#printElement(String, String, Object[])}
+   */
+  @Test
+  public void testPrintElement31() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    xmlPrintStream.printElement("Name", null, "Attributes");
+
+    // Assert
+    assertEquals(23L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test:
+   * {@link XmlPrintStream#printElement(String, String, Object[])}
+   */
+  @Test
+  public void testPrintElement32() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    xmlPrintStream.printElement("Name", "42", "Attributes", "Attributes");
+
+    // Assert
+    assertEquals(42L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   */
+  @Test
+  public void testPrintElement33() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    xmlPrintStream.printElement("Element Name", (Map<?, ?>) new HashMap<>());
+
+    // Assert
+    assertEquals(16L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   */
+  @Test
+  public void testPrintElement34() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new PipedOutputStream());
+
+    // Act
+    xmlPrintStream.printElement("Element Name", (Map<?, ?>) new HashMap<>());
+
+    // Assert
+    assertEquals(13L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   */
+  @Test
+  public void testPrintElement35() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    HashMap<Object, Object> attributes = new HashMap<>();
+    attributes.put("42", "42");
+
+    // Act
+    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
+
+    // Assert
+    assertEquals(24L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   */
+  @Test
+  public void testPrintElement36() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    HashMap<Object, Object> attributes = new HashMap<>();
+    attributes.computeIfPresent("42", mock(BiFunction.class));
+    attributes.put("42", "42");
+
+    // Act
+    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
+
+    // Assert
+    assertEquals(24L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   */
+  @Test
+  public void testPrintElement37() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    HashMap<Object, Object> attributes = new HashMap<>();
+    attributes.put("", "42");
+
+    // Act
+    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
+
+    // Assert
+    assertEquals(22L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   */
+  @Test
+  public void testPrintElement38() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    HashMap<Object, Object> attributes = new HashMap<>();
+    attributes.put("42", "<");
+
+    // Act
+    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
+
+    // Assert
+    assertEquals(26L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   */
+  @Test
+  public void testPrintElement39() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    HashMap<Object, Object> attributes = new HashMap<>();
+    attributes.put("42", null);
+
+    // Act
+    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
+
+    // Assert
+    assertEquals(20L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   */
+  @Test
+  public void testPrintElement40() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    HashMap<Object, Object> attributes = new HashMap<>();
+    attributes.put("42", XMLAttribute.of("<", XMLAttribute.Format.STANDARD));
+
+    // Act
+    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
+
+    // Assert
+    assertEquals(26L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   */
+  @Test
+  public void testPrintElement41() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    HashMap<Object, Object> attributes = new HashMap<>();
+    attributes.put("42", "=\"");
+
+    // Act
+    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
+
+    // Assert
+    assertEquals(29L, xmlPrintStream.getOffset());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#printElement(String, Map)}
+   */
+  @Test
+  public void testPrintElement42() {
+    // Arrange
+    XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    HashMap<Object, Object> attributes = new HashMap<>();
+    attributes.put("42", "/>");
+
+    // Act
+    xmlPrintStream.printElement("Element Name", (Map<?, ?>) attributes);
+
+    // Assert
+    assertEquals(27L, xmlPrintStream.getOffset());
+  }
+
+  /**
    * Method under test: {@link XmlPrintStream#printComment(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printComment(String)"})
   public void testPrintComment() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
@@ -1333,13 +1077,9 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printComment(String)}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printComment(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printComment(String)"})
   public void testPrintComment2() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new PipedOutputStream());
@@ -1352,13 +1092,9 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printComment(String)}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printComment(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printComment(String)"})
   public void testPrintComment3() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
@@ -1372,13 +1108,9 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#printComment(String)}.
-   * <p>
    * Method under test: {@link XmlPrintStream#printComment(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void XmlPrintStream.printComment(String)"})
   public void testPrintComment4() {
     // Arrange
     XmlPrintStream xmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
@@ -1393,104 +1125,59 @@ public class XmlPrintStreamDiffblueTest {
   }
 
   /**
-   * Test {@link XmlPrintStream#escape(String, Format)} with {@code in}, {@code format}.
-   * <ul>
-   *   <li>When {@code In}.</li>
-   *   <li>Then return {@code In}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#escape(String, Format)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String XmlPrintStream.escape(String, Format)"})
-  public void testEscapeWithInFormat_whenIn_thenReturnIn() {
-    // Arrange, Act and Assert
-    assertEquals("In", (new XmlPrintStream(new ByteArrayOutputStream(1))).escape("In", Format.STANDARD));
-  }
-
-  /**
-   * Test {@link XmlPrintStream#escape(String, Format)} with {@code in}, {@code format}.
-   * <ul>
-   *   <li>When {@code />}.</li>
-   *   <li>Then return {@code /&gt;}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#escape(String, Format)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String XmlPrintStream.escape(String, Format)"})
-  public void testEscapeWithInFormat_whenSlashGreaterThanSign_thenReturnGt() {
-    // Arrange, Act and Assert
-    assertEquals("/&gt;", (new XmlPrintStream(new ByteArrayOutputStream(1))).escape("/>", Format.STANDARD));
-  }
-
-  /**
-   * Test {@link XmlPrintStream#escape(String)} with {@code in}.
-   * <ul>
-   *   <li>When {@code In}.</li>
-   *   <li>Then return {@code In}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link XmlPrintStream#escape(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String XmlPrintStream.escape(String)"})
-  public void testEscapeWithIn_whenIn_thenReturnIn() {
+  public void testEscape() {
     // Arrange, Act and Assert
     assertEquals("In", (new XmlPrintStream(new ByteArrayOutputStream(1))).escape("In"));
-  }
-
-  /**
-   * Test {@link XmlPrintStream#escape(String)} with {@code in}.
-   * <ul>
-   *   <li>When {@code />}.</li>
-   *   <li>Then return {@code /&gt;}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#escape(String)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String XmlPrintStream.escape(String)"})
-  public void testEscapeWithIn_whenSlashGreaterThanSign_thenReturnGt() {
-    // Arrange, Act and Assert
     assertEquals("/&gt;", (new XmlPrintStream(new ByteArrayOutputStream(1))).escape("/>"));
+    assertEquals("In", (new XmlPrintStream(new ByteArrayOutputStream(1))).escape("In", XMLAttribute.Format.STANDARD));
+    assertEquals("/&gt;",
+        (new XmlPrintStream(new ByteArrayOutputStream(1))).escape("/>", XMLAttribute.Format.STANDARD));
   }
 
   /**
-   * Test {@link XmlPrintStream#removeNewLines(String)}.
-   * <ul>
-   *   <li>When {@code Not all who wander are lost}.</li>
-   *   <li>Then return {@code Not all who wander are lost}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link XmlPrintStream#removeNewLines(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String XmlPrintStream.removeNewLines(String)"})
-  public void testRemoveNewLines_whenNotAllWhoWanderAreLost_thenReturnNotAllWhoWanderAreLost() {
+  public void testRemoveNewLines() {
     // Arrange, Act and Assert
     assertEquals("Not all who wander are lost", XmlPrintStream.removeNewLines("Not all who wander are lost"));
+    assertEquals("", XmlPrintStream.removeNewLines(null));
   }
 
   /**
-   * Test {@link XmlPrintStream#removeNewLines(String)}.
-   * <ul>
-   *   <li>When {@code null}.</li>
-   *   <li>Then return empty string.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link XmlPrintStream#removeNewLines(String)}
+   * Method under test: {@link XmlPrintStream#XmlPrintStream(OutputStream)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String XmlPrintStream.removeNewLines(String)"})
-  public void testRemoveNewLines_whenNull_thenReturnEmptyString() {
-    // Arrange, Act and Assert
-    assertEquals("", XmlPrintStream.removeNewLines(null));
+  public void testNewXmlPrintStream() {
+    // Arrange and Act
+    XmlPrintStream actualXmlPrintStream = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Assert
+    assertNull(actualXmlPrintStream.getLinePrefix());
+    assertEquals(0L, actualXmlPrintStream.getOffset());
+    assertFalse(actualXmlPrintStream.getPrintOffsets());
+    assertFalse(actualXmlPrintStream.isNoIndent());
+    assertFalse(actualXmlPrintStream.isNoNl());
+    assertTrue(actualXmlPrintStream.isRemoveNl());
+  }
+
+  /**
+   * Method under test: {@link XmlPrintStream#XmlPrintStream(OutputStream)}
+   */
+  @Test
+  public void testNewXmlPrintStream2() {
+    // Arrange and Act
+    XmlPrintStream actualXmlPrintStream = new XmlPrintStream(new CountedOutputStream(new ByteArrayOutputStream(1)));
+
+    // Assert
+    assertNull(actualXmlPrintStream.getLinePrefix());
+    assertEquals(0L, actualXmlPrintStream.getOffset());
+    assertFalse(actualXmlPrintStream.getPrintOffsets());
+    assertFalse(actualXmlPrintStream.isNoIndent());
+    assertFalse(actualXmlPrintStream.isNoNl());
+    assertTrue(actualXmlPrintStream.isRemoveNl());
   }
 }

@@ -1,20 +1,14 @@
 package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class TextFieldNodeDiffblueTest {
   /**
-   * Test {@link TextFieldNode#TextFieldNode(String, String, String, String)}.
-   * <p>
-   * Method under test: {@link TextFieldNode#TextFieldNode(String, String, String, String)}
+   * Method under test:
+   * {@link TextFieldNode#TextFieldNode(String, String, String, String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TextFieldNode.<init>(String, String, String, String)"})
   public void testNewTextFieldNode() {
     // Arrange and Act
     TextFieldNode actualTextFieldNode = new TextFieldNode("Placeholder", "42", "Label", "127.0.0.1");

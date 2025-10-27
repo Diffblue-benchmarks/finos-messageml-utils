@@ -5,22 +5,34 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.commonmark.node.Node;
 import org.commonmark.node.StrongEmphasis;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class BoldDiffblueTest {
   /**
-   * Test {@link Bold#Bold(Element)}.
-   * <p>
+   * Method under test: {@link Bold#asMarkdown()}
+   */
+  @Test
+  public void testAsMarkdown() {
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new Bold(new BulletList(mock(Element.class)))).asMarkdown();
+
+    // Assert
+    assertTrue(actualAsMarkdownResult instanceof StrongEmphasis);
+    assertEquals("**", ((StrongEmphasis) actualAsMarkdownResult).getClosingDelimiter());
+    assertEquals("**", ((StrongEmphasis) actualAsMarkdownResult).getOpeningDelimiter());
+    assertNull(actualAsMarkdownResult.getFirstChild());
+    assertNull(actualAsMarkdownResult.getLastChild());
+    assertNull(actualAsMarkdownResult.getNext());
+    assertNull(actualAsMarkdownResult.getParent());
+    assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
    * Method under test: {@link Bold#Bold(Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Bold.<init>(Element)"})
   public void testNewBold() {
     // Arrange
     BulletList parent = new BulletList(mock(Element.class));
@@ -36,28 +48,5 @@ public class BoldDiffblueTest {
     assertEquals(Bold.MESSAGEML_TAG, actualBold.getMessageMLTag());
     assertEquals(Bold.MESSAGEML_TAG, actualBold.getPresentationMLTag());
     assertSame(parent, actualBold.getParent());
-  }
-
-  /**
-   * Test {@link Bold#asMarkdown()}.
-   * <p>
-   * Method under test: {@link Bold#asMarkdown()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node Bold.asMarkdown()"})
-  public void testAsMarkdown() {
-    // Arrange and Act
-    Node actualAsMarkdownResult = (new Bold(new BulletList(mock(Element.class)))).asMarkdown();
-
-    // Assert
-    assertTrue(actualAsMarkdownResult instanceof StrongEmphasis);
-    assertEquals("**", ((StrongEmphasis) actualAsMarkdownResult).getClosingDelimiter());
-    assertEquals("**", ((StrongEmphasis) actualAsMarkdownResult).getOpeningDelimiter());
-    assertNull(actualAsMarkdownResult.getFirstChild());
-    assertNull(actualAsMarkdownResult.getLastChild());
-    assertNull(actualAsMarkdownResult.getNext());
-    assertNull(actualAsMarkdownResult.getParent());
-    assertNull(actualAsMarkdownResult.getPrevious());
   }
 }

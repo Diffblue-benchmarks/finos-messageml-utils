@@ -4,20 +4,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class FormElementDiffblueTest {
   /**
-   * Test {@link FormElement#FormElement(Element, String, FormatEnum)}.
-   * <p>
-   * Method under test: {@link FormElement#FormElement(Element, String, FormatEnum)}
+   * Method under test:
+   * {@link FormElement#FormElement(Element, String, FormatEnum)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void FormElement.<init>(Element, String, FormatEnum)"})
   public void testNewFormElement() {
     // Arrange
     Bold parent = new Bold(new BulletList(null));
@@ -35,13 +29,9 @@ public class FormElementDiffblueTest {
   }
 
   /**
-   * Test {@link FormElement#FormElement(Element, String)}.
-   * <p>
    * Method under test: {@link FormElement#FormElement(Element, String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void FormElement.<init>(Element, String)"})
   public void testNewFormElement2() {
     // Arrange
     Bold parent = new Bold(new BulletList(mock(Element.class)));

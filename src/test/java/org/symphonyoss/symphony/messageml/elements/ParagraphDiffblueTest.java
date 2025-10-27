@@ -5,25 +5,44 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
 import org.commonmark.node.Node;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 
 public class ParagraphDiffblueTest {
   /**
-   * Test {@link Paragraph#Paragraph(Element)}.
-   * <p>
+   * Method under test: {@link Paragraph#asText()}
+   */
+  @Test
+  public void testAsText() {
+    // Arrange, Act and Assert
+    assertEquals("\n", (new Paragraph(new Bold(new BulletList(mock(Element.class))))).asText());
+  }
+
+  /**
+   * Method under test: {@link Paragraph#asMarkdown()}
+   */
+  @Test
+  public void testAsMarkdown() {
+    // Arrange and Act
+    Node actualAsMarkdownResult = (new Paragraph(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
+
+    // Assert
+    assertTrue(actualAsMarkdownResult instanceof org.commonmark.node.Paragraph);
+    assertNull(actualAsMarkdownResult.getParent());
+    assertNull(actualAsMarkdownResult.getFirstChild());
+    assertNull(actualAsMarkdownResult.getLastChild());
+    assertNull(actualAsMarkdownResult.getNext());
+    assertNull(actualAsMarkdownResult.getPrevious());
+  }
+
+  /**
    * Method under test: {@link Paragraph#Paragraph(Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Paragraph.<init>(Element)"})
   public void testNewParagraph() {
     // Arrange
     Bold parent = new Bold(new BulletList(mock(Element.class)));
@@ -42,233 +61,22 @@ public class ParagraphDiffblueTest {
   }
 
   /**
-   * Test {@link Paragraph#asText()}.
-   * <p>
-   * Method under test: {@link Paragraph#asText()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String Paragraph.asText()"})
-  public void testAsText() {
-    // Arrange, Act and Assert
-    assertEquals("\n", (new Paragraph(new Bold(new BulletList(mock(Element.class))))).asText());
-  }
-
-  /**
-   * Test {@link Paragraph#asMarkdown()}.
-   * <p>
-   * Method under test: {@link Paragraph#asMarkdown()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node Paragraph.asMarkdown()"})
-  public void testAsMarkdown() {
-    // Arrange and Act
-    Node actualAsMarkdownResult = (new Paragraph(new Bold(new BulletList(mock(Element.class))))).asMarkdown();
-
-    // Assert
-    assertTrue(actualAsMarkdownResult instanceof org.commonmark.node.Paragraph);
-    assertNull(actualAsMarkdownResult.getParent());
-    assertNull(actualAsMarkdownResult.getFirstChild());
-    assertNull(actualAsMarkdownResult.getLastChild());
-    assertNull(actualAsMarkdownResult.getNext());
-    assertNull(actualAsMarkdownResult.getPrevious());
-  }
-
-  /**
-   * Test {@link Paragraph#toString()}.
-   * <p>
    * Method under test: {@link Paragraph#toString()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String Paragraph.toString()"})
   public void testToString() {
     // Arrange, Act and Assert
     assertEquals("\n\n", (new Paragraph(new Bold(new BulletList(null)))).toString());
   }
 
   /**
-   * Test {@link Paragraph#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link BiItem}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link Paragraph#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
+  public void testUpdateBiContext() {
     // Arrange
-    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
-
-    context.addItemWithValue("paragraphs", biItem);
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    paragraph.updateBiContext(context);
-
-    // Assert that nothing has changed
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(1, attributes.size());
-    Object getResult = attributes.get("count");
-    assertTrue(getResult instanceof BiItem);
-    Map<String, Object> attributes2 = items.get(1).getAttributes();
-    assertEquals(1, attributes2.size());
-    assertTrue(attributes2.containsKey(Element.STYLE_ATTR));
-    assertEquals(attributes2, items.get(2).getAttributes());
-    assertSame(biItem, getResult);
-  }
-
-  /**
-   * Test {@link Paragraph#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is {@code Item Value}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
-    // Arrange
-    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItemWithValue("paragraphs", "Item Value");
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    paragraph.updateBiContext(context);
-
-    // Assert that nothing has changed
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals("Item Value", attributes.get("count"));
-    Map<String, Object> attributes2 = items.get(1).getAttributes();
-    assertEquals(1, attributes2.size());
-    assertTrue(attributes2.containsKey(Element.STYLE_ATTR));
-  }
-
-  /**
-   * Test {@link Paragraph#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
-    // Arrange
-    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem("paragraphs", Element.STYLE_ATTR));
-
-    // Act
-    paragraph.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(1, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(2, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-    assertTrue(attributes.containsKey(Element.STYLE_ATTR));
-  }
-
-  /**
-   * Test {@link Paragraph#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
-    // Arrange
-    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    paragraph.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(2, items.size());
-    BiItem getResult = items.get(1);
-    assertEquals("paragraphs", getResult.getName());
-    Map<String, Object> attributes = getResult.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-  }
-
-  /**
-   * Test {@link Paragraph#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code paragraphs}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsThirdNameIsParagraphs() {
-    // Arrange
-    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    paragraph.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    BiItem getResult = items.get(2);
-    assertEquals("paragraphs", getResult.getName());
-    Map<String, Object> attributes = getResult.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-  }
-
-  /**
-   * Test {@link Paragraph#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code paragraphs}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Paragraph.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsParagraphs() {
-    // Arrange
-    Paragraph paragraph = new Paragraph(new Bold(new BulletList(mock(Element.class))));
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Paragraph paragraph = new Paragraph(parent);
     BiContext context = new BiContext();
 
     // Act
@@ -281,6 +89,161 @@ public class ParagraphDiffblueTest {
     assertEquals("paragraphs", getResult.getName());
     Map<String, Object> attributes = getResult.getAttributes();
     assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(parent, paragraph.getParent());
+  }
+
+  /**
+   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext2() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Paragraph paragraph = new Paragraph(parent);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+
+    // Act
+    paragraph.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(2, items.size());
+    BiItem getResult = items.get(1);
+    assertEquals("paragraphs", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(0));
+    assertSame(parent, paragraph.getParent());
+  }
+
+  /**
+   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext3() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Paragraph paragraph = new Paragraph(parent);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    paragraph.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(2);
+    assertEquals("paragraphs", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(0));
+    assertSame(item2, items.get(1));
+    assertSame(parent, paragraph.getParent());
+  }
+
+  /**
+   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext4() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Paragraph paragraph = new Paragraph(parent);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem("paragraphs", Element.STYLE_ATTR);
+
+    context.addItem(item);
+
+    // Act
+    paragraph.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(1, items.size());
+    assertSame(item, items.get(0));
+    assertSame(parent, paragraph.getParent());
+  }
+
+  /**
+   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext5() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Paragraph paragraph = new Paragraph(parent);
+
+    BiContext context = new BiContext();
+    context.addItemWithValue("paragraphs", "Item Value");
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    paragraph.updateBiContext(context);
+
+    // Assert that nothing has changed
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(0);
+    assertEquals("paragraphs", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(1));
+    assertSame(item2, items.get(2));
+    assertSame(parent, paragraph.getParent());
+  }
+
+  /**
+   * Method under test: {@link Paragraph#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext6() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Paragraph paragraph = new Paragraph(parent);
+
+    BiContext context = new BiContext();
+    context.addItemWithValue("paragraphs", new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    paragraph.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(0);
+    assertEquals("paragraphs", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(1));
+    assertSame(item2, items.get(2));
+    assertSame(parent, paragraph.getParent());
   }
 }

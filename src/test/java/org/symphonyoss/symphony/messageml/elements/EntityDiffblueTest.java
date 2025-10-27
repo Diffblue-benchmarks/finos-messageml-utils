@@ -3,52 +3,33 @@ package org.symphonyoss.symphony.messageml.elements;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
 public class EntityDiffblueTest {
   /**
-   * Test {@link Entity#validate()}.
-   * <ul>
-   *   <li>Given {@link Bold#Bold(Element)} with parent is {@link Element}.</li>
-   *   <li>Then throw {@link InvalidInputException}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link Entity#validate()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Entity.validate()"})
-  public void testValidate_givenBoldWithParentIsElement_thenThrowInvalidInputException() throws InvalidInputException {
+  public void testValidate() throws InvalidInputException {
     // Arrange, Act and Assert
     assertThrows(InvalidInputException.class,
         () -> (new CashTag(new Bold(mock(Element.class)), "The attribute \"tag\" is required", "42")).validate());
   }
 
   /**
-   * Test {@link Entity#getEntityId(int)}.
-   * <p>
    * Method under test: {@link Entity#getEntityId(int)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String Entity.getEntityId(int)"})
   public void testGetEntityId() {
     // Arrange, Act and Assert
     assertEquals("keyword1", (new CashTag(new Bold(new BulletList(mock(Element.class))), 1)).getEntityId(1));
   }
 
   /**
-   * Test {@link Entity#getPresentationMLTag()}.
-   * <p>
    * Method under test: {@link Entity#getPresentationMLTag()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"java.lang.String Entity.getPresentationMLTag()"})
   public void testGetPresentationMLTag() {
     // Arrange, Act and Assert
     assertEquals(Span.MESSAGEML_TAG,

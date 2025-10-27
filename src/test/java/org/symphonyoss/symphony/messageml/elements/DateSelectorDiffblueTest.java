@@ -11,14 +11,11 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import javax.imageio.metadata.IIOMetadataNode;
 import org.commonmark.node.Node;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.MessageMLParser;
@@ -34,68 +31,36 @@ import org.w3c.dom.NamedNodeMap;
 
 public class DateSelectorDiffblueTest {
   /**
-   * Test getters and setters.
-   * <p>
-   * Methods under test:
-   * <ul>
-   *   <li>{@link DateSelector#DateSelector(Element, FormatEnum)}
-   *   <li>{@link DateSelector#getPresentationMLTag()}
-   * </ul>
+   * Method under test:
+   * {@link DateSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DateSelector.<init>(Element, FormatEnum)", "String DateSelector.getPresentationMLTag()"})
-  public void testGettersAndSetters() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act
-    DateSelector actualDateSelector = new DateSelector(parent, FormatEnum.MESSAGEML);
-    String actualPresentationMLTag = actualDateSelector.getPresentationMLTag();
-
-    // Assert
-    assertEquals(FormatEnum.MESSAGEML, actualDateSelector.getFormat());
-    assertTrue(actualDateSelector.getChildren().isEmpty());
-    assertTrue(actualDateSelector.getAttributes().isEmpty());
-    assertEquals(DateSelector.MESSAGEML_TAG, actualDateSelector.getMessageMLTag());
-    assertEquals(Div.MESSAGEML_TAG, actualPresentationMLTag);
-    assertSame(parent, actualDateSelector.getParent());
-  }
-
-  /**
-   * Test {@link DateSelector#buildAll(MessageMLParser, Element)}.
-   * <p>
-   * Method under test: {@link DateSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DateSelector.buildAll(MessageMLParser, org.w3c.dom.Element)"})
   public void testBuildAll() throws InvalidInputException, ProcessingException {
     // Arrange
-    DateSelector dateSelector = new DateSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    DateSelector dateSelector = new DateSelector(parent, FormatEnum.MESSAGEML);
     MessageMLParser parser = mock(MessageMLParser.class);
     when(parser.getBiContext()).thenReturn(new BiContext());
 
     // Act
     dateSelector.buildAll(parser, new IIOMetadataNode("foo"));
 
-    // Assert that nothing has changed
+    // Assert
     verify(parser).getBiContext();
     assertEquals(0, dateSelector.size());
     assertTrue(dateSelector.getChildren().isEmpty());
+    assertSame(parent, dateSelector.getParent());
   }
 
   /**
-   * Test {@link DateSelector#buildAll(MessageMLParser, Element)}.
-   * <p>
-   * Method under test: {@link DateSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
+   * Method under test:
+   * {@link DateSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DateSelector.buildAll(MessageMLParser, org.w3c.dom.Element)"})
   public void testBuildAll2() throws InvalidInputException, ProcessingException {
     // Arrange
-    DateSelector dateSelector = new DateSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    DateSelector dateSelector = new DateSelector(parent, FormatEnum.MESSAGEML);
     MessageMLParser parser = mock(MessageMLParser.class);
     Bold bold = new Bold(new BulletList(mock(Element.class)));
     when(parser.createElement(Mockito.<org.w3c.dom.Element>any(), Mockito.<Element>any())).thenReturn(bold);
@@ -114,23 +79,18 @@ public class DateSelectorDiffblueTest {
     assertEquals(1, children.size());
     assertEquals(1, dateSelector.size());
     assertSame(bold, children.get(0));
+    assertSame(parent, dateSelector.getParent());
   }
 
   /**
-   * Test {@link DateSelector#buildAll(MessageMLParser, Element)}.
-   * <ul>
-   *   <li>When {@link MessageMLParser} {@link MessageMLParser#createElement(Element, Element)} return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link DateSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
+   * Method under test:
+   * {@link DateSelector#buildAll(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DateSelector.buildAll(MessageMLParser, org.w3c.dom.Element)"})
-  public void testBuildAll_whenMessageMLParserCreateElementReturnNull()
-      throws InvalidInputException, ProcessingException {
+  public void testBuildAll3() throws InvalidInputException, ProcessingException {
     // Arrange
-    DateSelector dateSelector = new DateSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    DateSelector dateSelector = new DateSelector(parent, FormatEnum.MESSAGEML);
     MessageMLParser parser = mock(MessageMLParser.class);
     when(parser.createElement(Mockito.<org.w3c.dom.Element>any(), Mockito.<Element>any())).thenReturn(null);
     when(parser.getBiContext()).thenReturn(new BiContext());
@@ -141,22 +101,37 @@ public class DateSelectorDiffblueTest {
     // Act
     dateSelector.buildAll(parser, element);
 
-    // Assert that nothing has changed
+    // Assert
     verify(parser).createElement(isA(org.w3c.dom.Element.class), isA(Element.class));
     verify(parser).getBiContext();
     assertEquals(0, dateSelector.size());
     assertTrue(dateSelector.getChildren().isEmpty());
+    assertSame(parent, dateSelector.getParent());
   }
 
   /**
-   * Test {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DateSelector.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
+    // Arrange
+    DateSelector dateSelector = new DateSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    dateSelector.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(46L, out.getOffset());
+  }
+
+  /**
+   * Method under test:
+   * {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  public void testAsPresentationML2() {
     // Arrange
     DateSelector dateSelector = new DateSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -171,14 +146,11 @@ public class DateSelectorDiffblueTest {
   }
 
   /**
-   * Test {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DateSelector.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML2() {
+  public void testAsPresentationML3() {
     // Arrange
     DateSelector dateSelector = new DateSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -193,14 +165,11 @@ public class DateSelectorDiffblueTest {
   }
 
   /**
-   * Test {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DateSelector.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML3() {
+  public void testAsPresentationML4() {
     // Arrange
     DateSelector dateSelector = new DateSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -215,36 +184,9 @@ public class DateSelectorDiffblueTest {
   }
 
   /**
-   * Test {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <ul>
-   *   <li>When {@link XmlPrintStream#XmlPrintStream(OutputStream)} with outputStream is {@link ByteArrayOutputStream#ByteArrayOutputStream(int)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link DateSelector#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DateSelector.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML_whenXmlPrintStreamWithOutputStreamIsByteArrayOutputStream() {
-    // Arrange
-    DateSelector dateSelector = new DateSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    dateSelector.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
-
-    // Assert
-    assertEquals(46L, out.getOffset());
-  }
-
-  /**
-   * Test {@link DateSelector#asMarkdown()}.
-   * <p>
    * Method under test: {@link DateSelector#asMarkdown()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node DateSelector.asMarkdown()"})
   public void testAsMarkdown() {
     // Arrange and Act
     Node actualAsMarkdownResult = (new DateSelector(new Bold(new BulletList(mock(Element.class))),
@@ -263,20 +205,13 @@ public class DateSelectorDiffblueTest {
   }
 
   /**
-   * Test {@link DateSelector#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link DateSelector#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DateSelector.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_whenBiContext_thenBiContextItemsSizeIsOne() {
+  public void testUpdateBiContext() {
     // Arrange
-    DateSelector dateSelector = new DateSelector(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    DateSelector dateSelector = new DateSelector(parent, FormatEnum.MESSAGEML);
     BiContext context = new BiContext();
 
     // Act
@@ -288,21 +223,16 @@ public class DateSelectorDiffblueTest {
     BiItem getResult = items.get(0);
     assertEquals("dateselector", getResult.getName());
     assertTrue(getResult.getAttributes().isEmpty());
+    assertTrue(dateSelector.getAttributes().isEmpty());
+    assertSame(parent, dateSelector.getParent());
   }
 
   /**
-   * Test {@link DateSelector#buildElementFromDiv(MessageMLParser, Element)}.
-   * <ul>
-   *   <li>Then calls {@link org.w3c.dom.Element#getAttribute(String)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link DateSelector#buildElementFromDiv(MessageMLParser, org.w3c.dom.Element)}
+   * Method under test:
+   * {@link DateSelector#buildElementFromDiv(MessageMLParser, org.w3c.dom.Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DateSelector.buildElementFromDiv(MessageMLParser, org.w3c.dom.Element)"})
-  public void testBuildElementFromDiv_thenCallsGetAttribute()
-      throws InvalidInputException, ProcessingException, DOMException {
+  public void testBuildElementFromDiv() throws InvalidInputException, ProcessingException, DOMException {
     // Arrange
     DateSelector dateSelector = new DateSelector(new Bold(new BulletList(null)), FormatEnum.MESSAGEML);
     NamedNodeMap namedNodeMap = mock(NamedNodeMap.class);
@@ -318,7 +248,7 @@ public class DateSelectorDiffblueTest {
     // Act
     dateSelector.buildElementFromDiv(null, element);
 
-    // Assert
+    // Assert that nothing has changed
     verify(element, atLeast(1)).getAttribute(Mockito.<String>any());
     verify(element, atLeast(1)).hasAttribute(Mockito.<String>any());
     verify(element, atLeast(1)).removeAttribute(Mockito.<String>any());
@@ -326,5 +256,30 @@ public class DateSelectorDiffblueTest {
     verify(namedNodeMap).getLength();
     verify(element).getAttributes();
     verify(element).getChildNodes();
+  }
+
+  /**
+   * Methods under test:
+   * <ul>
+   *   <li>{@link DateSelector#DateSelector(Element, FormatEnum)}
+   *   <li>{@link DateSelector#getPresentationMLTag()}
+   * </ul>
+   */
+  @Test
+  public void testGettersAndSetters() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act
+    DateSelector actualDateSelector = new DateSelector(parent, FormatEnum.MESSAGEML);
+    String actualPresentationMLTag = actualDateSelector.getPresentationMLTag();
+
+    // Assert
+    assertEquals(FormatEnum.MESSAGEML, actualDateSelector.getFormat());
+    assertTrue(actualDateSelector.getChildren().isEmpty());
+    assertTrue(actualDateSelector.getAttributes().isEmpty());
+    assertEquals(DateSelector.MESSAGEML_TAG, actualDateSelector.getMessageMLTag());
+    assertEquals(Div.MESSAGEML_TAG, actualPresentationMLTag);
+    assertSame(parent, actualDateSelector.getParent());
   }
 }

@@ -5,26 +5,209 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 
 public class SpanDiffblueTest {
   /**
-   * Test {@link Span#Span(Element)}.
-   * <p>
+   * Method under test: {@link Span#asEntityJson(ObjectNode)}
+   */
+  @Test
+  public void testAsEntityJson() {
+    // Arrange
+    Span span = new Span(new Bold(new BulletList(mock(Element.class))));
+
+    // Act and Assert
+    assertNull(span.asEntityJson(new ObjectNode(JsonNodeFactory.withExactBigDecimals(true))));
+  }
+
+  /**
+   * Method under test: {@link Span#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Span span = new Span(parent);
+    BiContext context = new BiContext();
+
+    // Act
+    span.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(1, items.size());
+    BiItem getResult = items.get(0);
+    assertEquals("spans", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(parent, span.getParent());
+  }
+
+  /**
+   * Method under test: {@link Span#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext2() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Span span = new Span(parent);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+
+    // Act
+    span.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(2, items.size());
+    BiItem getResult = items.get(1);
+    assertEquals("spans", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(0));
+    assertSame(parent, span.getParent());
+  }
+
+  /**
+   * Method under test: {@link Span#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext3() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Span span = new Span(parent);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    span.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(2);
+    assertEquals("spans", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(0));
+    assertSame(item2, items.get(1));
+    assertSame(parent, span.getParent());
+  }
+
+  /**
+   * Method under test: {@link Span#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext4() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Span span = new Span(parent);
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem("spans", Element.STYLE_ATTR);
+
+    context.addItem(item);
+
+    // Act
+    span.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(1, items.size());
+    assertSame(item, items.get(0));
+    assertSame(parent, span.getParent());
+  }
+
+  /**
+   * Method under test: {@link Span#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext5() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Span span = new Span(parent);
+
+    BiContext context = new BiContext();
+    context.addItemWithValue("spans", "Item Value");
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    span.updateBiContext(context);
+
+    // Assert that nothing has changed
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(0);
+    assertEquals("spans", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(1));
+    assertSame(item2, items.get(2));
+    assertSame(parent, span.getParent());
+  }
+
+  /**
+   * Method under test: {@link Span#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext6() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Span span = new Span(parent);
+
+    BiContext context = new BiContext();
+    context.addItemWithValue("spans", new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    span.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(0);
+    assertEquals("spans", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(1));
+    assertSame(item2, items.get(2));
+    assertSame(parent, span.getParent());
+  }
+
+  /**
    * Method under test: {@link Span#Span(Element)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Span.<init>(Element)"})
   public void testNewSpan() {
     // Arrange
     Bold parent = new Bold(new BulletList(mock(Element.class)));
@@ -40,217 +223,5 @@ public class SpanDiffblueTest {
     assertEquals(Span.MESSAGEML_TAG, actualSpan.getMessageMLTag());
     assertEquals(Span.MESSAGEML_TAG, actualSpan.getPresentationMLTag());
     assertSame(parent, actualSpan.getParent());
-  }
-
-  /**
-   * Test {@link Span#asEntityJson(ObjectNode)}.
-   * <p>
-   * Method under test: {@link Span#asEntityJson(ObjectNode)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"ObjectNode Span.asEntityJson(ObjectNode)"})
-  public void testAsEntityJson() {
-    // Arrange
-    Span span = new Span(new Bold(new BulletList(mock(Element.class))));
-
-    // Act and Assert
-    assertNull(span.asEntityJson(new ObjectNode(JsonNodeFactory.withExactBigDecimals(true))));
-  }
-
-  /**
-   * Test {@link Span#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link BiItem}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Span#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Span.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
-    // Arrange
-    Span span = new Span(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
-
-    context.addItemWithValue("spans", biItem);
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    span.updateBiContext(context);
-
-    // Assert that nothing has changed
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(1, attributes.size());
-    Object getResult = attributes.get("count");
-    assertTrue(getResult instanceof BiItem);
-    Map<String, Object> attributes2 = items.get(1).getAttributes();
-    assertEquals(1, attributes2.size());
-    assertTrue(attributes2.containsKey(Element.STYLE_ATTR));
-    assertEquals(attributes2, items.get(2).getAttributes());
-    assertSame(biItem, getResult);
-  }
-
-  /**
-   * Test {@link Span#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is {@code Item Value}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Span#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Span.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
-    // Arrange
-    Span span = new Span(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItemWithValue("spans", "Item Value");
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    span.updateBiContext(context);
-
-    // Assert that nothing has changed
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals("Item Value", attributes.get("count"));
-    Map<String, Object> attributes2 = items.get(1).getAttributes();
-    assertEquals(1, attributes2.size());
-    assertTrue(attributes2.containsKey(Element.STYLE_ATTR));
-  }
-
-  /**
-   * Test {@link Span#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Span#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Span.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
-    // Arrange
-    Span span = new Span(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem("spans", Element.STYLE_ATTR));
-
-    // Act
-    span.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(1, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(2, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-    assertTrue(attributes.containsKey(Element.STYLE_ATTR));
-  }
-
-  /**
-   * Test {@link Span#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Span#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Span.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
-    // Arrange
-    Span span = new Span(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    span.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(2, items.size());
-    BiItem getResult = items.get(1);
-    assertEquals("spans", getResult.getName());
-    Map<String, Object> attributes = getResult.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-  }
-
-  /**
-   * Test {@link Span#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code spans}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Span#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Span.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsThirdNameIsSpans() {
-    // Arrange
-    Span span = new Span(new Bold(new BulletList(mock(Element.class))));
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    span.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    BiItem getResult = items.get(2);
-    assertEquals("spans", getResult.getName());
-    Map<String, Object> attributes = getResult.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-  }
-
-  /**
-   * Test {@link Span#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code spans}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Span#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Span.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsSpans() {
-    // Arrange
-    Span span = new Span(new Bold(new BulletList(mock(Element.class))));
-    BiContext context = new BiContext();
-
-    // Act
-    span.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(1, items.size());
-    BiItem getResult = items.get(0);
-    assertEquals("spans", getResult.getName());
-    Map<String, Object> attributes = getResult.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
   }
 }

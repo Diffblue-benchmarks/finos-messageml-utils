@@ -6,51 +6,19 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.util.List;
 import java.util.Map;
 import org.commonmark.node.Node;
 import org.commonmark.node.StrongEmphasis;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
 
 public class HeaderDiffblueTest {
   /**
-   * Test {@link Header#Header(Element, String)}.
-   * <p>
-   * Method under test: {@link Header#Header(Element, String)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Header.<init>(Element, String)"})
-  public void testNewHeader() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-
-    // Act
-    Header actualHeader = new Header(parent, "Tag");
-
-    // Assert
-    assertEquals("Tag", actualHeader.getMessageMLTag());
-    assertEquals("Tag", actualHeader.getPresentationMLTag());
-    assertEquals(0, actualHeader.size());
-    assertEquals(FormatEnum.PRESENTATIONML, actualHeader.getFormat());
-    assertTrue(actualHeader.getChildren().isEmpty());
-    assertTrue(actualHeader.getAttributes().isEmpty());
-    assertSame(parent, actualHeader.getParent());
-  }
-
-  /**
-   * Test {@link Header#asMarkdown()}.
-   * <p>
    * Method under test: {@link Header#asMarkdown()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node Header.asMarkdown()"})
   public void testAsMarkdown() {
     // Arrange and Act
     Node actualAsMarkdownResult = (new Header(new Bold(new BulletList(mock(Element.class))), "Tag")).asMarkdown();
@@ -67,220 +35,23 @@ public class HeaderDiffblueTest {
   }
 
   /**
-   * Test {@link Header#isHeaderElement(String)}.
-   * <ul>
-   *   <li>When {@code h1}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link Header#isHeaderElement(String)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean Header.isHeaderElement(String)"})
-  public void testIsHeaderElement_whenH1_thenReturnTrue() {
+  public void testIsHeaderElement() {
     // Arrange, Act and Assert
+    assertFalse(Header.isHeaderElement("Tag"));
     assertTrue(Header.isHeaderElement("h1"));
   }
 
   /**
-   * Test {@link Header#isHeaderElement(String)}.
-   * <ul>
-   *   <li>When {@code Tag}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Header#isHeaderElement(String)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean Header.isHeaderElement(String)"})
-  public void testIsHeaderElement_whenTag_thenReturnFalse() {
-    // Arrange, Act and Assert
-    assertFalse(Header.isHeaderElement("Tag"));
-  }
-
-  /**
-   * Test {@link Header#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} {@link BiItem}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link Header#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Header.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountBiItem() {
+  public void testUpdateBiContext() {
     // Arrange
-    Header header = new Header(new Bold(new BulletList(mock(Element.class))), "Tag");
-
-    BiContext context = new BiContext();
-    BiItem biItem = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
-
-    context.addItemWithValue("headers", biItem);
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    header.updateBiContext(context);
-
-    // Assert that nothing has changed
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(1, attributes.size());
-    Object getResult = attributes.get("count");
-    assertTrue(getResult instanceof BiItem);
-    Map<String, Object> attributes2 = items.get(1).getAttributes();
-    assertEquals(1, attributes2.size());
-    assertTrue(attributes2.containsKey(Element.STYLE_ATTR));
-    assertEquals(attributes2, items.get(2).getAttributes());
-    assertSame(biItem, getResult);
-  }
-
-  /**
-   * Test {@link Header#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes {@code count} is {@code Item Value}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Header#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Header.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesCountIsItemValue() {
-    // Arrange
-    Header header = new Header(new Bold(new BulletList(mock(Element.class))), "Tag");
-
-    BiContext context = new BiContext();
-    context.addItemWithValue("headers", "Item Value");
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    header.updateBiContext(context);
-
-    // Assert that nothing has changed
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals("Item Value", attributes.get("count"));
-    Map<String, Object> attributes2 = items.get(1).getAttributes();
-    assertEquals(1, attributes2.size());
-    assertTrue(attributes2.containsKey(Element.STYLE_ATTR));
-  }
-
-  /**
-   * Test {@link Header#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items first Attributes size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Header#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Header.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsFirstAttributesSizeIsTwo() {
-    // Arrange
-    Header header = new Header(new Bold(new BulletList(mock(Element.class))), "Tag");
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem("headers", Element.STYLE_ATTR));
-
-    // Act
-    header.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(1, items.size());
-    Map<String, Object> attributes = items.get(0).getAttributes();
-    assertEquals(2, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-    assertTrue(attributes.containsKey(Element.STYLE_ATTR));
-  }
-
-  /**
-   * Test {@link Header#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items size is two.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Header#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Header.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsSizeIsTwo() {
-    // Arrange
-    Header header = new Header(new Bold(new BulletList(mock(Element.class))), "Tag");
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    header.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(2, items.size());
-    BiItem getResult = items.get(1);
-    assertEquals("headers", getResult.getName());
-    Map<String, Object> attributes = getResult.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-  }
-
-  /**
-   * Test {@link Header#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>Then {@link BiContext} (default constructor) Items third Name is {@code headers}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Header#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Header.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_thenBiContextItemsThirdNameIsHeaders() {
-    // Arrange
-    Header header = new Header(new Bold(new BulletList(mock(Element.class))), "Tag");
-
-    BiContext context = new BiContext();
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-    context.addItem(new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
-
-    // Act
-    header.updateBiContext(context);
-
-    // Assert
-    List<BiItem> items = context.getItems();
-    assertEquals(3, items.size());
-    BiItem getResult = items.get(2);
-    assertEquals("headers", getResult.getName());
-    Map<String, Object> attributes = getResult.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
-  }
-
-  /**
-   * Test {@link Header#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items first Name is {@code headers}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link Header#updateBiContext(BiContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Header.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_whenBiContext_thenBiContextItemsFirstNameIsHeaders() {
-    // Arrange
-    Header header = new Header(new Bold(new BulletList(mock(Element.class))), "Tag");
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Header header = new Header(parent, "Tag");
     BiContext context = new BiContext();
 
     // Act
@@ -293,6 +64,182 @@ public class HeaderDiffblueTest {
     assertEquals("headers", getResult.getName());
     Map<String, Object> attributes = getResult.getAttributes();
     assertEquals(1, attributes.size());
-    assertEquals(1, ((Integer) attributes.get("count")).intValue());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(parent, header.getParent());
+  }
+
+  /**
+   * Method under test: {@link Header#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext2() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Header header = new Header(parent, "Tag");
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+
+    // Act
+    header.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(2, items.size());
+    BiItem getResult = items.get(1);
+    assertEquals("headers", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(0));
+    assertSame(parent, header.getParent());
+  }
+
+  /**
+   * Method under test: {@link Header#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext3() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Header header = new Header(parent, "Tag");
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    header.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(2);
+    assertEquals("headers", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(0));
+    assertSame(item2, items.get(1));
+    assertSame(parent, header.getParent());
+  }
+
+  /**
+   * Method under test: {@link Header#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext4() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Header header = new Header(parent, "Tag");
+
+    BiContext context = new BiContext();
+    BiItem item = new BiItem("headers", Element.STYLE_ATTR);
+
+    context.addItem(item);
+
+    // Act
+    header.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(1, items.size());
+    assertSame(item, items.get(0));
+    assertSame(parent, header.getParent());
+  }
+
+  /**
+   * Method under test: {@link Header#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext5() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Header header = new Header(parent, "Tag");
+
+    BiContext context = new BiContext();
+    context.addItemWithValue("headers", "Item Value");
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    header.updateBiContext(context);
+
+    // Assert that nothing has changed
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(0);
+    assertEquals("headers", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(1));
+    assertSame(item2, items.get(2));
+    assertSame(parent, header.getParent());
+  }
+
+  /**
+   * Method under test: {@link Header#updateBiContext(BiContext)}
+   */
+  @Test
+  public void testUpdateBiContext6() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    Header header = new Header(parent, "Tag");
+
+    BiContext context = new BiContext();
+    context.addItemWithValue("headers", new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR));
+    BiItem item = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item);
+    BiItem item2 = new BiItem(Element.STYLE_ATTR, Element.STYLE_ATTR);
+
+    context.addItem(item2);
+
+    // Act
+    header.updateBiContext(context);
+
+    // Assert
+    List<BiItem> items = context.getItems();
+    assertEquals(3, items.size());
+    BiItem getResult = items.get(0);
+    assertEquals("headers", getResult.getName());
+    Map<String, Object> attributes = getResult.getAttributes();
+    assertEquals(1, attributes.size());
+    assertTrue(attributes.containsKey("count"));
+    assertSame(item, items.get(1));
+    assertSame(item2, items.get(2));
+    assertSame(parent, header.getParent());
+  }
+
+  /**
+   * Method under test: {@link Header#Header(Element, String)}
+   */
+  @Test
+  public void testNewHeader() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+
+    // Act
+    Header actualHeader = new Header(parent, "Tag");
+
+    // Assert
+    assertEquals("Tag", actualHeader.getMessageMLTag());
+    assertEquals("Tag", actualHeader.getPresentationMLTag());
+    assertEquals(0, actualHeader.size());
+    assertEquals(FormatEnum.PRESENTATIONML, actualHeader.getFormat());
+    assertTrue(actualHeader.getChildren().isEmpty());
+    assertTrue(actualHeader.getAttributes().isEmpty());
+    assertSame(parent, actualHeader.getParent());
   }
 }

@@ -2,15 +2,10 @@ package org.symphonyoss.symphony.messageml.util.instrument.resolver;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class InstrumentDiffblueTest {
   /**
-   * Test getters and setters.
-   * <p>
    * Methods under test:
    * <ul>
    *   <li>default or parameterless constructor of {@link Instrument}
@@ -77,33 +72,6 @@ public class InstrumentDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void Instrument.<init>()", "String Instrument.getBbgCompId()",
-      "String Instrument.getBbgCompTicker()", "MarketSector Instrument.getBbgMarketSector()",
-      "String Instrument.getCfi()", "String Instrument.getCountryCode()", "String Instrument.getCountryName()",
-      "String Instrument.getCurrency()", "String Instrument.getDisplayName()", "String Instrument.getEdiExchangeCode()",
-      "String Instrument.getEdiInstrumentId()", "String Instrument.getExchangeName()", "String Instrument.getFigi()",
-      "String Instrument.getFigiTicker()", "String Instrument.getFullBbgCompTicker()",
-      "String Instrument.getInstrumentTypeCode()", "String Instrument.getInstrumentTypeName()",
-      "String Instrument.getIsin()", "InstrumentKind Instrument.getKind()", "String Instrument.getLei()",
-      "String Instrument.getLocalCode()", "Boolean Instrument.getMainInstrument()",
-      "String Instrument.getOperationalMic()", "Boolean Instrument.getPrimaryExchange()",
-      "ProviderId Instrument.getProviderId()", "String Instrument.getRic()", "String Instrument.getRootBbgCompTicker()",
-      "String Instrument.getSedol()", "String Instrument.getUniqueId()", "String Instrument.getUsCode()",
-      "String Instrument.getWkn()", "void Instrument.setBbgCompId(String)", "void Instrument.setBbgCompTicker(String)",
-      "void Instrument.setBbgMarketSector(MarketSector)", "void Instrument.setCfi(String)",
-      "void Instrument.setCountryCode(String)", "void Instrument.setCountryName(String)",
-      "void Instrument.setCurrency(String)", "void Instrument.setDisplayName(String)",
-      "void Instrument.setEdiExchangeCode(String)", "void Instrument.setEdiInstrumentId(String)",
-      "void Instrument.setExchangeName(String)", "void Instrument.setFigi(String)",
-      "void Instrument.setFigiTicker(String)", "void Instrument.setFullBbgCompTicker(String)",
-      "void Instrument.setInstrumentTypeCode(String)", "void Instrument.setInstrumentTypeName(String)",
-      "void Instrument.setIsin(String)", "void Instrument.setKind(InstrumentKind)", "void Instrument.setLei(String)",
-      "void Instrument.setLocalCode(String)", "void Instrument.setMainInstrument(Boolean)",
-      "void Instrument.setOperationalMic(String)", "void Instrument.setPrimaryExchange(Boolean)",
-      "void Instrument.setProviderId(ProviderId)", "void Instrument.setRic(String)",
-      "void Instrument.setRootBbgCompTicker(String)", "void Instrument.setSedol(String)",
-      "void Instrument.setUniqueId(String)", "void Instrument.setUsCode(String)", "void Instrument.setWkn(String)"})
   public void testGettersAndSetters() {
     // Arrange and Act
     Instrument actualInstrument = new Instrument();
@@ -167,7 +135,7 @@ public class InstrumentDiffblueTest {
     String actualUniqueId = actualInstrument.getUniqueId();
     String actualUsCode = actualInstrument.getUsCode();
 
-    // Assert
+    // Assert that nothing has changed
     assertEquals("42", actualBbgCompId);
     assertEquals("42", actualEdiInstrumentId);
     assertEquals("42", actualUniqueId);

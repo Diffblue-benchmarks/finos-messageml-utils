@@ -1,20 +1,37 @@
 package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import org.commonmark.node.BlockQuote;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class TimezonePickerNodeDiffblueTest {
   /**
-   * Test {@link TimezonePickerNode#TimezonePickerNode(String, String, String)}.
-   * <p>
-   * Method under test: {@link TimezonePickerNode#TimezonePickerNode(String, String, String)}
+   * Method under test: {@link TimezonePickerNode#getText()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimezonePickerNode.<init>(String, String, String)"})
+  public void testGetText() {
+    // Arrange
+    BlockQuote child = mock(BlockQuote.class);
+    doNothing().when(child).unlink();
+
+    TimezonePickerNode timezonePickerNode = new TimezonePickerNode("Label", "127.0.0.1", "Placeholder");
+    timezonePickerNode.appendChild(child);
+
+    // Act
+    timezonePickerNode.getText();
+
+    // Assert
+    verify(child).unlink();
+  }
+
+  /**
+   * Method under test:
+   * {@link TimezonePickerNode#TimezonePickerNode(String, String, String)}
+   */
+  @Test
   public void testNewTimezonePickerNode() {
     // Arrange and Act
     TimezonePickerNode actualTimezonePickerNode = new TimezonePickerNode("Label", "127.0.0.1", "Placeholder");

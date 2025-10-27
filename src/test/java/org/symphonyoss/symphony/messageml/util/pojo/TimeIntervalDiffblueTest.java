@@ -3,107 +3,24 @@ package org.symphonyoss.symphony.messageml.util.pojo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThrows;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 
 public class TimeIntervalDiffblueTest {
   /**
-   * Test {@link TimeInterval#assertIsValid()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor).</li>
-   * </ul>
-   * <p>
    * Method under test: {@link TimeInterval#assertIsValid()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimeInterval.assertIsValid()"})
-  public void testAssertIsValid_givenTimeInterval() throws InvalidInputException {
+  public void testAssertIsValid() throws InvalidInputException {
     // Arrange, Act and Assert
     assertThrows(InvalidInputException.class, () -> (new TimeInterval()).assertIsValid());
   }
 
   /**
-   * Test {@link TimeInterval#assertIsValid()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor) From is {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link TimeInterval#assertIsValid()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimeInterval.assertIsValid()"})
-  public void testAssertIsValid_givenTimeIntervalFromIsNull() throws InvalidInputException {
-    // Arrange
-    TimeInterval timeInterval = new TimeInterval();
-    timeInterval.setTime("foo");
-    timeInterval.setFrom(null);
-    timeInterval.setTo(null);
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> timeInterval.assertIsValid());
-  }
-
-  /**
-   * Test {@link TimeInterval#assertIsValid()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor) From is {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TimeInterval#assertIsValid()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimeInterval.assertIsValid()"})
-  public void testAssertIsValid_givenTimeIntervalFromIsNull2() throws InvalidInputException {
-    // Arrange
-    TimeInterval timeInterval = new TimeInterval();
-    timeInterval.setTime("foo");
-    timeInterval.setFrom(null);
-    timeInterval.setTo("foo");
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> timeInterval.assertIsValid());
-  }
-
-  /**
-   * Test {@link TimeInterval#assertIsValid()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor) Time is {@code foo}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TimeInterval#assertIsValid()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimeInterval.assertIsValid()"})
-  public void testAssertIsValid_givenTimeIntervalTimeIsFoo() throws InvalidInputException {
-    // Arrange
-    TimeInterval timeInterval = new TimeInterval();
-    timeInterval.setTime("foo");
-    timeInterval.setFrom("foo");
-    timeInterval.setTo(null);
-
-    // Act and Assert
-    assertThrows(InvalidInputException.class, () -> timeInterval.assertIsValid());
-  }
-
-  /**
-   * Test {@link TimeInterval#assertIsValid()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor) Time is {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TimeInterval#assertIsValid()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimeInterval.assertIsValid()"})
-  public void testAssertIsValid_givenTimeIntervalTimeIsNull() throws InvalidInputException {
+  public void testAssertIsValid2() throws InvalidInputException {
     // Arrange
     TimeInterval timeInterval = new TimeInterval();
     timeInterval.setTime(null);
@@ -115,17 +32,10 @@ public class TimeIntervalDiffblueTest {
   }
 
   /**
-   * Test {@link TimeInterval#assertIsValid()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor) Time is {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link TimeInterval#assertIsValid()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimeInterval.assertIsValid()"})
-  public void testAssertIsValid_givenTimeIntervalTimeIsNull2() throws InvalidInputException {
+  public void testAssertIsValid3() throws InvalidInputException {
     // Arrange
     TimeInterval timeInterval = new TimeInterval();
     timeInterval.setTime(null);
@@ -137,18 +47,25 @@ public class TimeIntervalDiffblueTest {
   }
 
   /**
-   * Test {@link TimeInterval#getType()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor) From is {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TimeInterval#getType()}
+   * Method under test: {@link TimeInterval#assertIsValid()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String TimeInterval.getType()"})
-  public void testGetType_givenTimeIntervalFromIsNull_thenReturnNull() {
+  public void testAssertIsValid4() throws InvalidInputException {
+    // Arrange
+    TimeInterval timeInterval = new TimeInterval();
+    timeInterval.setTime("foo");
+    timeInterval.setFrom(null);
+    timeInterval.setTo(null);
+
+    // Act and Assert
+    assertThrows(InvalidInputException.class, () -> timeInterval.assertIsValid());
+  }
+
+  /**
+   * Method under test: {@link TimeInterval#assertIsValid()}
+   */
+  @Test
+  public void testAssertIsValid5() throws InvalidInputException {
     // Arrange
     TimeInterval timeInterval = new TimeInterval();
     timeInterval.setTime("foo");
@@ -156,45 +73,14 @@ public class TimeIntervalDiffblueTest {
     timeInterval.setTo("foo");
 
     // Act and Assert
-    assertNull(timeInterval.getType());
+    assertThrows(InvalidInputException.class, () -> timeInterval.assertIsValid());
   }
 
   /**
-   * Test {@link TimeInterval#getType()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor) From is {@code null}.</li>
-   *   <li>Then return {@code time}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TimeInterval#getType()}
+   * Method under test: {@link TimeInterval#assertIsValid()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String TimeInterval.getType()"})
-  public void testGetType_givenTimeIntervalFromIsNull_thenReturnTime() {
-    // Arrange
-    TimeInterval timeInterval = new TimeInterval();
-    timeInterval.setTime("foo");
-    timeInterval.setFrom(null);
-    timeInterval.setTo(null);
-
-    // Act and Assert
-    assertEquals("time", timeInterval.getType());
-  }
-
-  /**
-   * Test {@link TimeInterval#getType()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor) Time is {@code foo}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TimeInterval#getType()}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String TimeInterval.getType()"})
-  public void testGetType_givenTimeIntervalTimeIsFoo_thenReturnNull() {
+  public void testAssertIsValid6() throws InvalidInputException {
     // Arrange
     TimeInterval timeInterval = new TimeInterval();
     timeInterval.setTime("foo");
@@ -202,22 +88,23 @@ public class TimeIntervalDiffblueTest {
     timeInterval.setTo(null);
 
     // Act and Assert
-    assertNull(timeInterval.getType());
+    assertThrows(InvalidInputException.class, () -> timeInterval.assertIsValid());
   }
 
   /**
-   * Test {@link TimeInterval#getType()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor) Time is {@code null}.</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link TimeInterval#getType()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String TimeInterval.getType()"})
-  public void testGetType_givenTimeIntervalTimeIsNull_thenReturnNull() {
+  public void testGetType() {
+    // Arrange, Act and Assert
+    assertNull((new TimeInterval()).getType());
+  }
+
+  /**
+   * Method under test: {@link TimeInterval#getType()}
+   */
+  @Test
+  public void testGetType2() {
     // Arrange
     TimeInterval timeInterval = new TimeInterval();
     timeInterval.setTime(null);
@@ -229,18 +116,10 @@ public class TimeIntervalDiffblueTest {
   }
 
   /**
-   * Test {@link TimeInterval#getType()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor) Time is {@code null}.</li>
-   *   <li>Then return {@code range}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link TimeInterval#getType()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String TimeInterval.getType()"})
-  public void testGetType_givenTimeIntervalTimeIsNull_thenReturnRange() {
+  public void testGetType3() {
     // Arrange
     TimeInterval timeInterval = new TimeInterval();
     timeInterval.setTime(null);
@@ -252,25 +131,51 @@ public class TimeIntervalDiffblueTest {
   }
 
   /**
-   * Test {@link TimeInterval#getType()}.
-   * <ul>
-   *   <li>Given {@link TimeInterval} (default constructor).</li>
-   *   <li>Then return {@code null}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link TimeInterval#getType()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String TimeInterval.getType()"})
-  public void testGetType_givenTimeInterval_thenReturnNull() {
-    // Arrange, Act and Assert
-    assertNull((new TimeInterval()).getType());
+  public void testGetType4() {
+    // Arrange
+    TimeInterval timeInterval = new TimeInterval();
+    timeInterval.setTime("foo");
+    timeInterval.setFrom(null);
+    timeInterval.setTo(null);
+
+    // Act and Assert
+    assertEquals("time", timeInterval.getType());
   }
 
   /**
-   * Test getters and setters.
-   * <p>
+   * Method under test: {@link TimeInterval#getType()}
+   */
+  @Test
+  public void testGetType5() {
+    // Arrange
+    TimeInterval timeInterval = new TimeInterval();
+    timeInterval.setTime("foo");
+    timeInterval.setFrom(null);
+    timeInterval.setTo("foo");
+
+    // Act and Assert
+    assertNull(timeInterval.getType());
+  }
+
+  /**
+   * Method under test: {@link TimeInterval#getType()}
+   */
+  @Test
+  public void testGetType6() {
+    // Arrange
+    TimeInterval timeInterval = new TimeInterval();
+    timeInterval.setTime("foo");
+    timeInterval.setFrom("foo");
+    timeInterval.setTo(null);
+
+    // Act and Assert
+    assertNull(timeInterval.getType());
+  }
+
+  /**
    * Methods under test:
    * <ul>
    *   <li>default or parameterless constructor of {@link TimeInterval}
@@ -283,10 +188,6 @@ public class TimeIntervalDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimeInterval.<init>()", "String TimeInterval.getFrom()", "String TimeInterval.getTime()",
-      "String TimeInterval.getTo()", "void TimeInterval.setFrom(String)", "void TimeInterval.setTime(String)",
-      "void TimeInterval.setTo(String)"})
   public void testGettersAndSetters() {
     // Arrange and Act
     TimeInterval actualTimeInterval = new TimeInterval();
@@ -296,7 +197,7 @@ public class TimeIntervalDiffblueTest {
     String actualFrom = actualTimeInterval.getFrom();
     String actualTime = actualTimeInterval.getTime();
 
-    // Assert
+    // Assert that nothing has changed
     assertEquals("Time", actualTime);
     assertEquals("alice.liddell@example.org", actualTimeInterval.getTo());
     assertEquals("jane.doe@example.org", actualFrom);

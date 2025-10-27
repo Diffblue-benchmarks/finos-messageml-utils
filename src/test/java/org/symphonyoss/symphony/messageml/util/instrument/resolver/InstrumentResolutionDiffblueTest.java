@@ -2,19 +2,10 @@ package org.symphonyoss.symphony.messageml.util.instrument.resolver;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class InstrumentResolutionDiffblueTest {
   /**
-   * Test {@link InstrumentResolution#equals(Object)}, and {@link InstrumentResolution#hashCode()}.
-   * <ul>
-   *   <li>When other is equal.</li>
-   *   <li>Then return equal.</li>
-   * </ul>
-   * <p>
    * Methods under test:
    * <ul>
    *   <li>{@link InstrumentResolution#equals(Object)}
@@ -22,8 +13,6 @@ public class InstrumentResolutionDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEqualsAndHashCode_whenOtherIsEqual_thenReturnEqual() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -65,12 +54,6 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}, and {@link InstrumentResolution#hashCode()}.
-   * <ul>
-   *   <li>When other is same.</li>
-   *   <li>Then return equal.</li>
-   * </ul>
-   * <p>
    * Methods under test:
    * <ul>
    *   <li>{@link InstrumentResolution#equals(Object)}
@@ -78,8 +61,6 @@ public class InstrumentResolutionDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEqualsAndHashCode_whenOtherIsSame_thenReturnEqual() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -105,17 +86,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -155,17 +128,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual2() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -205,17 +170,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual3() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -255,17 +212,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual4() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -305,17 +254,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual5() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -355,17 +296,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual6() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -405,17 +338,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual7() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -455,17 +380,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual8() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -505,17 +422,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual9() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -555,17 +464,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual10() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -605,17 +506,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual11() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -655,17 +548,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual12() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -705,17 +590,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual13() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -755,17 +632,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual14() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -805,17 +674,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual15() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -855,17 +716,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual16() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -905,17 +758,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual17() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -955,17 +800,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual18() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1005,17 +842,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual19() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1055,17 +884,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual20() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1105,17 +926,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual21() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1155,17 +968,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual22() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1205,17 +1010,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual23() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1255,17 +1052,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual24() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1305,17 +1094,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual25() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1355,17 +1136,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual26() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1405,17 +1178,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual27() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1455,17 +1220,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is different.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsDifferent_thenReturnNotEqual28() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1505,17 +1262,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is {@code null}.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsNull_thenReturnNotEqual() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1539,17 +1288,9 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test {@link InstrumentResolution#equals(Object)}.
-   * <ul>
-   *   <li>When other is wrong type.</li>
-   *   <li>Then return not equal.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link InstrumentResolution#equals(Object)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean InstrumentResolution.equals(Object)", "int InstrumentResolution.hashCode()"})
   public void testEquals_whenOtherIsWrongType_thenReturnNotEqual() {
     // Arrange
     InstrumentResolution instrumentResolution = new InstrumentResolution();
@@ -1573,8 +1314,6 @@ public class InstrumentResolutionDiffblueTest {
   }
 
   /**
-   * Test getters and setters.
-   * <p>
    * Methods under test:
    * <ul>
    *   <li>default or parameterless constructor of {@link InstrumentResolution}
@@ -1610,23 +1349,6 @@ public class InstrumentResolutionDiffblueTest {
    * </ul>
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void InstrumentResolution.<init>()", "String InstrumentResolution.getBbgCompTicker()",
-      "MarketSector InstrumentResolution.getBbgMarketSector()", "String InstrumentResolution.getCountryCode()",
-      "String InstrumentResolution.getFigi()", "String InstrumentResolution.getFigiTicker()",
-      "String InstrumentResolution.getFullBbgCompTicker()", "InstrumentKind InstrumentResolution.getInstrumentClass()",
-      "String InstrumentResolution.getIsin()", "String InstrumentResolution.getLocalCode()",
-      "String InstrumentResolution.getOperationalMic()", "String InstrumentResolution.getResolutionId()",
-      "String InstrumentResolution.getReturnMainListing()", "String InstrumentResolution.getUniqueId()",
-      "String InstrumentResolution.getUsCode()", "void InstrumentResolution.setBbgCompTicker(String)",
-      "void InstrumentResolution.setBbgMarketSector(MarketSector)", "void InstrumentResolution.setCountryCode(String)",
-      "void InstrumentResolution.setFigi(String)", "void InstrumentResolution.setFigiTicker(String)",
-      "void InstrumentResolution.setFullBbgCompTicker(String)",
-      "void InstrumentResolution.setInstrumentClass(InstrumentKind)", "void InstrumentResolution.setIsin(String)",
-      "void InstrumentResolution.setLocalCode(String)", "void InstrumentResolution.setOperationalMic(String)",
-      "void InstrumentResolution.setResolutionId(String)", "void InstrumentResolution.setReturnMainListing(String)",
-      "void InstrumentResolution.setUniqueId(String)", "void InstrumentResolution.setUsCode(String)",
-      "String InstrumentResolution.toString()"})
   public void testGettersAndSetters() {
     // Arrange and Act
     InstrumentResolution actualInstrumentResolution = new InstrumentResolution();
@@ -1659,7 +1381,7 @@ public class InstrumentResolutionDiffblueTest {
     String actualReturnMainListing = actualInstrumentResolution.getReturnMainListing();
     String actualUniqueId = actualInstrumentResolution.getUniqueId();
 
-    // Assert
+    // Assert that nothing has changed
     assertEquals("42", actualResolutionId);
     assertEquals("42", actualUniqueId);
     assertEquals("Bbg Comp Ticker", actualBbgCompTicker);

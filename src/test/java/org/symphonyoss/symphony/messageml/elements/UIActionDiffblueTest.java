@@ -4,52 +4,19 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import java.util.Map;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
 public class UIActionDiffblueTest {
   /**
-   * Test {@link UIAction#UIAction(Element, FormatEnum)}.
-   * <p>
-   * Method under test: {@link UIAction#UIAction(Element, FormatEnum)}
+   * Method under test:
+   * {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void UIAction.<init>(Element, FormatEnum)"})
-  public void testNewUIAction() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(mock(Element.class)));
-
-    // Act
-    UIAction actualUiAction = new UIAction(parent, FormatEnum.MESSAGEML);
-
-    // Assert
-    Map<String, String> attributes = actualUiAction.getAttributes();
-    assertEquals(1, attributes.size());
-    assertEquals("click", attributes.get("trigger"));
-    assertEquals(0, actualUiAction.size());
-    assertEquals(FormatEnum.MESSAGEML, actualUiAction.getFormat());
-    assertTrue(actualUiAction.getChildren().isEmpty());
-    assertEquals(Div.MESSAGEML_TAG, actualUiAction.getPresentationMLTag());
-    assertEquals(UIAction.MESSAGEML_TAG, actualUiAction.getMessageMLTag());
-    assertSame(parent, actualUiAction.getParent());
-  }
-
-  /**
-   * Test {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void UIAction.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
     // Arrange
     UIAction uiAction = new UIAction(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -63,13 +30,10 @@ public class UIActionDiffblueTest {
   }
 
   /**
-   * Test {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void UIAction.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML2() {
     // Arrange
     UIAction uiAction = new UIAction(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -84,13 +48,10 @@ public class UIActionDiffblueTest {
   }
 
   /**
-   * Test {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void UIAction.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML3() {
     // Arrange
     UIAction uiAction = new UIAction(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -105,13 +66,10 @@ public class UIActionDiffblueTest {
   }
 
   /**
-   * Test {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void UIAction.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML4() {
     // Arrange
     UIAction uiAction = new UIAction(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -126,13 +84,10 @@ public class UIActionDiffblueTest {
   }
 
   /**
-   * Test {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void UIAction.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML5() {
     // Arrange
     UIAction uiAction = new UIAction(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -147,13 +102,10 @@ public class UIActionDiffblueTest {
   }
 
   /**
-   * Test {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void UIAction.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML6() {
     // Arrange
     Bold child = new Bold(new BulletList(mock(Element.class)));
@@ -171,13 +123,10 @@ public class UIActionDiffblueTest {
   }
 
   /**
-   * Test {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void UIAction.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML7() {
     // Arrange
     UIAction uiAction = new UIAction(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -192,13 +141,10 @@ public class UIActionDiffblueTest {
   }
 
   /**
-   * Test {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void UIAction.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML8() {
     // Arrange
     UIAction uiAction = new UIAction(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -214,13 +160,10 @@ public class UIActionDiffblueTest {
   }
 
   /**
-   * Test {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void UIAction.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML9() {
     // Arrange
     UIAction uiAction = new UIAction(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -236,13 +179,10 @@ public class UIActionDiffblueTest {
   }
 
   /**
-   * Test {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link UIAction#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void UIAction.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML10() {
     // Arrange
     UIAction uiAction = new UIAction(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
@@ -258,16 +198,35 @@ public class UIActionDiffblueTest {
   }
 
   /**
-   * Test {@link UIAction#getPresentationMLTag()}.
-   * <p>
    * Method under test: {@link UIAction#getPresentationMLTag()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String UIAction.getPresentationMLTag()"})
   public void testGetPresentationMLTag() {
     // Arrange, Act and Assert
     assertEquals(Div.MESSAGEML_TAG,
         (new UIAction(new Bold(new BulletList(null)), FormatEnum.MESSAGEML)).getPresentationMLTag());
+  }
+
+  /**
+   * Method under test: {@link UIAction#UIAction(Element, FormatEnum)}
+   */
+  @Test
+  public void testNewUIAction() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+
+    // Act
+    UIAction actualUiAction = new UIAction(parent, FormatEnum.MESSAGEML);
+
+    // Assert
+    Map<String, String> attributes = actualUiAction.getAttributes();
+    assertEquals(1, attributes.size());
+    assertEquals("click", attributes.get("trigger"));
+    assertEquals(0, actualUiAction.size());
+    assertEquals(FormatEnum.MESSAGEML, actualUiAction.getFormat());
+    assertTrue(actualUiAction.getChildren().isEmpty());
+    assertEquals(Div.MESSAGEML_TAG, actualUiAction.getPresentationMLTag());
+    assertEquals(UIAction.MESSAGEML_TAG, actualUiAction.getMessageMLTag());
+    assertSame(parent, actualUiAction.getParent());
   }
 }

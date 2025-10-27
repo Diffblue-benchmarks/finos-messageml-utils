@@ -1,20 +1,37 @@
 package org.symphonyoss.symphony.messageml.markdown.nodes.form;
 
 import static org.junit.Assert.assertNull;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import org.commonmark.node.BlockQuote;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class RoomSelectorNodeDiffblueTest {
   /**
-   * Test {@link RoomSelectorNode#RoomSelectorNode(String, String, String)}.
-   * <p>
-   * Method under test: {@link RoomSelectorNode#RoomSelectorNode(String, String, String)}
+   * Method under test: {@link RoomSelectorNode#getText()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void RoomSelectorNode.<init>(String, String, String)"})
+  public void testGetText() {
+    // Arrange
+    BlockQuote child = mock(BlockQuote.class);
+    doNothing().when(child).unlink();
+
+    RoomSelectorNode roomSelectorNode = new RoomSelectorNode("Placeholder", "Label", "127.0.0.1");
+    roomSelectorNode.appendChild(child);
+
+    // Act
+    roomSelectorNode.getText();
+
+    // Assert
+    verify(child).unlink();
+  }
+
+  /**
+   * Method under test:
+   * {@link RoomSelectorNode#RoomSelectorNode(String, String, String)}
+   */
+  @Test
   public void testNewRoomSelectorNode() {
     // Arrange and Act
     RoomSelectorNode actualRoomSelectorNode = new RoomSelectorNode("Placeholder", "Label", "127.0.0.1");

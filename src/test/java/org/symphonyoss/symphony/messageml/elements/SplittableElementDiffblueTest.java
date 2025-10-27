@@ -8,8 +8,6 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,11 +17,9 @@ import javax.imageio.metadata.IIOMetadataNode;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.mockito.Mockito;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.MessageMLParser;
-import org.symphonyoss.symphony.messageml.elements.DialogChild.Title;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
@@ -32,13 +28,10 @@ import org.w3c.dom.Node;
 
 public class SplittableElementDiffblueTest {
   /**
-   * Test {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String SplittableElement.splittableAsPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testSplittableAsPresentationML() {
     // Arrange
     Select select = new Select(new Bold(new BulletList(mock(Element.class))));
@@ -52,13 +45,10 @@ public class SplittableElementDiffblueTest {
   }
 
   /**
-   * Test {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String SplittableElement.splittableAsPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testSplittableAsPresentationML2() {
     // Arrange
     Select select = new Select(new Bold(new BulletList(mock(Element.class))));
@@ -74,13 +64,10 @@ public class SplittableElementDiffblueTest {
   }
 
   /**
-   * Test {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String SplittableElement.splittableAsPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testSplittableAsPresentationML3() {
     // Arrange
     Select select = new Select(new Bold(new BulletList(mock(Element.class))));
@@ -96,13 +83,10 @@ public class SplittableElementDiffblueTest {
   }
 
   /**
-   * Test {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link SplittableElement#splittableAsPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String SplittableElement.splittableAsPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testSplittableAsPresentationML4() {
     // Arrange
     Select select = new Select(new Bold(new BulletList(mock(Element.class))));
@@ -118,13 +102,9 @@ public class SplittableElementDiffblueTest {
   }
 
   /**
-   * Test {@link SplittableElement#splittableRemove()}.
-   * <p>
    * Method under test: {@link SplittableElement#splittableRemove()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Set SplittableElement.splittableRemove()"})
   public void testSplittableRemove() {
     // Arrange and Act
     Set<String> actualSplittableRemoveResult = (new Select(new Bold(new BulletList(mock(Element.class)))))
@@ -132,23 +112,15 @@ public class SplittableElementDiffblueTest {
 
     // Assert
     assertEquals(2, actualSplittableRemoveResult.size());
-    assertTrue(actualSplittableRemoveResult.contains(Title.MESSAGEML_TAG));
+    assertTrue(actualSplittableRemoveResult.contains(DialogChild.Title.MESSAGEML_TAG));
     assertTrue(actualSplittableRemoveResult.contains(LabelableElement.LABEL));
   }
 
   /**
-   * Test {@link SplittableElement#isSplittableNodeComponent(Node)}.
-   * <ul>
-   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with {@code foo}.</li>
-   *   <li>Then return {@code false}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SplittableElement#isSplittableNodeComponent(Node)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean SplittableElement.isSplittableNodeComponent(Node)"})
-  public void testIsSplittableNodeComponent_whenIIOMetadataNodeWithFoo_thenReturnFalse() {
+  public void testIsSplittableNodeComponent() {
     // Arrange
     Select select = new Select(new Bold(new BulletList(mock(Element.class))));
 
@@ -157,18 +129,10 @@ public class SplittableElementDiffblueTest {
   }
 
   /**
-   * Test {@link SplittableElement#isSplittableNodeComponent(Node)}.
-   * <ul>
-   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with {@link LabelableElement#LABEL}.</li>
-   *   <li>Then return {@code true}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SplittableElement#isSplittableNodeComponent(Node)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean SplittableElement.isSplittableNodeComponent(Node)"})
-  public void testIsSplittableNodeComponent_whenIIOMetadataNodeWithLabel_thenReturnTrue() {
+  public void testIsSplittableNodeComponent2() {
     // Arrange
     Select select = new Select(new Bold(new BulletList(mock(Element.class))));
 
@@ -177,17 +141,10 @@ public class SplittableElementDiffblueTest {
   }
 
   /**
-   * Test {@link SplittableElement#isSplittableNodeComponent(Node)}.
-   * <ul>
-   *   <li>When {@link IIOMetadataNode#IIOMetadataNode(String)} with {@link Span#MESSAGEML_TAG}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link SplittableElement#isSplittableNodeComponent(Node)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean SplittableElement.isSplittableNodeComponent(Node)"})
-  public void testIsSplittableNodeComponent_whenIIOMetadataNodeWithMessageml_tag() {
+  public void testIsSplittableNodeComponent3() {
     // Arrange
     Select select = new Select(new Bold(new BulletList(mock(Element.class))));
 
@@ -196,26 +153,18 @@ public class SplittableElementDiffblueTest {
   }
 
   /**
-   * Test {@link SplittableElement#isSplittable()}.
-   * <p>
    * Method under test: {@link SplittableElement#isSplittable()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"boolean SplittableElement.isSplittable()"})
   public void testIsSplittable() {
     // Arrange, Act and Assert
     assertFalse((new Select(new Bold(new BulletList(mock(Element.class))))).isSplittable());
   }
 
   /**
-   * Test {@link SplittableElement#getElementId()}.
-   * <p>
    * Method under test: {@link SplittableElement#getElementId()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"String SplittableElement.getElementId()"})
   public void testGetElementId() {
     // Arrange, Act and Assert
     assertEquals(DatePicker.MESSAGEML_TAG,
@@ -223,203 +172,11 @@ public class SplittableElementDiffblueTest {
   }
 
   /**
-   * Test {@link SplittableElement#fillAttributes(MessageMLParser, Node)} with {@code parser}, {@code item}.
-   * <p>
-   * Method under test: {@link SplittableElement#fillAttributes(MessageMLParser, Node)}
+   * Method under test:
+   * {@link SplittableElement#fillAttributes(MessageMLParser, Node)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SplittableElement.fillAttributes(MessageMLParser, Node)"})
-  public void testFillAttributesWithParserItem() throws InvalidInputException, DOMException {
-    // Arrange
-    Select select = new Select(new Bold(new BulletList(null)));
-    MessageMLParser parser = mock(MessageMLParser.class);
-    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> emptyResult = Optional.empty();
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
-            parser.getAllSplittableAttributes(Mockito.<String>any()))
-        .thenReturn(emptyResult);
-    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> ofResult = Optional.of(new HashMap<>());
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
-            parser.getAllSplittableValues(Mockito.<String>any()))
-        .thenReturn(ofResult);
-    Node item = mock(Node.class);
-    when(item.getTextContent()).thenReturn("Not all who wander are lost");
-
-    // Act
-    select.fillAttributes(parser, item);
-
-    // Assert that nothing has changed
-    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
-    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
-    verify(item).getTextContent();
-    assertTrue(select.getAttributes().isEmpty());
-  }
-
-  /**
-   * Test {@link SplittableElement#fillAttributes(MessageMLParser, Node)} with {@code parser}, {@code item}.
-   * <p>
-   * Method under test: {@link SplittableElement#fillAttributes(MessageMLParser, Node)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SplittableElement.fillAttributes(MessageMLParser, Node)"})
-  public void testFillAttributesWithParserItem2() throws InvalidInputException, DOMException {
-    // Arrange
-    Select select = new Select(new Bold(new BulletList(null)));
-    MessageMLParser parser = mock(MessageMLParser.class);
-    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> ofResult = Optional.of(new HashMap<>());
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
-            parser.getAllSplittableAttributes(Mockito.<String>any()))
-        .thenReturn(ofResult);
-    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> emptyResult = Optional.empty();
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
-            parser.getAllSplittableValues(Mockito.<String>any()))
-        .thenReturn(emptyResult);
-    Node item = mock(Node.class);
-    when(item.getTextContent()).thenReturn("Not all who wander are lost");
-
-    // Act
-    select.fillAttributes(parser, item);
-
-    // Assert that nothing has changed
-    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
-    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
-    verify(item).getTextContent();
-    assertTrue(select.getAttributes().isEmpty());
-  }
-
-  /**
-   * Test {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)} with {@code parser}, {@code item}, {@code attributes}.
-   * <p>
-   * Method under test: {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SplittableElement.fillAttributes(MessageMLParser, Node, Map)"})
-  public void testFillAttributesWithParserItemAttributes() throws InvalidInputException, DOMException {
-    // Arrange
-    Select select = new Select(new Bold(new BulletList(null)));
-    MessageMLParser parser = mock(MessageMLParser.class);
-    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> emptyResult = Optional.empty();
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
-            parser.getAllSplittableAttributes(Mockito.<String>any()))
-        .thenReturn(emptyResult);
-    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> ofResult = Optional.of(new HashMap<>());
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
-            parser.getAllSplittableValues(Mockito.<String>any()))
-        .thenReturn(ofResult);
-    Node item = mock(Node.class);
-    when(item.getTextContent()).thenReturn("Not all who wander are lost");
-    HashMap<String, String> attributes = new HashMap<>();
-
-    // Act
-    select.fillAttributes(parser, item, attributes);
-
-    // Assert that nothing has changed
-    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
-    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
-    verify(item).getTextContent();
-    assertTrue(attributes.isEmpty());
-  }
-
-  /**
-   * Test {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)} with {@code parser}, {@code item}, {@code attributes}.
-   * <p>
-   * Method under test: {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SplittableElement.fillAttributes(MessageMLParser, Node, Map)"})
-  public void testFillAttributesWithParserItemAttributes2() throws InvalidInputException, DOMException {
-    // Arrange
-    Select select = new Select(new Bold(new BulletList(null)));
-    MessageMLParser parser = mock(MessageMLParser.class);
-    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> ofResult = Optional.of(new HashMap<>());
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
-            parser.getAllSplittableAttributes(Mockito.<String>any()))
-        .thenReturn(ofResult);
-    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> emptyResult = Optional.empty();
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
-            parser.getAllSplittableValues(Mockito.<String>any()))
-        .thenReturn(emptyResult);
-    Node item = mock(Node.class);
-    when(item.getTextContent()).thenReturn("Not all who wander are lost");
-    HashMap<String, String> attributes = new HashMap<>();
-
-    // Act
-    select.fillAttributes(parser, item, attributes);
-
-    // Assert that nothing has changed
-    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
-    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
-    verify(item).getTextContent();
-    assertTrue(attributes.isEmpty());
-  }
-
-  /**
-   * Test {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)} with {@code parser}, {@code item}, {@code attributes}.
-   * <ul>
-   *   <li>Then {@link HashMap#HashMap()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SplittableElement.fillAttributes(MessageMLParser, Node, Map)"})
-  public void testFillAttributesWithParserItemAttributes_thenHashMap() throws InvalidInputException, DOMException {
-    // Arrange
-    Select select = new Select(new Bold(new BulletList(null)));
-
-    HashMap<Class<? extends SplittableElement>, Map<String, String>> resultClassMapMap = new HashMap<>();
-    Class<SplittableElement> forNameResult = SplittableElement.class;
-    HashMap<String, String> stringStringMap = new HashMap<>();
-    resultClassMapMap.put(forNameResult, stringStringMap);
-    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> ofResult = Optional.of(resultClassMapMap);
-    MessageMLParser parser = mock(MessageMLParser.class);
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
-            parser.getAllSplittableAttributes(Mockito.<String>any()))
-        .thenReturn(ofResult);
-    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> ofResult2 = Optional.of(new HashMap<>());
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
-            parser.getAllSplittableValues(Mockito.<String>any()))
-        .thenReturn(ofResult2);
-    Node item = mock(Node.class);
-    when(item.getTextContent()).thenReturn("Not all who wander are lost");
-    HashMap<String, String> attributes = new HashMap<>();
-
-    // Act
-    select.fillAttributes(parser, item, attributes);
-
-    // Assert that nothing has changed
-    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
-    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
-    verify(item).getTextContent();
-    assertEquals(stringStringMap, attributes);
-  }
-
-  /**
-   * Test {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)} with {@code parser}, {@code item}, {@code attributes}.
-   * <ul>
-   *   <li>Then {@link HashMap#HashMap()} Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SplittableElement.fillAttributes(MessageMLParser, Node, Map)"})
-  public void testFillAttributesWithParserItemAttributes_thenHashMapEmpty() throws InvalidInputException, DOMException {
+  public void testFillAttributes() throws InvalidInputException, DOMException {
     // Arrange
     Select select = new Select(new Bold(new BulletList(null)));
     MessageMLParser parser = mock(MessageMLParser.class);
@@ -435,77 +192,23 @@ public class SplittableElementDiffblueTest {
         .thenReturn(ofResult2);
     Node item = mock(Node.class);
     when(item.getTextContent()).thenReturn("Not all who wander are lost");
-    HashMap<String, String> attributes = new HashMap<>();
 
     // Act
-    select.fillAttributes(parser, item, attributes);
-
-    // Assert that nothing has changed
-    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
-    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
-    verify(item).getTextContent();
-    assertTrue(attributes.isEmpty());
-  }
-
-  /**
-   * Test {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)} with {@code parser}, {@code item}, {@code attributes}.
-   * <ul>
-   *   <li>Then {@link HashMap#HashMap()} size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SplittableElement.fillAttributes(MessageMLParser, Node, Map)"})
-  public void testFillAttributesWithParserItemAttributes_thenHashMapSizeIsOne()
-      throws InvalidInputException, DOMException {
-    // Arrange
-    Select select = new Select(new Bold(new BulletList(null)));
-
-    HashMap<Class<? extends SplittableElement>, Pair<String, String>> resultClassPairMap = new HashMap<>();
-    Class<SplittableElement> forNameResult = SplittableElement.class;
-    ImmutablePair<String, String> nullPairResult = ImmutablePair.nullPair();
-    resultClassPairMap.put(forNameResult, nullPairResult);
-    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> ofResult = Optional.of(resultClassPairMap);
-    MessageMLParser parser = mock(MessageMLParser.class);
-    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> ofResult2 = Optional.of(new HashMap<>());
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
-            parser.getAllSplittableAttributes(Mockito.<String>any()))
-        .thenReturn(ofResult2);
-    Mockito
-        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
-            parser.getAllSplittableValues(Mockito.<String>any()))
-        .thenReturn(ofResult);
-    Node item = mock(Node.class);
-    when(item.getTextContent()).thenReturn("Not all who wander are lost");
-    HashMap<String, String> attributes = new HashMap<>();
-
-    // Act
-    select.fillAttributes(parser, item, attributes);
+    select.fillAttributes(parser, item);
 
     // Assert
     verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
     verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
     verify(item).getTextContent();
-    assertEquals(1, attributes.size());
-    assertNull(attributes.get(null));
+    assertTrue(select.getAttributes().isEmpty());
   }
 
   /**
-   * Test {@link SplittableElement#fillAttributes(MessageMLParser, Node)} with {@code parser}, {@code item}.
-   * <ul>
-   *   <li>Given {@link HashMap#HashMap()} {@link SplittableElement} is {@link HashMap#HashMap()}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SplittableElement#fillAttributes(MessageMLParser, Node)}
+   * Method under test:
+   * {@link SplittableElement#fillAttributes(MessageMLParser, Node)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SplittableElement.fillAttributes(MessageMLParser, Node)"})
-  public void testFillAttributesWithParserItem_givenHashMapSplittableElementIsHashMap()
-      throws InvalidInputException, DOMException {
+  public void testFillAttributes2() throws InvalidInputException, DOMException {
     // Arrange
     Select select = new Select(new Bold(new BulletList(null)));
 
@@ -529,7 +232,7 @@ public class SplittableElementDiffblueTest {
     // Act
     select.fillAttributes(parser, item);
 
-    // Assert that nothing has changed
+    // Assert
     verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
     verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
     verify(item).getTextContent();
@@ -537,38 +240,31 @@ public class SplittableElementDiffblueTest {
   }
 
   /**
-   * Test {@link SplittableElement#fillAttributes(MessageMLParser, Node)} with {@code parser}, {@code item}.
-   * <ul>
-   *   <li>Then {@link Select#Select(Element)} with parent is {@link Bold#Bold(Element)} Attributes Empty.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SplittableElement#fillAttributes(MessageMLParser, Node)}
+   * Method under test:
+   * {@link SplittableElement#fillAttributes(MessageMLParser, Node)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SplittableElement.fillAttributes(MessageMLParser, Node)"})
-  public void testFillAttributesWithParserItem_thenSelectWithParentIsBoldAttributesEmpty()
-      throws InvalidInputException, DOMException {
+  public void testFillAttributes3() throws InvalidInputException, DOMException {
     // Arrange
     Select select = new Select(new Bold(new BulletList(null)));
     MessageMLParser parser = mock(MessageMLParser.class);
-    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> ofResult = Optional.of(new HashMap<>());
+    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> emptyResult = Optional.empty();
     Mockito
         .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
             parser.getAllSplittableAttributes(Mockito.<String>any()))
-        .thenReturn(ofResult);
-    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> ofResult2 = Optional.of(new HashMap<>());
+        .thenReturn(emptyResult);
+    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> ofResult = Optional.of(new HashMap<>());
     Mockito
         .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
             parser.getAllSplittableValues(Mockito.<String>any()))
-        .thenReturn(ofResult2);
+        .thenReturn(ofResult);
     Node item = mock(Node.class);
     when(item.getTextContent()).thenReturn("Not all who wander are lost");
 
     // Act
     select.fillAttributes(parser, item);
 
-    // Assert that nothing has changed
+    // Assert
     verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
     verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
     verify(item).getTextContent();
@@ -576,18 +272,11 @@ public class SplittableElementDiffblueTest {
   }
 
   /**
-   * Test {@link SplittableElement#fillAttributes(MessageMLParser, Node)} with {@code parser}, {@code item}.
-   * <ul>
-   *   <li>Then {@link Select#Select(Element)} with parent is {@link Bold#Bold(Element)} Attributes size is one.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link SplittableElement#fillAttributes(MessageMLParser, Node)}
+   * Method under test:
+   * {@link SplittableElement#fillAttributes(MessageMLParser, Node)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void SplittableElement.fillAttributes(MessageMLParser, Node)"})
-  public void testFillAttributesWithParserItem_thenSelectWithParentIsBoldAttributesSizeIsOne()
-      throws InvalidInputException, DOMException {
+  public void testFillAttributes4() throws InvalidInputException, DOMException {
     // Arrange
     Select select = new Select(new Bold(new BulletList(null)));
 
@@ -619,5 +308,212 @@ public class SplittableElementDiffblueTest {
     Map<String, String> attributes = select.getAttributes();
     assertEquals(1, attributes.size());
     assertNull(attributes.get(null));
+  }
+
+  /**
+   * Method under test:
+   * {@link SplittableElement#fillAttributes(MessageMLParser, Node)}
+   */
+  @Test
+  public void testFillAttributes5() throws InvalidInputException, DOMException {
+    // Arrange
+    Select select = new Select(new Bold(new BulletList(null)));
+    MessageMLParser parser = mock(MessageMLParser.class);
+    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> ofResult = Optional.of(new HashMap<>());
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
+            parser.getAllSplittableAttributes(Mockito.<String>any()))
+        .thenReturn(ofResult);
+    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> emptyResult = Optional.empty();
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
+            parser.getAllSplittableValues(Mockito.<String>any()))
+        .thenReturn(emptyResult);
+    Node item = mock(Node.class);
+    when(item.getTextContent()).thenReturn("Not all who wander are lost");
+
+    // Act
+    select.fillAttributes(parser, item);
+
+    // Assert
+    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
+    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
+    verify(item).getTextContent();
+    assertTrue(select.getAttributes().isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)}
+   */
+  @Test
+  public void testFillAttributes6() throws InvalidInputException, DOMException {
+    // Arrange
+    Select select = new Select(new Bold(new BulletList(null)));
+    MessageMLParser parser = mock(MessageMLParser.class);
+    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> ofResult = Optional.of(new HashMap<>());
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
+            parser.getAllSplittableAttributes(Mockito.<String>any()))
+        .thenReturn(ofResult);
+    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> ofResult2 = Optional.of(new HashMap<>());
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
+            parser.getAllSplittableValues(Mockito.<String>any()))
+        .thenReturn(ofResult2);
+    Node item = mock(Node.class);
+    when(item.getTextContent()).thenReturn("Not all who wander are lost");
+    HashMap<String, String> attributes = new HashMap<>();
+
+    // Act
+    select.fillAttributes(parser, item, attributes);
+
+    // Assert
+    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
+    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
+    verify(item).getTextContent();
+    assertTrue(attributes.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)}
+   */
+  @Test
+  public void testFillAttributes7() throws InvalidInputException, DOMException {
+    // Arrange
+    Select select = new Select(new Bold(new BulletList(null)));
+
+    HashMap<Class<? extends SplittableElement>, Map<String, String>> resultClassMapMap = new HashMap<>();
+    Class<SplittableElement> forNameResult = SplittableElement.class;
+    resultClassMapMap.put(forNameResult, new HashMap<>());
+    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> ofResult = Optional.of(resultClassMapMap);
+    MessageMLParser parser = mock(MessageMLParser.class);
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
+            parser.getAllSplittableAttributes(Mockito.<String>any()))
+        .thenReturn(ofResult);
+    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> ofResult2 = Optional.of(new HashMap<>());
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
+            parser.getAllSplittableValues(Mockito.<String>any()))
+        .thenReturn(ofResult2);
+    Node item = mock(Node.class);
+    when(item.getTextContent()).thenReturn("Not all who wander are lost");
+    HashMap<String, String> attributes = new HashMap<>();
+
+    // Act
+    select.fillAttributes(parser, item, attributes);
+
+    // Assert
+    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
+    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
+    verify(item).getTextContent();
+    assertTrue(attributes.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)}
+   */
+  @Test
+  public void testFillAttributes8() throws InvalidInputException, DOMException {
+    // Arrange
+    Select select = new Select(new Bold(new BulletList(null)));
+    MessageMLParser parser = mock(MessageMLParser.class);
+    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> emptyResult = Optional.empty();
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
+            parser.getAllSplittableAttributes(Mockito.<String>any()))
+        .thenReturn(emptyResult);
+    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> ofResult = Optional.of(new HashMap<>());
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
+            parser.getAllSplittableValues(Mockito.<String>any()))
+        .thenReturn(ofResult);
+    Node item = mock(Node.class);
+    when(item.getTextContent()).thenReturn("Not all who wander are lost");
+    HashMap<String, String> attributes = new HashMap<>();
+
+    // Act
+    select.fillAttributes(parser, item, attributes);
+
+    // Assert
+    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
+    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
+    verify(item).getTextContent();
+    assertTrue(attributes.isEmpty());
+  }
+
+  /**
+   * Method under test:
+   * {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)}
+   */
+  @Test
+  public void testFillAttributes9() throws InvalidInputException, DOMException {
+    // Arrange
+    Select select = new Select(new Bold(new BulletList(null)));
+
+    HashMap<Class<? extends SplittableElement>, Pair<String, String>> resultClassPairMap = new HashMap<>();
+    Class<SplittableElement> forNameResult = SplittableElement.class;
+    ImmutablePair<String, String> nullPairResult = ImmutablePair.nullPair();
+    resultClassPairMap.put(forNameResult, nullPairResult);
+    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> ofResult = Optional.of(resultClassPairMap);
+    MessageMLParser parser = mock(MessageMLParser.class);
+    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> ofResult2 = Optional.of(new HashMap<>());
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
+            parser.getAllSplittableAttributes(Mockito.<String>any()))
+        .thenReturn(ofResult2);
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
+            parser.getAllSplittableValues(Mockito.<String>any()))
+        .thenReturn(ofResult);
+    Node item = mock(Node.class);
+    when(item.getTextContent()).thenReturn("Not all who wander are lost");
+    HashMap<String, String> attributes = new HashMap<>();
+
+    // Act
+    select.fillAttributes(parser, item, attributes);
+
+    // Assert
+    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
+    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
+    verify(item).getTextContent();
+    assertEquals(1, attributes.size());
+    assertNull(attributes.get(null));
+  }
+
+  /**
+   * Method under test:
+   * {@link SplittableElement#fillAttributes(MessageMLParser, Node, Map)}
+   */
+  @Test
+  public void testFillAttributes10() throws InvalidInputException, DOMException {
+    // Arrange
+    Select select = new Select(new Bold(new BulletList(null)));
+    MessageMLParser parser = mock(MessageMLParser.class);
+    Optional<Map<Class<? extends SplittableElement>, Map<String, String>>> ofResult = Optional.of(new HashMap<>());
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Map<String, String>>>>when(
+            parser.getAllSplittableAttributes(Mockito.<String>any()))
+        .thenReturn(ofResult);
+    Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>> emptyResult = Optional.empty();
+    Mockito
+        .<Optional<Map<Class<? extends SplittableElement>, Pair<String, String>>>>when(
+            parser.getAllSplittableValues(Mockito.<String>any()))
+        .thenReturn(emptyResult);
+    Node item = mock(Node.class);
+    when(item.getTextContent()).thenReturn("Not all who wander are lost");
+    HashMap<String, String> attributes = new HashMap<>();
+
+    // Act
+    select.fillAttributes(parser, item, attributes);
+
+    // Assert
+    verify(parser).getAllSplittableAttributes(eq("Not all who wander are lost"));
+    verify(parser).getAllSplittableValues(eq("Not all who wander are lost"));
+    verify(item).getTextContent();
+    assertTrue(attributes.isEmpty());
   }
 }

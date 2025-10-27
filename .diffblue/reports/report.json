@@ -3,19 +3,19 @@
     "reportVersion" : "2.6"
   },
   "run" : {
-    "version" : "2025.02.02-08b2a5a-licensed",
-    "creationTimestamp" : "2025-10-21T13:39:32.401051Z",
+    "version" : "2024.10.01-2ee2e3d-licensed",
+    "creationTimestamp" : "2025-10-27T14:03:15.137548Z",
     "command" : "dcover create --coverage-reports --upload http://localhost:8080 --project-name finos-messageml-utils --name with-diffblue-tests",
-    "totalTime" : 2874.765,
-    "environmentDetectionTime" : 3.147,
-    "indexingTime" : 0.315,
-    "entryPointsTime" : 3.129,
-    "generationTime" : 2722.049,
-    "timeToFirstTest" : 49.902,
-    "timeToLastTest" : 2821.144,
-    "indexQueryTime" : 10.435,
-    "verificationTime" : 74.835,
-    "validationTime" : 36.339
+    "totalTime" : 2770.236,
+    "environmentDetectionTime" : 2.913,
+    "indexingTime" : 0.232,
+    "entryPointsTime" : 2.899,
+    "generationTime" : 2593.77,
+    "timeToFirstTest" : 55.035,
+    "timeToLastTest" : 2716.338,
+    "indexQueryTime" : 10.449,
+    "verificationTime" : 93.668,
+    "validationTime" : 36.235
   },
   "codes" : {
     "F009" : "Internal error",
@@ -26,7 +26,6 @@
     "R013" : "No inputs found that don't throw a trivial exception",
     "R015" : "Method may be nondeterministic",
     "R024" : "Analysis service shutdown unexpectedly",
-    "R034" : "Diffblue Cover can't complete test",
     "R081" : "Exception in arrange section",
     "R083" : "Can't find a suitable constructor",
     "T000" : "Method eligible for test creation",
@@ -48,9 +47,9 @@
   "summary" : {
     "classesCount" : 157,
     "methodsCount" : 1347,
-    "cumulativeDiffblueTestCount" : 1618,
+    "cumulativeDiffblueTestCount" : 1576,
     "cumulativeManualTestCount" : 1340,
-    "completeTestCount" : 1619,
+    "completeTestCount" : 1626,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
     "totalPhysicalLineCount" : 10694,
@@ -69,14 +68,13 @@
     },
     "perMethodOutcome" : {
       "F009" : 1,
-      "R000" : 818,
+      "R000" : 824,
       "R002" : 18,
-      "R004" : 24,
+      "R004" : 20,
       "R011" : 2,
-      "R013" : 93,
-      "R015" : 7,
+      "R013" : 96,
+      "R015" : 2,
       "R024" : 2,
-      "R034" : 1,
       "R081" : 12,
       "R083" : 11,
       "T003" : 161,
@@ -85,18 +83,19 @@
       "T007" : 3,
       "T010" : 47,
       "T012" : 96,
-      "W001" : 1
+      "W001" : 1,
+      "W002" : 1
     },
     "perTestOutcome" : {
-      "R000" : 1619
+      "R000" : 1626
     },
     "perTestValidation" : {
-      "V000" : 1618,
+      "V000" : 1625,
       "V003" : 1
     },
     "warnings" : {
       "W001" : 2,
-      "W002" : 4
+      "W002" : 1
     }
   },
   "classes" : {
@@ -139,15 +138,18 @@
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonException" : {
       "methodsCount" : 6,
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
         "T010" : 5
       },
       "perMethodOutcome" : {
-        "R034" : 1,
+        "R000" : 1,
         "T010" : 5
+      },
+      "perTestOutcome" : {
+        "R000" : 1
       }
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonParser" : {
@@ -357,7 +359,7 @@
     },
     "org.symphonyoss.symphony.messageml.MessageMLParser" : {
       "methodsCount" : 33,
-      "completeTestCount" : 21,
+      "completeTestCount" : 12,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 8,
@@ -373,7 +375,7 @@
         "T012" : 4
       },
       "perTestOutcome" : {
-        "R000" : 21
+        "R000" : 12
       }
     },
     "org.symphonyoss.symphony.messageml.MessageMLParser$SplittableData" : {
@@ -394,7 +396,7 @@
     },
     "org.symphonyoss.symphony.messageml.bi.BiContext" : {
       "methodsCount" : 14,
-      "completeTestCount" : 30,
+      "completeTestCount" : 31,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 7,
@@ -409,7 +411,7 @@
         "T012" : 3
       },
       "perTestOutcome" : {
-        "R000" : 30
+        "R000" : 31
       }
     },
     "org.symphonyoss.symphony.messageml.bi.BiEventType" : {
@@ -450,7 +452,7 @@
     },
     "org.symphonyoss.symphony.messageml.bi.BiItem" : {
       "methodsCount" : 10,
-      "completeTestCount" : 11,
+      "completeTestCount" : 14,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 5,
@@ -465,7 +467,7 @@
         "T012" : 1
       },
       "perTestOutcome" : {
-        "R000" : 11
+        "R000" : 14
       }
     },
     "org.symphonyoss.symphony.messageml.elements.Bold" : {
@@ -500,7 +502,7 @@
     },
     "org.symphonyoss.symphony.messageml.elements.Button" : {
       "methodsCount" : 12,
-      "completeTestCount" : 16,
+      "completeTestCount" : 15,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 6,
@@ -508,13 +510,17 @@
         "T012" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 5,
+        "R000" : 4,
         "R013" : 1,
         "T003" : 5,
-        "T012" : 1
+        "T012" : 1,
+        "W002" : 1
       },
       "perTestOutcome" : {
-        "R000" : 16
+        "R000" : 15
+      },
+      "warnings" : {
+        "W002" : 1
       }
     },
     "org.symphonyoss.symphony.messageml.elements.Card" : {
@@ -791,7 +797,7 @@
     },
     "org.symphonyoss.symphony.messageml.elements.Element" : {
       "methodsCount" : 43,
-      "completeTestCount" : 36,
+      "completeTestCount" : 41,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 66,
@@ -800,8 +806,8 @@
         "T012" : 15
       },
       "perMethodOutcome" : {
-        "R000" : 10,
-        "R004" : 4,
+        "R000" : 12,
+        "R004" : 2,
         "R013" : 3,
         "R024" : 2,
         "T003" : 6,
@@ -809,10 +815,7 @@
         "T012" : 15
       },
       "perTestOutcome" : {
-        "R000" : 36
-      },
-      "warnings" : {
-        "W002" : 2
+        "R000" : 41
       }
     },
     "org.symphonyoss.symphony.messageml.elements.Element$1" : {
@@ -828,7 +831,7 @@
     },
     "org.symphonyoss.symphony.messageml.elements.Emoji" : {
       "methodsCount" : 20,
-      "completeTestCount" : 27,
+      "completeTestCount" : 29,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 9,
@@ -842,10 +845,7 @@
         "T003" : 1
       },
       "perTestOutcome" : {
-        "R000" : 27
-      },
-      "warnings" : {
-        "W002" : 1
+        "R000" : 29
       }
     },
     "org.symphonyoss.symphony.messageml.elements.Entity" : {
@@ -1132,7 +1132,7 @@
     },
     "org.symphonyoss.symphony.messageml.elements.Link" : {
       "methodsCount" : 9,
-      "completeTestCount" : 20,
+      "completeTestCount" : 22,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 7,
@@ -1144,10 +1144,7 @@
         "R013" : 1
       },
       "perTestOutcome" : {
-        "R000" : 20
-      },
-      "warnings" : {
-        "W002" : 1
+        "R000" : 22
       }
     },
     "org.symphonyoss.symphony.messageml.elements.ListItem" : {
@@ -1167,7 +1164,7 @@
     },
     "org.symphonyoss.symphony.messageml.elements.Mention" : {
       "methodsCount" : 20,
-      "completeTestCount" : 23,
+      "completeTestCount" : 22,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 12,
@@ -1175,17 +1172,17 @@
         "T003" : 3
       },
       "perMethodOutcome" : {
-        "R000" : 15,
-        "R013" : 2,
+        "R000" : 14,
+        "R013" : 3,
         "T003" : 3
       },
       "perTestOutcome" : {
-        "R000" : 23
+        "R000" : 22
       }
     },
     "org.symphonyoss.symphony.messageml.elements.MessageML" : {
       "methodsCount" : 17,
-      "completeTestCount" : 26,
+      "completeTestCount" : 25,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 6,
@@ -1196,13 +1193,13 @@
         "T012" : 4
       },
       "perMethodOutcome" : {
-        "R000" : 9,
-        "R013" : 1,
+        "R000" : 8,
+        "R013" : 2,
         "T003" : 3,
         "T012" : 4
       },
       "perTestOutcome" : {
-        "R000" : 26
+        "R000" : 25
       }
     },
     "org.symphonyoss.symphony.messageml.elements.MinMaxLengthElement" : {
@@ -1599,7 +1596,7 @@
     },
     "org.symphonyoss.symphony.messageml.elements.Tag" : {
       "methodsCount" : 19,
-      "completeTestCount" : 25,
+      "completeTestCount" : 30,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 11,
@@ -1614,7 +1611,7 @@
         "T003" : 3
       },
       "perTestOutcome" : {
-        "R000" : 25
+        "R000" : 30
       }
     },
     "org.symphonyoss.symphony.messageml.elements.TextArea" : {
@@ -1640,7 +1637,7 @@
     },
     "org.symphonyoss.symphony.messageml.elements.TextField" : {
       "methodsCount" : 21,
-      "completeTestCount" : 21,
+      "completeTestCount" : 20,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 10,
@@ -1656,7 +1653,7 @@
         "T012" : 1
       },
       "perTestOutcome" : {
-        "R000" : 21
+        "R000" : 20
       }
     },
     "org.symphonyoss.symphony.messageml.elements.TextField$1" : {
@@ -1844,7 +1841,7 @@
     },
     "org.symphonyoss.symphony.messageml.markdown.MarkdownRenderer" : {
       "methodsCount" : 37,
-      "completeTestCount" : 139,
+      "completeTestCount" : 133,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 16,
@@ -1853,18 +1850,18 @@
         "T012" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 15,
-        "R004" : 2,
+        "R000" : 16,
+        "R013" : 1,
         "T003" : 19,
         "T012" : 1
       },
       "perTestOutcome" : {
-        "R000" : 139
+        "R000" : 133
       }
     },
     "org.symphonyoss.symphony.messageml.markdown.MarkdownRenderer$TrackingWriter" : {
       "methodsCount" : 5,
-      "completeTestCount" : 7,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 3,
@@ -1875,12 +1872,12 @@
         "R000" : 5
       },
       "perTestOutcome" : {
-        "R000" : 7
+        "R000" : 5
       }
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.EmojiNode" : {
       "methodsCount" : 9,
-      "completeTestCount" : 4,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 3,
@@ -1891,7 +1888,7 @@
         "R000" : 9
       },
       "perTestOutcome" : {
-        "R000" : 4
+        "R000" : 5
       }
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.KeywordNode" : {
@@ -2031,7 +2028,7 @@
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.DatePickerNode" : {
       "methodsCount" : 3,
-      "completeTestCount" : 1,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
@@ -2039,12 +2036,11 @@
         "T012" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 1,
-        "R015" : 1,
+        "R000" : 2,
         "T012" : 1
       },
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 2
       }
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.DateSelectorNode" : {
@@ -2126,18 +2122,17 @@
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.PersonSelectorNode" : {
       "methodsCount" : 2,
-      "completeTestCount" : 1,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 1,
-        "R015" : 1
+        "R000" : 2
       },
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 2
       }
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.PlaceholderLabelTooltipNode" : {
@@ -2172,18 +2167,17 @@
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.RoomSelectorNode" : {
       "methodsCount" : 2,
-      "completeTestCount" : 1,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 1,
-        "R015" : 1
+        "R000" : 2
       },
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 2
       }
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.SelectNode" : {
@@ -2236,34 +2230,32 @@
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.TimePickerNode" : {
       "methodsCount" : 2,
-      "completeTestCount" : 1,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 1,
-        "R015" : 1
+        "R000" : 2
       },
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 2
       }
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.TimezonePickerNode" : {
       "methodsCount" : 2,
-      "completeTestCount" : 1,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
         "T005" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 1,
-        "R015" : 1
+        "R000" : 2
       },
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 2
       }
     },
     "org.symphonyoss.symphony.messageml.util.AlignedBlock" : {
@@ -2345,7 +2337,7 @@
     },
     "org.symphonyoss.symphony.messageml.util.IndentedPrintStream" : {
       "methodsCount" : 69,
-      "completeTestCount" : 207,
+      "completeTestCount" : 205,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 55,
@@ -2359,7 +2351,7 @@
         "T003" : 2
       },
       "perTestOutcome" : {
-        "R000" : 207
+        "R000" : 205
       },
       "warnings" : {
         "W001" : 1
@@ -2516,7 +2508,7 @@
     },
     "org.symphonyoss.symphony.messageml.util.XmlPrintStream" : {
       "methodsCount" : 16,
-      "completeTestCount" : 72,
+      "completeTestCount" : 75,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 14,
@@ -2528,7 +2520,7 @@
         "T003" : 2
       },
       "perTestOutcome" : {
-        "R000" : 72
+        "R000" : 75
       }
     },
     "org.symphonyoss.symphony.messageml.util.instrument.resolver.Instrument" : {
@@ -2625,7 +2617,7 @@
     },
     "org.symphonyoss.symphony.messageml.util.instrument.resolver.ResolutionResult" : {
       "methodsCount" : 9,
-      "completeTestCount" : 7,
+      "completeTestCount" : 8,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
@@ -2640,12 +2632,12 @@
         "T007" : 1
       },
       "perTestOutcome" : {
-        "R000" : 7
+        "R000" : 8
       }
     },
     "org.symphonyoss.symphony.messageml.util.instrument.resolver.ResolutionResults" : {
       "methodsCount" : 7,
-      "completeTestCount" : 6,
+      "completeTestCount" : 7,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 2,
@@ -2660,7 +2652,7 @@
         "T007" : 1
       },
       "perTestOutcome" : {
-        "R000" : 6
+        "R000" : 7
       }
     },
     "org.symphonyoss.symphony.messageml.util.pojo.DateInterval" : {
@@ -3011,10 +3003,13 @@
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonException.getContext:()Lorg/symphonyoss/symphony/entityjson/IEntityJsonContext;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R034",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         72
       ]
@@ -4645,12 +4640,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.MessageMLParser.parse:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/symphonyoss/symphony/messageml/elements/MessageML;" : {
-      "completeTestCount" : 13,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 13
+        "R000" : 5
       },
       "lineNumbers" : [
         183,
@@ -4675,12 +4670,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.MessageMLParser.parseDocument:(Ljava/lang/String;)Lorg/w3c/dom/Element;" : {
-      "completeTestCount" : 4,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 4
+        "R000" : 3
       },
       "lineNumbers" : [
         392,
@@ -4849,12 +4844,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.bi.BiContext.addItem:(Lorg/symphonyoss/symphony/messageml/bi/BiItem;)V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 2
       },
       "lineNumbers" : [
         39,
@@ -4947,12 +4942,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.bi.BiContext.updateItemCount:(Ljava/lang/String;)V" : {
-      "completeTestCount" : 6,
+      "completeTestCount" : 7,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 6
+        "R000" : 7
       },
       "lineNumbers" : [
         80,
@@ -4979,12 +4974,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.bi.BiContext.updateItemCount:(Ljava/lang/String;Ljava/util/Map;)V" : {
-      "completeTestCount" : 7,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 7
+        "R000" : 6
       },
       "lineNumbers" : [
         98,
@@ -5332,12 +5327,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.bi.BiItem.increaseAttributeCount:(Ljava/lang/String;)V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 4,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 4
       },
       "lineNumbers" : [
         66,
@@ -5471,12 +5466,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.elements.Button.<init>:(Lorg/symphonyoss/symphony/messageml/elements/Element;Lorg/symphonyoss/symphony/messageml/elements/FormatEnum;)V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
+      "perMethodOutcome" : "W002",
+      "warnings" : {
+        "W002" : 1
       },
       "lineNumbers" : [
         56,
@@ -7311,10 +7306,13 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.elements.Element.addChild:(Lorg/symphonyoss/symphony/messageml/elements/Element;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R004",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 2
+      },
       "lineNumbers" : [
         947,
         948
@@ -7354,15 +7352,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.elements.Element.asPresentationML:(Lorg/symphonyoss/symphony/messageml/util/XmlPrintStream;Lorg/symphonyoss/symphony/messageml/MessageMLContext;)V" : {
-      "completeTestCount" : 24,
+      "completeTestCount" : 27,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 24
-      },
-      "warnings" : {
-        "W002" : 2
+        "R000" : 27
       },
       "lineNumbers" : [
         368,
@@ -8475,15 +8470,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.elements.Emoji.asPresentationML:(Lorg/symphonyoss/symphony/messageml/util/XmlPrintStream;Lorg/symphonyoss/symphony/messageml/MessageMLContext;)V" : {
-      "completeTestCount" : 9,
+      "completeTestCount" : 11,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 9
-      },
-      "warnings" : {
-        "W002" : 1
+        "R000" : 11
       },
       "lineNumbers" : [
         86,
@@ -10249,15 +10241,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.elements.Link.asPresentationML:(Lorg/symphonyoss/symphony/messageml/util/XmlPrintStream;Lorg/symphonyoss/symphony/messageml/MessageMLContext;)V" : {
-      "completeTestCount" : 6,
+      "completeTestCount" : 8,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 6
-      },
-      "warnings" : {
-        "W002" : 1
+        "R000" : 8
       },
       "lineNumbers" : [
         80,
@@ -10657,13 +10646,10 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.elements.Mention.validate:()V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         190,
         197,
@@ -10786,13 +10772,10 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.elements.MessageML.enhanceFinancialTags:(Lorg/symphonyoss/symphony/messageml/elements/MessageML;Lorg/symphonyoss/symphony/messageml/util/IDataProvider;)V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         199,
         200,
@@ -13084,12 +13067,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.elements.Tag.asMarkdown:()Lorg/commonmark/node/Node;" : {
-      "completeTestCount" : 2,
+      "completeTestCount" : 7,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 2
+        "R000" : 7
       },
       "lineNumbers" : [
         144,
@@ -13619,12 +13602,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.elements.TextField.buildAll:(Lorg/symphonyoss/symphony/messageml/MessageMLParser;Lorg/w3c/dom/Element;)V" : {
-      "completeTestCount" : 6,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 6
+        "R000" : 5
       },
       "lineNumbers" : [
         90,
@@ -15411,12 +15394,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.markdown.MarkdownRenderer$TrackingWriter.doubleLine:()V" : {
-      "completeTestCount" : 3,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 3
+        "R000" : 1
       },
       "lineNumbers" : [
         471,
@@ -15600,12 +15583,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.markdown.MarkdownRenderer.visit:(Lorg/commonmark/node/CustomNode;)V" : {
-      "completeTestCount" : 6,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 6
+        "R000" : 2
       },
       "lineNumbers" : [
         224,
@@ -15667,23 +15650,23 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.markdown.MarkdownRenderer.visit:(Lorg/commonmark/node/HardLineBreak;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R004",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         112,
         113
       ]
     },
     "org.symphonyoss.symphony.messageml.markdown.MarkdownRenderer.visit:(Lorg/commonmark/node/Link;)V" : {
-      "completeTestCount" : 4,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 4
-      },
+      "perMethodOutcome" : "R013",
       "lineNumbers" : [
         136,
         137,
@@ -15701,10 +15684,13 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.markdown.MarkdownRenderer.visit:(Lorg/commonmark/node/ListItem;)V" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R004",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         195,
         196,
@@ -16066,12 +16052,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.EmojiNode.accept:(Lorg/commonmark/node/Visitor;)V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 2
       },
       "lineNumbers" : [
         45,
@@ -16546,10 +16532,13 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.DatePickerNode.getText:()Ljava/lang/String;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R015",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         24,
         25,
@@ -16814,10 +16803,13 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.PersonSelectorNode.getText:()Ljava/lang/String;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R015",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         25
       ]
@@ -16929,10 +16921,13 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.RoomSelectorNode.getText:()Ljava/lang/String;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R015",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         26
       ]
@@ -17068,10 +17063,13 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.TimePickerNode.getText:()Ljava/lang/String;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R015",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         20
       ]
@@ -17093,10 +17091,13 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.markdown.nodes.form.TimezonePickerNode.getText:()Ljava/lang/String;" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R015",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
         21
       ]
@@ -17514,12 +17515,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.util.IndentedPrintStream.forceNewLine:()V" : {
-      "completeTestCount" : 3,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 3
+        "R000" : 2
       },
       "lineNumbers" : [
         283,
@@ -17970,12 +17971,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.util.IndentedPrintStream.println:()V" : {
-      "completeTestCount" : 2,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 2
+        "R000" : 1
       },
       "lineNumbers" : [
         275,
@@ -19242,12 +19243,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.util.XmlPrintStream.openElement:(Ljava/lang/String;Ljava/util/Map;)V" : {
-      "completeTestCount" : 9,
+      "completeTestCount" : 10,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 9
+        "R000" : 10
       },
       "lineNumbers" : [
         66,
@@ -19342,12 +19343,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.util.XmlPrintStream.printElement:(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V" : {
-      "completeTestCount" : 10,
+      "completeTestCount" : 11,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 10
+        "R000" : 11
       },
       "lineNumbers" : [
         157,
@@ -19376,12 +19377,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.util.XmlPrintStream.printElement:(Ljava/lang/String;Ljava/util/Map;)V" : {
-      "completeTestCount" : 9,
+      "completeTestCount" : 10,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 9
+        "R000" : 10
       },
       "lineNumbers" : [
         144,
@@ -20809,12 +20810,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.util.instrument.resolver.ResolutionResult.equals:(Ljava/lang/Object;)Z" : {
-      "completeTestCount" : 6,
+      "completeTestCount" : 7,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 6
+        "R000" : 7
       },
       "lineNumbers" : [
         7
@@ -20845,12 +20846,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.util.instrument.resolver.ResolutionResult.hashCode:()I" : {
-      "completeTestCount" : 6,
+      "completeTestCount" : 7,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 6
+        "R000" : 7
       },
       "lineNumbers" : [
         7
@@ -20914,12 +20915,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.util.instrument.resolver.ResolutionResults.equals:(Ljava/lang/Object;)Z" : {
-      "completeTestCount" : 5,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 5
+        "R000" : 6
       },
       "lineNumbers" : [
         9
@@ -20938,12 +20939,12 @@
       ]
     },
     "org.symphonyoss.symphony.messageml.util.instrument.resolver.ResolutionResults.hashCode:()I" : {
-      "completeTestCount" : 5,
+      "completeTestCount" : 6,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 5
+        "R000" : 6
       },
       "lineNumbers" : [
         9

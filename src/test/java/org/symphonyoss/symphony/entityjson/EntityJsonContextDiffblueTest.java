@@ -4,26 +4,16 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class EntityJsonContextDiffblueTest {
   /**
-   * Test {@link EntityJsonContext#newInstance()}.
-   * <ul>
-   *   <li>Then return {@link EntityJsonContext}.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link EntityJsonContext#newInstance()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"IEntityJsonContext EntityJsonContext.newInstance()"})
-  public void testNewInstance_thenReturnEntityJsonContext() {
+  public void testNewInstance() {
     // Arrange and Act
     IEntityJsonContext actualNewInstanceResult = EntityJsonContext.newInstance();
     ObjectNode objectNode = new ObjectNode(JsonNodeFactory.withExactBigDecimals(true));

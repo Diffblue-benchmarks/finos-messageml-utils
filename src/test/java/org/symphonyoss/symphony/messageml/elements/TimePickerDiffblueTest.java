@@ -9,13 +9,10 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import org.commonmark.node.Node;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
@@ -26,37 +23,9 @@ import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
 public class TimePickerDiffblueTest {
   /**
-   * Test {@link TimePicker#TimePicker(Element, FormatEnum)}.
-   * <p>
-   * Method under test: {@link TimePicker#TimePicker(Element, FormatEnum)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimePicker.<init>(Element, FormatEnum)"})
-  public void testNewTimePicker() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act
-    TimePicker actualTimePicker = new TimePicker(parent, FormatEnum.MESSAGEML);
-
-    // Assert
-    assertEquals(FormatEnum.MESSAGEML, actualTimePicker.getFormat());
-    assertTrue(actualTimePicker.getChildren().isEmpty());
-    assertTrue(actualTimePicker.getAttributes().isEmpty());
-    assertEquals(TimePicker.MESSAGEML_TAG, actualTimePicker.getMessageMLTag());
-    assertEquals(TimePicker.MESSAGEML_TAG, actualTimePicker.getPresentationMLTag());
-    assertSame(parent, actualTimePicker.getParent());
-  }
-
-  /**
-   * Test {@link TimePicker#validate()}.
-   * <p>
    * Method under test: {@link TimePicker#validate()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimePicker.validate()"})
   public void testValidate() throws InvalidInputException {
     // Arrange
     Element parent = mock(Element.class);
@@ -363,14 +332,28 @@ public class TimePickerDiffblueTest {
   }
 
   /**
-   * Test {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
+    // Arrange
+    TimePicker timePicker = new TimePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    timePicker.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(27L, out.getOffset());
+  }
+
+  /**
+   * Method under test:
+   * {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  public void testAsPresentationML2() {
     // Arrange
     TimePicker timePicker = new TimePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -385,14 +368,11 @@ public class TimePickerDiffblueTest {
   }
 
   /**
-   * Test {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML2() {
+  public void testAsPresentationML3() {
     // Arrange
     TimePicker timePicker = new TimePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -407,14 +387,11 @@ public class TimePickerDiffblueTest {
   }
 
   /**
-   * Test {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML3() {
+  public void testAsPresentationML4() {
     // Arrange
     TimePicker timePicker = new TimePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -429,36 +406,9 @@ public class TimePickerDiffblueTest {
   }
 
   /**
-   * Test {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <ul>
-   *   <li>When {@link XmlPrintStream#XmlPrintStream(OutputStream)} with outputStream is {@link ByteArrayOutputStream#ByteArrayOutputStream(int)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link TimePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML_whenXmlPrintStreamWithOutputStreamIsByteArrayOutputStream() {
-    // Arrange
-    TimePicker timePicker = new TimePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    timePicker.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
-
-    // Assert
-    assertEquals(27L, out.getOffset());
-  }
-
-  /**
-   * Test {@link TimePicker#asMarkdown()}.
-   * <p>
    * Method under test: {@link TimePicker#asMarkdown()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node TimePicker.asMarkdown()"})
   public void testAsMarkdown() {
     // Arrange and Act
     Node actualAsMarkdownResult = (new TimePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML))
@@ -477,20 +427,13 @@ public class TimePickerDiffblueTest {
   }
 
   /**
-   * Test {@link TimePicker#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link TimePicker#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void TimePicker.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_whenBiContext_thenBiContextItemsSizeIsOne() {
+  public void testUpdateBiContext() {
     // Arrange
-    TimePicker timePicker = new TimePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    TimePicker timePicker = new TimePicker(parent, FormatEnum.MESSAGEML);
     BiContext context = new BiContext();
 
     // Act
@@ -502,5 +445,27 @@ public class TimePickerDiffblueTest {
     BiItem getResult = items.get(0);
     assertEquals("timepicker", getResult.getName());
     assertTrue(getResult.getAttributes().isEmpty());
+    assertTrue(timePicker.getAttributes().isEmpty());
+    assertSame(parent, timePicker.getParent());
+  }
+
+  /**
+   * Method under test: {@link TimePicker#TimePicker(Element, FormatEnum)}
+   */
+  @Test
+  public void testNewTimePicker() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act
+    TimePicker actualTimePicker = new TimePicker(parent, FormatEnum.MESSAGEML);
+
+    // Assert
+    assertEquals(FormatEnum.MESSAGEML, actualTimePicker.getFormat());
+    assertTrue(actualTimePicker.getChildren().isEmpty());
+    assertTrue(actualTimePicker.getAttributes().isEmpty());
+    assertEquals(TimePicker.MESSAGEML_TAG, actualTimePicker.getMessageMLTag());
+    assertEquals(TimePicker.MESSAGEML_TAG, actualTimePicker.getPresentationMLTag());
+    assertSame(parent, actualTimePicker.getParent());
   }
 }

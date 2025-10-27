@@ -9,13 +9,10 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import com.diffblue.cover.annotations.MaintainedByDiffblue;
-import com.diffblue.cover.annotations.MethodsUnderTest;
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import org.commonmark.node.Node;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.symphonyoss.symphony.messageml.MessageMLContext;
 import org.symphonyoss.symphony.messageml.bi.BiContext;
 import org.symphonyoss.symphony.messageml.bi.BiItem;
@@ -26,37 +23,9 @@ import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 
 public class DatePickerDiffblueTest {
   /**
-   * Test {@link DatePicker#DatePicker(Element, FormatEnum)}.
-   * <p>
-   * Method under test: {@link DatePicker#DatePicker(Element, FormatEnum)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DatePicker.<init>(Element, FormatEnum)"})
-  public void testNewDatePicker() {
-    // Arrange
-    Bold parent = new Bold(new BulletList(null));
-
-    // Act
-    DatePicker actualDatePicker = new DatePicker(parent, FormatEnum.MESSAGEML);
-
-    // Assert
-    assertEquals(FormatEnum.MESSAGEML, actualDatePicker.getFormat());
-    assertTrue(actualDatePicker.getChildren().isEmpty());
-    assertTrue(actualDatePicker.getAttributes().isEmpty());
-    assertEquals(DatePicker.MESSAGEML_TAG, actualDatePicker.getMessageMLTag());
-    assertEquals(DatePicker.MESSAGEML_TAG, actualDatePicker.getPresentationMLTag());
-    assertSame(parent, actualDatePicker.getParent());
-  }
-
-  /**
-   * Test {@link DatePicker#validate()}.
-   * <p>
    * Method under test: {@link DatePicker#validate()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DatePicker.validate()"})
   public void testValidate() throws InvalidInputException {
     // Arrange
     Element parent = mock(Element.class);
@@ -363,14 +332,28 @@ public class DatePickerDiffblueTest {
   }
 
   /**
-   * Test {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DatePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
   public void testAsPresentationML() {
+    // Arrange
+    DatePicker datePicker = new DatePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
+
+    // Act
+    datePicker.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
+
+    // Assert
+    assertEquals(35L, out.getOffset());
+  }
+
+  /**
+   * Method under test:
+   * {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   */
+  @Test
+  public void testAsPresentationML2() {
     // Arrange
     DatePicker datePicker = new DatePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -385,14 +368,11 @@ public class DatePickerDiffblueTest {
   }
 
   /**
-   * Test {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DatePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML2() {
+  public void testAsPresentationML3() {
     // Arrange
     DatePicker datePicker = new DatePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -407,14 +387,11 @@ public class DatePickerDiffblueTest {
   }
 
   /**
-   * Test {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <p>
-   * Method under test: {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
+   * Method under test:
+   * {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DatePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML3() {
+  public void testAsPresentationML4() {
     // Arrange
     DatePicker datePicker = new DatePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
 
@@ -429,36 +406,9 @@ public class DatePickerDiffblueTest {
   }
 
   /**
-   * Test {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}.
-   * <ul>
-   *   <li>When {@link XmlPrintStream#XmlPrintStream(OutputStream)} with outputStream is {@link ByteArrayOutputStream#ByteArrayOutputStream(int)}.</li>
-   * </ul>
-   * <p>
-   * Method under test: {@link DatePicker#asPresentationML(XmlPrintStream, MessageMLContext)}
-   */
-  @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DatePicker.asPresentationML(XmlPrintStream, MessageMLContext)"})
-  public void testAsPresentationML_whenXmlPrintStreamWithOutputStreamIsByteArrayOutputStream() {
-    // Arrange
-    DatePicker datePicker = new DatePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
-    XmlPrintStream out = new XmlPrintStream(new ByteArrayOutputStream(1));
-
-    // Act
-    datePicker.asPresentationML(out, new MessageMLContext(new NoOpDataProvider()));
-
-    // Assert
-    assertEquals(35L, out.getOffset());
-  }
-
-  /**
-   * Test {@link DatePicker#asMarkdown()}.
-   * <p>
    * Method under test: {@link DatePicker#asMarkdown()}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"Node DatePicker.asMarkdown()"})
   public void testAsMarkdown() {
     // Arrange and Act
     Node actualAsMarkdownResult = (new DatePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML))
@@ -477,20 +427,13 @@ public class DatePickerDiffblueTest {
   }
 
   /**
-   * Test {@link DatePicker#updateBiContext(BiContext)}.
-   * <ul>
-   *   <li>When {@link BiContext} (default constructor).</li>
-   *   <li>Then {@link BiContext} (default constructor) Items size is one.</li>
-   * </ul>
-   * <p>
    * Method under test: {@link DatePicker#updateBiContext(BiContext)}
    */
   @Test
-  @Category(MaintainedByDiffblue.class)
-  @MethodsUnderTest({"void DatePicker.updateBiContext(BiContext)"})
-  public void testUpdateBiContext_whenBiContext_thenBiContextItemsSizeIsOne() {
+  public void testUpdateBiContext() {
     // Arrange
-    DatePicker datePicker = new DatePicker(new Bold(new BulletList(mock(Element.class))), FormatEnum.MESSAGEML);
+    Bold parent = new Bold(new BulletList(mock(Element.class)));
+    DatePicker datePicker = new DatePicker(parent, FormatEnum.MESSAGEML);
     BiContext context = new BiContext();
 
     // Act
@@ -502,5 +445,27 @@ public class DatePickerDiffblueTest {
     BiItem getResult = items.get(0);
     assertEquals("dateselector", getResult.getName());
     assertTrue(getResult.getAttributes().isEmpty());
+    assertTrue(datePicker.getAttributes().isEmpty());
+    assertSame(parent, datePicker.getParent());
+  }
+
+  /**
+   * Method under test: {@link DatePicker#DatePicker(Element, FormatEnum)}
+   */
+  @Test
+  public void testNewDatePicker() {
+    // Arrange
+    Bold parent = new Bold(new BulletList(null));
+
+    // Act
+    DatePicker actualDatePicker = new DatePicker(parent, FormatEnum.MESSAGEML);
+
+    // Assert
+    assertEquals(FormatEnum.MESSAGEML, actualDatePicker.getFormat());
+    assertTrue(actualDatePicker.getChildren().isEmpty());
+    assertTrue(actualDatePicker.getAttributes().isEmpty());
+    assertEquals(DatePicker.MESSAGEML_TAG, actualDatePicker.getMessageMLTag());
+    assertEquals(DatePicker.MESSAGEML_TAG, actualDatePicker.getPresentationMLTag());
+    assertSame(parent, actualDatePicker.getParent());
   }
 }
