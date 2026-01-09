@@ -1,0 +1,51 @@
+name: com.diffblue.cover.refactoring.Recipe
+recipeList:
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.markdown.MarkdownParser,
+    fieldName: dataProvider}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.markdown.MarkdownParser,
+    fieldName: index}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.markdown.MarkdownParser,
+    fieldName: messageML}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.markdown.MarkdownParser,
+    fieldName: parent}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.AlignedBlock,
+    fieldName: maxColumnLength}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.AlignedBlock,
+    fieldName: out}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.AlignedBlock,
+    fieldName: rows}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.AlignedBlock,
+    fieldName: maxColumnLength}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.AlignedBlock,
+    fieldName: out}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.AlignedBlock,
+    fieldName: rows}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: clusterWorkerId}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: counter}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: previousSeconds}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: random}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: reduceTime}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: shuffled}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: version}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: clusterWorkerId}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: counter}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: previousSeconds}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: random}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: reduceTime}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: shuffled}
+- com.diffblue.cover.refactoring.recipes.AddGetter: {className: org.symphonyoss.symphony.messageml.util.ShortID,
+    fieldName: version}
+type: specs.openrewrite.org/v1beta/recipe

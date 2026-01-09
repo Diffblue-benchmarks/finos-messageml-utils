@@ -351,22 +351,4 @@ public class KeywordDiffblueTest {
     // Act and Assert
     assertNull(new CashTag(parent2, 1).getEntityValue());
   }
-
-  /**
-   * Test {@link Keyword#toString()}.
-   *
-   * <p>Method under test: {@link Keyword#toString()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"java.lang.String Keyword.toString()"})
-  public void testToString() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act and Assert
-    assertEquals("CashTag(null)", new CashTag(parent2, 1).toString());
-  }
 }

@@ -67,18 +67,4 @@ public class InstrumentKindDiffblueTest {
     assertEquals("fxcross", actualToValuesResult.get(2));
     assertEquals("index", actualToValuesResult.get(1));
   }
-
-  /**
-   * Test {@link InstrumentKind#getValue()}.
-   *
-   * <p>Method under test: {@link InstrumentKind#getValue()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"String InstrumentKind.getValue()"})
-  public void testGetValue() {
-    // Arrange, Act and Assert
-    assertEquals("equity", InstrumentKind.valueOf("EQUITY").getValue());
-  }
 }

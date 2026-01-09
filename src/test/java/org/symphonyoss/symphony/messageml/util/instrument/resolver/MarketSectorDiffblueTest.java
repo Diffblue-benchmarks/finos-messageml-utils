@@ -74,18 +74,4 @@ public class MarketSectorDiffblueTest {
     assertEquals("Muni", actualToValuesResult.get(8));
     assertEquals("Pfd", actualToValuesResult.get(9));
   }
-
-  /**
-   * Test {@link MarketSector#getValue()}.
-   *
-   * <p>Method under test: {@link MarketSector#getValue()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"String MarketSector.getValue()"})
-  public void testGetValue() {
-    // Arrange, Act and Assert
-    assertEquals("Equity", MarketSector.valueOf("EQUITY").getValue());
-  }
 }

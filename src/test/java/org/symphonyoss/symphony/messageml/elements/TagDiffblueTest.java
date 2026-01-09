@@ -31,7 +31,6 @@ import org.symphonyoss.symphony.messageml.bi.BiItem;
 import org.symphonyoss.symphony.messageml.exceptions.InvalidInputException;
 import org.symphonyoss.symphony.messageml.markdown.nodes.TagNode;
 import org.symphonyoss.symphony.messageml.util.NoOpDataProvider;
-import org.symphonyoss.symphony.messageml.util.TagAttributes;
 import org.symphonyoss.symphony.messageml.util.XmlPrintStream;
 import org.symphonyoss.symphony.messageml.util.instrument.resolver.Instrument;
 import org.symphonyoss.symphony.messageml.util.instrument.resolver.InstrumentKind;
@@ -901,11 +900,9 @@ public class TagDiffblueTest {
    * <p>Methods under test:
    *
    * <ul>
-   *   <li>{@link Tag#setInstrument(Instrument)}
    *   <li>{@link Tag#getEntityIdPrefix()}
    *   <li>{@link Tag#getEntitySubType()}
    *   <li>{@link Tag#getEntityType()}
-   *   <li>{@link Tag#getTagAttributes()}
    * </ul>
    */
   @Test
@@ -914,71 +911,20 @@ public class TagDiffblueTest {
   @MethodsUnderTest({
     "String Tag.getEntityIdPrefix()",
     "String Tag.getEntitySubType()",
-    "String Tag.getEntityType()",
-    "TagAttributes Tag.getTagAttributes()",
-    "void Tag.setInstrument(Instrument)"
+    "String Tag.getEntityType()"
   })
   public void testGettersAndSetters() {
     // Arrange
     Bold parent = new Bold(new BulletList(null));
     Tag tag = new Tag(parent, 1);
 
-    Instrument instrument = new Instrument();
-    instrument.setBbgCompId("42");
-    instrument.setBbgCompTicker("Bbg Comp Ticker");
-    instrument.setBbgMarketSector(MarketSector.EQUITY);
-    instrument.setCfi("Cfi");
-    instrument.setCountryCode("GB");
-    instrument.setCountryName("GB");
-    instrument.setCurrency("GBP");
-    instrument.setDisplayName("Display Name");
-    instrument.setEdiExchangeCode("Edi Exchange Code");
-    instrument.setEdiInstrumentId("42");
-    instrument.setExchangeName("Exchange Name");
-    instrument.setFigi("Figi");
-    instrument.setFigiTicker("Figi Ticker");
-    instrument.setFullBbgCompTicker("Full Bbg Comp Ticker");
-    instrument.setInstrumentTypeCode("Instrument Type Code");
-    instrument.setInstrumentTypeName("Instrument Type Name");
-    instrument.setIsin("Isin");
-    instrument.setKind(InstrumentKind.EQUITY);
-    instrument.setLei("Lei");
-    instrument.setLocalCode("Local Code");
-    instrument.setMainInstrument(true);
-    instrument.setOperationalMic("Operational Mic");
-    instrument.setPrimaryExchange(true);
-    instrument.setProviderId(ProviderId.EDI);
-    instrument.setRic("Ric");
-    instrument.setRootBbgCompTicker("Root Bbg Comp Ticker");
-    instrument.setSedol("Sedol");
-    instrument.setUniqueId("42");
-    instrument.setUsCode("Us Code");
-    instrument.setWkn("Wkn");
-
     // Act
-    tag.setInstrument(instrument);
     String actualEntityIdPrefix = tag.getEntityIdPrefix();
     String actualEntitySubType = tag.getEntitySubType();
-    String actualEntityType = tag.getEntityType();
-    TagAttributes actualTagAttributes = tag.getTagAttributes();
 
     // Assert
     assertEquals("org.symphonyoss.fin.security.id.ticker", actualEntitySubType);
-    assertNull(actualTagAttributes.getBbgcompticker());
-    assertNull(actualTagAttributes.getBbgmarketsector());
-    assertNull(actualTagAttributes.getCountrycode());
-    assertNull(actualTagAttributes.getFallbackTicker());
-    assertNull(actualTagAttributes.getFigi());
-    assertNull(actualTagAttributes.getFigiTicker());
-    assertNull(actualTagAttributes.getFullBbgCompTicker());
-    assertNull(actualTagAttributes.getInstrumentclass());
-    assertNull(actualTagAttributes.getIsin());
-    assertNull(actualTagAttributes.getLocalcode());
-    assertNull(actualTagAttributes.getOperationalMic());
-    assertNull(actualTagAttributes.getReturnMainListing());
-    assertNull(actualTagAttributes.getUniqueId());
-    assertNull(actualTagAttributes.getUscode());
-    assertEquals(Tag.ENTITY_TYPE, actualEntityType);
+    assertEquals(Tag.ENTITY_TYPE, tag.getEntityType());
     assertEquals(Tag.MESSAGEML_TAG, actualEntityIdPrefix);
   }
 

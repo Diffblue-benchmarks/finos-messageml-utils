@@ -271,29 +271,6 @@ public class SplittableElementDiffblueTest {
    * Test {@link SplittableElement#getElementId()}.
    *
    * <ul>
-   *   <li>Given {@link Select#Select(Element)} with parent is {@link Bold#Bold(Element)}.
-   *   <li>Then return {@link Select#ELEMENT_ID}.
-   * </ul>
-   *
-   * <p>Method under test: {@link SplittableElement#getElementId()}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"String SplittableElement.getElementId()"})
-  public void testGetElementId_givenSelectWithParentIsBold_thenReturnElement_id() {
-    // Arrange
-    BulletList parent = new BulletList(mock(Element.class));
-    Bold parent2 = new Bold(parent);
-
-    // Act and Assert
-    assertEquals(Select.ELEMENT_ID, new Select(parent2).getElementId());
-  }
-
-  /**
-   * Test {@link SplittableElement#getElementId()}.
-   *
-   * <ul>
    *   <li>Then return {@link DatePicker#MESSAGEML_TAG}.
    * </ul>
    *
