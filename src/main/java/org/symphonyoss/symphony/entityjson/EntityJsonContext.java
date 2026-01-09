@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
   private ObjectNode schemaJsonNode_;
   private Object     validationResult_;
       
-  private EntityJsonContext()
+  EntityJsonContext()
   {}
   
   /**

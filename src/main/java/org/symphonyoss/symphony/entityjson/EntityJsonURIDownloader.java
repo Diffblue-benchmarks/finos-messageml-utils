@@ -39,7 +39,7 @@ public class EntityJsonURIDownloader implements URIDownloader
 {
   private static final URIDownloader INSTANCE = new EntityJsonURIDownloader();
 
-  private EntityJsonURIDownloader()
+  EntityJsonURIDownloader()
   {
   }
 

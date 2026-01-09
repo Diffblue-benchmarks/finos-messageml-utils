@@ -68,13 +68,23 @@ public class EntityJson implements Iterable<StructuredObject>
    */
   public EntityJson(IEntityJsonInstanceContext context) throws InvalidInstanceException
   {
+    if (context == null)
+    {
+      throw new IllegalArgumentException("context may not be null");
+    }
+
     context_ = context;
-    
+
     JsonNode jsonNode = context_.getInstanceJsonNode();
-    
+
+    if (jsonNode == null)
+    {
+      throw new InvalidInstanceException(context, new IllegalStateException("instanceJsonNode may not be null"));
+    }
+
     List<StructuredObject>  children = new ArrayList<>();
     Map<String, StructuredObject>  childMap = new HashMap<>();
-    
+
     Iterator<Entry<String, JsonNode>> it = jsonNode.fields();
     
     while(it.hasNext())

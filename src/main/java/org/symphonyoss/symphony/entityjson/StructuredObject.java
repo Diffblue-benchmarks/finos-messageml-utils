@@ -77,9 +77,19 @@ public class StructuredObject
     context_ = context;
     instanceSource_ = instanceSource;
     jsonNode_ = jsonNode;
-    
-    type_ = jsonNode.get("type").asText();
-    version_ = jsonNode.get("version").asText();
+
+    JsonNode typeNode = jsonNode.get("type");
+    JsonNode versionNode = jsonNode.get("version");
+
+    if (typeNode == null) {
+      throw new IllegalArgumentException("JSON node must contain a 'type' field");
+    }
+    if (versionNode == null) {
+      throw new IllegalArgumentException("JSON node must contain a 'version' field");
+    }
+
+    type_ = typeNode.asText();
+    version_ = versionNode.asText();
     
     String[] parts = version_.split("\\.");
     majorVersion_ = Integer.parseInt(parts[0]);

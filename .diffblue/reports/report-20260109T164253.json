@@ -4,18 +4,18 @@
   },
   "run" : {
     "version" : "2025.12.02-74144f0-licensed",
-    "creationTimestamp" : "2026-01-09T17:37:51.907844Z",
-    "command" : "dcover create --coverage-reports",
-    "totalTime" : 1667.21,
-    "environmentDetectionTime" : 0.971,
-    "indexingTime" : 0.331,
-    "entryPointsTime" : 0.946,
-    "generationTime" : 1541.997,
-    "timeToFirstTest" : 30.457,
-    "timeToLastTest" : 1630.837,
-    "indexQueryTime" : 5.019,
-    "verificationTime" : 72.931,
-    "validationTime" : 22.516
+    "creationTimestamp" : "2026-01-09T16:42:53.068372Z",
+    "command" : "dcover create --coverage-reports --upload http://localhost:8080 --project-name finos-messageml-utils --name after-refactor",
+    "totalTime" : 1653.94,
+    "environmentDetectionTime" : 1.003,
+    "indexingTime" : 0.288,
+    "entryPointsTime" : 0.978,
+    "generationTime" : 1523.222,
+    "timeToFirstTest" : 34.329,
+    "timeToLastTest" : 1612.049,
+    "indexQueryTime" : 5.267,
+    "verificationTime" : 71.931,
+    "validationTime" : 22.943
   },
   "codes" : {
     "F009" : "Internal error",
@@ -29,6 +29,7 @@
     "R024" : "Analysis service shutdown unexpectedly",
     "R031" : "Method may be time-sensitive",
     "R081" : "Exception in arrange section",
+    "R083" : "Can't find a suitable constructor",
     "T000" : "Method eligible for test creation",
     "T001" : "Trivial getter",
     "T002" : "Trivial setter",
@@ -48,19 +49,19 @@
   "summary" : {
     "classesCount" : 152,
     "methodsCount" : 1324,
-    "cumulativeDiffblueTestCount" : 2184,
-    "cumulativeManualTestCount" : 1327,
-    "completeTestCount" : 2185,
+    "cumulativeDiffblueTestCount" : 2179,
+    "cumulativeManualTestCount" : 1340,
+    "completeTestCount" : 2180,
     "incompleteTestCount" : 0,
     "skeletonTestCount" : 0,
-    "totalPhysicalLineCount" : 10760,
+    "totalPhysicalLineCount" : 10736,
     "perMethodTestability" : {
       "T000" : 622,
       "T001" : 155,
       "T002" : 23,
-      "T003" : 159,
+      "T003" : 161,
       "T004" : 1,
-      "T005" : 102,
+      "T005" : 100,
       "T010" : 47,
       "T012" : 59,
       "T020" : 7,
@@ -69,17 +70,18 @@
     },
     "perMethodOutcome" : {
       "F009" : 1,
-      "R000" : 785,
+      "R000" : 777,
       "R002" : 9,
       "R003" : 2,
       "R004" : 17,
       "R011" : 5,
-      "R013" : 22,
+      "R013" : 20,
       "R015" : 7,
       "R024" : 1,
       "R031" : 1,
       "R081" : 12,
-      "T003" : 159,
+      "R083" : 8,
+      "T003" : 161,
       "T004" : 1,
       "T005" : 2,
       "T010" : 47,
@@ -88,10 +90,10 @@
       "W001" : 2
     },
     "perTestOutcome" : {
-      "R000" : 2185
+      "R000" : 2180
     },
     "perTestValidation" : {
-      "V000" : 2184,
+      "V000" : 2179,
       "V003" : 1
     },
     "warnings" : {
@@ -110,8 +112,8 @@
         "T020" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 5,
-        "R013" : 2,
+        "R000" : 6,
+        "R013" : 1,
         "R081" : 3
       },
       "perTestOutcome" : {
@@ -120,20 +122,22 @@
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonContext" : {
       "methodsCount" : 11,
-      "completeTestCount" : 6,
+      "completeTestCount" : 3,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 4,
         "T001" : 5,
         "T002" : 1,
-        "T005" : 1
+        "T003" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 10,
-        "R003" : 1
+        "R000" : 3,
+        "R003" : 1,
+        "R083" : 6,
+        "T003" : 1
       },
       "perTestOutcome" : {
-        "R000" : 6
+        "R000" : 3
       }
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonException" : {
@@ -185,19 +189,16 @@
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonURIDownloader" : {
       "methodsCount" : 3,
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
         "T001" : 1,
-        "T005" : 1
+        "T003" : 1
       },
       "perMethodOutcome" : {
-        "R000" : 2,
-        "R013" : 1
-      },
-      "perTestOutcome" : {
-        "R000" : 1
+        "R083" : 2,
+        "T003" : 1
       }
     },
     "org.symphonyoss.symphony.entityjson.IEntityJsonContext" : {
@@ -291,7 +292,7 @@
     },
     "org.symphonyoss.symphony.entityjson.StructuredObject" : {
       "methodsCount" : 10,
-      "completeTestCount" : 7,
+      "completeTestCount" : 5,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 3,
@@ -303,12 +304,12 @@
         "R081" : 7
       },
       "perTestOutcome" : {
-        "R000" : 7
+        "R000" : 5
       }
     },
     "org.symphonyoss.symphony.entityjson.StructuredObjectId" : {
       "methodsCount" : 2,
-      "completeTestCount" : 1,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : {
         "T000" : 1,
@@ -319,7 +320,7 @@
         "R081" : 1
       },
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 2
       }
     },
     "org.symphonyoss.symphony.entityjson.UntrustedSchemaSourceException" : {
@@ -2535,46 +2536,45 @@
   },
   "methods" : {
     "org.symphonyoss.symphony.entityjson.EntityJson.<init>:(Lorg/symphonyoss/symphony/entityjson/IEntityJsonInstanceContext;)V" : {
-      "completeTestCount" : 2,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 2
+        "R000" : 1
       },
       "lineNumbers" : [
         70,
         71,
         73,
+        75,
         76,
         78,
         80,
         82,
-        85,
-        86,
         88,
+        93,
         90,
         92,
+        94,
+        96,
+        97,
         98,
-        103,
         100,
-        102,
-        104,
-        106,
-        107,
-        108,
-        110,
-        111,
-        112
+        101,
+        102
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJson.contains:(Lorg/symphonyoss/symphony/entityjson/StructuredObject;)Z" : {
-      "completeTestCount" : 0,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R000",
+      "perTestOutcome" : {
+        "R000" : 1
+      },
       "lineNumbers" : [
-        174
+        164
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJson.get:(I)Lorg/symphonyoss/symphony/entityjson/StructuredObject;" : {
@@ -2583,7 +2583,7 @@
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R013",
       "lineNumbers" : [
-        182
+        172
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJson.get:(Ljava/lang/String;)Lorg/symphonyoss/symphony/entityjson/StructuredObject;" : {
@@ -2595,7 +2595,7 @@
         "R000" : 1
       },
       "lineNumbers" : [
-        150
+        140
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJson.getChildren:()Ljava/util/List;" : {
@@ -2604,7 +2604,7 @@
       "perMethodTestability" : "T001",
       "perMethodOutcome" : "R081",
       "lineNumbers" : [
-        132
+        122
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJson.getContext:()Lorg/symphonyoss/symphony/entityjson/IEntityJsonInstanceContext;" : {
@@ -2613,7 +2613,7 @@
       "perMethodTestability" : "T001",
       "perMethodOutcome" : "R081",
       "lineNumbers" : [
-        122
+        112
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJson.isEmpty:()Z" : {
@@ -2625,7 +2625,7 @@
         "R000" : 1
       },
       "lineNumbers" : [
-        166
+        156
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJson.iterator:()Ljava/util/Iterator;" : {
@@ -2637,7 +2637,7 @@
         "R000" : 1
       },
       "lineNumbers" : [
-        138
+        128
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJson.size:()I" : {
@@ -2649,7 +2649,7 @@
         "R000" : 1
       },
       "lineNumbers" : [
-        158
+        148
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJson.toString:()Ljava/lang/String;" : {
@@ -2658,77 +2658,59 @@
       "perMethodTestability" : "T020",
       "perMethodOutcome" : "R081",
       "lineNumbers" : [
-        188
+        178
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonContext.<init>:()V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
-      "perMethodTestability" : "T005",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
       "lineNumbers" : [
         52
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonContext.getInstanceJsonNode:()Lcom/fasterxml/jackson/databind/node/ObjectNode;" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T001",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
+      "perMethodOutcome" : "R083",
       "lineNumbers" : [
         113
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonContext.getInstanceSource:()Ljava/lang/Object;" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T001",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
+      "perMethodOutcome" : "R083",
       "lineNumbers" : [
         95
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonContext.getSchemaJsonNode:()Lcom/fasterxml/jackson/databind/node/ObjectNode;" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T001",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
+      "perMethodOutcome" : "R083",
       "lineNumbers" : [
         89
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonContext.getSchemaSource:()Ljava/lang/Object;" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T001",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
+      "perMethodOutcome" : "R083",
       "lineNumbers" : [
         101
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonContext.getValidationResult:()Ljava/lang/Object;" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T001",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
+      "perMethodOutcome" : "R083",
       "lineNumbers" : [
         107
       ]
@@ -2746,12 +2728,12 @@
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonContext.toString:()Ljava/lang/String;" : {
-      "completeTestCount" : 3,
+      "completeTestCount" : 1,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 3
+        "R000" : 1
       },
       "lineNumbers" : [
         119,
@@ -2800,13 +2782,10 @@
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonContext.withValidationResult:(Ljava/lang/Object;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T002",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
+      "perMethodOutcome" : "R083",
       "lineNumbers" : [
         148,
         149
@@ -3172,13 +3151,10 @@
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonURIDownloader.<init>:()V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
-      "perMethodTestability" : "T005",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
+      "perMethodTestability" : "T003",
+      "perMethodOutcome" : "T003",
       "lineNumbers" : [
         43,
         44
@@ -3188,7 +3164,7 @@
       "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
-      "perMethodOutcome" : "R013",
+      "perMethodOutcome" : "R083",
       "lineNumbers" : [
         62,
         68,
@@ -3196,13 +3172,10 @@
       ]
     },
     "org.symphonyoss.symphony.entityjson.EntityJsonURIDownloader.getInstance:()Lcom/github/fge/jsonschema/core/load/download/URIDownloader;" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 0,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T001",
-      "perMethodOutcome" : "R000",
-      "perTestOutcome" : {
-        "R000" : 1
-      },
+      "perMethodOutcome" : "R083",
       "lineNumbers" : [
         56
       ]
@@ -3529,12 +3502,12 @@
       ]
     },
     "org.symphonyoss.symphony.entityjson.StructuredObject.<init>:(Lorg/symphonyoss/symphony/entityjson/IEntityJsonInstanceContext;Ljava/lang/Object;Lcom/fasterxml/jackson/databind/node/ObjectNode;)V" : {
-      "completeTestCount" : 4,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 4
+        "R000" : 2
       },
       "lineNumbers" : [
         76,
@@ -3545,35 +3518,29 @@
         82,
         84,
         85,
-        87,
+        86,
         88,
+        90,
         91,
         92,
-        94,
+        93,
         95,
         96,
+        97,
         98,
         100,
-        101,
         102,
-        103,
-        105,
+        104,
         106,
         107,
         108,
-        110,
+        109,
         112,
-        114,
-        116,
+        113,
         117,
-        118,
         119,
-        122,
-        123,
-        127,
-        129,
-        130,
-        131
+        120,
+        121
       ]
     },
     "org.symphonyoss.symphony.entityjson.StructuredObject.getContext:()Lorg/symphonyoss/symphony/entityjson/IEntityJsonInstanceContext;" : {
@@ -3582,7 +3549,7 @@
       "perMethodTestability" : "T001",
       "perMethodOutcome" : "R081",
       "lineNumbers" : [
-        141
+        131
       ]
     },
     "org.symphonyoss.symphony.entityjson.StructuredObject.getIdList:()Ljava/util/List;" : {
@@ -3591,7 +3558,7 @@
       "perMethodTestability" : "T001",
       "perMethodOutcome" : "R081",
       "lineNumbers" : [
-        217
+        207
       ]
     },
     "org.symphonyoss.symphony.entityjson.StructuredObject.getMajorVersion:()I" : {
@@ -3600,7 +3567,7 @@
       "perMethodTestability" : "T001",
       "perMethodOutcome" : "R081",
       "lineNumbers" : [
-        201
+        191
       ]
     },
     "org.symphonyoss.symphony.entityjson.StructuredObject.getMinorVersion:()I" : {
@@ -3609,7 +3576,7 @@
       "perMethodTestability" : "T001",
       "perMethodOutcome" : "R081",
       "lineNumbers" : [
-        209
+        199
       ]
     },
     "org.symphonyoss.symphony.entityjson.StructuredObject.getType:()Ljava/lang/String;" : {
@@ -3618,7 +3585,7 @@
       "perMethodTestability" : "T001",
       "perMethodOutcome" : "R081",
       "lineNumbers" : [
-        184
+        174
       ]
     },
     "org.symphonyoss.symphony.entityjson.StructuredObject.getVersion:()Ljava/lang/String;" : {
@@ -3627,7 +3594,7 @@
       "perMethodTestability" : "T001",
       "perMethodOutcome" : "R081",
       "lineNumbers" : [
-        193
+        183
       ]
     },
     "org.symphonyoss.symphony.entityjson.StructuredObject.toString:()Ljava/lang/String;" : {
@@ -3636,7 +3603,7 @@
       "perMethodTestability" : "T001",
       "perMethodOutcome" : "R081",
       "lineNumbers" : [
-        223
+        213
       ]
     },
     "org.symphonyoss.symphony.entityjson.StructuredObject.validate:(Lorg/symphonyoss/symphony/entityjson/EntityJsonParser;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;" : {
@@ -3645,40 +3612,34 @@
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R013",
       "lineNumbers" : [
+        145,
+        147,
+        149,
+        150,
+        147,
+        153,
+        154,
         155,
+        156,
         157,
-        159,
-        160,
-        157,
+        161,
         163,
-        164,
-        165,
-        166,
-        167,
-        171,
-        173,
-        175
+        165
       ]
     },
     "org.symphonyoss.symphony.entityjson.StructuredObjectId.<init>:(Lcom/fasterxml/jackson/databind/JsonNode;)V" : {
-      "completeTestCount" : 1,
+      "completeTestCount" : 2,
       "incompleteTestCount" : 0,
       "perMethodTestability" : "T000",
       "perMethodOutcome" : "R000",
       "perTestOutcome" : {
-        "R000" : 1
+        "R000" : 2
       },
       "lineNumbers" : [
         40,
         41,
         42,
-        44,
-        45,
-        47,
-        48,
-        51,
-        52,
-        53
+        43
       ]
     },
     "org.symphonyoss.symphony.entityjson.StructuredObjectId.toString:()Ljava/lang/String;" : {
@@ -3687,7 +3648,7 @@
       "perMethodTestability" : "T020",
       "perMethodOutcome" : "R081",
       "lineNumbers" : [
-        58
+        48
       ]
     },
     "org.symphonyoss.symphony.entityjson.UntrustedSchemaSourceException.<init>:(Lorg/symphonyoss/symphony/entityjson/IEntityJsonContext;)V" : {
@@ -20563,10 +20524,28 @@
       ]
     }
   },
-  "validationMetrics" : { },
+  "validationMetrics" : {
+    "failingTests" : [
+      "org.symphonyoss.symphony.entityjson.TestValidSchemas.testStructuredObject",
+      "org.symphonyoss.symphony.entityjson.TestValidSchemas.testBondRfq",
+      "org.symphonyoss.symphony.entityjson.TestValidSchemas.testJsonSchema",
+      "org.symphonyoss.symphony.entityjson.TestValidSchemas.testEntityJsonSchema",
+      "org.symphonyoss.symphony.entityjson.TestValidSchemas.testSingleJira",
+      "org.symphonyoss.symphony.entityjson.TestValidSchemas.testExpandedJira",
+      "org.symphonyoss.symphony.entityjson.TestValidSchemas.testBondRfqObject",
+      "org.symphonyoss.symphony.entityjson.TestValidSchemas.testBondRfqSchema",
+      "org.symphonyoss.symphony.entityjson.TestValidSchemas.testEntityJson",
+      "org.symphonyoss.symphony.entityjson.TestInvalidSchemas.testInvalidTypeVersion",
+      "org.symphonyoss.symphony.entityjson.TestInvalidSchemas.testMissingTypeVersion",
+      "org.symphonyoss.symphony.entityjson.TestInvalidSchemas.testMissingTypeId",
+      "org.symphonyoss.symphony.entityjson.TestInvalidSchemas.testIdExtraAttributes",
+      "org.symphonyoss.symphony.entityjson.TestInvalidSchemas.testObjectIdObject",
+      "org.symphonyoss.symphony.entityjson.TestInvalidSchemas.testObjectIdString"
+    ]
+  },
   "outputCodes" : [
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.ArrangeThrowsMessage\",\"constructingMethod\":{\"binaryClassName\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"descriptor\":\"()Ljava/lang/String;\",\"methodName\":\"toString\"},\"serializableCause\":{\"cause\":{\"cause\":null,\"message\":\"instanceJsonNode may not be null\",\"originalClassName\":\"java.lang.IllegalStateException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":82,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"newInstance0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]},\"message\":\"java.lang.IllegalStateException: instanceJsonNode may not be null\",\"originalClassName\":\"org.symphonyoss.symphony.entityjson.InvalidInstanceException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":82,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"newInstance0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.ArrangeThrowsMessage\",\"constructingMethod\":{\"binaryClassName\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"descriptor\":\"()Ljava/lang/String;\",\"methodName\":\"toString\"},\"serializableCause\":{\"cause\":null,\"message\":null,\"originalClassName\":\"java.lang.NullPointerException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":78,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"newInstance0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -20588,7 +20567,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.ArrangeThrowsMessage\",\"constructingMethod\":{\"binaryClassName\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"descriptor\":\"()Ljava/lang/String;\",\"methodName\":\"toString\"},\"serializableCause\":{\"cause\":{\"cause\":null,\"message\":\"instanceJsonNode may not be null\",\"originalClassName\":\"java.lang.IllegalStateException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":82,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"newInstance0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]},\"message\":\"java.lang.IllegalStateException: instanceJsonNode may not be null\",\"originalClassName\":\"org.symphonyoss.symphony.entityjson.InvalidInstanceException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":82,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"newInstance0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.ArrangeThrowsMessage\",\"constructingMethod\":{\"binaryClassName\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"descriptor\":\"()Ljava/lang/String;\",\"methodName\":\"toString\"},\"serializableCause\":{\"cause\":null,\"message\":null,\"originalClassName\":\"java.lang.NullPointerException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":78,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"newInstance0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -20610,7 +20589,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.ArrangeThrowsMessage\",\"constructingMethod\":{\"binaryClassName\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"descriptor\":\"()Ljava/lang/String;\",\"methodName\":\"toString\"},\"serializableCause\":{\"cause\":{\"cause\":null,\"message\":\"instanceJsonNode may not be null\",\"originalClassName\":\"java.lang.IllegalStateException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":82,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"newInstance0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]},\"message\":\"java.lang.IllegalStateException: instanceJsonNode may not be null\",\"originalClassName\":\"org.symphonyoss.symphony.entityjson.InvalidInstanceException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":82,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"newInstance0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.ArrangeThrowsMessage\",\"constructingMethod\":{\"binaryClassName\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"descriptor\":\"()Ljava/lang/String;\",\"methodName\":\"toString\"},\"serializableCause\":{\"cause\":null,\"message\":null,\"originalClassName\":\"java.lang.NullPointerException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":78,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"newInstance0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -20632,25 +20611,235 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":{\"cause\":null,\"message\":\"instanceJsonNode may not be null\",\"originalClassName\":\"java.lang.IllegalStateException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":82,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedConstructorAccessor23\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]},\"message\":\"java.lang.IllegalStateException: instanceJsonNode may not be null\",\"originalClassName\":\"org.symphonyoss.symphony.entityjson.InvalidInstanceException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":82,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedConstructorAccessor23\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
-      "methodGroup" : {
-        "methods" : [
-          {
-            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJson",
-            "descriptor" : "(Lorg/symphonyoss/symphony/entityjson/StructuredObject;)Z",
-            "methodName" : "contains"
-          }
-        ]
-      }
-    },
-    {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":{\"cause\":null,\"message\":\"instanceJsonNode may not be null\",\"originalClassName\":\"java.lang.IllegalStateException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":82,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedConstructorAccessor23\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]},\"message\":\"java.lang.IllegalStateException: instanceJsonNode may not be null\",\"originalClassName\":\"org.symphonyoss.symphony.entityjson.InvalidInstanceException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":82,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedConstructorAccessor23\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":\"Index 1 out of bounds for length 0\",\"originalClassName\":\"java.lang.IndexOutOfBoundsException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":64,\"methodName\":\"outOfBounds\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":70,\"methodName\":\"outOfBoundsCheckIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":248,\"methodName\":\"checkIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.util.Objects\",\"fileName\":\"Objects.java\",\"lineNumber\":374,\"methodName\":\"checkIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.util.ArrayList\",\"fileName\":\"ArrayList.java\",\"lineNumber\":459,\"methodName\":\"get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.util.Collections$UnmodifiableList\",\"fileName\":\"Collections.java\",\"lineNumber\":1310,\"methodName\":\"get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.agent.readwrite.RuntimeWrappers\",\"fileName\":\"RuntimeWrappers.java\",\"lineNumber\":1021,\"methodName\":\"list$get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJson\",\"fileName\":\"EntityJson.java\",\"lineNumber\":172,\"methodName\":\"get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeMethodAccessorImpl\",\"fileName\":\"NativeMethodAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"invoke0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeMethodAccessorImpl\",\"fileName\":\"NativeMethodAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
             "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJson",
             "descriptor" : "(I)Lorg/symphonyoss/symphony/entityjson/StructuredObject;",
             "methodName" : "get"
+          }
+        ]
+      }
+    },
+    {
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoSuitableConstructorMessage\",\"className\":{\"descriptor\":\"Lorg/symphonyoss/symphony/entityjson/EntityJsonContext;\",\"simpleNames\":[\"EntityJsonContext\"]},\"serializableCause\":null}",
+      "methodGroup" : {
+        "methods" : [
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getInstanceJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getInstanceSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getSchemaJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getSchemaSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getValidationResult"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "(Ljava/lang/Object;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;",
+            "methodName" : "withValidationResult"
+          }
+        ]
+      }
+    },
+    {
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoSuitableConstructorMessage\",\"className\":{\"descriptor\":\"Lorg/symphonyoss/symphony/entityjson/EntityJsonContext;\",\"simpleNames\":[\"EntityJsonContext\"]},\"serializableCause\":null}",
+      "methodGroup" : {
+        "methods" : [
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getInstanceJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getInstanceSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getSchemaJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getSchemaSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getValidationResult"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "(Ljava/lang/Object;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;",
+            "methodName" : "withValidationResult"
+          }
+        ]
+      }
+    },
+    {
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoSuitableConstructorMessage\",\"className\":{\"descriptor\":\"Lorg/symphonyoss/symphony/entityjson/EntityJsonContext;\",\"simpleNames\":[\"EntityJsonContext\"]},\"serializableCause\":null}",
+      "methodGroup" : {
+        "methods" : [
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getInstanceJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getInstanceSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getSchemaJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getSchemaSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getValidationResult"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "(Ljava/lang/Object;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;",
+            "methodName" : "withValidationResult"
+          }
+        ]
+      }
+    },
+    {
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoSuitableConstructorMessage\",\"className\":{\"descriptor\":\"Lorg/symphonyoss/symphony/entityjson/EntityJsonContext;\",\"simpleNames\":[\"EntityJsonContext\"]},\"serializableCause\":null}",
+      "methodGroup" : {
+        "methods" : [
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getInstanceJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getInstanceSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getSchemaJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getSchemaSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getValidationResult"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "(Ljava/lang/Object;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;",
+            "methodName" : "withValidationResult"
+          }
+        ]
+      }
+    },
+    {
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoSuitableConstructorMessage\",\"className\":{\"descriptor\":\"Lorg/symphonyoss/symphony/entityjson/EntityJsonContext;\",\"simpleNames\":[\"EntityJsonContext\"]},\"serializableCause\":null}",
+      "methodGroup" : {
+        "methods" : [
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getInstanceJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getInstanceSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getSchemaJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getSchemaSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getValidationResult"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "(Ljava/lang/Object;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;",
+            "methodName" : "withValidationResult"
+          }
+        ]
+      }
+    },
+    {
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoSuitableConstructorMessage\",\"className\":{\"descriptor\":\"Lorg/symphonyoss/symphony/entityjson/EntityJsonContext;\",\"simpleNames\":[\"EntityJsonContext\"]},\"serializableCause\":null}",
+      "methodGroup" : {
+        "methods" : [
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getInstanceJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getInstanceSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Lcom/fasterxml/jackson/databind/node/ObjectNode;",
+            "methodName" : "getSchemaJsonNode"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getSchemaSource"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "()Ljava/lang/Object;",
+            "methodName" : "getValidationResult"
+          },
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonContext",
+            "descriptor" : "(Ljava/lang/Object;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;",
+            "methodName" : "withValidationResult"
           }
         ]
       }
@@ -20740,7 +20929,19 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":null,\"originalClassName\":\"java.lang.NullPointerException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.EntityJsonURIDownloader\",\"fileName\":\"EntityJsonURIDownloader.java\",\"lineNumber\":62,\"methodName\":\"fetch\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeMethodAccessorImpl\",\"fileName\":\"NativeMethodAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"invoke0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeMethodAccessorImpl\",\"fileName\":\"NativeMethodAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoSuitableConstructorMessage\",\"className\":{\"descriptor\":\"Lorg/symphonyoss/symphony/entityjson/EntityJsonURIDownloader;\",\"simpleNames\":[\"EntityJsonURIDownloader\"]},\"serializableCause\":null}",
+      "methodGroup" : {
+        "methods" : [
+          {
+            "binaryClassName" : "org.symphonyoss.symphony.entityjson.EntityJsonURIDownloader",
+            "descriptor" : "()Lcom/github/fge/jsonschema/core/load/download/URIDownloader;",
+            "methodName" : "getInstance"
+          }
+        ]
+      }
+    },
+    {
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoSuitableConstructorMessage\",\"className\":{\"descriptor\":\"Lorg/symphonyoss/symphony/entityjson/EntityJsonURIDownloader;\",\"simpleNames\":[\"EntityJsonURIDownloader\"]},\"serializableCause\":{\"cause\":null,\"message\":\"Can't find a suitable constructor\",\"originalClassName\":\"com.diffblue.cover.exception.BaseException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.g.i\",\"fileName\":\"SourceFile\",\"lineNumber\":107,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.g.a\",\"fileName\":\"SourceFile\",\"lineNumber\":46,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.g.p\",\"fileName\":\"SourceFile\",\"lineNumber\":128,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.g.a\",\"fileName\":\"SourceFile\",\"lineNumber\":46,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.g.ae\",\"fileName\":\"SourceFile\",\"lineNumber\":94,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.g.af\",\"fileName\":\"SourceFile\",\"lineNumber\":162,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.g.ae\",\"fileName\":\"SourceFile\",\"lineNumber\":193,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.g.e\",\"fileName\":\"SourceFile\",\"lineNumber\":499,\"methodName\":\"r\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":164,\"methodName\":\"lambda$callWorkerThread$3\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -21046,7 +21247,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":null,\"originalClassName\":\"java.lang.NullPointerException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.StructuredObject\",\"fileName\":\"StructuredObject.java\",\"lineNumber\":81,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.StructuredObject\",\"fileName\":\"StructuredObject.java\",\"lineNumber\":72,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedConstructorAccessor59\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":null,\"originalClassName\":\"java.lang.NullPointerException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.StructuredObject\",\"fileName\":\"StructuredObject.java\",\"lineNumber\":81,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.StructuredObject\",\"fileName\":\"StructuredObject.java\",\"lineNumber\":72,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedConstructorAccessor57\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -21058,7 +21259,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.ArrangeThrowsMessage\",\"constructingMethod\":{\"binaryClassName\":\"org.symphonyoss.symphony.entityjson.StructuredObjectId\",\"descriptor\":\"()Ljava/lang/String;\",\"methodName\":\"toString\"},\"serializableCause\":{\"cause\":null,\"message\":\"JSON node must contain a 'type' field\",\"originalClassName\":\"java.lang.IllegalArgumentException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.StructuredObjectId\",\"fileName\":\"StructuredObjectId.java\",\"lineNumber\":45,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"newInstance0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.ArrangeThrowsMessage\",\"constructingMethod\":{\"binaryClassName\":\"org.symphonyoss.symphony.entityjson.StructuredObjectId\",\"descriptor\":\"()Ljava/lang/String;\",\"methodName\":\"toString\"},\"serializableCause\":{\"cause\":null,\"message\":null,\"originalClassName\":\"java.lang.NullPointerException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.entityjson.StructuredObjectId\",\"fileName\":\"StructuredObjectId.java\",\"lineNumber\":41,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":-2,\"methodName\":\"newInstance0\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":true},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.NativeConstructorAccessorImpl\",\"fileName\":\"NativeConstructorAccessorImpl.java\",\"lineNumber\":62,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -21082,7 +21283,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":{\"cause\":null,\"message\":\"The markup in the document preceding the root element must be well-formed.\",\"originalClassName\":\"org.xml.sax.SAXParseException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"com.sun.org.apache.xerces.internal.parsers.DOMParser\",\"fileName\":\"DOMParser.java\",\"lineNumber\":261,\"methodName\":\"parse\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl\",\"fileName\":\"DocumentBuilderImpl.java\",\"lineNumber\":339,\"methodName\":\"parse\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"javax.xml.parsers.DocumentBuilder\",\"fileName\":\"DocumentBuilder.java\",\"lineNumber\":122,\"methodName\":\"parse\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":399,\"methodName\":\"parseDocument\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":352,\"methodName\":\"parseMessageML\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":204,\"methodName\":\"parse\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLContext\",\"fileName\":\"MessageMLContext.java\",\"lineNumber\":80,\"methodName\":\"parseMessageML\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor553\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]},\"message\":\"Invalid messageML: The markup in the document preceding the root element must be well-formed.\",\"originalClassName\":\"org.symphonyoss.symphony.messageml.exceptions.InvalidInputException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":406,\"methodName\":\"parseDocument\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":352,\"methodName\":\"parseMessageML\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":204,\"methodName\":\"parse\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLContext\",\"fileName\":\"MessageMLContext.java\",\"lineNumber\":80,\"methodName\":\"parseMessageML\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor553\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":{\"cause\":null,\"message\":\"The markup in the document preceding the root element must be well-formed.\",\"originalClassName\":\"org.xml.sax.SAXParseException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"com.sun.org.apache.xerces.internal.parsers.DOMParser\",\"fileName\":\"DOMParser.java\",\"lineNumber\":261,\"methodName\":\"parse\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl\",\"fileName\":\"DocumentBuilderImpl.java\",\"lineNumber\":339,\"methodName\":\"parse\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"javax.xml.parsers.DocumentBuilder\",\"fileName\":\"DocumentBuilder.java\",\"lineNumber\":122,\"methodName\":\"parse\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":399,\"methodName\":\"parseDocument\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":352,\"methodName\":\"parseMessageML\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":204,\"methodName\":\"parse\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLContext\",\"fileName\":\"MessageMLContext.java\",\"lineNumber\":80,\"methodName\":\"parseMessageML\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor548\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]},\"message\":\"Invalid messageML: The markup in the document preceding the root element must be well-formed.\",\"originalClassName\":\"org.symphonyoss.symphony.messageml.exceptions.InvalidInputException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":406,\"methodName\":\"parseDocument\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":352,\"methodName\":\"parseMessageML\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLParser\",\"fileName\":\"MessageMLParser.java\",\"lineNumber\":204,\"methodName\":\"parse\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.MessageMLContext\",\"fileName\":\"MessageMLContext.java\",\"lineNumber\":80,\"methodName\":\"parseMessageML\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor548\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -21202,7 +21403,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.ArrangeThrowsMessage\",\"constructingMethod\":{\"binaryClassName\":\"org.symphonyoss.symphony.messageml.elements.Chime\",\"descriptor\":\"()Ljava/lang/String;\",\"methodName\":\"getPresentationMLTag\"},\"serializableCause\":{\"cause\":null,\"message\":\"Element \\\"chime\\\" has to be the only element in the message.\",\"originalClassName\":\"org.symphonyoss.symphony.messageml.exceptions.InvalidInputException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.Chime\",\"fileName\":\"Chime.java\",\"lineNumber\":46,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedConstructorAccessor98\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.ArrangeThrowsMessage\",\"constructingMethod\":{\"binaryClassName\":\"org.symphonyoss.symphony.messageml.elements.Chime\",\"descriptor\":\"()Ljava/lang/String;\",\"methodName\":\"getPresentationMLTag\"},\"serializableCause\":{\"cause\":null,\"message\":\"Element \\\"chime\\\" has to be the only element in the message.\",\"originalClassName\":\"org.symphonyoss.symphony.messageml.exceptions.InvalidInputException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.Chime\",\"fileName\":\"Chime.java\",\"lineNumber\":46,\"methodName\":\"<init>\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedConstructorAccessor99\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingConstructorAccessorImpl\",\"fileName\":\"DelegatingConstructorAccessorImpl.java\",\"lineNumber\":45,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Constructor\",\"fileName\":\"Constructor.java\",\"lineNumber\":490,\"methodName\":\"newInstance\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":142,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":842,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":750,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":449,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.c\",\"fileName\":\"SourceFile\",\"lineNumber\":32,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":394,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":213,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.j\",\"fileName\":\"SourceFile\",\"lineNumber\":1279,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -21274,7 +21475,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":null,\"originalClassName\":\"java.lang.NullPointerException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.Element\",\"fileName\":\"Element.java\",\"lineNumber\":551,\"methodName\":\"assertAttributeValue\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor881\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":null,\"originalClassName\":\"java.lang.NullPointerException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.Element\",\"fileName\":\"Element.java\",\"lineNumber\":551,\"methodName\":\"assertAttributeValue\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor876\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -21406,7 +21607,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":\"Index 0 out of bounds for length 0\",\"originalClassName\":\"java.lang.IndexOutOfBoundsException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":64,\"methodName\":\"outOfBounds\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":70,\"methodName\":\"outOfBoundsCheckIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":248,\"methodName\":\"checkIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.util.Objects\",\"fileName\":\"Objects.java\",\"lineNumber\":374,\"methodName\":\"checkIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.util.ArrayList\",\"fileName\":\"ArrayList.java\",\"lineNumber\":459,\"methodName\":\"get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.agent.readwrite.RuntimeWrappers\",\"fileName\":\"RuntimeWrappers.java\",\"lineNumber\":1021,\"methodName\":\"list$get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.Element\",\"fileName\":\"Element.java\",\"lineNumber\":940,\"methodName\":\"getChild\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.TextArea\",\"fileName\":\"TextArea.java\",\"lineNumber\":139,\"methodName\":\"getElementInitialValue\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor622\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":\"Index 0 out of bounds for length 0\",\"originalClassName\":\"java.lang.IndexOutOfBoundsException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":64,\"methodName\":\"outOfBounds\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":70,\"methodName\":\"outOfBoundsCheckIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":248,\"methodName\":\"checkIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.util.Objects\",\"fileName\":\"Objects.java\",\"lineNumber\":374,\"methodName\":\"checkIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.util.ArrayList\",\"fileName\":\"ArrayList.java\",\"lineNumber\":459,\"methodName\":\"get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.agent.readwrite.RuntimeWrappers\",\"fileName\":\"RuntimeWrappers.java\",\"lineNumber\":1021,\"methodName\":\"list$get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.Element\",\"fileName\":\"Element.java\",\"lineNumber\":940,\"methodName\":\"getChild\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.TextArea\",\"fileName\":\"TextArea.java\",\"lineNumber\":139,\"methodName\":\"getElementInitialValue\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor617\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -21418,7 +21619,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":\"Index 0 out of bounds for length 0\",\"originalClassName\":\"java.lang.IndexOutOfBoundsException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":64,\"methodName\":\"outOfBounds\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":70,\"methodName\":\"outOfBoundsCheckIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":248,\"methodName\":\"checkIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.util.Objects\",\"fileName\":\"Objects.java\",\"lineNumber\":374,\"methodName\":\"checkIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.util.ArrayList\",\"fileName\":\"ArrayList.java\",\"lineNumber\":459,\"methodName\":\"get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.agent.readwrite.RuntimeWrappers\",\"fileName\":\"RuntimeWrappers.java\",\"lineNumber\":1021,\"methodName\":\"list$get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.Element\",\"fileName\":\"Element.java\",\"lineNumber\":940,\"methodName\":\"getChild\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.TextField\",\"fileName\":\"TextField.java\",\"lineNumber\":270,\"methodName\":\"getElementInitialValue\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor853\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":\"Index 0 out of bounds for length 0\",\"originalClassName\":\"java.lang.IndexOutOfBoundsException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":64,\"methodName\":\"outOfBounds\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":70,\"methodName\":\"outOfBoundsCheckIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.util.Preconditions\",\"fileName\":\"Preconditions.java\",\"lineNumber\":248,\"methodName\":\"checkIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.util.Objects\",\"fileName\":\"Objects.java\",\"lineNumber\":374,\"methodName\":\"checkIndex\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.util.ArrayList\",\"fileName\":\"ArrayList.java\",\"lineNumber\":459,\"methodName\":\"get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.agent.readwrite.RuntimeWrappers\",\"fileName\":\"RuntimeWrappers.java\",\"lineNumber\":1021,\"methodName\":\"list$get\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.Element\",\"fileName\":\"Element.java\",\"lineNumber\":940,\"methodName\":\"getChild\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.TextField\",\"fileName\":\"TextField.java\",\"lineNumber\":270,\"methodName\":\"getElementInitialValue\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor848\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -21442,7 +21643,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":null,\"originalClassName\":\"java.lang.NullPointerException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.TextNode\",\"fileName\":\"TextNode.java\",\"lineNumber\":60,\"methodName\":\"buildText\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor877\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.limitation.NoNonThrowingInputsMessage\",\"serializableCause\":{\"cause\":null,\"message\":null,\"originalClassName\":\"java.lang.NullPointerException\",\"stackTrace\":[{\"classLoaderName\":null,\"className\":\"org.symphonyoss.symphony.messageml.elements.TextNode\",\"fileName\":\"TextNode.java\",\"lineNumber\":60,\"methodName\":\"buildText\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.GeneratedMethodAccessor872\",\"fileName\":null,\"lineNumber\":-1,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"jdk.internal.reflect.DelegatingMethodAccessorImpl\",\"fileName\":\"DelegatingMethodAccessorImpl.java\",\"lineNumber\":43,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"java.lang.reflect.Method\",\"fileName\":\"Method.java\",\"lineNumber\":566,\"methodName\":\"invoke\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":140,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.h\",\"fileName\":\"SourceFile\",\"lineNumber\":77,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.a.f\",\"fileName\":\"SourceFile\",\"lineNumber\":852,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":463,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":99,\"methodName\":\"b\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.g.d\",\"fileName\":\"SourceFile\",\"lineNumber\":51,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":368,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.tir.b.g\",\"fileName\":\"SourceFile\",\"lineNumber\":261,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.fuzztest.b.f\",\"fileName\":\"SourceFile\",\"lineNumber\":1105,\"methodName\":\"a\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.SafeTimedExecutor\",\"fileName\":\"SourceFile\",\"lineNumber\":171,\"methodName\":\"lambda$runWithLoopIterationLimit$5\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TimedCallableExecutor$CallableFuture\",\"fileName\":\"SourceFile\",\"lineNumber\":29,\"methodName\":\"executeTask\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.TaskQueueRunner\",\"fileName\":\"SourceFile\",\"lineNumber\":39,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false},{\"classLoaderName\":null,\"className\":\"com.diffblue.cover.sandbox.execution.WorkerThread\",\"fileName\":\"SourceFile\",\"lineNumber\":265,\"methodName\":\"run\",\"moduleName\":null,\"moduleVersion\":null,\"nativeMethod\":false}]}}",
       "methodGroup" : {
         "methods" : [
           {
@@ -21584,7 +21785,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.verification.TestCompilationMessage\",\"compilerErrors\":[{\"className\":\"org.symphonyoss.symphony.messageml.util.NoOpEntityResolverDiffblueTest11701820117580625390\",\"line\":33,\"message\":\"cannot find symbol\\nsymbol:   method isEmpty()\\nlocation: variable actualResolveEntityResult of type InputSource\",\"methodSignature\":\"testResolveEntity:()V\",\"sourceFile\":\"/tmp/NoOpEntityResolverDiffblueTest11701820117580625390.java\"}],\"serializableCause\":null,\"testClassJavaCode\":\"File /tmp/NoOpEntityResolverDiffblueTest11701820117580625390.java, 36 lines:\\n   1: package org.symphonyoss.symphony.messageml.util;\\n   2: \\n   3: import static org.junit.Assert.assertNull;\\n   4: import static org.junit.Assert.assertTrue;\\n   5: import com.diffblue.cover.annotations.ContributionFromDiffblue;\\n   6: import com.diffblue.cover.annotations.ManagedByDiffblue;\\n   7: import com.diffblue.cover.annotations.MethodsUnderTest;\\n   8: import java.io.IOException;\\n   9: import org.junit.Test;\\n  10: import org.junit.experimental.categories.Category;\\n  11: import org.xml.sax.InputSource;\\n  12: \\n  13: public class NoOpEntityResolverDiffblueTest11701820117580625390 {\\n  14:   /**\\n  15:    * Test {@link NoOpEntityResolver#resolveEntity(String, String)}.\\n  16:    *\\n  17:    * <p>Method under test: {@link NoOpEntityResolver#resolveEntity(String, String)}\\n  18:    */\\n  19:   @Test\\n  20:   @Category(ContributionFromDiffblue.class)\\n  21:   @ManagedByDiffblue\\n  22:   @MethodsUnderTest({\\\"InputSource NoOpEntityResolver.resolveEntity(String, String)\\\"})\\n  23:   public void testResolveEntity() throws IOException {\\n  24:     // Arrange and Act\\n  25:     InputSource actualResolveEntityResult = new NoOpEntityResolver().resolveEntity(\\\"42\\\", \\\"42\\\");\\n  26: \\n  27:     // Assert\\n  28:     assertNull(actualResolveEntityResult.getByteStream());\\n  29:     assertNull(actualResolveEntityResult.getEncoding());\\n  30:     assertNull(actualResolveEntityResult.getPublicId());\\n  31:     assertNull(actualResolveEntityResult.getSystemId());\\n  32:     assertTrue(actualResolveEntityResult.getCharacterStream().ready());\\n  33:     assertTrue(actualResolveEntityResult.isEmpty());\\n  34:   }\\n  35: }\\n  36: \\nTest compilation failed for method org.symphonyoss.symphony.messageml.util.NoOpEntityResolver.resolveEntity\\n\"}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.verification.TestCompilationMessage\",\"compilerErrors\":[{\"className\":\"org.symphonyoss.symphony.messageml.util.NoOpEntityResolverDiffblueTest18431735422884961556\",\"line\":33,\"message\":\"cannot find symbol\\nsymbol:   method isEmpty()\\nlocation: variable actualResolveEntityResult of type InputSource\",\"methodSignature\":\"testResolveEntity:()V\",\"sourceFile\":\"/tmp/NoOpEntityResolverDiffblueTest18431735422884961556.java\"}],\"serializableCause\":null,\"testClassJavaCode\":\"File /tmp/NoOpEntityResolverDiffblueTest18431735422884961556.java, 36 lines:\\n   1: package org.symphonyoss.symphony.messageml.util;\\n   2: \\n   3: import static org.junit.Assert.assertNull;\\n   4: import static org.junit.Assert.assertTrue;\\n   5: import com.diffblue.cover.annotations.ContributionFromDiffblue;\\n   6: import com.diffblue.cover.annotations.ManagedByDiffblue;\\n   7: import com.diffblue.cover.annotations.MethodsUnderTest;\\n   8: import java.io.IOException;\\n   9: import org.junit.Test;\\n  10: import org.junit.experimental.categories.Category;\\n  11: import org.xml.sax.InputSource;\\n  12: \\n  13: public class NoOpEntityResolverDiffblueTest18431735422884961556 {\\n  14:   /**\\n  15:    * Test {@link NoOpEntityResolver#resolveEntity(String, String)}.\\n  16:    *\\n  17:    * <p>Method under test: {@link NoOpEntityResolver#resolveEntity(String, String)}\\n  18:    */\\n  19:   @Test\\n  20:   @Category(ContributionFromDiffblue.class)\\n  21:   @ManagedByDiffblue\\n  22:   @MethodsUnderTest({\\\"InputSource NoOpEntityResolver.resolveEntity(String, String)\\\"})\\n  23:   public void testResolveEntity() throws IOException {\\n  24:     // Arrange and Act\\n  25:     InputSource actualResolveEntityResult = new NoOpEntityResolver().resolveEntity(\\\"42\\\", \\\"42\\\");\\n  26: \\n  27:     // Assert\\n  28:     assertNull(actualResolveEntityResult.getByteStream());\\n  29:     assertNull(actualResolveEntityResult.getEncoding());\\n  30:     assertNull(actualResolveEntityResult.getPublicId());\\n  31:     assertNull(actualResolveEntityResult.getSystemId());\\n  32:     assertTrue(actualResolveEntityResult.getCharacterStream().ready());\\n  33:     assertTrue(actualResolveEntityResult.isEmpty());\\n  34:   }\\n  35: }\\n  36: \\nTest compilation failed for method org.symphonyoss.symphony.messageml.util.NoOpEntityResolver.resolveEntity\\n\"}",
       "methodGroup" : {
         "methods" : [
           {
@@ -22056,7 +22257,7 @@
       }
     },
     {
-      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.verification.TestCompilationMessage\",\"compilerErrors\":[{\"className\":\"org.symphonyoss.symphony.messageml.util.ShortIDDiffblueTest319347329713979963\",\"line\":35,\"message\":\"cannot find symbol\\nsymbol:   method getParameters()\\nlocation: class SecureRandom\",\"methodSignature\":\"testNewShortID:()V\",\"sourceFile\":\"/tmp/ShortIDDiffblueTest319347329713979963.java\"},{\"className\":\"org.symphonyoss.symphony.messageml.util.ShortIDDiffblueTest319347329713979963\",\"line\":38,\"message\":\"cannot find symbol\\nsymbol:   method getAcquire()\\nlocation: variable counter of type AtomicInteger\",\"methodSignature\":\"testNewShortID:()V\",\"sourceFile\":\"/tmp/ShortIDDiffblueTest319347329713979963.java\"},{\"className\":\"org.symphonyoss.symphony.messageml.util.ShortIDDiffblueTest319347329713979963\",\"line\":39,\"message\":\"cannot find symbol\\nsymbol:   method getOpaque()\\nlocation: variable counter of type AtomicInteger\",\"methodSignature\":\"testNewShortID:()V\",\"sourceFile\":\"/tmp/ShortIDDiffblueTest319347329713979963.java\"},{\"className\":\"org.symphonyoss.symphony.messageml.util.ShortIDDiffblueTest319347329713979963\",\"line\":40,\"message\":\"cannot find symbol\\nsymbol:   method getPlain()\\nlocation: variable counter of type AtomicInteger\",\"methodSignature\":\"testNewShortID:()V\",\"sourceFile\":\"/tmp/ShortIDDiffblueTest319347329713979963.java\"}],\"serializableCause\":null,\"testClassJavaCode\":\"File /tmp/ShortIDDiffblueTest319347329713979963.java, 53 lines:\\n   1: package org.symphonyoss.symphony.messageml.util;\\n   2: \\n   3: import static org.junit.Assert.assertEquals;\\n   4: import static org.junit.Assert.assertNull;\\n   5: import static org.junit.Assert.assertTrue;\\n   6: import com.diffblue.cover.annotations.ContributionFromDiffblue;\\n   7: import com.diffblue.cover.annotations.ManagedByDiffblue;\\n   8: import com.diffblue.cover.annotations.MethodsUnderTest;\\n   9: import java.security.Provider;\\n  10: import java.security.SecureRandom;\\n  11: import java.util.Random;\\n  12: import java.util.concurrent.atomic.AtomicInteger;\\n  13: import org.junit.Test;\\n  14: import org.junit.experimental.categories.Category;\\n  15: \\n  16: public class ShortIDDiffblueTest319347329713979963 {\\n  17:   /**\\n  18:    * Test {@link ShortID#ShortID()}.\\n  19:    *\\n  20:    * <p>Method under test: {@link ShortID#ShortID()}\\n  21:    */\\n  22:   @Test\\n  23:   @Category(ContributionFromDiffblue.class)\\n  24:   @ManagedByDiffblue\\n  25:   @MethodsUnderTest({\\\"void ShortID.<init>()\\\"})\\n  26:   public void testNewShortID() {\\n  27:     // Arrange and Act\\n  28:     ShortID actualShortID = new ShortID();\\n  29: \\n  30:     // Assert\\n  31:     Random random = actualShortID.getRandom();\\n  32:     assertTrue(random instanceof SecureRandom);\\n  33:     assertEquals(\\\"NativePRNG\\\", ((SecureRandom) random).getAlgorithm());\\n  34:     assertNull(actualShortID.getShuffled());\\n  35:     assertNull(((SecureRandom) random).getParameters());\\n  36:     AtomicInteger counter = actualShortID.getCounter();\\n  37:     assertEquals(0, counter.get());\\n  38:     assertEquals(0, counter.getAcquire());\\n  39:     assertEquals(0, counter.getOpaque());\\n  40:     assertEquals(0, counter.getPlain());\\n  41:     assertEquals(0, actualShortID.getClusterWorkerId());\\n  42:     assertEquals(0L, actualShortID.getPreviousSeconds());\\n  43:     assertEquals(1403265799803L, actualShortID.getReduceTime());\\n  44:     Provider provider = ((SecureRandom) random).getProvider();\\n  45:     assertEquals(152, provider.size());\\n  46:     assertEquals(6, actualShortID.getVersion());\\n  47:     assertTrue(provider.containsKey(\\\"Alg.Alias.MessageDigest.SHA512/224\\\"));\\n  48:     assertTrue(provider.containsKey(\\\"Alg.Alias.Signature.2.16.840.1.101.3.4.3.1\\\"));\\n  49:     assertTrue(provider.containsKey(\\\"Alg.Alias.Signature.2.16.840.1.101.3.4.3.2\\\"));\\n  50:     assertTrue(provider.containsKey(\\\"Signature.SHA256withDSA KeySize\\\"));\\n  51:   }\\n  52: }\\n  53: \\nTest compilation failed for method org.symphonyoss.symphony.messageml.util.ShortID.<init>\\n\"}",
+      "baseMessage" : "{\"__type\":\"com.diffblue.cover.message.verification.TestCompilationMessage\",\"compilerErrors\":[{\"className\":\"org.symphonyoss.symphony.messageml.util.ShortIDDiffblueTest13211789485072091790\",\"line\":35,\"message\":\"cannot find symbol\\nsymbol:   method getParameters()\\nlocation: class SecureRandom\",\"methodSignature\":\"testNewShortID:()V\",\"sourceFile\":\"/tmp/ShortIDDiffblueTest13211789485072091790.java\"},{\"className\":\"org.symphonyoss.symphony.messageml.util.ShortIDDiffblueTest13211789485072091790\",\"line\":38,\"message\":\"cannot find symbol\\nsymbol:   method getAcquire()\\nlocation: variable counter of type AtomicInteger\",\"methodSignature\":\"testNewShortID:()V\",\"sourceFile\":\"/tmp/ShortIDDiffblueTest13211789485072091790.java\"},{\"className\":\"org.symphonyoss.symphony.messageml.util.ShortIDDiffblueTest13211789485072091790\",\"line\":39,\"message\":\"cannot find symbol\\nsymbol:   method getOpaque()\\nlocation: variable counter of type AtomicInteger\",\"methodSignature\":\"testNewShortID:()V\",\"sourceFile\":\"/tmp/ShortIDDiffblueTest13211789485072091790.java\"},{\"className\":\"org.symphonyoss.symphony.messageml.util.ShortIDDiffblueTest13211789485072091790\",\"line\":40,\"message\":\"cannot find symbol\\nsymbol:   method getPlain()\\nlocation: variable counter of type AtomicInteger\",\"methodSignature\":\"testNewShortID:()V\",\"sourceFile\":\"/tmp/ShortIDDiffblueTest13211789485072091790.java\"}],\"serializableCause\":null,\"testClassJavaCode\":\"File /tmp/ShortIDDiffblueTest13211789485072091790.java, 53 lines:\\n   1: package org.symphonyoss.symphony.messageml.util;\\n   2: \\n   3: import static org.junit.Assert.assertEquals;\\n   4: import static org.junit.Assert.assertNull;\\n   5: import static org.junit.Assert.assertTrue;\\n   6: import com.diffblue.cover.annotations.ContributionFromDiffblue;\\n   7: import com.diffblue.cover.annotations.ManagedByDiffblue;\\n   8: import com.diffblue.cover.annotations.MethodsUnderTest;\\n   9: import java.security.Provider;\\n  10: import java.security.SecureRandom;\\n  11: import java.util.Random;\\n  12: import java.util.concurrent.atomic.AtomicInteger;\\n  13: import org.junit.Test;\\n  14: import org.junit.experimental.categories.Category;\\n  15: \\n  16: public class ShortIDDiffblueTest13211789485072091790 {\\n  17:   /**\\n  18:    * Test {@link ShortID#ShortID()}.\\n  19:    *\\n  20:    * <p>Method under test: {@link ShortID#ShortID()}\\n  21:    */\\n  22:   @Test\\n  23:   @Category(ContributionFromDiffblue.class)\\n  24:   @ManagedByDiffblue\\n  25:   @MethodsUnderTest({\\\"void ShortID.<init>()\\\"})\\n  26:   public void testNewShortID() {\\n  27:     // Arrange and Act\\n  28:     ShortID actualShortID = new ShortID();\\n  29: \\n  30:     // Assert\\n  31:     Random random = actualShortID.getRandom();\\n  32:     assertTrue(random instanceof SecureRandom);\\n  33:     assertEquals(\\\"NativePRNG\\\", ((SecureRandom) random).getAlgorithm());\\n  34:     assertNull(actualShortID.getShuffled());\\n  35:     assertNull(((SecureRandom) random).getParameters());\\n  36:     AtomicInteger counter = actualShortID.getCounter();\\n  37:     assertEquals(0, counter.get());\\n  38:     assertEquals(0, counter.getAcquire());\\n  39:     assertEquals(0, counter.getOpaque());\\n  40:     assertEquals(0, counter.getPlain());\\n  41:     assertEquals(0, actualShortID.getClusterWorkerId());\\n  42:     assertEquals(0L, actualShortID.getPreviousSeconds());\\n  43:     assertEquals(1403265799803L, actualShortID.getReduceTime());\\n  44:     Provider provider = ((SecureRandom) random).getProvider();\\n  45:     assertEquals(152, provider.size());\\n  46:     assertEquals(6, actualShortID.getVersion());\\n  47:     assertTrue(provider.containsKey(\\\"Alg.Alias.MessageDigest.SHA512/224\\\"));\\n  48:     assertTrue(provider.containsKey(\\\"Alg.Alias.Signature.2.16.840.1.101.3.4.3.1\\\"));\\n  49:     assertTrue(provider.containsKey(\\\"Alg.Alias.Signature.2.16.840.1.101.3.4.3.2\\\"));\\n  50:     assertTrue(provider.containsKey(\\\"Signature.SHA256withDSA KeySize\\\"));\\n  51:   }\\n  52: }\\n  53: \\nTest compilation failed for method org.symphonyoss.symphony.messageml.util.ShortID.<init>\\n\"}",
       "methodGroup" : {
         "methods" : [
           {

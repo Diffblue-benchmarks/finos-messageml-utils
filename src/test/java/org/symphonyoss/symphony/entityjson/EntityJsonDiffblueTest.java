@@ -3,7 +3,7 @@ package org.symphonyoss.symphony.entityjson;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -22,7 +22,8 @@ public class EntityJsonDiffblueTest {
    * Test {@link EntityJson#EntityJson(IEntityJsonInstanceContext)}.
    *
    * <ul>
-   *   <li>Then return size is zero.
+   *   <li>When {@link EntityJsonContext} (default constructor).
+   *   <li>Then throw {@link InvalidInstanceException}.
    * </ul>
    *
    * <p>Method under test: {@link EntityJson#EntityJson(IEntityJsonInstanceContext)}
@@ -31,22 +32,30 @@ public class EntityJsonDiffblueTest {
   @Category(ContributionFromDiffblue.class)
   @ManagedByDiffblue
   @MethodsUnderTest({"void EntityJson.<init>(IEntityJsonInstanceContext)"})
-  public void testNewEntityJson_thenReturnSizeIsZero() throws InvalidInstanceException {
-    // Arrange
-    IEntityJsonInstanceContext context = mock(IEntityJsonInstanceContext.class);
-    JsonNodeFactory nc = JsonNodeFactory.withExactBigDecimals(true);
-    when(context.getInstanceJsonNode()).thenReturn(new ObjectNode(nc));
+  public void testNewEntityJson_whenEntityJsonContext_thenThrowInvalidInstanceException()
+      throws InvalidInstanceException {
+    // Arrange, Act and Assert
+    assertThrows(InvalidInstanceException.class, () -> new EntityJson(new EntityJsonContext()));
+  }
 
-    // Act
-    EntityJson actualEntityJson = new EntityJson(context);
-
-    // Assert
-    verify(context).getInstanceJsonNode();
-    assertEquals(0, actualEntityJson.size());
-    assertFalse(actualEntityJson.iterator().hasNext());
-    assertTrue(actualEntityJson.getChildren().isEmpty());
-    assertTrue(actualEntityJson.isEmpty());
-    assertSame(context, actualEntityJson.getContext());
+  /**
+   * Test {@link EntityJson#EntityJson(IEntityJsonInstanceContext)}.
+   *
+   * <ul>
+   *   <li>When {@code null}.
+   *   <li>Then throw {@link IllegalArgumentException}.
+   * </ul>
+   *
+   * <p>Method under test: {@link EntityJson#EntityJson(IEntityJsonInstanceContext)}
+   */
+  @Test
+  @Category(ContributionFromDiffblue.class)
+  @ManagedByDiffblue
+  @MethodsUnderTest({"void EntityJson.<init>(IEntityJsonInstanceContext)"})
+  public void testNewEntityJson_whenNull_thenThrowIllegalArgumentException()
+      throws InvalidInstanceException {
+    // Arrange, Act and Assert
+    assertThrows(IllegalArgumentException.class, () -> new EntityJson(null));
   }
 
   /**
@@ -64,7 +73,7 @@ public class EntityJsonDiffblueTest {
   @MethodsUnderTest({"Iterator EntityJson.iterator()"})
   public void testIterator_thenReturnNotHasNext() throws InvalidInstanceException {
     // Arrange
-    IEntityJsonInstanceContext context = mock(IEntityJsonInstanceContext.class);
+    EntityJsonContext context = mock(EntityJsonContext.class);
     JsonNodeFactory nc = JsonNodeFactory.withExactBigDecimals(true);
     when(context.getInstanceJsonNode()).thenReturn(new ObjectNode(nc));
 
@@ -91,7 +100,7 @@ public class EntityJsonDiffblueTest {
   @MethodsUnderTest({"StructuredObject EntityJson.get(String)"})
   public void testGetWithName_thenReturnNull() throws InvalidInstanceException {
     // Arrange
-    IEntityJsonInstanceContext context = mock(IEntityJsonInstanceContext.class);
+    EntityJsonContext context = mock(EntityJsonContext.class);
     JsonNodeFactory nc = JsonNodeFactory.withExactBigDecimals(true);
     when(context.getInstanceJsonNode()).thenReturn(new ObjectNode(nc));
 
@@ -118,7 +127,7 @@ public class EntityJsonDiffblueTest {
   @MethodsUnderTest({"int EntityJson.size()"})
   public void testSize_thenReturnZero() throws InvalidInstanceException {
     // Arrange
-    IEntityJsonInstanceContext context = mock(IEntityJsonInstanceContext.class);
+    EntityJsonContext context = mock(EntityJsonContext.class);
     JsonNodeFactory nc = JsonNodeFactory.withExactBigDecimals(true);
     when(context.getInstanceJsonNode()).thenReturn(new ObjectNode(nc));
 
@@ -145,7 +154,7 @@ public class EntityJsonDiffblueTest {
   @MethodsUnderTest({"boolean EntityJson.isEmpty()"})
   public void testIsEmpty_thenReturnTrue() throws InvalidInstanceException {
     // Arrange
-    IEntityJsonInstanceContext context = mock(IEntityJsonInstanceContext.class);
+    EntityJsonContext context = mock(EntityJsonContext.class);
     JsonNodeFactory nc = JsonNodeFactory.withExactBigDecimals(true);
     when(context.getInstanceJsonNode()).thenReturn(new ObjectNode(nc));
 
@@ -155,32 +164,5 @@ public class EntityJsonDiffblueTest {
     // Assert
     verify(context).getInstanceJsonNode();
     assertTrue(actualIsEmptyResult);
-  }
-
-  /**
-   * Test {@link EntityJson#contains(StructuredObject)}.
-   *
-   * <ul>
-   *   <li>Then return {@code false}.
-   * </ul>
-   *
-   * <p>Method under test: {@link EntityJson#contains(StructuredObject)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({"boolean EntityJson.contains(StructuredObject)"})
-  public void testContains_thenReturnFalse() throws InvalidInstanceException {
-    // Arrange
-    IEntityJsonInstanceContext context = mock(IEntityJsonInstanceContext.class);
-    JsonNodeFactory nc = JsonNodeFactory.withExactBigDecimals(true);
-    when(context.getInstanceJsonNode()).thenReturn(new ObjectNode(nc));
-
-    // Act
-    boolean actualContainsResult = new EntityJson(context).contains(null);
-
-    // Assert
-    verify(context).getInstanceJsonNode();
-    assertFalse(actualContainsResult);
   }
 }

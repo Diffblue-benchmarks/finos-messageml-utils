@@ -1,0 +1,1261 @@
+17:25:45.034 [INFO]   [Preparing]   Diffblue Cover 2025.12.02-74144f0-licensed
+17:25:45.034 [INFO]   [Preparing]   Running: dcover issues --prompt
+17:25:45.035 [INFO]   [Preparing]   
+17:25:45.035 [INFO]   [Preparing]   Command: issues
+17:25:45.036 [INFO]   [Preparing]   Output a prioritized list of issues.
+17:25:45.036 [INFO]   [Preparing]   
+17:25:45.433 [INFO]   [Checking]    Maven Using ${maven.home} of: /home/jbergqvist/diffblue/finos-messageml-utils.
+17:25:45.436 [INFO]   [Checking]    Maven Executing: /bin/sh -c cd /home/jbergqvist/diffblue/finos-messageml-utils && /home/jbergqvist/diffblue/finos-messageml-utils/mvnw -B -version
+17:25:45.679 [INFO]   [Checking]    Standard output of build tool (Maven)
+17:25:45.679 [INFO]   [Checking]    > Apache Maven 3.8.4 (9b656c72d54e5bacbed989b64718c159fe39b537)
+17:25:45.679 [INFO]   [Checking]    > Maven home: /home/jbergqvist/.m2/wrapper/dists/apache-maven-3.8.4-bin/52ccbt68d252mdldqsfsn03jlf/apache-maven-3.8.4
+17:25:45.679 [INFO]   [Checking]    > Java version: 11.0.29, vendor: Amazon.com Inc., runtime: /home/jbergqvist/.sdkman/candidates/java/11.0.29-amzn
+17:25:45.679 [INFO]   [Checking]    > Default locale: en_GB, platform encoding: UTF-8
+17:25:45.679 [INFO]   [Checking]    > OS name: "linux", version: "6.8.0-90-generic", arch: "amd64", family: "unix"
+17:25:45.683 [INFO]   [Checking]    Using default build rules as no custom rules found in any of [/home/jbergqvist/diffblue/finos-messageml-utils]
+17:25:45.688 [INFO]   [Checking]    Attempting to invoke /home/jbergqvist/diffblue/finos-messageml-utils/mvnw in working directory: /home/jbergqvist/diffblue/finos-messageml-utils
+17:25:45.688 [INFO]   [Checking]    Started "/home/jbergqvist/diffblue/finos-messageml-utils/mvnw -Dmaven.ext.class.path=/opt/cover/cover-buildsystem-maven-spy-jar-with-dependencies.jar -Dcom.diffblue.cover.skipTests=true -DskipTestOptimizer --batch-mode --global-settings=/home/jbergqvist/.sdkman/candidates/maven/current/conf/settings.xml dependency:build-classpath"
+17:25:46.318 [INFO]   [Checking]    out: [INFO] Scanning for projects...
+17:25:46.463 [INFO]   [Checking]    out: [INFO] 
+17:25:46.463 [INFO]   [Checking]    out: [INFO] -----------------< org.symphonyoss.symphony:messageml >-----------------
+17:25:46.463 [INFO]   [Checking]    out: [INFO] Building MessageML Utils 0.13.0
+17:25:46.463 [INFO]   [Checking]    out: [INFO] --------------------------------[ jar ]---------------------------------
+17:25:46.657 [INFO]   [Checking]    deserializing line [DIFFBLUE]{"__type":"com.diffblue.cover.buildsystem.model.DefaultEventMessage","project":"org.symphonyoss.symphony:messageml","goal":"build-classpath","cause":null,"state":"STARTED"}
+17:25:46.703 [INFO]   [Checking]    out: [INFO] 
+17:25:46.704 [INFO]   [Checking]    out: [INFO] --- maven-dependency-plugin:2.8:build-classpath (default-cli) @ messageml ---
+17:25:46.748 [INFO]   [Checking]    out: [WARNING] The artifact xml-apis:xml-apis:jar:2.0.2 has been relocated to xml-apis:xml-apis:jar:1.0.b2
+17:25:46.959 [INFO]   [Checking]    out: [INFO] Dependencies classpath:
+17:25:46.959 [INFO]   [Checking]    out: /home/jbergqvist/.m2/repository/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar:/home/jbergqvist/.m2/repository/com/github/java-json-tools/json-schema-validator/2.2.14/json-schema-validator-2.2.14.jar:/home/jbergqvist/.m2/repository/com/github/java-json-tools/jackson-coreutils-equivalence/1.0/jackson-coreutils-equivalence-1.0.jar:/home/jbergqvist/.m2/repository/com/github/java-json-tools/jackson-coreutils/2.0/jackson-coreutils-2.0.jar:/home/jbergqvist/.m2/repository/com/github/java-json-tools/msg-simple/1.2/msg-simple-1.2.jar:/home/jbergqvist/.m2/repository/com/github/java-json-tools/btf/1.3/btf-1.3.jar:/home/jbergqvist/.m2/repository/com/github/java-json-tools/json-schema-core/1.2.14/json-schema-core-1.2.14.jar:/home/jbergqvist/.m2/repository/com/github/java-json-tools/uri-template/0.10/uri-template-0.10.jar:/home/jbergqvist/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2.jar:/home/jbergqvist/.m2/repository/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar:/home/jbergqvist/.m2/repository/com/googlecode/libphonenumber/libphonenumber/8.11.1/libphonenumber-8.11.1.jar:/home/jbergqvist/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/jbergqvist/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/home/jbergqvist/.m2/repository/org/mozilla/rhino/1.7.13/rhino-1.7.13.jar:/home/jbergqvist/.m2/repository/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar:/home/jbergqvist/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/home/jbergqvist/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/home/jbergqvist/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/home/jbergqvist/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/home/jbergqvist/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/home/jbergqvist/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.2/jackson-core-2.15.2.jar:/home/jbergqvist/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.2/jackson-databind-2.15.2.jar:/home/jbergqvist/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.2/jackson-annotations-2.15.2.jar:/home/jbergqvist/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/home/jbergqvist/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar:/home/jbergqvist/.m2/repository/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar:/home/jbergqvist/.m2/repository/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.jar:/home/jbergqvist/.m2/repository/com/diffblue/cover/cover-annotations/1.8.0/cover-annotations-1.8.0.jar:/home/jbergqvist/.m2/repository/com/atlassian/commonmark/commonmark/0.15.2/commonmark-0.15.2.jar:/home/jbergqvist/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar:/home/jbergqvist/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/jbergqvist/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar:/home/jbergqvist/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/jbergqvist/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar:/home/jbergqvist/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar:/home/jbergqvist/.m2/repository/org/junit/platform/junit-platform-engine/1.8.2/junit-platform-engine-1.8.2.jar:/home/jbergqvist/.m2/repository/org/junit/vintage/junit-vintage-engine/5.8.2/junit-vintage-engine-5.8.2.jar:/home/jbergqvist/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/jbergqvist/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/jbergqvist/.m2/repository/org/mockito/mockito-core/4.0.0/mockito-core-4.0.0.jar:/home/jbergqvist/.m2/repository/net/bytebuddy/byte-buddy/1.11.19/byte-buddy-1.11.19.jar:/home/jbergqvist/.m2/repository/net/bytebuddy/byte-buddy-agent/1.11.19/byte-buddy-agent-1.11.19.jar:/home/jbergqvist/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:/home/jbergqvist/.m2/repository/org/openjdk/jmh/jmh-core/1.33/jmh-core-1.33.jar:/home/jbergqvist/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/home/jbergqvist/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.33/jmh-generator-annprocess-1.33.jar:/home/jbergqvist/.m2/repository/org/xmlunit/xmlunit-core/2.8.3/xmlunit-core-2.8.3.jar:/home/jbergqvist/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.3/jakarta.xml.bind-api-2.3.3.jar:/home/jbergqvist/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.2/jakarta.activation-api-1.2.2.jar:/home/jbergqvist/.m2/repository/ch/qos/logback/logback-classic/1.2.9/logback-classic-1.2.9.jar:/home/jbergqvist/.m2/repository/ch/qos/logback/logback-core/1.2.9/logback-core-1.2.9.jar
+17:25:46.960 [INFO]   [Checking]    deserializing line [DIFFBLUE]{"__type":"com.diffblue.cover.buildsystem.model.DefaultEventMessage","project":"org.symphonyoss.symphony:messageml","goal":"build-classpath","cause":null,"state":"SUCCESS"}
+17:25:46.995 [INFO]   [Checking]    deserializing line [DIFFBLUE]{"__type":"com.diffblue.cover.buildsystem.model.DefaultProjectModuleMessage","project":{"__type":"DefaultProjectModule","junitReport":["/home/jbergqvist/diffblue/finos-messageml-utils/target/surefire-reports"],"jacocoReport":["/home/jbergqvist/diffblue/finos-messageml-utils/target/site/jacoco/jacoco.xml"],"jacocoDestFile":["/home/jbergqvist/diffblue/finos-messageml-utils/target/jacoco.exec"],"jacocoFormats":["xml"],"jacocoSkipped":false,"classpath":["/home/jbergqvist/diffblue/finos-messageml-utils/target/classes","/home/jbergqvist/.m2/repository/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/json-schema-validator/2.2.14/json-schema-validator-2.2.14.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/jackson-coreutils-equivalence/1.0/jackson-coreutils-equivalence-1.0.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/jackson-coreutils/2.0/jackson-coreutils-2.0.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/msg-simple/1.2/msg-simple-1.2.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/btf/1.3/btf-1.3.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/json-schema-core/1.2.14/json-schema-core-1.2.14.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/uri-template/0.10/uri-template-0.10.jar","/home/jbergqvist/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2.jar","/home/jbergqvist/.m2/repository/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar","/home/jbergqvist/.m2/repository/com/googlecode/libphonenumber/libphonenumber/8.11.1/libphonenumber-8.11.1.jar","/home/jbergqvist/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar","/home/jbergqvist/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar","/home/jbergqvist/.m2/repository/org/mozilla/rhino/1.7.13/rhino-1.7.13.jar","/home/jbergqvist/.m2/repository/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar","/home/jbergqvist/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar","/home/jbergqvist/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar","/home/jbergqvist/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar","/home/jbergqvist/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar","/home/jbergqvist/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar","/home/jbergqvist/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.2/jackson-core-2.15.2.jar","/home/jbergqvist/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.2/jackson-databind-2.15.2.jar","/home/jbergqvist/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.2/jackson-annotations-2.15.2.jar","/home/jbergqvist/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar","/home/jbergqvist/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar","/home/jbergqvist/.m2/repository/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar","/home/jbergqvist/.m2/repository/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.jar","/home/jbergqvist/.m2/repository/com/diffblue/cover/cover-annotations/1.8.0/cover-annotations-1.8.0.jar","/home/jbergqvist/.m2/repository/com/atlassian/commonmark/commonmark/0.15.2/commonmark-0.15.2.jar","/home/jbergqvist/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar","/home/jbergqvist/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar","/home/jbergqvist/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar","/home/jbergqvist/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar","/home/jbergqvist/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar","/home/jbergqvist/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar","/home/jbergqvist/.m2/repository/org/junit/platform/junit-platform-engine/1.8.2/junit-platform-engine-1.8.2.jar","/home/jbergqvist/.m2/repository/org/junit/vintage/junit-vintage-engine/5.8.2/junit-vintage-engine-5.8.2.jar","/home/jbergqvist/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar","/home/jbergqvist/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar","/home/jbergqvist/.m2/repository/org/mockito/mockito-core/4.0.0/mockito-core-4.0.0.jar","/home/jbergqvist/.m2/repository/net/bytebuddy/byte-buddy/1.11.19/byte-buddy-1.11.19.jar","/home/jbergqvist/.m2/repository/net/bytebuddy/byte-buddy-agent/1.11.19/byte-buddy-agent-1.11.19.jar","/home/jbergqvist/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar","/home/jbergqvist/.m2/repository/org/openjdk/jmh/jmh-core/1.33/jmh-core-1.33.jar","/home/jbergqvist/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar","/home/jbergqvist/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.33/jmh-generator-annprocess-1.33.jar","/home/jbergqvist/.m2/repository/org/xmlunit/xmlunit-core/2.8.3/xmlunit-core-2.8.3.jar","/home/jbergqvist/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.3/jakarta.xml.bind-api-2.3.3.jar","/home/jbergqvist/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.2/jakarta.activation-api-1.2.2.jar","/home/jbergqvist/.m2/repository/ch/qos/logback/logback-classic/1.2.9/logback-classic-1.2.9.jar","/home/jbergqvist/.m2/repository/ch/qos/logback/logback-core/1.2.9/logback-core-1.2.9.jar"],"complianceLevel":"1.8","productionSources":["/home/jbergqvist/diffblue/finos-messageml-utils/src/main/java"],"testSources":["/home/jbergqvist/diffblue/finos-messageml-utils/src/test/java"],"productionClasses":"/home/jbergqvist/diffblue/finos-messageml-utils/target/classes","testClasses":"/home/jbergqvist/diffblue/finos-messageml-utils/target/test-classes","sourceToBuildPathMap":null,"testSourceToBuildPathMap":null,"buildDirectory":"/home/jbergqvist/diffblue/finos-messageml-utils/target","plugins":[{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-surefire-plugin","version":"2.22.2","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-clean-plugin","version":"2.5","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-resources-plugin","version":"2.6","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-jar-plugin","version":"3.2.2","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-compiler-plugin","version":"3.1","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-install-plugin","version":"2.4","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-deploy-plugin","version":"3.0.0-M1","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-site-plugin","version":"3.3","pluginClassName":null}],"version":"3.8.4","encoding":"UTF-8","name":"maven","subModules":[],"simpleModuleName":null,"parentModuleName":null,"location":"/home/jbergqvist/diffblue/finos-messageml-utils","fullModuleName":"org.symphonyoss.symphony:messageml"}}
+17:25:47.010 [INFO]   [Checking]    out: [INFO] ------------------------------------------------------------------------
+17:25:47.011 [INFO]   [Checking]    out: [INFO] BUILD SUCCESS
+17:25:47.011 [INFO]   [Checking]    out: [INFO] ------------------------------------------------------------------------
+17:25:47.011 [INFO]   [Checking]    out: [INFO] Total time:  0.690 s
+17:25:47.011 [INFO]   [Checking]    out: [INFO] Finished at: 2026-01-09T17:25:46Z
+17:25:47.011 [INFO]   [Checking]    out: [INFO] ------------------------------------------------------------------------
+17:25:47.011 [INFO]   [Checking]    deserializing line [DIFFBLUE]{"__type":"com.diffblue.cover.buildsystem.model.ProjectInfoMessage","projectName":"org.symphonyoss.symphony:messageml","productionSources":["/home/jbergqvist/diffblue/finos-messageml-utils/src/main/java"],"testSources":["/home/jbergqvist/diffblue/finos-messageml-utils/src/test/java"],"location":"/home/jbergqvist/diffblue/finos-messageml-utils"}
+17:25:47.044 [INFO]   [Checking]    maven:err process not stopped, joining thread
+17:25:47.044 [INFO]   [Checking]    maven:out process not stopped, joining thread
+17:25:47.044 [INFO]   [Checking]    Deserializing project module message
+17:25:47.045 [INFO]   [Checking]    deserializing line [DIFFBLUE]{"__type":"com.diffblue.cover.buildsystem.model.DefaultEventMessage","project":"org.symphonyoss.symphony:messageml","goal":"build-classpath","cause":null,"state":"STARTED"}
+17:25:47.047 [INFO]   [Checking]    deserializing line [DIFFBLUE]{"__type":"com.diffblue.cover.buildsystem.model.DefaultEventMessage","project":"org.symphonyoss.symphony:messageml","goal":"build-classpath","cause":null,"state":"SUCCESS"}
+17:25:47.049 [INFO]   [Checking]    deserializing line [DIFFBLUE]{"__type":"com.diffblue.cover.buildsystem.model.DefaultProjectModuleMessage","project":{"__type":"DefaultProjectModule","junitReport":["/home/jbergqvist/diffblue/finos-messageml-utils/target/surefire-reports"],"jacocoReport":["/home/jbergqvist/diffblue/finos-messageml-utils/target/site/jacoco/jacoco.xml"],"jacocoDestFile":["/home/jbergqvist/diffblue/finos-messageml-utils/target/jacoco.exec"],"jacocoFormats":["xml"],"jacocoSkipped":false,"classpath":["/home/jbergqvist/diffblue/finos-messageml-utils/target/classes","/home/jbergqvist/.m2/repository/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/json-schema-validator/2.2.14/json-schema-validator-2.2.14.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/jackson-coreutils-equivalence/1.0/jackson-coreutils-equivalence-1.0.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/jackson-coreutils/2.0/jackson-coreutils-2.0.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/msg-simple/1.2/msg-simple-1.2.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/btf/1.3/btf-1.3.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/json-schema-core/1.2.14/json-schema-core-1.2.14.jar","/home/jbergqvist/.m2/repository/com/github/java-json-tools/uri-template/0.10/uri-template-0.10.jar","/home/jbergqvist/.m2/repository/com/sun/mail/mailapi/1.6.2/mailapi-1.6.2.jar","/home/jbergqvist/.m2/repository/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar","/home/jbergqvist/.m2/repository/com/googlecode/libphonenumber/libphonenumber/8.11.1/libphonenumber-8.11.1.jar","/home/jbergqvist/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar","/home/jbergqvist/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar","/home/jbergqvist/.m2/repository/org/mozilla/rhino/1.7.13/rhino-1.7.13.jar","/home/jbergqvist/.m2/repository/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar","/home/jbergqvist/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar","/home/jbergqvist/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar","/home/jbergqvist/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar","/home/jbergqvist/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar","/home/jbergqvist/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar","/home/jbergqvist/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.15.2/jackson-core-2.15.2.jar","/home/jbergqvist/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.15.2/jackson-databind-2.15.2.jar","/home/jbergqvist/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.15.2/jackson-annotations-2.15.2.jar","/home/jbergqvist/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar","/home/jbergqvist/.m2/repository/org/apache/commons/commons-lang3/3.12.0/commons-lang3-3.12.0.jar","/home/jbergqvist/.m2/repository/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar","/home/jbergqvist/.m2/repository/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.jar","/home/jbergqvist/.m2/repository/com/diffblue/cover/cover-annotations/1.8.0/cover-annotations-1.8.0.jar","/home/jbergqvist/.m2/repository/com/atlassian/commonmark/commonmark/0.15.2/commonmark-0.15.2.jar","/home/jbergqvist/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar","/home/jbergqvist/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar","/home/jbergqvist/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar","/home/jbergqvist/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar","/home/jbergqvist/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar","/home/jbergqvist/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar","/home/jbergqvist/.m2/repository/org/junit/platform/junit-platform-engine/1.8.2/junit-platform-engine-1.8.2.jar","/home/jbergqvist/.m2/repository/org/junit/vintage/junit-vintage-engine/5.8.2/junit-vintage-engine-5.8.2.jar","/home/jbergqvist/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar","/home/jbergqvist/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar","/home/jbergqvist/.m2/repository/org/mockito/mockito-core/4.0.0/mockito-core-4.0.0.jar","/home/jbergqvist/.m2/repository/net/bytebuddy/byte-buddy/1.11.19/byte-buddy-1.11.19.jar","/home/jbergqvist/.m2/repository/net/bytebuddy/byte-buddy-agent/1.11.19/byte-buddy-agent-1.11.19.jar","/home/jbergqvist/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar","/home/jbergqvist/.m2/repository/org/openjdk/jmh/jmh-core/1.33/jmh-core-1.33.jar","/home/jbergqvist/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar","/home/jbergqvist/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.33/jmh-generator-annprocess-1.33.jar","/home/jbergqvist/.m2/repository/org/xmlunit/xmlunit-core/2.8.3/xmlunit-core-2.8.3.jar","/home/jbergqvist/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.3/jakarta.xml.bind-api-2.3.3.jar","/home/jbergqvist/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.2/jakarta.activation-api-1.2.2.jar","/home/jbergqvist/.m2/repository/ch/qos/logback/logback-classic/1.2.9/logback-classic-1.2.9.jar","/home/jbergqvist/.m2/repository/ch/qos/logback/logback-core/1.2.9/logback-core-1.2.9.jar"],"complianceLevel":"1.8","productionSources":["/home/jbergqvist/diffblue/finos-messageml-utils/src/main/java"],"testSources":["/home/jbergqvist/diffblue/finos-messageml-utils/src/test/java"],"productionClasses":"/home/jbergqvist/diffblue/finos-messageml-utils/target/classes","testClasses":"/home/jbergqvist/diffblue/finos-messageml-utils/target/test-classes","sourceToBuildPathMap":null,"testSourceToBuildPathMap":null,"buildDirectory":"/home/jbergqvist/diffblue/finos-messageml-utils/target","plugins":[{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-surefire-plugin","version":"2.22.2","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-clean-plugin","version":"2.5","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-resources-plugin","version":"2.6","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-jar-plugin","version":"3.2.2","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-compiler-plugin","version":"3.1","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-install-plugin","version":"2.4","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-deploy-plugin","version":"3.0.0-M1","pluginClassName":null},{"__type":"DefaultPlugin","groupId":"org.apache.maven.plugins","artefactId":"maven-site-plugin","version":"3.3","pluginClassName":null}],"version":"3.8.4","encoding":"UTF-8","name":"maven","subModules":[],"simpleModuleName":null,"parentModuleName":null,"location":"/home/jbergqvist/diffblue/finos-messageml-utils","fullModuleName":"org.symphonyoss.symphony:messageml"}}
+17:25:47.056 [INFO]   [Checking]    deserializing line [DIFFBLUE]{"__type":"com.diffblue.cover.buildsystem.model.ProjectInfoMessage","projectName":"org.symphonyoss.symphony:messageml","productionSources":["/home/jbergqvist/diffblue/finos-messageml-utils/src/main/java"],"testSources":["/home/jbergqvist/diffblue/finos-messageml-utils/src/test/java"],"location":"/home/jbergqvist/diffblue/finos-messageml-utils"}
+17:25:47.058 [INFO]   [Checking]    Found 1 ProjectModuleMessages (ignoring buildSrc projects)
+17:25:47.058 [INFO]   [Checking]    Found module org.symphonyoss.symphony:messageml in the working directory /home/jbergqvist/diffblue/finos-messageml-utils
+17:25:47.058 [INFO]   [Checking]    deserialized project module is present? true
+17:25:47.074 [INFO]   [Checking]    Operating System: Linux amd64 6.8.0-90-generic
+17:25:47.074 [INFO]   [Checking]    Default charset: UTF-8
+17:25:47.074 [INFO]   [Checking]    Default locale: en_GB
+17:25:47.076 [INFO]   [Checking]    Default time zone: Europe/London
+17:25:47.084 [INFO]   [Checking]    Discovered modules:
+17:25:47.085 [INFO]   [Checking]    - org.symphonyoss.symphony:messageml
+17:25:47.085 [INFO]   [Checking]    
+17:25:47.087 [INFO]   [Checking]    
+17:25:47.087 [INFO]   [Checking]    [1/1] Diagnosing issues for module: org.symphonyoss.symphony:messageml
+17:25:47.088 [INFO]   [Checking]    ======================================================================
+17:25:47.088 [INFO]   [Checking]    
+17:25:47.095 [INFO]   [Checking]    Detected Java version 11.0.29
+17:25:47.101 [INFO]   [Checking]    Maven Using ${maven.home} of: /home/jbergqvist/diffblue/finos-messageml-utils.
+17:25:47.101 [INFO]   [Checking]    Maven Executing: /bin/sh -c cd /home/jbergqvist/diffblue/finos-messageml-utils && /home/jbergqvist/diffblue/finos-messageml-utils/mvnw -B -version
+17:25:47.286 [INFO]   [Checking]    Standard output of build tool (Maven)
+17:25:47.286 [INFO]   [Checking]    > Apache Maven 3.8.4 (9b656c72d54e5bacbed989b64718c159fe39b537)
+17:25:47.286 [INFO]   [Checking]    > Maven home: /home/jbergqvist/.m2/wrapper/dists/apache-maven-3.8.4-bin/52ccbt68d252mdldqsfsn03jlf/apache-maven-3.8.4
+17:25:47.286 [INFO]   [Checking]    > Java version: 11.0.29, vendor: Amazon.com Inc., runtime: /home/jbergqvist/.sdkman/candidates/java/11.0.29-amzn
+17:25:47.286 [INFO]   [Checking]    > Default locale: en_GB, platform encoding: UTF-8
+17:25:47.286 [INFO]   [Checking]    > OS name: "linux", version: "6.8.0-90-generic", arch: "amd64", family: "unix"
+17:25:47.287 [INFO]   [Checking]    Detected build system: Maven 3.8.4
+17:25:47.298 [INFO]   [Checking]    Operating System: Linux amd64 6.8.0-90-generic
+17:25:47.298 [INFO]   [Checking]    Default charset: UTF-8
+17:25:47.298 [INFO]   [Checking]    Default locale: en_GB
+17:25:47.298 [INFO]   [Checking]    Default time zone: Europe/London
+17:25:47.300 [INFO]   [Checking]    Selected build system: Maven
+17:25:47.300 [INFO]   [Checking]    Detected JVM architecture: 64-Bit
+17:25:47.306 [INFO]   [Checking]    
+17:25:47.307 [INFO]   [Checking]    Environment summary for module: org.symphonyoss.symphony:messageml
+17:25:47.307 [INFO]   [Checking]    ------------------------------------------------------------------
+17:25:47.307 [INFO]   [Checking]    Java version                   11.0.29                       SUCCESS        
+17:25:47.307 [INFO]   [Checking]    Build system                   Maven                         SUCCESS        
+17:25:47.307 [INFO]   [Checking]    
+17:25:47.307 [INFO]   [Checking]    Environment check status: SUCCESS
+17:25:47.307 [INFO]   [Reporting]   Reading report file '/home/jbergqvist/diffblue/finos-messageml-utils/.diffblue/reports/report.json'
+17:25:47.375 [INFO]   [Reporting]   Copied report file to '/home/jbergqvist/diffblue/finos-messageml-utils/.diffblue/reports/report-20260109T164253.json'
+17:25:47.427 [INFO]   [Reporting]   
+17:25:47.430 [INFO]   [Reporting]   R083: Can't find a suitable constructor
+Diffblue Cover was unable to construct an instance of EntityJsonContext.
+No suitable constructor or factory method found. Please check that the class
+under test has a non-private constructor or factory method.
+See https://diff.blue/R083 for further troubleshooting of this issue.
+
+17:25:47.431 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.entityjson.EntityJsonContext.getInstanceJsonNode:()Lcom/fasterxml/jackson/databind/node/ObjectNode;
+org.symphonyoss.symphony.entityjson.EntityJsonContext.getInstanceSource:()Ljava/lang/Object;
+org.symphonyoss.symphony.entityjson.EntityJsonContext.getSchemaJsonNode:()Lcom/fasterxml/jackson/databind/node/ObjectNode;
+org.symphonyoss.symphony.entityjson.EntityJsonContext.getSchemaSource:()Ljava/lang/Object;
+org.symphonyoss.symphony.entityjson.EntityJsonContext.getValidationResult:()Ljava/lang/Object;
+org.symphonyoss.symphony.entityjson.EntityJsonContext.withValidationResult:(Ljava/lang/Object;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;
+
+17:25:47.432 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.entityjson.EntityJsonContext.getInstanceJsonNode:()Lcom/fasterxml/jackson/databind/node/ObjectNode;
+org.symphonyoss.symphony.entityjson.EntityJsonContext.getInstanceSource:()Ljava/lang/Object;
+org.symphonyoss.symphony.entityjson.EntityJsonContext.getSchemaJsonNode:()Lcom/fasterxml/jackson/databind/node/ObjectNode;
+org.symphonyoss.symphony.entityjson.EntityJsonContext.getSchemaSource:()Ljava/lang/Object;
+org.symphonyoss.symphony.entityjson.EntityJsonContext.getValidationResult:()Ljava/lang/Object;
+org.symphonyoss.symphony.entityjson.EntityJsonContext.withValidationResult:(Ljava/lang/Object;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;
+
+Diffblue Cover was unable to construct an instance of EntityJsonContext.
+No suitable constructor or factory method found. Please check that the class
+under test has a non-private constructor or factory method.
+See https://diff.blue/R083 for further troubleshooting of this issue.
+
+17:25:47.432 [INFO]   [Reporting]   
+17:25:47.433 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
+    at jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+    at jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+    at jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+    at java.util.Objects.checkIndex(Objects.java:374)
+    at java.util.ArrayList.get(ArrayList.java:459)
+    at java.util.Collections$UnmodifiableList.get(Collections.java:1310)
+    at org.symphonyoss.symphony.entityjson.EntityJson.get(EntityJson.java:172)
+In order to prevent the method under test
+from throwing IndexOutOfBoundsException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.433 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.entityjson.EntityJson.get:(I)Lorg/symphonyoss/symphony/entityjson/StructuredObject;
+
+17:25:47.433 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.entityjson.EntityJson.get:(I)Lorg/symphonyoss/symphony/entityjson/StructuredObject;`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 0
+  at jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+  at jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+  at jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+  at java.util.Objects.checkIndex(Objects.java:374)
+  at java.util.ArrayList.get(ArrayList.java:459)
+  at java.util.Collections$UnmodifiableList.get(Collections.java:1310)
+  at org.symphonyoss.symphony.entityjson.EntityJson.get(EntityJson.java:172)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.434 [INFO]   [Reporting]   
+17:25:47.435 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.entityjson.StructuredObject.<init>(StructuredObject.java:81)
+    at org.symphonyoss.symphony.entityjson.StructuredObject.<init>(StructuredObject.java:72)
+In order to prevent the method under test
+from throwing NullPointerException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.435 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.entityjson.StructuredObject.validate:(Lorg/symphonyoss/symphony/entityjson/EntityJsonParser;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;
+
+17:25:47.436 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.entityjson.StructuredObject.validate:(Lorg/symphonyoss/symphony/entityjson/EntityJsonParser;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.NullPointerException
+  at org.symphonyoss.symphony.entityjson.StructuredObject.<init>(StructuredObject.java:81)
+  at org.symphonyoss.symphony.entityjson.StructuredObject.<init>(StructuredObject.java:72)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.436 [INFO]   [Reporting]   
+17:25:47.437 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Invalid messageML: The markup in the document preceding the root element must be well-formed.
+    at org.symphonyoss.symphony.messageml.MessageMLParser.parseDocument(MessageMLParser.java:406)
+    at org.symphonyoss.symphony.messageml.MessageMLParser.parseMessageML(MessageMLParser.java:352)
+    at org.symphonyoss.symphony.messageml.MessageMLParser.parse(MessageMLParser.java:204)
+    at org.symphonyoss.symphony.messageml.MessageMLContext.parseMessageML(MessageMLContext.java:80)
+In order to prevent the method under test
+from throwing InvalidInputException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.438 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.MessageMLContext.parseMessageML:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+17:25:47.438 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.MessageMLContext.parseMessageML:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Invalid messageML: The markup in the document preceding the root element must be well-formed.
+  at org.symphonyoss.symphony.messageml.MessageMLParser.parseDocument(MessageMLParser.java:406)
+  at org.symphonyoss.symphony.messageml.MessageMLParser.parseMessageML(MessageMLParser.java:352)
+  at org.symphonyoss.symphony.messageml.MessageMLParser.parse(MessageMLParser.java:204)
+  at org.symphonyoss.symphony.messageml.MessageMLContext.parseMessageML(MessageMLContext.java:80)
+org.xml.sax.SAXParseException: The markup in the document preceding the root element must be well-formed.
+  at com.sun.org.apache.xerces.internal.parsers.DOMParser.parse(DOMParser.java:261)
+  at com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderImpl.parse(DocumentBuilderImpl.java:339)
+  at javax.xml.parsers.DocumentBuilder.parse(DocumentBuilder.java:122)
+  at org.symphonyoss.symphony.messageml.MessageMLParser.parseDocument(MessageMLParser.java:399)
+  at org.symphonyoss.symphony.messageml.MessageMLParser.parseMessageML(MessageMLParser.java:352)
+  at org.symphonyoss.symphony.messageml.MessageMLParser.parse(MessageMLParser.java:204)
+  at org.symphonyoss.symphony.messageml.MessageMLContext.parseMessageML(MessageMLContext.java:80)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.438 [INFO]   [Reporting]   
+17:25:47.439 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.messageml.MessageMLParser.getAllSplittableAttributes(MessageMLParser.java:693)
+In order to prevent the method under test
+from throwing NullPointerException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.439 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.MessageMLParser.getAllSplittableAttributes:(Ljava/lang/String;)Ljava/util/Optional;
+
+17:25:47.439 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.MessageMLParser.getAllSplittableAttributes:(Ljava/lang/String;)Ljava/util/Optional;`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.NullPointerException
+  at org.symphonyoss.symphony.messageml.MessageMLParser.getAllSplittableAttributes(MessageMLParser.java:693)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.440 [INFO]   [Reporting]   
+17:25:47.441 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.messageml.MessageMLParser.getAllSplittableValues(MessageMLParser.java:706)
+In order to prevent the method under test
+from throwing NullPointerException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.441 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.MessageMLParser.getAllSplittableValues:(Ljava/lang/String;)Ljava/util/Optional;
+
+17:25:47.441 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.MessageMLParser.getAllSplittableValues:(Ljava/lang/String;)Ljava/util/Optional;`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.NullPointerException
+  at org.symphonyoss.symphony.messageml.MessageMLParser.getAllSplittableValues(MessageMLParser.java:706)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.441 [INFO]   [Reporting]   
+17:25:47.442 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.messageml.MessageMLParser.getSplittableAttributes(MessageMLParser.java:680)
+In order to prevent the method under test
+from throwing NullPointerException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.442 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.MessageMLParser.getSplittableAttributes:(Ljava/lang/String;Ljava/lang/Class;)Ljava/util/Optional;
+
+17:25:47.442 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.MessageMLParser.getSplittableAttributes:(Ljava/lang/String;Ljava/lang/Class;)Ljava/util/Optional;`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.NullPointerException
+  at org.symphonyoss.symphony.messageml.MessageMLParser.getSplittableAttributes(MessageMLParser.java:680)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.443 [INFO]   [Reporting]   
+17:25:47.444 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.messageml.MessageMLParser.loadElementId(MessageMLParser.java:668)
+In order to prevent the method under test
+from throwing NullPointerException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.444 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.MessageMLParser.loadElementId:(Ljava/lang/String;)V
+
+17:25:47.444 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.MessageMLParser.loadElementId:(Ljava/lang/String;)V`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.NullPointerException
+  at org.symphonyoss.symphony.messageml.MessageMLParser.loadElementId(MessageMLParser.java:668)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.444 [INFO]   [Reporting]   
+17:25:47.445 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+javax.imageio.metadata.IIODOMException: No such attribute!
+    at javax.imageio.metadata.IIOMetadataNode.removeAttribute(IIOMetadataNode.java:803)
+    at javax.imageio.metadata.IIOMetadataNode.removeAttribute(IIOMetadataNode.java:787)
+    at org.symphonyoss.symphony.messageml.elements.DateSelector.buildElementFromDiv(DateSelector.java:140)
+In order to prevent the method under test
+from throwing IIODOMException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.446 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.DateSelector.buildElementFromDiv:(Lorg/symphonyoss/symphony/messageml/MessageMLParser;Lorg/w3c/dom/Element;)V
+
+17:25:47.446 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.elements.DateSelector.buildElementFromDiv:(Lorg/symphonyoss/symphony/messageml/MessageMLParser;Lorg/w3c/dom/Element;)V`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+javax.imageio.metadata.IIODOMException: No such attribute!
+  at javax.imageio.metadata.IIOMetadataNode.removeAttribute(IIOMetadataNode.java:803)
+  at javax.imageio.metadata.IIOMetadataNode.removeAttribute(IIOMetadataNode.java:787)
+  at org.symphonyoss.symphony.messageml.elements.DateSelector.buildElementFromDiv(DateSelector.java:140)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.446 [INFO]   [Reporting]   
+17:25:47.447 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeValue(Element.java:551)
+    at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeIsBoolean(Element.java:566)
+In order to prevent the method under test
+from throwing NullPointerException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.447 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.Element.assertAttributeIsBoolean:(Ljava/lang/String;)V
+
+17:25:47.447 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.elements.Element.assertAttributeIsBoolean:(Ljava/lang/String;)V`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.NullPointerException
+  at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeValue(Element.java:551)
+  at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeIsBoolean(Element.java:566)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.447 [INFO]   [Reporting]   
+17:25:47.448 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeValue(Element.java:551)
+In order to prevent the method under test
+from throwing NullPointerException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.449 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.Element.assertAttributeValue:(Ljava/lang/String;Ljava/util/Collection;)V
+
+17:25:47.449 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.elements.Element.assertAttributeValue:(Ljava/lang/String;Ljava/util/Collection;)V`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.NullPointerException
+  at org.symphonyoss.symphony.messageml.elements.Element.assertAttributeValue(Element.java:551)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.449 [INFO]   [Reporting]   
+17:25:47.451 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+org.w3c.dom.DOMException: This NamedNodeMap is read-only!
+    at javax.imageio.metadata.IIONamedNodeMap.removeNamedItem(IIOMetadataNode.java:81)
+    at org.symphonyoss.symphony.messageml.elements.GroupedElement.buildElementAttrFromInputTag(GroupedElement.java:132)
+In order to prevent the method under test
+from throwing DOMException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.451 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.GroupedElement.buildElementAttrFromInputTag:(Lorg/symphonyoss/symphony/messageml/MessageMLParser;Lorg/w3c/dom/Node;)V
+
+17:25:47.451 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.elements.GroupedElement.buildElementAttrFromInputTag:(Lorg/symphonyoss/symphony/messageml/MessageMLParser;Lorg/w3c/dom/Node;)V`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+org.w3c.dom.DOMException: This NamedNodeMap is read-only!
+  at javax.imageio.metadata.IIONamedNodeMap.removeNamedItem(IIOMetadataNode.java:81)
+  at org.symphonyoss.symphony.messageml.elements.GroupedElement.buildElementAttrFromInputTag(GroupedElement.java:132)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.451 [INFO]   [Reporting]   
+17:25:47.452 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.messageml.elements.Mention.asText(Mention.java:168)
+In order to prevent the method under test
+from throwing NullPointerException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.453 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.Mention.asText:()Ljava/lang/String;
+
+17:25:47.453 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.elements.Mention.asText:()Ljava/lang/String;`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.NullPointerException
+  at org.symphonyoss.symphony.messageml.elements.Mention.asText(Mention.java:168)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.453 [INFO]   [Reporting]   
+17:25:47.454 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+org.w3c.dom.DOMException: Method not supported
+    at javax.imageio.metadata.IIOMetadataNode.getTextContent(IIOMetadataNode.java:1097)
+    at org.symphonyoss.symphony.messageml.elements.Element.getStringAttribute(Element.java:484)
+    at org.symphonyoss.symphony.messageml.elements.SplittableElement.fillAttributes(SplittableElement.java:159)
+    at org.symphonyoss.symphony.messageml.elements.SplittableElement.fillAttributes(SplittableElement.java:182)
+In order to prevent the method under test
+from throwing DOMException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.454 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.SplittableElement.fillAttributes:(Lorg/symphonyoss/symphony/messageml/MessageMLParser;Lorg/w3c/dom/Node;)V
+
+17:25:47.454 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.elements.SplittableElement.fillAttributes:(Lorg/symphonyoss/symphony/messageml/MessageMLParser;Lorg/w3c/dom/Node;)V`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+org.w3c.dom.DOMException: Method not supported
+  at javax.imageio.metadata.IIOMetadataNode.getTextContent(IIOMetadataNode.java:1097)
+  at org.symphonyoss.symphony.messageml.elements.Element.getStringAttribute(Element.java:484)
+  at org.symphonyoss.symphony.messageml.elements.SplittableElement.fillAttributes(SplittableElement.java:159)
+  at org.symphonyoss.symphony.messageml.elements.SplittableElement.fillAttributes(SplittableElement.java:182)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.454 [INFO]   [Reporting]   
+17:25:47.455 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+org.w3c.dom.DOMException: Method not supported
+    at javax.imageio.metadata.IIOMetadataNode.getTextContent(IIOMetadataNode.java:1097)
+    at org.symphonyoss.symphony.messageml.elements.Element.getStringAttribute(Element.java:484)
+    at org.symphonyoss.symphony.messageml.elements.SplittableElement.fillAttributes(SplittableElement.java:159)
+In order to prevent the method under test
+from throwing DOMException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.455 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.SplittableElement.fillAttributes:(Lorg/symphonyoss/symphony/messageml/MessageMLParser;Lorg/w3c/dom/Node;Ljava/util/Map;)V
+
+17:25:47.455 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.elements.SplittableElement.fillAttributes:(Lorg/symphonyoss/symphony/messageml/MessageMLParser;Lorg/w3c/dom/Node;Ljava/util/Map;)V`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+org.w3c.dom.DOMException: Method not supported
+  at javax.imageio.metadata.IIOMetadataNode.getTextContent(IIOMetadataNode.java:1097)
+  at org.symphonyoss.symphony.messageml.elements.Element.getStringAttribute(Element.java:484)
+  at org.symphonyoss.symphony.messageml.elements.SplittableElement.fillAttributes(SplittableElement.java:159)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.456 [INFO]   [Reporting]   
+17:25:47.456 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+    at jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+    at jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+    at jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+    at java.util.Objects.checkIndex(Objects.java:374)
+    at java.util.ArrayList.get(ArrayList.java:459)
+    at org.symphonyoss.symphony.messageml.elements.Element.getChild(Element.java:940)
+    at org.symphonyoss.symphony.messageml.elements.TextArea.getElementInitialValue(TextArea.java:139)
+In order to prevent the method under test
+from throwing IndexOutOfBoundsException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.456 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.TextArea.getElementInitialValue:()Ljava/lang/String;
+
+17:25:47.456 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.elements.TextArea.getElementInitialValue:()Ljava/lang/String;`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+  at jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+  at jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+  at jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+  at java.util.Objects.checkIndex(Objects.java:374)
+  at java.util.ArrayList.get(ArrayList.java:459)
+  at org.symphonyoss.symphony.messageml.elements.Element.getChild(Element.java:940)
+  at org.symphonyoss.symphony.messageml.elements.TextArea.getElementInitialValue(TextArea.java:139)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.457 [INFO]   [Reporting]   
+17:25:47.457 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+    at jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+    at jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+    at jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+    at java.util.Objects.checkIndex(Objects.java:374)
+    at java.util.ArrayList.get(ArrayList.java:459)
+    at org.symphonyoss.symphony.messageml.elements.Element.getChild(Element.java:940)
+    at org.symphonyoss.symphony.messageml.elements.TextField.getElementInitialValue(TextField.java:270)
+In order to prevent the method under test
+from throwing IndexOutOfBoundsException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.458 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.TextField.getElementInitialValue:()Ljava/lang/String;
+
+17:25:47.458 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.elements.TextField.getElementInitialValue:()Ljava/lang/String;`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0
+  at jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+  at jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+  at jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+  at java.util.Objects.checkIndex(Objects.java:374)
+  at java.util.ArrayList.get(ArrayList.java:459)
+  at org.symphonyoss.symphony.messageml.elements.Element.getChild(Element.java:940)
+  at org.symphonyoss.symphony.messageml.elements.TextField.getElementInitialValue(TextField.java:270)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.458 [INFO]   [Reporting]   
+17:25:47.459 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.messageml.elements.TextNode.<init>(TextNode.java:34)
+In order to prevent the method under test
+from throwing NullPointerException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.459 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.TextNode.<init>:(Lorg/symphonyoss/symphony/messageml/elements/Element;Lorg/w3c/dom/Text;)V
+
+17:25:47.459 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.elements.TextNode.<init>:(Lorg/symphonyoss/symphony/messageml/elements/Element;Lorg/w3c/dom/Text;)V`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.NullPointerException
+  at org.symphonyoss.symphony.messageml.elements.TextNode.<init>(TextNode.java:34)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.459 [INFO]   [Reporting]   
+17:25:47.460 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.messageml.elements.TextNode.buildText(TextNode.java:60)
+In order to prevent the method under test
+from throwing NullPointerException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.460 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.TextNode.buildText:(Lorg/w3c/dom/Text;)V
+
+17:25:47.460 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.elements.TextNode.buildText:(Lorg/w3c/dom/Text;)V`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.lang.NullPointerException
+  at org.symphonyoss.symphony.messageml.elements.TextNode.buildText(TextNode.java:60)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.460 [INFO]   [Reporting]   
+17:25:47.461 [INFO]   [Reporting]   R013: No inputs found that don't throw a trivial exception
+Diffblue Cover tried to run the arrange/act section, but the test threw
+java.util.NoSuchElementException
+    at java.util.LinkedList.removeFirst(LinkedList.java:274)
+    at java.util.LinkedList.pop(LinkedList.java:805)
+    at org.symphonyoss.symphony.messageml.util.XmlPrintStream.closeElement(XmlPrintStream.java:104)
+In order to prevent the method under test
+from throwing NoSuchElementException, add constructors or factory
+methods that make it easier to construct fully initialized objects used in
+the method under test.
+See https://diff.blue/R013 to resolve this issue.
+
+17:25:47.461 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.util.XmlPrintStream.closeElement:()V
+
+17:25:47.461 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+We are unit testing `org.symphonyoss.symphony.messageml.util.XmlPrintStream.closeElement:()V`.
+
+Create a parameterless factory method for the problematic
+parameter/this object, determining which by reading the error message below.
+The new factory method should be in the test classpath, not production.
+Create a new factory class if there isn't already one for the class under test.
+Do not create a test yourself, only a factory (don't test the factory either).
+The factory must be annotated with `@com.diffblue.cover.annotations.InterestingTestFactory`.
+Avoid using mocks, these tend to produce unused stubbing errors or a
+`java.lang.NullPointerException`.
+If your environment has internet access then further documentation on
+factory methods for Cover can be found here:
+https://docs.diffblue.com/features/tutorials/increase-code-coverage#test-factory-pattern
+
+The factory should produce a parameter/this object such that
+the following exception does not occur:
+
+```
+java.util.NoSuchElementException
+  at java.util.LinkedList.removeFirst(LinkedList.java:274)
+  at java.util.LinkedList.pop(LinkedList.java:805)
+  at org.symphonyoss.symphony.messageml.util.XmlPrintStream.closeElement(XmlPrintStream.java:104)
+```
+
+Recompile the project to make sure the new factory is available to Cover.
+For example run `mvn install -DskipTests` or `gradle install -x test`.
+
+17:25:47.461 [INFO]   [Reporting]   
+17:25:47.463 [INFO]   [Reporting]   R002: Missing observers
+Diffblue Cover was unable to create an assertion.
+There are no fields that could be asserted on.
+
+17:25:47.463 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.util.NoOpDataProvider.<init>:()V
+org.symphonyoss.symphony.messageml.util.NoOpDataProvider.validateURI:(Ljava/net/URI;)V
+
+17:25:47.463 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.messageml.util.NoOpDataProvider.<init>:()V
+org.symphonyoss.symphony.messageml.util.NoOpDataProvider.validateURI:(Ljava/net/URI;)V
+
+Diffblue Cover was unable to create an assertion.
+There are no fields that could be asserted on.
+
+17:25:47.464 [INFO]   [Reporting]   
+17:25:47.465 [INFO]   [Reporting]   R002: Missing observers
+Diffblue Cover was unable to create an assertion.
+There are no fields that could be asserted on.
+
+17:25:47.465 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.util.NoOpEntityResolver.<init>:()V
+
+17:25:47.465 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.messageml.util.NoOpEntityResolver.<init>:()V
+
+Diffblue Cover was unable to create an assertion.
+There are no fields that could be asserted on.
+
+17:25:47.465 [INFO]   [Reporting]   
+17:25:47.466 [INFO]   [Reporting]   R002: Missing observers
+Diffblue Cover was unable to create an assertion.
+There are no fields that could be asserted on.
+
+17:25:47.466 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.util.NullErrorHandler.<init>:()V
+org.symphonyoss.symphony.messageml.util.NullErrorHandler.error:(Lorg/xml/sax/SAXParseException;)V
+org.symphonyoss.symphony.messageml.util.NullErrorHandler.fatalError:(Lorg/xml/sax/SAXParseException;)V
+org.symphonyoss.symphony.messageml.util.NullErrorHandler.warning:(Lorg/xml/sax/SAXParseException;)V
+
+17:25:47.466 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.messageml.util.NullErrorHandler.<init>:()V
+org.symphonyoss.symphony.messageml.util.NullErrorHandler.error:(Lorg/xml/sax/SAXParseException;)V
+org.symphonyoss.symphony.messageml.util.NullErrorHandler.fatalError:(Lorg/xml/sax/SAXParseException;)V
+org.symphonyoss.symphony.messageml.util.NullErrorHandler.warning:(Lorg/xml/sax/SAXParseException;)V
+
+Diffblue Cover was unable to create an assertion.
+There are no fields that could be asserted on.
+
+17:25:47.467 [INFO]   [Reporting]   
+17:25:47.467 [INFO]   [Reporting]   R002: Missing observers
+Diffblue Cover was unable to create an assertion.
+There are no fields that could be asserted on.
+
+17:25:47.467 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.util.NullDataProvider.<init>:()V
+org.symphonyoss.symphony.messageml.util.NullDataProvider.validateURI:(Ljava/net/URI;)V
+
+17:25:47.467 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.messageml.util.NullDataProvider.<init>:()V
+org.symphonyoss.symphony.messageml.util.NullDataProvider.validateURI:(Ljava/net/URI;)V
+
+Diffblue Cover was unable to create an assertion.
+There are no fields that could be asserted on.
+
+17:25:47.468 [INFO]   [Reporting]   
+17:25:47.469 [INFO]   [Reporting]   R083: Can't find a suitable constructor
+Diffblue Cover was unable to construct an instance of EntityJsonURIDownloader.
+No suitable constructor or factory method found. Please check that the class
+under test has a non-private constructor or factory method.
+See https://diff.blue/R083 for further troubleshooting of this issue.
+
+17:25:47.469 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.entityjson.EntityJsonURIDownloader.getInstance:()Lcom/github/fge/jsonschema/core/load/download/URIDownloader;
+
+17:25:47.469 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.entityjson.EntityJsonURIDownloader.getInstance:()Lcom/github/fge/jsonschema/core/load/download/URIDownloader;
+
+Diffblue Cover was unable to construct an instance of EntityJsonURIDownloader.
+No suitable constructor or factory method found. Please check that the class
+under test has a non-private constructor or factory method.
+See https://diff.blue/R083 for further troubleshooting of this issue.
+
+17:25:47.469 [INFO]   [Reporting]   
+17:25:47.470 [INFO]   [Reporting]   R083: Can't find a suitable constructor
+Diffblue Cover was unable to construct an instance of EntityJsonURIDownloader.
+No suitable constructor or factory method found. Please check that the class
+under test has a non-private constructor or factory method.
+See https://diff.blue/R083 for further troubleshooting of this issue.
+
+17:25:47.471 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.entityjson.EntityJsonURIDownloader.fetch:(Ljava/net/URI;)Ljava/io/InputStream;
+
+17:25:47.471 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.entityjson.EntityJsonURIDownloader.fetch:(Ljava/net/URI;)Ljava/io/InputStream;
+
+Diffblue Cover was unable to construct an instance of EntityJsonURIDownloader.
+No suitable constructor or factory method found. Please check that the class
+under test has a non-private constructor or factory method.
+See https://diff.blue/R083 for further troubleshooting of this issue.
+
+17:25:47.471 [INFO]   [Reporting]   
+17:25:47.472 [INFO]   [Reporting]   R081: Exception in arrange section
+Diffblue Cover was unable to construct an instance of the class under test using
+org.symphonyoss.symphony.entityjson.EntityJson.toString().
+The arrange section threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.entityjson.EntityJson.<init>(EntityJson.java:78)
+More information about the exception is provided in the support log.
+See https://diff.blue/R081 for further troubleshooting of this issue.
+
+17:25:47.472 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.entityjson.EntityJson.getChildren:()Ljava/util/List;
+org.symphonyoss.symphony.entityjson.EntityJson.getContext:()Lorg/symphonyoss/symphony/entityjson/IEntityJsonInstanceContext;
+org.symphonyoss.symphony.entityjson.EntityJson.toString:()Ljava/lang/String;
+
+17:25:47.472 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.entityjson.EntityJson.getChildren:()Ljava/util/List;
+org.symphonyoss.symphony.entityjson.EntityJson.getContext:()Lorg/symphonyoss/symphony/entityjson/IEntityJsonInstanceContext;
+org.symphonyoss.symphony.entityjson.EntityJson.toString:()Ljava/lang/String;
+
+Diffblue Cover was unable to construct an instance of the class under test using
+org.symphonyoss.symphony.entityjson.EntityJson.toString().
+The arrange section threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.entityjson.EntityJson.<init>(EntityJson.java:78)
+More information about the exception is provided in the support log.
+See https://diff.blue/R081 for further troubleshooting of this issue.
+
+17:25:47.472 [INFO]   [Reporting]   
+17:25:47.474 [INFO]   [Reporting]   R011: Sandboxing policy violation
+Diffblue Cover ran code in your project that tried
+to access the network.
+Diffblue Cover's default sandboxing policy disallows this in order to prevent
+your code from damaging your system environment.
+See https://diff.blue/R011 to resolve this issue.
+
+17:25:47.475 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.entityjson.EntityJsonParser.<init>:(Z)V
+org.symphonyoss.symphony.entityjson.EntityJsonParser.parseEntityJson:(Ljava/lang/Object;Lcom/fasterxml/jackson/databind/node/ObjectNode;)Lorg/symphonyoss/symphony/entityjson/EntityJson;
+org.symphonyoss.symphony.entityjson.EntityJsonParser.parseStructuredObject:(Ljava/lang/Object;Lcom/fasterxml/jackson/databind/node/ObjectNode;)Lorg/symphonyoss/symphony/entityjson/StructuredObject;
+org.symphonyoss.symphony.entityjson.EntityJsonParser.validate:(Ljava/net/URL;Ljava/lang/Object;Ljava/io/Reader;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;
+org.symphonyoss.symphony.entityjson.EntityJsonParser.validate:(Ljava/net/URL;Ljava/net/URL;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;
+
+17:25:47.475 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.entityjson.EntityJsonParser.<init>:(Z)V
+org.symphonyoss.symphony.entityjson.EntityJsonParser.parseEntityJson:(Ljava/lang/Object;Lcom/fasterxml/jackson/databind/node/ObjectNode;)Lorg/symphonyoss/symphony/entityjson/EntityJson;
+org.symphonyoss.symphony.entityjson.EntityJsonParser.parseStructuredObject:(Ljava/lang/Object;Lcom/fasterxml/jackson/databind/node/ObjectNode;)Lorg/symphonyoss/symphony/entityjson/StructuredObject;
+org.symphonyoss.symphony.entityjson.EntityJsonParser.validate:(Ljava/net/URL;Ljava/lang/Object;Ljava/io/Reader;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;
+org.symphonyoss.symphony.entityjson.EntityJsonParser.validate:(Ljava/net/URL;Ljava/net/URL;)Lorg/symphonyoss/symphony/entityjson/IEntityJsonSchemaContext;
+
+Diffblue Cover ran code in your project that tried
+to access the network.
+Diffblue Cover's default sandboxing policy disallows this in order to prevent
+your code from damaging your system environment.
+See https://diff.blue/R011 to resolve this issue.
+
+17:25:47.475 [INFO]   [Reporting]   
+17:25:47.476 [INFO]   [Reporting]   R081: Exception in arrange section
+Diffblue Cover was unable to construct an instance of the class under test using
+org.symphonyoss.symphony.entityjson.StructuredObject.getContext().
+The arrange section threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.entityjson.StructuredObject.<init>(StructuredObject.java:81)
+    at org.symphonyoss.symphony.entityjson.StructuredObject.<init>(StructuredObject.java:72)
+More information about the exception is provided in the support log.
+See https://diff.blue/R081 for further troubleshooting of this issue.
+
+17:25:47.477 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.entityjson.StructuredObject.getContext:()Lorg/symphonyoss/symphony/entityjson/IEntityJsonInstanceContext;
+org.symphonyoss.symphony.entityjson.StructuredObject.getIdList:()Ljava/util/List;
+org.symphonyoss.symphony.entityjson.StructuredObject.getMajorVersion:()I
+org.symphonyoss.symphony.entityjson.StructuredObject.getMinorVersion:()I
+org.symphonyoss.symphony.entityjson.StructuredObject.getType:()Ljava/lang/String;
+org.symphonyoss.symphony.entityjson.StructuredObject.getVersion:()Ljava/lang/String;
+org.symphonyoss.symphony.entityjson.StructuredObject.toString:()Ljava/lang/String;
+
+17:25:47.477 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.entityjson.StructuredObject.getContext:()Lorg/symphonyoss/symphony/entityjson/IEntityJsonInstanceContext;
+org.symphonyoss.symphony.entityjson.StructuredObject.getIdList:()Ljava/util/List;
+org.symphonyoss.symphony.entityjson.StructuredObject.getMajorVersion:()I
+org.symphonyoss.symphony.entityjson.StructuredObject.getMinorVersion:()I
+org.symphonyoss.symphony.entityjson.StructuredObject.getType:()Ljava/lang/String;
+org.symphonyoss.symphony.entityjson.StructuredObject.getVersion:()Ljava/lang/String;
+org.symphonyoss.symphony.entityjson.StructuredObject.toString:()Ljava/lang/String;
+
+Diffblue Cover was unable to construct an instance of the class under test using
+org.symphonyoss.symphony.entityjson.StructuredObject.getContext().
+The arrange section threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.entityjson.StructuredObject.<init>(StructuredObject.java:81)
+    at org.symphonyoss.symphony.entityjson.StructuredObject.<init>(StructuredObject.java:72)
+More information about the exception is provided in the support log.
+See https://diff.blue/R081 for further troubleshooting of this issue.
+
+17:25:47.477 [INFO]   [Reporting]   
+17:25:47.478 [INFO]   [Reporting]   R081: Exception in arrange section
+Diffblue Cover was unable to construct an instance of the class under test using
+org.symphonyoss.symphony.entityjson.StructuredObjectId.toString().
+The arrange section threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.entityjson.StructuredObjectId.<init>(StructuredObjectId.java:41)
+More information about the exception is provided in the support log.
+See https://diff.blue/R081 for further troubleshooting of this issue.
+
+17:25:47.478 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.entityjson.StructuredObjectId.toString:()Ljava/lang/String;
+
+17:25:47.478 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.entityjson.StructuredObjectId.toString:()Ljava/lang/String;
+
+Diffblue Cover was unable to construct an instance of the class under test using
+org.symphonyoss.symphony.entityjson.StructuredObjectId.toString().
+The arrange section threw
+java.lang.NullPointerException
+    at org.symphonyoss.symphony.entityjson.StructuredObjectId.<init>(StructuredObjectId.java:41)
+More information about the exception is provided in the support log.
+See https://diff.blue/R081 for further troubleshooting of this issue.
+
+17:25:47.478 [INFO]   [Reporting]   
+17:25:47.479 [INFO]   [Reporting]   R081: Exception in arrange section
+Diffblue Cover was unable to construct an instance of the class under test using
+org.symphonyoss.symphony.messageml.elements.Chime.getPresentationMLTag().
+The arrange section threw
+org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "chime" has to be the only element in the message.
+    at org.symphonyoss.symphony.messageml.elements.Chime.<init>(Chime.java:46)
+More information about the exception is provided in the support log.
+See https://diff.blue/R081 for further troubleshooting of this issue.
+
+17:25:47.479 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.elements.Chime.getPresentationMLTag:()Ljava/lang/String;
+
+17:25:47.479 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.messageml.elements.Chime.getPresentationMLTag:()Ljava/lang/String;
+
+Diffblue Cover was unable to construct an instance of the class under test using
+org.symphonyoss.symphony.messageml.elements.Chime.getPresentationMLTag().
+The arrange section threw
+org.symphonyoss.symphony.messageml.exceptions.InvalidInputException: Element "chime" has to be the only element in the message.
+    at org.symphonyoss.symphony.messageml.elements.Chime.<init>(Chime.java:46)
+More information about the exception is provided in the support log.
+See https://diff.blue/R081 for further troubleshooting of this issue.
+
+17:25:47.479 [INFO]   [Reporting]   
+17:25:47.481 [INFO]   [Reporting]   R031: Method may be time-sensitive
+Diffblue Cover was only able to write tests that are time-sensitive.
+The assertions don't pass when run at an alternate date, time, and
+timezone. Try refactoring the method to take a 'java.time.Clock' instance so
+that the time can be parameterized during testing.
+See Working with code R031 (https://diff.blue/R031) for details.
+
+17:25:47.481 [INFO]   [Reporting]   Affected methods:
+org.symphonyoss.symphony.messageml.util.ShortID.generate:()Ljava/lang/String;
+
+17:25:47.481 [INFO]   [Reporting]   To resolve the issue, use the following prompt with your AI assistant:
+
+Fix the following issue preventing test creation for:
+org.symphonyoss.symphony.messageml.util.ShortID.generate:()Ljava/lang/String;
+
+Diffblue Cover was only able to write tests that are time-sensitive.
+The assertions don't pass when run at an alternate date, time, and
+timezone. Try refactoring the method to take a 'java.time.Clock' instance so
+that the time can be parameterized during testing.
+See Working with code R031 (https://diff.blue/R031) for details.
+
+17:25:47.481 [INFO]   [Reporting]   
+17:25:47.481 [INFO]   [Reporting]   32 issues were found and displayed
+17:25:47.481 [INFO]   [Reporting]   Rerun with --prompts --limit 10 --skip 10 to focus on a subset of the issues
+17:25:47.481 [INFO]   [Reporting]   Rerun without --prompts to summarise all the issues
+17:25:47.483 [INFO]   [Reporting]   
+17:25:47.483 [INFO]   [Reporting]   Log file: /home/jbergqvist/diffblue/finos-messageml-utils/.diffblue/log/user-20260109T172544.log
+17:25:47.483 [INFO]   [Reporting]   Finished in 4s

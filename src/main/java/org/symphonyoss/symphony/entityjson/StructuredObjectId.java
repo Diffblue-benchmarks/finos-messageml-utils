@@ -38,8 +38,18 @@ public class StructuredObjectId
 
   /* package */ StructuredObjectId(JsonNode node)
   {
-    type_ = node.get("type").asText();
-    value_ = node.get("value").asText();
+    JsonNode typeNode = node.get("type");
+    JsonNode valueNode = node.get("value");
+
+    if (typeNode == null) {
+      throw new IllegalArgumentException("JSON node must contain a 'type' field");
+    }
+    if (valueNode == null) {
+      throw new IllegalArgumentException("JSON node must contain a 'value' field");
+    }
+
+    type_ = typeNode.asText();
+    value_ = valueNode.asText();
   }
 
   @Override
