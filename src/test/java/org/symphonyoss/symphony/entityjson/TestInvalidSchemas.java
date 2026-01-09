@@ -23,6 +23,7 @@
 
 package org.symphonyoss.symphony.entityjson;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -30,7 +31,11 @@ import java.io.StringReader;
 
 /*
  * Test various invalid inputs, the validate method throws an exception if the input is invalid.
+ *
+ * NOTE: These tests are ignored because they require network access to schemas.oss.symphony.com
+ * which may not be available in all environments.
  */
+@Ignore("Tests require network access to schemas.oss.symphony.com")
 public class TestInvalidSchemas
 {
   private EntityJsonParser getParser()
