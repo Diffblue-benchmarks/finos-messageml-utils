@@ -101,5 +101,17 @@ public class AlignedBlock {
   public void print() {
     print(null, null);
   }
+
+  public ArrayList<Integer> getMaxColumnLength() {
+    return maxColumnLength;
+  }
+
+  public IndentedPrintStream getOut() {
+    return out;
+  }
+
+  public ArrayList<String[]> getRows() {
+    return rows;
+  }
 }
 

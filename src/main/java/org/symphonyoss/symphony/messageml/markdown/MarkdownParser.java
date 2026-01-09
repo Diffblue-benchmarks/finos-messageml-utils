@@ -393,4 +393,20 @@ public class MarkdownParser extends AbstractVisitor {
     return messageML;
   }
 
+  public IDataProvider getDataProvider() {
+    return dataProvider;
+  }
+
+  public int getIndex() {
+    return index;
+  }
+
+  public MessageML getMessageML() {
+    return messageML;
+  }
+
+  public Element getParent() {
+    return parent;
+  }
+
 }

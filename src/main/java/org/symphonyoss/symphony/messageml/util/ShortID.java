@@ -130,4 +130,32 @@ public class ShortID {
 
     return target.toString().toCharArray();
   }
+
+  public int getClusterWorkerId() {
+    return clusterWorkerId;
+  }
+
+  public AtomicInteger getCounter() {
+    return counter;
+  }
+
+  public long getPreviousSeconds() {
+    return previousSeconds;
+  }
+
+  public Random getRandom() {
+    return random;
+  }
+
+  public long getReduceTime() {
+    return reduceTime;
+  }
+
+  public char[] getShuffled() {
+    return shuffled;
+  }
+
+  public int getVersion() {
+    return version;
+  }
 }
