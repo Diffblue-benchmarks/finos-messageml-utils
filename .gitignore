@@ -4,3 +4,9 @@ target/
 .project
 .classpath
 .settings/**
+
+.diffblue/cache
+**.diffblue/cache
+**/.diffblue/cache
+**/**.diffblue/cache
+**/**/.diffblue/cache
