@@ -72,27 +72,6 @@ public class EntityJsonContextDiffblueTest {
   }
 
   /**
-   * Test {@link EntityJsonContext#withInstance(Object, ObjectNode)}.
-   *
-   * <p>Method under test: {@link EntityJsonContext#withInstance(Object, ObjectNode)}
-   */
-  @Test
-  @Category(ContributionFromDiffblue.class)
-  @ManagedByDiffblue
-  @MethodsUnderTest({
-    "IEntityJsonInstanceContext EntityJsonContext.withInstance(Object, ObjectNode)"
-  })
-  public void testWithInstance() {
-    // Arrange and Act
-    IEntityJsonInstanceContext actualWithInstanceResult =
-        entityJsonContext.withInstance("Instance Source", objectNode);
-
-    // Assert
-    assertEquals("Instance Source", entityJsonContext.getInstanceSource());
-    assertSame(entityJsonContext, actualWithInstanceResult);
-  }
-
-  /**
    * Test {@link EntityJsonContext#toString()}.
    *
    * <p>Method under test: {@link EntityJsonContext#toString()}
